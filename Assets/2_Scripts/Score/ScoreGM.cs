@@ -3,32 +3,26 @@ using System.Collections;
 
 public class ScoreGM : MonoBehaviour {
 
-    // Paniers 
-    public Panier panier_blue;
-    public Panier panier_red;
-
     // Scores
     public int score_blue;
     public int score_red;
 
-
-    private void checkPoint(ref int score, Panier panier)
+    public void TeamScored(PlayerStats.Team team)
     {
-       if (panier.valid_point)
+        switch (team)
         {
-            score++;
-            panier.valid_point = false;
+            case PlayerStats.Team.BLU:
+                score_blue++;
+                break;
+
+            case PlayerStats.Team.RED:
+                score_red++;
+                break;
+
+            default:
+                Debug.Log("ScoreGM error : Scoring player team not expected.");
+                break;
+
         }
     }
-
-	// Use this for initialization
-	void Start () {
-        
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        checkPoint(ref score_blue, panier_red);
-        checkPoint(ref score_red, panier_blue);
-	}
 }

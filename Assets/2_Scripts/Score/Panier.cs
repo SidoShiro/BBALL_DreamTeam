@@ -1,22 +1,24 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.Networking;
 
-public class Panier : MonoBehaviour {
+public class Panier : NetworkBehaviour {
 
-    public int team; // Team du panier
-    public bool valid_point; // True si un point est marqué.
+    public ScoreGM scoreGM;
 
-	// Use this for initialization
-	void Start () {
-        valid_point = false;
-	}
+    public PlayerStats.Team adv; // Team des adversaires
 
     void OnTriggerEnter(Collider collider)
     {
-        Player player = collider.gameObject.GetComponent<Player>();
-        if (player.have_ball)
+        Debug.Log("Collision");
+        GameObject hitObject = collider.gameObject;
+        if (hitObject.tag == "Player")
         {
-            valid_point = true;
+            Debug.Log("IsPlayer");
+            if (hitObject.GetComponent<PlayerStats>().playerTeam == adv)
+            {
+                Debug.Log("Adv");
+                scoreGM.TeamScored(adv);
+            }
         }
         
     }
