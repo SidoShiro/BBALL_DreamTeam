@@ -5,6 +5,9 @@ public class MainMenuOverlord : MonoBehaviour {
 
     public List<GameObject> Panellist;  //Used to store all panels for mass deactivation
 
+    /// <summary>
+    /// Triggers once when script loads
+    /// </summary>
     void Start()
     {
         //Disables all panels on startup
@@ -12,7 +15,7 @@ public class MainMenuOverlord : MonoBehaviour {
     }
 
     /// <summary>
-    /// Deactivates/Activate all panels in the list according to given bool
+    /// Deactivate/Activate all panels in the list according to given bool
     /// </summary>
     /// <param name="switchto">State to switch to</param>
     void SwitchAllPanelsTo(bool switchto)

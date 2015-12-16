@@ -7,7 +7,6 @@ using System.Collections.Generic;
 
 public class MatchCreator : MonoBehaviour
 {
-    List<MatchDesc> MatchList = new List<MatchDesc>();
     NetworkMatch networkMatch;
 
     void Awake()
