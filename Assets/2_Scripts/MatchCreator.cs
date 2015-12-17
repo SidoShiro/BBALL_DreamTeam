@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using UnityEngine.Networking.Types;
@@ -8,21 +7,34 @@ using System.Collections.Generic;
 
 public class MatchCreator : MonoBehaviour
 {
-    NetworkMatch networkMatch;  //Used to send match creation in the network
+    public GameObject NetworkGM;
+    public Text NickName;
+    public Text ServerName;
+    public Dropdown MapName;
+
+    private NetworkManager networkManager;  //Used to send match creation in the network
+    private NetworkMatch networkMatch;      //Used to send match creation in the network
 
     /// <summary>
     /// Triggered when script is loaded
     /// </summary>
     void Awake()
     {
-        //Initialize NetworkMatch component
+        //Initialize components
         networkMatch = gameObject.AddComponent<NetworkMatch>();
+        networkManager = NetworkGM.GetComponent<NetworkManager>();
+    }
+
+    public void CreateMatch()
+    {
+        CreateMatchForListing();
+        networkManager.StartHost();
     }
 
     /// <summary>
     /// Creates a custom match with custom parameters if found
     /// </summary>
-    public void CreateMatch()
+    private void CreateMatchForListing()
     {
         MatchRequestCustom MatchRequest = new MatchRequestCustom();
         MatchRequest.name = "Match " + System.Guid.NewGuid().ToString("N"); //This GUID is to prevent 2 matches from having the same name
@@ -31,10 +43,10 @@ public class MatchCreator : MonoBehaviour
         MatchRequest.password = "";                                         //No password  (TODO/FEATURE : Add passwords)
 
         MatchRequest.matchAttributesCustom = new Dictionary<string, string>();
-        MatchRequest.matchAttributesCustom.Add(MatchProperty.DisplayName, "<DISPLAYNAME>"); //Name to display to the network        (e.g. "DreamTeam's server")
-        MatchRequest.matchAttributesCustom.Add(MatchProperty.HostName, "<HOSTNAME>");       //Name of original creator of the match (e.g. "DarkSasuke92")
-        MatchRequest.matchAttributesCustom.Add(MatchProperty.MapName, "sand_box");          //Map to join when joining the match    (e.g. "sand_box")
-
+        MatchRequest.matchAttributesCustom.Add(MatchProperty.HostName, NickName.text);          //Name of original creator of the match (e.g. "DarkSasuke92")
+        MatchRequest.matchAttributesCustom.Add(MatchProperty.DisplayName, ServerName.text);     //Name to display to the network        (e.g. "DreamTeam's server")
+        MatchRequest.matchAttributesCustom.Add(MatchProperty.MapName, MapName.options[0].text); //Map to join when joining the match    (e.g. "sand_box")
+        
         networkMatch.CreateMatch(MatchRequest, OnMatchCreate);  //Creates the match and triggers OnMatchCreate()
     }
 

@@ -17,6 +17,7 @@ public class DevTest : NetworkBehaviour
     public void CmdSpawn()
     {
         GameObject Newcube = (GameObject)Instantiate(DevCube, Vector3.up * 50.0f, Quaternion.identity);
+        Destroy(Newcube, 10.0f);
         NetworkServer.Spawn(Newcube);
     }
 }
