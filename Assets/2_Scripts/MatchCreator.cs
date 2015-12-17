@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using UnityEngine.Networking.Types;
@@ -32,7 +33,7 @@ public class MatchCreator : MonoBehaviour
         MatchRequest.matchAttributesCustom = new Dictionary<string, string>();
         MatchRequest.matchAttributesCustom.Add(MatchProperty.DisplayName, "<DISPLAYNAME>"); //Name to display to the network        (e.g. "DreamTeam's server")
         MatchRequest.matchAttributesCustom.Add(MatchProperty.HostName, "<HOSTNAME>");       //Name of original creator of the match (e.g. "DarkSasuke92")
-        MatchRequest.matchAttributesCustom.Add(MatchProperty.MapName, "<MAPNAME>");         //Map to join when joining the match    (e.g. "sand_box")
+        MatchRequest.matchAttributesCustom.Add(MatchProperty.MapName, "sand_box");          //Map to join when joining the match    (e.g. "sand_box")
 
         networkMatch.CreateMatch(MatchRequest, OnMatchCreate);  //Creates the match and triggers OnMatchCreate()
     }
@@ -44,8 +45,13 @@ public class MatchCreator : MonoBehaviour
     public void OnMatchCreate(CreateMatchResponse matchResponse)
     {
         if (matchResponse.success)
+        {
             Debug.Log("Create match succeeded");
+        }
         else
+        {
             Debug.LogError("Create match failed");
+        }
+
     }
 }
