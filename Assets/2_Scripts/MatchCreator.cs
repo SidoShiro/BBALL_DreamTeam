@@ -21,15 +21,16 @@ public class MatchCreator : MonoBehaviour
 
     public void CreateMatch()
     {
-        CreateMatchRequest MatchRequest = new CreateMatchRequest();
+        MatchRequestCustom MatchRequest = new MatchRequestCustom();
         MatchRequest.name = "Match " + System.Guid.NewGuid().ToString("N");
         MatchRequest.size = 10;
         MatchRequest.advertise = true;
         MatchRequest.password = "";
 
-        MatchRequest.matchAttributes = new Dictionary<string, long>();
-        MatchRequest.matchAttributes.Add(MatchProperty.MapName, 1);
-        MatchRequest.matchAttributes.Add(MatchProperty.HostName, 1);
+        MatchRequest.matchAttributesCustom = new Dictionary<string, string>();
+        MatchRequest.matchAttributesCustom.Add(MatchProperty.DisplayName, "<DISPLAYNAME>");
+        MatchRequest.matchAttributesCustom.Add(MatchProperty.HostName, "<HOSTNAME>");
+        MatchRequest.matchAttributesCustom.Add(MatchProperty.MapName, "<MAPNAME>");
 
         networkMatch.CreateMatch(MatchRequest, OnMatchCreate);
     }
