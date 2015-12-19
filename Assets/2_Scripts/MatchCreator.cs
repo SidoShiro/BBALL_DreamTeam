@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
-using UnityEngine.Networking.Types;
 using UnityEngine.Networking.Match;
 using System.Collections.Generic;
 
@@ -12,7 +11,7 @@ public class MatchCreator : MonoBehaviour
     public Text ServerName;
     public Dropdown MapName;
 
-    private NetworkManager networkManager;  //Used to send match creation in the network
+    private NetworkManager networkManager;  //Used to send server creation in the network
     private NetworkMatch networkMatch;      //Used to send match creation in the network
 
     /// <summary>
@@ -27,8 +26,8 @@ public class MatchCreator : MonoBehaviour
 
     public void CreateMatch()
     {
-        CreateMatchForListing();
-        networkManager.StartHost();
+        CreateMatchForListing();    //Creates the match for online listing (Match browser)
+        
     }
 
     /// <summary>
@@ -54,11 +53,12 @@ public class MatchCreator : MonoBehaviour
     /// Triggered after the creation of a Match
     /// </summary>
     /// <param name="matchResponse">Response from the Network to the match creation (Used here to test sucess)</param>
-    public void OnMatchCreate(CreateMatchResponse matchResponse)
+    public virtual void OnMatchCreate(CreateMatchResponse matchResponse)
     {
         if (matchResponse.success)
         {
             Debug.Log("Create match succeeded");
+            networkManager.StartHost(); //Host a game with current map in networkManager
         }
         else
         {
