@@ -10,7 +10,6 @@ public class MainMenuOverlord : MonoBehaviour {
     /// </summary>
     void Start()
     {
-        //Disables all panels on startup
         SwitchAllPanelsTo(false);
     }
 
@@ -22,6 +21,7 @@ public class MainMenuOverlord : MonoBehaviour {
     {
         foreach (GameObject obj in Panellist)
         {
+            //Disables all panels on startup
             obj.SetActive(switchto);
         }
     }
