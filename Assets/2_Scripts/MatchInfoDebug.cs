@@ -2,7 +2,6 @@
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using UnityEngine.Networking.Match;
-using System.Collections.Generic;
 
 
 public class MatchInfoDebug : MonoBehaviour

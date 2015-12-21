@@ -6,10 +6,11 @@ using System.Collections.Generic;
 
 public class MatchCreator : MonoBehaviour
 {
-    public GameObject NetworkGM;
-    public Text NickName;
-    public Text ServerName;
-    public Dropdown MapName;
+    public GameObject NetworkGM;    //The global NetworkGM object       (From Scene)
+    public Text NickName;           //The text containing player name   (From MenuButtonsPanel)
+    public Text ServerName;         //The text containing server name   (From CreateGamePanel)
+    public Toggle LANGameToggle;    //The toggle for LAN/ONLINE         (From CreateGamePanel)
+    public Dropdown MapName;        //The dropdown for map selection    (From CreateGamePanel)
 
     private NetworkManager networkManager;  //Used to send server creation in the network
     private NetworkMatch networkMatch;      //Used to send match creation in the network
@@ -24,16 +25,25 @@ public class MatchCreator : MonoBehaviour
         networkManager = NetworkGM.GetComponent<NetworkManager>();
     }
 
+    /// <summary>
+    /// Creates an LAN/ONLINE game according to the checked toggle
+    /// </summary>
     public void CreateMatch()
     {
-        CreateMatchForListing();    //Creates the match for online listing (Match browser)
-        
+        if (LANGameToggle.isOn)
+        {
+            networkManager.StartHost(); //Creates LAN game
+        }
+        else
+        {
+            CreateMatchRequest();       //Creates the match for online listing (Match browser)
+        }
     }
 
     /// <summary>
     /// Creates a custom match with custom parameters if found
     /// </summary>
-    private void CreateMatchForListing()
+    private void CreateMatchRequest()
     {
         MatchRequestCustom MatchRequest = new MatchRequestCustom();
         MatchRequest.name = "Match " + System.Guid.NewGuid().ToString("N"); //This GUID is to prevent 2 matches from having the same name
@@ -57,13 +67,12 @@ public class MatchCreator : MonoBehaviour
     {
         if (matchResponse.success)
         {
-            Debug.Log("Create match succeeded");
+            Debug.Log("OnMatchCreate > Success");
             networkManager.StartHost(); //Host a game with current map in networkManager
         }
         else
         {
-            Debug.LogError("Create match failed");
+            Debug.LogError("OnMatchCreate > Failure");
         }
-
     }
 }
