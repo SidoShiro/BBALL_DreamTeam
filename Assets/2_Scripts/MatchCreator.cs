@@ -4,6 +4,9 @@ using UnityEngine.Networking;
 using UnityEngine.Networking.Match;
 using System.Collections.Generic;
 
+/// <summary>
+/// This script is used for LAN and ONLINE match creation.
+/// </summary>
 public class MatchCreator : MonoBehaviour
 {
     public GameObject NetworkGM;    //The global NetworkGM object       (From Scene)

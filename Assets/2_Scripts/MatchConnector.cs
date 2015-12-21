@@ -19,6 +19,9 @@ public class MatchConnector : MonoBehaviour
         networkManager = NetworkGM.GetComponent<NetworkManager>();
     }
 
+    /// <summary>
+    /// Get current IP adress from the ConnectionAdress text and tries to connect to it
+    /// </summary>
     public void ConnectToMatch()
     {
         networkManager.networkAddress = ConnectionAdress.text;
