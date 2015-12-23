@@ -14,6 +14,7 @@ public class PlayerColliderFixer : MonoBehaviour
 
     /// <summary>
     /// Fixes the collider in world space by resetting its position to identity
+    /// This is used for clean flat collision between players and other players/walls
     /// </summary>
     void FixCollider()
     {

@@ -12,7 +12,7 @@ public class PlayerMovement : NetworkBehaviour
     public float airspeed = 1.0f;			//Air acceleration multiplier
     public float maxairacceleration = 1.0f;	//Maximal acceleration in the air
     public float jumpheight = 1.2f;			//Jump height
-    public float smoothfactor = 1.0f;
+    public float smoothfactor = 1.0f;       //Movement smoothing factor
     public int PossibleJumps = 1;           //Number of jumps
 
     #region DEBUG
