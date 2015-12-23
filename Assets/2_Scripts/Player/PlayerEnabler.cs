@@ -9,10 +9,10 @@ using UnityEngine.Networking;
 /// </summary>
 public class PlayerEnabler : NetworkBehaviour
 {
-    [Header("Scripts to enable")]
+    [Header("SCRIPTS")]
     public Component[] scriptsToEnable;
 
-    [Header("Client side")]
+    [Header("OTHERS")]
     public GameObject playerModel;      //Player Model
     public GameObject playerHead;       //Player Empty containing camera
     public Rigidbody playerRigidBody;   //Player RigidBody
