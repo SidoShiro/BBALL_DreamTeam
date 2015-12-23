@@ -29,7 +29,7 @@ public class PlayerEnabler : NetworkBehaviour
 
             //Enable client side objects
             playerModel.gameObject.layer = 10;      //Place PlayerModel on "Mine" layer to disable rendering for this client
-            playerHead.SetActive(true);             //Activate personnal camera
+            playerHead.SetActive(true);             //Activate personal camera
             playerRigidBody.isKinematic = false;    //Other players are kinematic by default to prevent pushing
         }
     }

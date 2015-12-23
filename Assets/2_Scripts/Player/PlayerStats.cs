@@ -5,11 +5,12 @@
 /// </summary>
 public class PlayerStats : MonoBehaviour
 {
-    //Enums
+    //Enumerations
     public enum Team { SPE = 0, BLU = 1, RED = 2}
 
     //Default values
     [Header("STATS")]
     public Team playerTeam = Team.BLU;
     public int playerHealth = 200;
+    public bool isCarrying;
 }
