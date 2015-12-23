@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
-using System.Collections;
 
-public class PlayerMovement : NetworkBehaviour
+/// <summary>
+/// TODO: Comment that shit coz its outdated
+/// </summary>
+public class PlayerMovement : MonoBehaviour
 {
     [Header("REFERENCES")]
     public Rigidbody PlayerRigidBody;

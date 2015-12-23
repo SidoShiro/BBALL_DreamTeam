@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
-using System.Collections;
 
+/// <summary>
+/// This script is used to control rotation with mouse.
+/// THIS SCRIPT SOULD NOT BE MODIFIED
+/// </summary>
 [AddComponentMenu("Camera-Control/MouseLookCustom")]
-public class PlayerMouseLookCustom : NetworkBehaviour
+public class PlayerMouseLookCustom : MonoBehaviour
 {
 
     public enum RotationAxes { MouseXAndY = 0, MouseX = 1, MouseY = 2 }
