@@ -122,7 +122,7 @@ public class PlayerMovement : NetworkBehaviour
         if (DBG_movements)
         {
             Debug.DrawLine(transform.position, transform.position + velocity, Color.magenta, DBG_time, false);
-            Debug.DrawLine(transform.position, transform.position + transform.forward, Color.yellow, DBG_time, false);
+            Debug.DrawLine(transform.position + transform.up * 0.5f, transform.position + transform.up * 0.5f + transform.forward, Color.yellow, DBG_time, false);
         }
         #endregion
     }

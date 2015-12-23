@@ -3,7 +3,7 @@ using UnityEngine.Networking;
 using System.Collections;
 
 [AddComponentMenu("Camera-Control/MouseLookCustom")]
-public class MouseLookCustom : NetworkBehaviour
+public class PlayerMouseLookCustom : NetworkBehaviour
 {
 
     public enum RotationAxes { MouseXAndY = 0, MouseX = 1, MouseY = 2 }
