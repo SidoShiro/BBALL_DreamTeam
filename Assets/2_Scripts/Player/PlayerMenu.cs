@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// This script is used to bring up a menu when pressing Escape
+/// </summary>
 public class PlayerMenu : MonoBehaviour
 {
-    public GameObject playerMenuPanel;
-    public Component[] playerInputScripts;
+    public Component[] playerInputScripts;  //Scripts containing inputs to disable when showing the menu
 
-    public bool isShowing;
+    private GameObject playerMenuPanel; //Panel to show
+    private bool isShowing;             //Used to toggles between showing/hidden state
 
     void Start()
     {
@@ -16,6 +19,7 @@ public class PlayerMenu : MonoBehaviour
 
     void Update()
     {
+        //Toggles menu state
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             isShowing = !isShowing;
@@ -31,6 +35,9 @@ public class PlayerMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Disables all input scripts, unlock and show cursor and show player menu
+    /// </summary>
     void ShowPlayerMenu()
     {
         ChangeScriptsState(false);
@@ -40,6 +47,9 @@ public class PlayerMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
+    /// <summary>
+    /// Enables all inputs scripts, lock and hides cursor and hides player menu
+    /// </summary>
     void HidePlayerMenu()
     {
         ChangeScriptsState(true);
@@ -50,6 +60,10 @@ public class PlayerMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    /// <summary>
+    /// Change script enabled state to given boolean
+    /// </summary>
+    /// <param name="newstate">New scripts enabled state</param>
     void ChangeScriptsState(bool newstate)
     {
         foreach(MonoBehaviour monoscript in playerInputScripts)
