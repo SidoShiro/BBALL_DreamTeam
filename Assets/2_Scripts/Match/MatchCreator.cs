@@ -9,7 +9,6 @@ using System.Collections.Generic;
 /// </summary>
 public class MatchCreator : MonoBehaviour
 {
-    public GameObject NetworkGM;    //The global NetworkGM object       (From Scene)
     public Text NickName;           //The text containing player name   (From MenuButtonsPanel)
     public Text ServerName;         //The text containing server name   (From CreateGamePanel)
     public Toggle LANGameToggle;    //The toggle for LAN/ONLINE         (From CreateGamePanel)
@@ -25,7 +24,7 @@ public class MatchCreator : MonoBehaviour
     {
         //Initialize components
         networkMatch = gameObject.AddComponent<NetworkMatch>();
-        networkManager = NetworkGM.GetComponent<NetworkManager>();
+        networkManager = GameObject.Find("NetworkGM").GetComponent<NetworkManager>();
     }
 
     /// <summary>

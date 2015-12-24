@@ -6,11 +6,11 @@
 public class PlayerMenu : MonoBehaviour
 {
     public Component[] playerInputScripts;  //Scripts containing inputs to disable when showing the menu
-
+    
     private GameObject playerMenuPanel; //Panel to show
     private bool isShowing;             //Used to toggles between showing/hidden state
 
-    void Start()
+    void Awake()
     {
         playerMenuPanel = GameObject.Find("PlayerMenuPanel");
         isShowing = false;
