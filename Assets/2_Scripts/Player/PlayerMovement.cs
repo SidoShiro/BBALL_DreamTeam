@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 /// <summary>
-/// TODO: Comment that shit coz its outdated
+/// TODO: Comment that shit because its outdated
 /// </summary>
 public class PlayerMovement : MonoBehaviour
 {
@@ -27,13 +27,13 @@ public class PlayerMovement : MonoBehaviour
     private int jumpsleft;		//Stores jumps left
 
     /// <summary>
-    /// Called everytime the player enters collision
+    /// Called every time the player enters collision
     /// </summary>
     /// <param name="col">Collision data</param>
     void OnCollisionEnter(Collision col)
     {
         ContactPoint contact = col.contacts[0];             //Get collision points
-        if (Vector3.Dot(contact.normal, Vector3.up) > 0.1f) //Detect points positon according to normal
+        if (Vector3.Dot(contact.normal, Vector3.up) > 0.1f) //Detect points position according to normal
         {
             jumpsleft = PossibleJumps;	//Gives jumps back
             isGrounded = true;          //Ground player
@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
     void OnCollisionStay(Collision col)
     {
         ContactPoint contact = col.contacts[0];             //Get collision points
-        if (Vector3.Dot(contact.normal, Vector3.up) > 0.1f) //Detect points positon according to normal
+        if (Vector3.Dot(contact.normal, Vector3.up) > 0.1f) //Detect points position according to normal
         {
             isGrounded = true;  //Ground player
         }
@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 targetvelocity;                         //Velocity the player will try to reach on the ground
         Vector3 acceleration;                           //Acceleration the player is trying to add in the air
-        Vector3 velocity = PlayerRigidBody.velocity;    //Current elocity of the player
+        Vector3 velocity = PlayerRigidBody.velocity;    //Current velocity of the player
         Vector3 velocitychange;                         //Acceleration needed to reach targetvelocity
         Vector3 projection;                             //Projection needed to rule air movement
 
@@ -89,8 +89,8 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded)
         {
 
-            velocitychange = (targetvelocity - velocity) / smoothfactor;        //Calculate change needed and smoothes it
-            velocitychange.y = 0.0f;                                            //No vertical changge needed (Jumping does it)	
+            velocitychange = (targetvelocity - velocity) / smoothfactor;        //Calculate change needed and smooths it
+            velocitychange.y = 0.0f;                                            //No vertical change needed (Jumping does it)	
             PlayerRigidBody.AddForce(velocitychange, ForceMode.VelocityChange); //Move according to change needed
 
             #region DEBUG
@@ -107,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
         {
 
             projection = Vector3.Project(velocity, acceleration);                   //Get projection of velocity/acceleration
-            float proangle = Vector3.Angle(velocity, acceleration);                 //Get angle beetween velocity & acceleration
+            float proangle = Vector3.Angle(velocity, acceleration);                 //Get angle between velocity & acceleration
             if (projection.magnitude <= maxairacceleration || proangle > 90.0f)     //If normal is not over the limit or backwards
                 PlayerRigidBody.AddForce(acceleration, ForceMode.VelocityChange);   //Move according to acceleration
 

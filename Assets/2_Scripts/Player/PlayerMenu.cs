@@ -45,6 +45,8 @@ public class PlayerMenu : MonoBehaviour
 
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 
     /// <summary>
