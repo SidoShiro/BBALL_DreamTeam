@@ -1,25 +1,26 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Networking;
 
 /// <summary>
 /// This script is used to bring up a menu when pressing Escape
 /// </summary>
 public class PlayerMenu : MonoBehaviour
 {
+    public GameObject playerMenuPanel;      //Panel to show
+    public Rigidbody playerRigibody;        //Used to disable velocity when menu is showing
     public Component[] playerInputScripts;  //Scripts containing inputs to disable when showing the menu
-    
-    private GameObject playerMenuPanel; //Panel to show
-    private bool isShowing;             //Used to toggles between showing/hidden state
 
-    /// <summary>
-    /// Triggered when script is loaded
-    /// </summary>
+    public Button disconnectButton;
+
+    private bool isShowing; //Used to toggle between showing/hidden state
+
+    private NetworkManager networkManager; //Used to toggle between showing/hidden state
+
     void Awake()
     {
-        playerMenuPanel = GameObject.Find("PlayerMenuPanel");
-        isShowing = false;
-        HidePlayerMenu();
+        networkManager = GameObject.Find("NetworkGM").GetComponent<NetworkManager>();
     }
-
     /// <summary>
     /// Triggered when script is enabled
     /// </summary>
@@ -27,8 +28,8 @@ public class PlayerMenu : MonoBehaviour
     {
         isShowing = false;
         HidePlayerMenu();
+        disconnectButton.onClick.AddListener(delegate { networkManager.StopHost(); });
     }
-
     void Update()
     {
         //Toggles menu state
@@ -43,7 +44,7 @@ public class PlayerMenu : MonoBehaviour
             {
                 HidePlayerMenu();
             }
-            
+
         }
     }
 
@@ -58,7 +59,7 @@ public class PlayerMenu : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
-        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        playerRigibody.velocity = Vector3.zero;
     }
 
     /// <summary>
@@ -80,7 +81,7 @@ public class PlayerMenu : MonoBehaviour
     /// <param name="newstate">New scripts enabled state</param>
     void ChangeScriptsState(bool newstate)
     {
-        foreach(MonoBehaviour monoscript in playerInputScripts)
+        foreach (MonoBehaviour monoscript in playerInputScripts)
         {
             monoscript.enabled = newstate;
         }

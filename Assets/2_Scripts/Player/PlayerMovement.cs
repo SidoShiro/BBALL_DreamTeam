@@ -33,6 +33,14 @@ public class PlayerMovement : MonoBehaviour
     }
 
     /// <summary>
+    /// Called every x ms
+    /// </summary>
+    void FixedUpdate()
+    {
+        PlayerRigidBody.AddForce(Physics.gravity);
+    }
+
+    /// <summary>
     /// Called once every frame
     /// </summary>
 	void Update()
