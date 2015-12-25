@@ -17,6 +17,9 @@ public class PlayerEnabler : NetworkBehaviour
     public GameObject playerHead;       //Player Empty containing camera
     public Rigidbody playerRigidBody;   //Player RigidBody
 
+    /// <summary>
+    /// Triggered when script is enabled
+    /// </summary>
     void Start()
     {
         if (isLocalPlayer)

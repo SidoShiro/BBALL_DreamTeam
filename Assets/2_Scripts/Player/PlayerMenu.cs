@@ -10,9 +10,21 @@ public class PlayerMenu : MonoBehaviour
     private GameObject playerMenuPanel; //Panel to show
     private bool isShowing;             //Used to toggles between showing/hidden state
 
+    /// <summary>
+    /// Triggered when script is loaded
+    /// </summary>
     void Awake()
     {
         playerMenuPanel = GameObject.Find("PlayerMenuPanel");
+        isShowing = false;
+        HidePlayerMenu();
+    }
+
+    /// <summary>
+    /// Triggered when script is enabled
+    /// </summary>
+    void Start()
+    {
         isShowing = false;
         HidePlayerMenu();
     }

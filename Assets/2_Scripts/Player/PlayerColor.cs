@@ -12,10 +12,23 @@ public class PlayerColor : MonoBehaviour
     public Material BLUMaterial;    //Material to use when on BLU team
     public Material REDMaterial;    //Material to use when on RED team
 
+    private PlayerStats playerStats;
+
+    /// <summary>
+    /// Triggered when script is loaded
+    /// </summary>
+    void Awake()
+    {
+        playerStats = GetComponent<PlayerStats>();
+    }
+
+    /// <summary>
+    /// Triggered when script is enabled
+    /// </summary>
     void Start()
     {
         //Set material according to team
-        switch (GetComponent<PlayerStats>().playerTeam)
+        switch (playerStats.playerTeam)
         {
             case PlayerStats.Team.BLU:
                 playerModel.GetComponent<Renderer>().material = BLUMaterial;

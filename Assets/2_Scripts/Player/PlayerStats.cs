@@ -5,12 +5,10 @@
 /// </summary>
 public class PlayerStats : MonoBehaviour
 {
-    //Enumerations
-    public enum Team { SPE = 0, BLU = 1, RED = 2}
-
-    //Default values
+    public enum Team { SPE = 0, BLU = 1, RED = 2}   //Enum for team
+    
     [Header("STATS")]
-    public Team playerTeam = Team.BLU;
-    public int playerHealth = 200;
-    public bool isCarrying;
+    public Team playerTeam = Team.BLU;  //Player current team
+    public int playerHealth = 200;      //Player current health
+    public bool isCarrying;             //Is the player carrying the ball ?
 }

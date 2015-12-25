@@ -5,9 +5,6 @@
 /// </summary>
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("REFERENCES")]
-    public Rigidbody PlayerRigidBody;
-
     [Header("STATS")]
     public float groundspeed = 10.0f;		//Normal moving speed multiplier
     public float airspeed = 1.0f;			//Air acceleration multiplier
@@ -25,6 +22,27 @@ public class PlayerMovement : MonoBehaviour
     //Private variables
     private bool isGrounded;    //Stores grounded state
     private int jumpsleft;		//Stores jumps left
+    private Rigidbody PlayerRigidBody;
+
+    /// <summary>
+    /// Triggered when script is loaded
+    /// </summary>
+    void Awake()
+    {
+        PlayerRigidBody = GetComponent<Rigidbody>();
+    }
+
+    /// <summary>
+    /// Called once every frame
+    /// </summary>
+	void Update()
+    {
+        //Jump trigger
+        if (Input.GetButtonDown("Jump"))
+            Jump();
+
+        SourceMove(new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical")));   //Get inputs as vector);
+    }
 
     /// <summary>
     /// Called every time the player enters collision
@@ -65,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
     /// <summary>
     /// Moves like Jagger
     /// </summary>
-    void SourceMove()
+    void SourceMove(Vector3 inputsvector)
     {
         Vector3 targetvelocity;                         //Velocity the player will try to reach on the ground
         Vector3 acceleration;                           //Acceleration the player is trying to add in the air
@@ -74,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 projection;                             //Projection needed to rule air movement
 
         //INPUTS
-        targetvelocity = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));   //Get inputs as vector
+        targetvelocity = inputsvector;
 
         targetvelocity = transform.TransformDirection(targetvelocity);  //Change orientation of targetvelocity to local
         acceleration = targetvelocity;                                  //Save orientation and inputs for air movement
@@ -145,15 +163,5 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Called once every frame
-    /// </summary>
-	void Update()
-    {
-        //Jump trigger
-        if (Input.GetButtonDown("Jump"))
-            Jump();
-
-        SourceMove();
-    }
+    
 }
