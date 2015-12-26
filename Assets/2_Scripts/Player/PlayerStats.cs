@@ -11,4 +11,9 @@ public class PlayerStats : MonoBehaviour
     public Team playerTeam = Team.BLU;  //Player current team
     public int playerHealth = 200;      //Player current health
     public bool isCarrying;             //Is the player carrying the ball ?
+
+    void Start()
+    {
+        playerHealth = 200;
+    }
 }
