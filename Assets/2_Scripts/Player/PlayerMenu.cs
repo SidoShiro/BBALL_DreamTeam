@@ -8,7 +8,8 @@ using UnityEngine.Networking;
 public class PlayerMenu : MonoBehaviour
 {
     public GameObject playerMenuPanel;      //Panel to show/hide
-    public Rigidbody playerRigibody;        //Used to disable velocity when menu is showing
+    public GameObject player;               //Player
+    public Rigidbody playerRigidbody;       //Used to disable velocity when menu is showing
     public Component[] playerInputScripts;  //Scripts containing inputs to disable when showing the menu
 
     private NetworkManager networkManager;  //Used to toggle between showing/hidden state
@@ -27,8 +28,8 @@ public class PlayerMenu : MonoBehaviour
     /// </summary>
     void Start()
     {
-        isShowing = false;
-        HidePlayerMenu();
+        isShowing = true;
+        ShowPlayerMenu();
     }
 
     /// <summary>
@@ -55,10 +56,21 @@ public class PlayerMenu : MonoBehaviour
     /// <summary>
     /// Makes player join team
     /// </summary>
-    /// <param name="Teamtojoin">ID of team to join (0 = SPE; 1 = BLU; 2 = RED)</param>
-    public void JoinTeam(int Teamtojoin)
+    /// <param name="teamtojoin">ID of team to join (0 = SPE; 1 = BLU; 2 = RED)</param>
+    public void JoinTeam(int teamtojoin)
     {
-        Debug.Log("Tried to join team: " + Teamtojoin);
+        Debug.Log("Tried to join team: " + teamtojoin);
+        if (!player.activeSelf)
+        {
+            player.GetComponent<PlayerStats>().playerTeam = (PlayerStats.Team)teamtojoin;
+            player.transform.position = Vector3.up;
+            player.SetActive(true);
+            HidePlayerMenu();
+        }
+        else
+        {
+            Debug.Log("Tried to spawn already active player");
+        }
     }
 
     /// <summary>
@@ -80,7 +92,7 @@ public class PlayerMenu : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
-        playerRigibody.velocity = Vector3.zero;
+        playerRigidbody.velocity = Vector3.zero;
     }
 
     /// <summary>
