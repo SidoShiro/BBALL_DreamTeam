@@ -3,6 +3,7 @@
 /// <summary>
 /// This script is used to set the player material according to his team
 /// </summary>
+[RequireComponent(typeof(PlayerStats))]
 public class PlayerColor : MonoBehaviour
 {
     public GameObject playerModel;  //Self explanatory
