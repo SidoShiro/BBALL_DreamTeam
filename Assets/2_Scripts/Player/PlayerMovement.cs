@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     void FixedUpdate()
     {
-        PlayerRigidBody.AddForce(Physics.gravity);
+        //PlayerRigidBody.AddForce(Physics.gravity);
     }
 
     /// <summary>

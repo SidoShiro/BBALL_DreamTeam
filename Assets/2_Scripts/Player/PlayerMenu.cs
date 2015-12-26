@@ -7,20 +7,21 @@ using UnityEngine.Networking;
 /// </summary>
 public class PlayerMenu : MonoBehaviour
 {
-    public GameObject playerMenuPanel;      //Panel to show
+    public GameObject playerMenuPanel;      //Panel to show/hide
     public Rigidbody playerRigibody;        //Used to disable velocity when menu is showing
     public Component[] playerInputScripts;  //Scripts containing inputs to disable when showing the menu
 
-    public Button disconnectButton;
+    private NetworkManager networkManager;  //Used to toggle between showing/hidden state
+    private bool isShowing;                 //Used to toggle between showing/hidden state
 
-    private bool isShowing; //Used to toggle between showing/hidden state
-
-    private NetworkManager networkManager; //Used to toggle between showing/hidden state
-
+    /// <summary>
+    /// Triggered when script is loaded
+    /// </summary>
     void Awake()
     {
         networkManager = GameObject.Find("NetworkGM").GetComponent<NetworkManager>();
     }
+
     /// <summary>
     /// Triggered when script is enabled
     /// </summary>
@@ -28,8 +29,11 @@ public class PlayerMenu : MonoBehaviour
     {
         isShowing = false;
         HidePlayerMenu();
-        disconnectButton.onClick.AddListener(delegate { networkManager.StopHost(); });
     }
+
+    /// <summary>
+    /// Triggered once every frame
+    /// </summary>
     void Update()
     {
         //Toggles menu state
@@ -46,6 +50,23 @@ public class PlayerMenu : MonoBehaviour
             }
 
         }
+    }
+
+    /// <summary>
+    /// Makes player join team
+    /// </summary>
+    /// <param name="Teamtojoin">ID of team to join (0 = SPE; 1 = BLU; 2 = RED)</param>
+    public void JoinTeam(int Teamtojoin)
+    {
+        Debug.Log("Tried to join team: " + Teamtojoin);
+    }
+
+    /// <summary>
+    /// Disconnects to main menu
+    /// </summary>
+    public void DisconnectToMainMenu()
+    {
+        networkManager.StopHost();
     }
 
     /// <summary>
