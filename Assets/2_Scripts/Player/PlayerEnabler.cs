@@ -9,13 +9,12 @@ using UnityEngine.Networking;
 /// </summary>
 public class PlayerEnabler : NetworkBehaviour
 {
-    [Header("SCRIPTS")]
-    public Component[] scriptsToEnable;
+    [Header("ENABLE ON START")]
+    public Component[] scripts;
 
     [Header("OTHERS")]
-    public GameObject playerModel;      //Player Model
-    public GameObject playerHead;       //Player Empty containing camera
-    public Rigidbody playerRigidBody;   //Player RigidBody
+    public GameObject playerModel;      //Player Model for layering
+    public Camera playerCamera;
 
     /// <summary>
     /// Triggered when script is enabled
@@ -25,15 +24,14 @@ public class PlayerEnabler : NetworkBehaviour
         if (isLocalPlayer)
         {
             //Enable client side scripts
-            foreach(MonoBehaviour monoscript in scriptsToEnable)
+            foreach(MonoBehaviour mono in scripts)
             {
-                monoscript.enabled = true;
+                mono.enabled = true;
             }
 
             //Enable client side objects
             playerModel.gameObject.layer = 10;      //Place PlayerModel on "Mine" layer to disable rendering for this client
-            playerHead.SetActive(true);             //Activate personal camera
-            playerRigidBody.isKinematic = false;    //Other players are kinematic by default to prevent pushing
+            playerCamera.enabled = true;
         }
     }
 }

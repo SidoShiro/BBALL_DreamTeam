@@ -3,10 +3,11 @@
 /// <summary>
 /// TODO: Comment that shit because its outdated
 /// </summary>
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
     [Header("STATS")]
-    public float groundspeed = 10.0f;		//Normal moving speed multiplier
+    public float groundspeed = 3.0f;		//Normal moving speed multiplier
     public float airspeed = 1.0f;			//Air acceleration multiplier
     public float maxairacceleration = 1.0f;	//Maximal acceleration in the air
     public float jumpheight = 1.2f;			//Jump height
