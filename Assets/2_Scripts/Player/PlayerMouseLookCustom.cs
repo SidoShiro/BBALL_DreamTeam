@@ -36,7 +36,7 @@ public class PlayerMouseLookCustom : MonoBehaviour
         {
             targetObject.transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityX, 0);
         }
-        elsed
+        else
         {
             rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
             rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
