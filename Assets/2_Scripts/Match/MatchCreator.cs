@@ -14,7 +14,7 @@ public class MatchCreator : MonoBehaviour
     public Toggle LANGameToggle;    //The toggle for LAN/ONLINE         (From CreateGamePanel)
     public Dropdown MapName;        //The dropdown for map selection    (From CreateGamePanel)
 
-    private NetworkManager networkManager;  //Used to send server creation in the network
+    private NetworkOverlord networkOverlord;  //Used to send server creation in the network
     private NetworkMatch networkMatch;      //Used to send match creation in the network
 
     /// <summary>
@@ -24,7 +24,7 @@ public class MatchCreator : MonoBehaviour
     {
         //Initialize components
         networkMatch = gameObject.AddComponent<NetworkMatch>();
-        networkManager = GameObject.Find("NetworkGM").GetComponent<NetworkManager>();
+        networkOverlord = GameObject.Find("NetworkGM").GetComponent<NetworkOverlord>();
     }
 
     /// <summary>
@@ -34,7 +34,7 @@ public class MatchCreator : MonoBehaviour
     {
         if (LANGameToggle.isOn)
         {
-            networkManager.StartHost(); //Creates LAN game
+            networkOverlord.StartHost(); //Creates LAN game
         }
         else
         {
@@ -70,7 +70,7 @@ public class MatchCreator : MonoBehaviour
         if (matchResponse.success)
         {
             Debug.Log("OnMatchCreate > Success");
-            networkManager.StartHost(); //Host a game with current map in networkManager
+            networkOverlord.StartHost(); //Host a game with current map in networkManager
         }
         else
         {

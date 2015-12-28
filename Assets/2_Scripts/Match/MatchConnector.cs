@@ -6,7 +6,7 @@ public class MatchConnector : MonoBehaviour
 {
     public Text ConnectionAdress;   //The text containing ip adress (From DirectConnectPanel)
 
-    private NetworkManager networkManager;  //Used to send server creation in the network
+    private NetworkOverlord networkOverlord;  //Used to send server creation in the network
 
     /// <summary>
     /// Triggered when script is loaded
@@ -14,7 +14,7 @@ public class MatchConnector : MonoBehaviour
     void Awake()
     {
         //Initialize components
-        networkManager = GameObject.Find("NetworkGM").GetComponent<NetworkManager>();
+        networkOverlord = GameObject.Find("NetworkGM").GetComponent<NetworkOverlord>();
     }
 
     /// <summary>
@@ -22,7 +22,7 @@ public class MatchConnector : MonoBehaviour
     /// </summary>
     public void ConnectToMatch()
     {
-        networkManager.networkAddress = ConnectionAdress.text;
-        networkManager.StartClient();
+        networkOverlord.networkAddress = ConnectionAdress.text;
+        networkOverlord.StartClient();
     }
 }

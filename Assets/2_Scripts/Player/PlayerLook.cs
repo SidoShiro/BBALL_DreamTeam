@@ -2,9 +2,8 @@
 
 /// <summary>
 /// This script is used to control rotation with mouse.
-/// THIS SCRIPT SOULD NOT BE MODIFIED
 /// </summary>
-public class PlayerMouseLookCustom : MonoBehaviour
+public class PlayerLook : MonoBehaviour
 {
     public GameObject targetObject;
     private SceneOverlord sceneOverlord;

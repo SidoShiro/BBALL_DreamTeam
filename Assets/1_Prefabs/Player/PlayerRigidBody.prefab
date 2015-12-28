@@ -250,7 +250,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 182066}
-  m_Mesh: {fileID: 4300000, guid: 320b1c2af77554f99a1658df4a6d3d5c, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 8848a40372a93914ea26aa7b3d78b234, type: 3}
 --- !u!54 &5487520
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ad1467103ad1c4696fd4c6b43655db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTeam: 2
+  playerTeam: 1
   playerHealth: 200
   isCarrying: 0
 --- !u!114 &11471712
@@ -391,7 +391,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0abcbd3ff336d73459800f0b8bc0a5c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isControllable: 1
   groundspeed: 3
   airspeed: 1
   maxairacceleration: 1
@@ -485,7 +484,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+      objectReference: {fileID: 4300000, guid: 8848a40372a93914ea26aa7b3d78b234, type: 3}
     - target: {fileID: 0}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -540,7 +539,7 @@ Prefab:
       objectReference: {fileID: 174668}
     - target: {fileID: 0}
       propertyPath: playerTeam
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsKinematic

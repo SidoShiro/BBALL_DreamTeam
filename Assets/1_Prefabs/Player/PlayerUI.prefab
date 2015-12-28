@@ -46,6 +46,7 @@ GameObject:
   - 114: {fileID: 11491238}
   - 114: {fileID: 11463882}
   - 114: {fileID: 11446322}
+  - 114: {fileID: 11408368}
   m_Layer: 5
   m_Name: PlayerUI
   m_TagString: Untagged
@@ -193,6 +194,38 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &11408368
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 123544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 229
+    i1: 159
+    i2: 172
+    i3: 233
+    i4: 6
+    i5: 252
+    i6: 130
+    i7: 244
+    i8: 137
+    i9: 111
+    i10: 89
+    i11: 238
+    i12: 179
+    i13: 50
+    i14: 247
+    i15: 84
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &11410896
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -231,7 +264,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 11432912}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11446322}
+        m_MethodName: JoinTeam
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &11421536
@@ -332,7 +376,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 11479446}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11446322}
+        m_MethodName: JoinTeam
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &11437198
@@ -374,6 +429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMenuPanel: {fileID: 175736}
+  playerRigidBody: {fileID: 169552, guid: 98cc675f9e78ec14a9b0b8ca46b38205, type: 2}
 --- !u!114 &11463882
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -4,12 +4,13 @@ using UnityEngine.Networking;
 /// <summary>
 /// This script is used to bring up a menu when pressing Escape
 /// </summary>
-public class PlayerMenu : MonoBehaviour
+public class PlayerMenu : NetworkBehaviour
 {
     public GameObject playerMenuPanel;      //Panel to show/hide
+    public GameObject playerRigidBody;
 
     private SceneOverlord sceneOverlord;
-    private NetworkManager networkManager;
+    private NetworkOverlord networkOverlord;
     private bool isShowing;                 //Used to toggle between showing/hidden state
 
     /// <summary>
@@ -18,7 +19,7 @@ public class PlayerMenu : MonoBehaviour
     void Awake()
     {
         sceneOverlord = GameObject.Find("SceneGM").GetComponent<SceneOverlord>();
-        networkManager = GameObject.Find("NetworkGM").GetComponent<NetworkManager>();
+        networkOverlord = GameObject.Find("NetworkGM").GetComponent<NetworkOverlord>();
     }
 
     /// <summary>
@@ -81,12 +82,33 @@ public class PlayerMenu : MonoBehaviour
     /// </summary>
     public void DisconnectToMainMenu()
     {
-        networkManager.StopHost();
+        networkOverlord.StopHost();
     }
 
     public void JoinTeam(int teamID)
     {
-        Destroy(sceneOverlord.currentPlayer);
+        switch (teamID)
+        {
+            case 1:
+                networkOverlord.playerTeam = PlayerStats.Team.BLU;
+                break;
+            case 2:
+                networkOverlord.playerTeam = PlayerStats.Team.RED;
+                break;
+            default:
+                networkOverlord.playerTeam = PlayerStats.Team.SPE;
+                break;
+        }
+
+        CmdSpawn();
+        HidePlayerMenu();
     }
 
+    [Command]
+    public void CmdSpawn()
+    {
+        if (ClientScene.localPlayers.Count != 0)
+            ClientScene.RemovePlayer(0);
+        ClientScene.AddPlayer(0);
+    }
 }
