@@ -43,8 +43,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 495368}
   - 54: {fileID: 5487520}
-  - 114: {fileID: 11442238}
   - 114: {fileID: 11466942}
+  - 114: {fileID: 11442238}
   - 114: {fileID: 11454134}
   - 114: {fileID: 11430704}
   - 114: {fileID: 11414454}
@@ -262,7 +262,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
@@ -347,6 +347,7 @@ MonoBehaviour:
   - {fileID: 11471712}
   - {fileID: 11486318}
   playerModel: {fileID: 182066}
+  playerRigidBody: {fileID: 5487520}
   playerCamera: {fileID: 2043206}
 --- !u!114 &11454134
 MonoBehaviour:
@@ -359,7 +360,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b10d36cf4fc85a4fb581152294a549d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerModel: {fileID: 182066}
+  playerStats: {fileID: 11466942}
+  playerCollider: {fileID: 174668}
+  playerModelRenderer: {fileID: 2336412}
   SPEMaterial: {fileID: 2100000, guid: 761c3a5ef5c63284aa2ab86e7cd9cb71, type: 2}
   BLUMaterial: {fileID: 2100000, guid: ee191a375aaa3444c97333a6747df843, type: 2}
   REDMaterial: {fileID: 2100000, guid: 6246283fe4717ce439a7b7d6ce241da9, type: 2}
@@ -374,7 +377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ad1467103ad1c4696fd4c6b43655db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTeam: 1
+  playerTeam: 2
   playerHealth: 200
   isCarrying: 0
 --- !u!114 &11471712
@@ -407,14 +410,14 @@ MonoBehaviour:
   m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TransformSyncMode: 3
+  m_TransformSyncMode: 1
   m_SendInterval: 0.033333335
   m_SyncRotationAxis: 2
   m_RotationSyncCompression: 0
   m_SyncSpin: 0
   m_MovementTheshold: 0.001
   m_SnapThreshold: 5
-  m_InterpolateRotation: 100
+  m_InterpolateRotation: 50
   m_InterpolateMovement: 1
 --- !u!114 &11486318
 MonoBehaviour:
@@ -476,7 +479,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: m_TransformSyncMode
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Mesh
@@ -500,7 +503,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_InterpolateRotation
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_CollisionDetection
@@ -517,6 +520,30 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_RotationSyncCompression
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: playerStats
+      value: 
+      objectReference: {fileID: 11466942}
+    - target: {fileID: 0}
+      propertyPath: playerModelRenderer
+      value: 
+      objectReference: {fileID: 2336412}
+    - target: {fileID: 0}
+      propertyPath: playerRigidBody
+      value: 
+      objectReference: {fileID: 5487520}
+    - target: {fileID: 0}
+      propertyPath: playerCollider
+      value: 
+      objectReference: {fileID: 174668}
+    - target: {fileID: 0}
+      propertyPath: playerTeam
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -6,10 +6,10 @@ PhysicsManager:
   serializedVersion: 2
   m_Gravity: {x: 0, y: -9.81, z: 0}
   m_DefaultMaterial: {fileID: 13400000, guid: 03296bc911ba38a42a473a9b95248849, type: 2}
-  m_BounceThreshold: 2
+  m_BounceThreshold: 1000
   m_SleepThreshold: 0.005
   m_DefaultContactOffset: 0.01
-  m_SolverIterationCount: 6
-  m_QueriesHitTriggers: 1
+  m_SolverIterationCount: 7
+  m_QueriesHitTriggers: 0
   m_EnableAdaptiveForce: 0
-  m_LayerCollisionMatrix: fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff3fffffff3ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+  m_LayerCollisionMatrix: fffbfffffffbfffffffbfffffffffffffffbfffffffbffffffffffffffffffffffffffffffffffffc8e3fffffff3ffffffebffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
