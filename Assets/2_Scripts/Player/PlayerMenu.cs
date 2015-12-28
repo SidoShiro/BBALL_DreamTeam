@@ -7,7 +7,6 @@ using UnityEngine.Networking;
 public class PlayerMenu : NetworkBehaviour
 {
     public GameObject playerMenuPanel;      //Panel to show/hide
-    public GameObject playerRigidBody;
 
     private SceneOverlord sceneOverlord;
     private NetworkOverlord networkOverlord;
@@ -99,16 +98,16 @@ public class PlayerMenu : NetworkBehaviour
                 networkOverlord.playerTeam = PlayerStats.Team.SPE;
                 break;
         }
-
-        CmdSpawn();
+        CmdSpawnPlayer();
         HidePlayerMenu();
     }
 
     [Command]
-    public void CmdSpawn()
+    public void CmdSpawnPlayer()
     {
         if (ClientScene.localPlayers.Count != 0)
             ClientScene.RemovePlayer(0);
         ClientScene.AddPlayer(0);
     }
+
 }
