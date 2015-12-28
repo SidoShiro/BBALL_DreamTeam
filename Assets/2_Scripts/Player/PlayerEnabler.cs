@@ -13,9 +13,9 @@ public class PlayerEnabler : NetworkBehaviour
     public Component[] scripts; //List of scripts (Mainly inputs scripts) to enable client side
 
     [Header("Others")]
-    public GameObject playerModel;      //Self explanatory
-    public Rigidbody playerRigidBody;   //Self explanatory
-    public Camera playerCamera;         //Self explanatory
+    public GameObject playerModel;      //Self-explanatory
+    public Rigidbody playerRigidBody;   //Self-explanatory
+    public Camera playerCamera;         //Self-explanatory
 
     /// <summary>
     /// Triggered when script is enabled

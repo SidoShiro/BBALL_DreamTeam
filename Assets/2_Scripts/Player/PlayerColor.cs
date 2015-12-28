@@ -5,9 +5,9 @@
 /// </summary>
 public class PlayerColor : MonoBehaviour
 {
-    public PlayerStats playerStats;         //Self explanatory
-    public GameObject playerCollider;       //Self explanatory
-    public Renderer playerModelRenderer;    //Self explanatory
+    public PlayerStats playerStats;         //Self-explanatory
+    public GameObject playerCollider;       //Self-explanatory
+    public Renderer playerModelRenderer;    //Self-explanatory
 
     [Header("Materials")]
     public Material SPEMaterial;    //Material to use when on SPE team

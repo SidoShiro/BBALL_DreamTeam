@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
 /// <summary>
-/// TODO: Comment that shit because its outdated
+/// Player movement
 /// </summary>
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerMovement : MonoBehaviour
+public class PlayerMove : MonoBehaviour
 {
     [Header("STATS")]
     public float groundspeed = 3.0f;		//Normal moving speed multiplier
@@ -14,31 +14,29 @@ public class PlayerMovement : MonoBehaviour
     public float smoothfactor = 1.0f;       //Movement smoothing factor
     public int PossibleJumps = 1;           //Number of jumps
 
+    //Private variables
+    private bool isGrounded;    //Stores grounded state
+    private int jumpsleft;      //Stores jumps left
+
+    //Cache
+    private SceneOverlord sceneOverlord;
+    private Rigidbody playerRigidBody;
+    private Transform playerTransform;
+
     #region DEBUG
     [Header("DEBUG")]
     public bool DBG_movements = false;
     public float DBG_time = 0.2f;
     #endregion
 
-    //Private variables
-    private bool isGrounded;    //Stores grounded state
-    private int jumpsleft;		//Stores jumps left
-    private Rigidbody PlayerRigidBody;
-
     /// <summary>
     /// Triggered when script is loaded
     /// </summary>
     void Awake()
     {
-        PlayerRigidBody = GetComponent<Rigidbody>();
-    }
-
-    /// <summary>
-    /// Called every x ms
-    /// </summary>
-    void FixedUpdate()
-    {
-        //PlayerRigidBody.AddForce(Physics.gravity);
+        sceneOverlord = GameObject.Find("SceneGM").GetComponent<SceneOverlord>();
+        playerRigidBody = GetComponent<Rigidbody>();
+        playerTransform = GetComponent<Transform>();
     }
 
     /// <summary>
@@ -46,11 +44,21 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
 	void Update()
     {
-        //Jump trigger
-        if (Input.GetButtonDown("Jump"))
-            Jump();
+        Vector3 playerInputs = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
 
-        SourceMove(new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical")));   //Get inputs as vector);
+        //Jump trigger
+        if (Input.GetButtonDown("Jump") && sceneOverlord.isReceivingInputs)
+            Jump(playerInputs);
+
+        //Movement
+        if (sceneOverlord.isReceivingInputs)
+        {
+            SourceMove(playerInputs);
+        }
+        else
+        {
+            SourceMove(Vector3.zero);
+        }
     }
 
     /// <summary>
@@ -90,21 +98,38 @@ public class PlayerMovement : MonoBehaviour
     }
 
     /// <summary>
+    /// Make the player jump if possible
+    /// </summary>
+    void Jump(Vector3 inputsvector)
+    {
+        if (jumpsleft != 0)
+        {
+            inputsvector = transform.TransformDirection(inputsvector);  //Change orientation of jumpdirection to local
+            inputsvector.y = Mathf.Sqrt(2.0f * jumpheight * 9.81f);     //Calculate jump power needed to reach height
+            inputsvector.x *= groundspeed;                              //Default ground speed
+            inputsvector.z *= groundspeed;                              //Default ground speed
+            playerRigidBody.velocity = inputsvector;                    //Jump according to inputs
+            jumpsleft--;                                                //Remove one jump from stock
+        }
+    }
+
+    /// <summary>
     /// Moves like Jagger
     /// </summary>
     void SourceMove(Vector3 inputsvector)
     {
+        Vector3 velocity = playerRigidBody.velocity;    //Current velocity of the player
+        Vector3 position = playerTransform.position;    //Current position of the player
         Vector3 targetvelocity;                         //Velocity the player will try to reach on the ground
         Vector3 acceleration;                           //Acceleration the player is trying to add in the air
-        Vector3 velocity = PlayerRigidBody.velocity;    //Current velocity of the player
         Vector3 velocitychange;                         //Acceleration needed to reach targetvelocity
         Vector3 projection;                             //Projection needed to rule air movement
 
         //INPUTS
         targetvelocity = inputsvector;
 
-        targetvelocity = transform.TransformDirection(targetvelocity);  //Change orientation of targetvelocity to local
-        acceleration = targetvelocity;                                  //Save orientation and inputs for air movement
+        targetvelocity = playerTransform.TransformDirection(targetvelocity);    //Change orientation of targetvelocity to local
+        acceleration = targetvelocity;                                          //Save orientation and inputs for air movement
 
         //SPEED MODIFIERS
         targetvelocity *= groundspeed;                                          //Ground speed modifiers applied
@@ -118,13 +143,13 @@ public class PlayerMovement : MonoBehaviour
 
             velocitychange = (targetvelocity - velocity) / smoothfactor;        //Calculate change needed and smooths it
             velocitychange.y = 0.0f;                                            //No vertical change needed (Jumping does it)	
-            PlayerRigidBody.AddForce(velocitychange, ForceMode.VelocityChange); //Move according to change needed
+            playerRigidBody.AddForce(velocitychange, ForceMode.VelocityChange); //Move according to change needed
 
             #region DEBUG
             if (DBG_movements)
             {
-                Debug.DrawLine(transform.position, transform.position + targetvelocity, Color.green, DBG_time, false);
-                Debug.DrawLine(transform.position + velocity, transform.position + velocity + velocitychange, Color.red, DBG_time, false);
+                Debug.DrawLine(position, position + targetvelocity, Color.green, DBG_time, false);
+                Debug.DrawLine(position + velocity, position + velocity + velocitychange, Color.red, DBG_time, false);
             }
             #endregion
 
@@ -133,15 +158,15 @@ public class PlayerMovement : MonoBehaviour
         else
         {
 
-            projection = Vector3.Project(velocity, acceleration);                   //Get projection of velocity/acceleration
-            float proangle = Vector3.Angle(velocity, acceleration);                 //Get angle between velocity & acceleration
-            if (projection.magnitude <= maxairacceleration || proangle > 90.0f)     //If normal is not over the limit or backwards
-                PlayerRigidBody.AddForce(acceleration, ForceMode.VelocityChange);   //Move according to acceleration
+            projection = Vector3.Project(velocity, acceleration);                       //Get projection of velocity/acceleration
+            float projectionAngle = Vector3.Angle(velocity, acceleration);              //Get angle between velocity & acceleration
+            if (projection.magnitude <= maxairacceleration || projectionAngle > 90.0f)  //If normal is not over the limit or backwards
+                playerRigidBody.AddForce(acceleration, ForceMode.VelocityChange);       //Move according to acceleration
 
             #region DEBUG
             if (DBG_movements)
             {
-                Debug.DrawLine(transform.position, transform.position + acceleration, Color.red, DBG_time, false);
+                Debug.DrawLine(position, position + acceleration, Color.red, DBG_time, false);
             }
             #endregion
         }
@@ -149,28 +174,9 @@ public class PlayerMovement : MonoBehaviour
         #region DEBUG
         if (DBG_movements)
         {
-            Debug.DrawLine(transform.position, transform.position + velocity, Color.magenta, DBG_time, false);
-            Debug.DrawLine(transform.position + transform.up * 0.5f, transform.position + transform.up * 0.5f + transform.forward, Color.yellow, DBG_time, false);
+            Debug.DrawLine(position, position + velocity, Color.magenta, DBG_time, false);
+            Debug.DrawLine(position + transform.up * 0.5f, position + transform.up * 0.5f + transform.forward, Color.yellow, DBG_time, false);
         }
         #endregion
     }
-
-    /// <summary>
-    /// Make the player jump if possible
-    /// </summary>
-    void Jump()
-    {
-        if (jumpsleft != 0)
-        {
-            Vector3 jumpdirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));    //Get inputs as vector
-            jumpdirection = transform.TransformDirection(jumpdirection);    //Change orientation of jumpdirection to local
-            jumpdirection.y = Mathf.Sqrt(2.0f * jumpheight * 9.81f);        //Calculate jump power needed to reach height
-            jumpdirection.x *= groundspeed;                                 //Default ground speed
-            jumpdirection.z *= groundspeed;                                 //Default ground speed
-            PlayerRigidBody.velocity = jumpdirection;                       //Jump according to inputs
-            jumpsleft--;                                                    //Remove one jump from stock
-        }
-    }
-
-    
 }
