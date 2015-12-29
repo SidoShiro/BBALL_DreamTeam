@@ -2,6 +2,7 @@
 
 /// <summary>
 /// Player movement
+/// TODO: COMMENT THAT SHIT
 /// </summary>
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMove : MonoBehaviour
@@ -22,6 +23,7 @@ public class PlayerMove : MonoBehaviour
     private SceneOverlord sceneOverlord;
     private Rigidbody playerRigidBody;
     private Transform playerTransform;
+    private PlayerStats.Team playerTeam;
 
     #region DEBUG
     [Header("DEBUG")]
@@ -32,11 +34,12 @@ public class PlayerMove : MonoBehaviour
     /// <summary>
     /// Triggered when script is loaded
     /// </summary>
-    void Awake()
+    void Start()
     {
         sceneOverlord = GameObject.Find("SceneGM").GetComponent<SceneOverlord>();
         playerRigidBody = GetComponent<Rigidbody>();
         playerTransform = GetComponent<Transform>();
+        playerTeam = GetComponent<PlayerStats>().playerTeam;
     }
 
     /// <summary>
@@ -44,20 +47,34 @@ public class PlayerMove : MonoBehaviour
     /// </summary>
 	void Update()
     {
+        Move();
+    }
+
+    /// <summary>
+    /// Self-explanatory
+    /// </summary>
+    void Move()
+    {
         Vector3 playerInputs = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
+        bool isControllable = sceneOverlord.isReceivingInputs;
 
-        //Jump trigger
-        if (Input.GetButtonDown("Jump") && sceneOverlord.isReceivingInputs)
-            Jump(playerInputs);
-
-        //Movement
-        if (sceneOverlord.isReceivingInputs)
+        if (playerTeam != PlayerStats.Team.SPE)
         {
-            SourceMove(playerInputs);
+            if (isControllable)
+            {
+                if (Input.GetButtonDown("Jump"))
+                    Jump(playerInputs);
+
+                SourceMove(playerInputs);
+            }
+            else
+            {
+                SourceMove(Vector3.zero);
+            }
         }
         else
         {
-            SourceMove(Vector3.zero);
+            SPEMove(playerInputs);
         }
     }
 
@@ -178,5 +195,17 @@ public class PlayerMove : MonoBehaviour
             Debug.DrawLine(position + transform.up * 0.5f, position + transform.up * 0.5f + transform.forward, Color.yellow, DBG_time, false);
         }
         #endregion
+    }
+
+    void SPEMove(Vector3 inputsvector)
+    {
+        if (Input.GetButton("Jump") && !Input.GetButton("Crouch"))
+            playerTransform.position += Vector3.up * Time.deltaTime * 5.0f;
+
+        if (Input.GetButton("Crouch") && !Input.GetButton("Jump"))
+            playerTransform.position -= Vector3.up * Time.deltaTime * 5.0f;
+
+        playerTransform.position += inputsvector.x * Time.deltaTime * 5.0f * playerTransform.right;
+        playerTransform.position += inputsvector.z * Time.deltaTime * 5.0f * playerTransform.forward;
     }
 }
