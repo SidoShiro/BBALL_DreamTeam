@@ -6,11 +6,12 @@ using UnityEngine.Networking;
 /// </summary>
 public class PlayerMenu : NetworkBehaviour
 {
-    public GameObject playerMenuPanel;      //Panel to show/hide
+    public GameObject playerMenuPanel;          //Panel to show/hide
+    public GameObject playerRigidBody;          //Panel to show/hide
 
     private SceneOverlord sceneOverlord;
     private NetworkOverlord networkOverlord;
-    private bool isShowing;                 //Used to toggle between showing/hidden state
+    private bool isShowing;                     //Used to toggle between showing/hidden state
 
     /// <summary>
     /// Triggered when script is loaded
@@ -26,6 +27,9 @@ public class PlayerMenu : NetworkBehaviour
     /// </summary>
     void Start()
     {
+        if (!isLocalPlayer)
+            enabled = false;
+
         isShowing = true;
         ShowPlayerMenu();
     }
@@ -35,20 +39,23 @@ public class PlayerMenu : NetworkBehaviour
     /// </summary>
     void Update()
     {
-        //Toggles menu state
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (isLocalPlayer)
         {
-            isShowing = !isShowing;
-            if (isShowing)
+            //Toggles menu state
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                ShowPlayerMenu();
-            }
-            else
-            {
-                HidePlayerMenu();
-            }
+                isShowing = !isShowing;
+                if (isShowing)
+                {
+                    ShowPlayerMenu();
+                }
+                else
+                {
+                    HidePlayerMenu();
+                }
 
-        }
+            }
+        }  
     }
 
     /// <summary>
@@ -84,30 +91,25 @@ public class PlayerMenu : NetworkBehaviour
         networkOverlord.StopHost();
     }
 
-    public void JoinTeam(int teamID)
+    public void JoinBLU()
     {
-        switch (teamID)
-        {
-            case 1:
-                networkOverlord.playerTeam = PlayerStats.Team.BLU;
-                break;
-            case 2:
-                networkOverlord.playerTeam = PlayerStats.Team.RED;
-                break;
-            default:
-                networkOverlord.playerTeam = PlayerStats.Team.SPE;
-                break;
-        }
-        CmdSpawnPlayer();
+        CmdSpawnPlayerRigidBody(PlayerStats.Team.BLU);
+        HidePlayerMenu();
+    }
+
+    public void JoinRED()
+    {
+        CmdSpawnPlayerRigidBody(PlayerStats.Team.RED);
         HidePlayerMenu();
     }
 
     [Command]
-    public void CmdSpawnPlayer()
+    private void CmdSpawnPlayerRigidBody(PlayerStats.Team team)
     {
-        if (ClientScene.localPlayers.Count != 0)
-            ClientScene.RemovePlayer(0);
-        ClientScene.AddPlayer(0);
+        networkOverlord.playerTeam = team;
+        if(ClientScene.localPlayers.Count > 2)
+            ClientScene.RemovePlayer(2);
+        ClientScene.AddPlayer(2);
     }
 
 }

@@ -557,6 +557,10 @@ Prefab:
       propertyPath: DBG_movements
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: playerUI
+      value: 
+      objectReference: {fileID: 123544, guid: e59face906fc82f4896f59eeb332f754, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 169552}
