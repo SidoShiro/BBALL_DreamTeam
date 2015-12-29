@@ -52,6 +52,7 @@ GameObject:
   - 114: {fileID: 11486318}
   - 114: {fileID: 11494860}
   - 114: {fileID: 11480584}
+  - 114: {fileID: 11460046}
   m_Layer: 0
   m_Name: PlayerRigidBody
   m_TagString: Untagged
@@ -347,6 +348,19 @@ MonoBehaviour:
   SPEMaterial: {fileID: 2100000, guid: 761c3a5ef5c63284aa2ab86e7cd9cb71, type: 2}
   BLUMaterial: {fileID: 2100000, guid: ee191a375aaa3444c97333a6747df843, type: 2}
   REDMaterial: {fileID: 2100000, guid: 6246283fe4717ce439a7b7d6ce241da9, type: 2}
+--- !u!114 &11460046
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e232bda92ca1a54e8f8a988bd9b7571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerRigidBody: {fileID: 169552}
+  playerUI: {fileID: 123544, guid: e59face906fc82f4896f59eeb332f754, type: 2}
 --- !u!114 &11466942
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -532,7 +546,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: playerRigidBody
       value: 
-      objectReference: {fileID: 5487520}
+      objectReference: {fileID: 169552}
     - target: {fileID: 0}
       propertyPath: playerCollider
       value: 

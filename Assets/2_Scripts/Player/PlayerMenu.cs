@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
 
 /// <summary>
 /// This script is used to bring up a menu when pressing Escape
 /// </summary>
-public class PlayerMenu : NetworkBehaviour
+public class PlayerMenu : MonoBehaviour
 {
     public GameObject playerMenuPanel;          //Panel to show/hide
     public GameObject playerRigidBody;          //Panel to show/hide
+    public PlayerCommand playerCommand;
 
     private SceneOverlord sceneOverlord;
     private NetworkOverlord networkOverlord;
@@ -27,11 +27,8 @@ public class PlayerMenu : NetworkBehaviour
     /// </summary>
     void Start()
     {
-        if (!isLocalPlayer)
-            enabled = false;
-
-        isShowing = true;
-        ShowPlayerMenu();
+        isShowing = false;
+        HidePlayerMenu();
     }
 
     /// <summary>
@@ -39,23 +36,20 @@ public class PlayerMenu : NetworkBehaviour
     /// </summary>
     void Update()
     {
-        if (isLocalPlayer)
+        //Toggles menu state
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            //Toggles menu state
-            if (Input.GetKeyDown(KeyCode.Escape))
+            isShowing = !isShowing;
+            if (isShowing)
             {
-                isShowing = !isShowing;
-                if (isShowing)
-                {
-                    ShowPlayerMenu();
-                }
-                else
-                {
-                    HidePlayerMenu();
-                }
-
+                ShowPlayerMenu();
             }
-        }  
+            else
+            {
+                HidePlayerMenu();
+            }
+
+        }
     }
 
     /// <summary>
@@ -68,6 +62,8 @@ public class PlayerMenu : NetworkBehaviour
 
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+
+        isShowing = true;
     }
 
     /// <summary>
@@ -81,6 +77,8 @@ public class PlayerMenu : NetworkBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.lockState = CursorLockMode.Locked;
+
+        isShowing = false;
     }
 
     /// <summary>
@@ -93,23 +91,14 @@ public class PlayerMenu : NetworkBehaviour
 
     public void JoinBLU()
     {
-        CmdSpawnPlayerRigidBody(PlayerStats.Team.BLU);
+        playerCommand.CallRespawnPlayer(PlayerStats.Team.BLU);
         HidePlayerMenu();
     }
 
     public void JoinRED()
     {
-        CmdSpawnPlayerRigidBody(PlayerStats.Team.RED);
+        playerCommand.CallRespawnPlayer(PlayerStats.Team.RED);
         HidePlayerMenu();
-    }
-
-    [Command]
-    private void CmdSpawnPlayerRigidBody(PlayerStats.Team team)
-    {
-        networkOverlord.playerTeam = team;
-        if(ClientScene.localPlayers.Count > 2)
-            ClientScene.RemovePlayer(2);
-        ClientScene.AddPlayer(2);
     }
 
 }

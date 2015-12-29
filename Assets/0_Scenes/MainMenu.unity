@@ -5109,6 +5109,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1945006415}
   - 114: {fileID: 1945006414}
+  - 114: {fileID: 1945006416}
   m_Layer: 0
   m_Name: NetworkGM
   m_TagString: Untagged
@@ -5136,15 +5137,13 @@ MonoBehaviour:
   m_ScriptCRCCheck: 1
   m_MaxDelay: 0.01
   m_LogLevel: 2
-  m_PlayerPrefab: {fileID: 100712, guid: 04b33dcb2aa9d2a48859790350c6e97f, type: 2}
+  m_PlayerPrefab: {fileID: 169552, guid: 98cc675f9e78ec14a9b0b8ca46b38205, type: 2}
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 0
   m_OfflineScene: MainMenu
   m_OnlineScene: sand_box
   m_SpawnPrefabs:
   - {fileID: 169552, guid: 98cc675f9e78ec14a9b0b8ca46b38205, type: 2}
-  - {fileID: 123544, guid: e59face906fc82f4896f59eeb332f754, type: 2}
-  - {fileID: 100712, guid: 04b33dcb2aa9d2a48859790350c6e97f, type: 2}
   m_CustomConfig: 1
   m_MaxConnections: 10
   m_ConnectionConfig:
@@ -5173,7 +5172,7 @@ MonoBehaviour:
     m_ReactorMaximumReceivedMessages: 1024
     m_ReactorMaximumSentMessages: 1024
     m_MaxPacketSize: 2000
-  m_Channels: 0200000000000000
+  m_Channels: 0500000000000000
   m_UseWebSockets: 0
   m_UseSimulator: 0
   m_SimulatedLatency: 1
@@ -5185,10 +5184,9 @@ MonoBehaviour:
   matchName: default
   matchSize: 4
   playerGM: {fileID: 100712, guid: 04b33dcb2aa9d2a48859790350c6e97f, type: 2}
-  playerUI: {fileID: 123544, guid: e59face906fc82f4896f59eeb332f754, type: 2}
   playerRigidBody: {fileID: 169552, guid: 98cc675f9e78ec14a9b0b8ca46b38205, type: 2}
-  playerTeam: 0
-  playerSpawnPos: {x: 0, y: 0, z: 0}
+  playerTeam: 1
+  playerSpawnPos: {x: 0, y: 1, z: 0}
 --- !u!4 &1945006415
 Transform:
   m_ObjectHideFlags: 0
@@ -5201,6 +5199,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &1945006416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1945006413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0b59a8e6538fea459966edc11037cf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 1945006414}
+  showGUI: 1
+  offsetX: 0
+  offsetY: 0
 --- !u!1 &1960266333
 GameObject:
   m_ObjectHideFlags: 0

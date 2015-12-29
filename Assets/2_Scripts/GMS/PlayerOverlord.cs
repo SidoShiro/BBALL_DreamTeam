@@ -16,14 +16,28 @@ public class PlayerOverlord : NetworkBehaviour
 
     void Start()
     {
-        if(isLocalPlayer)
-            CmdSpawnPlayerUI();
+        if (isLocalPlayer)
+        {
+            CreateUI();
+        }   
+    }
+
+    void CreateUI()
+    {
+        //playerUI.GetComponent<PlayerMenu>().playerCommand = this;
+        Instantiate(playerUI);
+    }
+
+    public void TrySHit()
+    {
+        CmdSpawnPlayerRigidBody();
     }
 
     //*
     [Command]
-    private void CmdSpawnPlayerUI()
+    private void CmdSpawnPlayerRigidBody()
     {
+        ClientScene.RemovePlayer(1);
         ClientScene.AddPlayer(1);
     }
     //*/
