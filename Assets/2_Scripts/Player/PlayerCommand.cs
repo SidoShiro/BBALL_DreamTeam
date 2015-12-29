@@ -34,7 +34,24 @@ public class PlayerCommand : NetworkBehaviour
     [Command]
     void CmdRespawnPlayer(PlayerStats.Team newteam)
     {
-        GameObject playerNew = (GameObject)Instantiate(playerRigidBody, Vector3.zero, Quaternion.identity);
+        GameObject[] spawnTab;
+        switch (newteam)
+        {
+            case PlayerStats.Team.BLU:
+                spawnTab = GameObject.FindGameObjectsWithTag("BLUSpawn");
+                break;
+
+            case PlayerStats.Team.RED:
+                spawnTab = GameObject.FindGameObjectsWithTag("REDSpawn");
+                break;
+
+            default:
+                spawnTab = GameObject.FindGameObjectsWithTag("SPESpawn");
+                break;
+        }
+        Transform spawnPoint = spawnTab[Random.Range(0, (spawnTab.Length - 1))].transform;
+
+        GameObject playerNew = (GameObject)Instantiate(playerRigidBody, spawnPoint.position, spawnPoint.rotation);
         playerNew.GetComponent<PlayerStats>().playerTeam = newteam;
         NetworkServer.ReplacePlayerForConnection(connectionToClient, playerNew, playerControllerId);
         NetworkServer.Destroy(gameObject);
