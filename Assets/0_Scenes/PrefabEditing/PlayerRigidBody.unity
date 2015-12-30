@@ -260,6 +260,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2336412, guid: 98cc675f9e78ec14a9b0b8ca46b38205, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3172993801abd004081afea2ac3ffbe2, type: 2}
+    - target: {fileID: 11480584, guid: 98cc675f9e78ec14a9b0b8ca46b38205, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11494860, guid: 98cc675f9e78ec14a9b0b8ca46b38205, type: 2}
+      propertyPath: m_LocalPlayerAuthority
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11442478, guid: 98cc675f9e78ec14a9b0b8ca46b38205, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 98cc675f9e78ec14a9b0b8ca46b38205, type: 2}

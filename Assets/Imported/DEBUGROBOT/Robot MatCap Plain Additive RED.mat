@@ -10,11 +10,32 @@ Material:
   m_Shader: {fileID: 4800000, guid: 82a5dafa6185aa047b37fcd075aad18c, type: 3}
   m_ShaderKeywords: SKINNED_MESH
   m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 7f5077d68b405ce45a95a2638a373656, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BumpMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Ramp
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _MatCap
@@ -22,9 +43,57 @@ Material:
           m_Texture: {fileID: 2800000, guid: 0a073e96b4f33fe49809cd7988a061c8, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
-    m_Floats: {}
+    m_Floats:
+      data:
+        first:
+          name: _RampThreshold
+        second: 0.5
+      data:
+        first:
+          name: _RampSmooth
+        second: 0.1
+      data:
+        first:
+          name: _Outline
+        second: 0
+      data:
+        first:
+          name: _TexLod
+        second: 5
+      data:
+        first:
+          name: _ZSmooth
+        second: -0.5
+      data:
+        first:
+          name: _Offset1
+        second: 0
+      data:
+        first:
+          name: _Offset2
+        second: 0
+      data:
+        first:
+          name: _SrcBlendOutline
+        second: 0
+      data:
+        first:
+          name: _DstBlendOutline
+        second: 0
     m_Colors:
       data:
         first:
           name: _Color
         second: {r: 0.90588236, g: 0.29803923, b: 0.23529412, a: 1}
+      data:
+        first:
+          name: _HColor
+        second: {r: 0.6, g: 0.6, b: 0.6, a: 1}
+      data:
+        first:
+          name: _SColor
+        second: {r: 0.4, g: 0.4, b: 0.4, a: 1}
+      data:
+        first:
+          name: _OutlineColor
+        second: {r: 1, g: 1, b: 1, a: 1}

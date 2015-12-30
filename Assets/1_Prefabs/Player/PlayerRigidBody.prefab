@@ -345,9 +345,9 @@ MonoBehaviour:
   playerStats: {fileID: 11466942}
   playerCollider: {fileID: 174668}
   playerModelRenderer: {fileID: 2336412}
-  SPEMaterial: {fileID: 2100000, guid: 761c3a5ef5c63284aa2ab86e7cd9cb71, type: 2}
-  BLUMaterial: {fileID: 2100000, guid: ee191a375aaa3444c97333a6747df843, type: 2}
-  REDMaterial: {fileID: 2100000, guid: 6246283fe4717ce439a7b7d6ce241da9, type: 2}
+  SPEMaterial: {fileID: 2100000, guid: 3172993801abd004081afea2ac3ffbe2, type: 2}
+  BLUMaterial: {fileID: 2100000, guid: 0927b051354d59044b87fc8518640552, type: 2}
+  REDMaterial: {fileID: 2100000, guid: 01a1058652ae2344cbd9c71c91a2af1a, type: 2}
 --- !u!114 &11460046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -372,7 +372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ad1467103ad1c4696fd4c6b43655db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTeam: 1
+  playerTeam: 0
   playerHealth: 200
   isCarrying: 0
 --- !u!114 &11471712
@@ -430,8 +430,8 @@ MonoBehaviour:
   m_RotationSyncCompression: 0
   m_SyncSpin: 0
   m_MovementTheshold: 0.001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 50
+  m_SnapThreshold: 15
+  m_InterpolateRotation: 25
   m_InterpolateMovement: 1
 --- !u!114 &11486318
 MonoBehaviour:
@@ -502,7 +502,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 1ba64f43f8de7d04c983ad82e04f116b, type: 2}
+      objectReference: {fileID: 2100000, guid: 3172993801abd004081afea2ac3ffbe2, type: 2}
     - target: {fileID: 0}
       propertyPath: m_LocalPlayerAuthority
       value: 0
@@ -517,7 +517,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_InterpolateRotation
-      value: 50
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_CollisionDetection
@@ -553,7 +553,7 @@ Prefab:
       objectReference: {fileID: 174668}
     - target: {fileID: 0}
       propertyPath: playerTeam
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsKinematic
@@ -575,6 +575,22 @@ Prefab:
       propertyPath: playerUI
       value: 
       objectReference: {fileID: 123544, guid: e59face906fc82f4896f59eeb332f754, type: 2}
+    - target: {fileID: 0}
+      propertyPath: BLUMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 0927b051354d59044b87fc8518640552, type: 2}
+    - target: {fileID: 0}
+      propertyPath: SPEMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 3172993801abd004081afea2ac3ffbe2, type: 2}
+    - target: {fileID: 0}
+      propertyPath: REDMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 01a1058652ae2344cbd9c71c91a2af1a, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_SnapThreshold
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 169552}
