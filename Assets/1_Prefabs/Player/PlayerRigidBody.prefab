@@ -445,7 +445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TransformSyncMode: 1
   m_SendInterval: 0.033333335
-  m_SyncRotationAxis: 2
+  m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
   m_SyncSpin: 0
   m_MovementTheshold: 0.001
@@ -656,6 +656,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: layerMaskRED.m_Bits
       value: 4294961609
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_ChildIndex
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

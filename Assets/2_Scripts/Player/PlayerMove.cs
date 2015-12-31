@@ -74,7 +74,10 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
-            SPEMove(playerInputs);
+            if (isControllable)
+            {
+                SPEMove(playerInputs);
+            }
         }
     }
 
