@@ -9,13 +9,11 @@ public class PlayerCommand : NetworkBehaviour
 
     [Header("SHOOT ROCKET")]
     public GameObject rocketBody;
-    public GameObject playerCollider;
     public Camera playerCamera;
     public Transform playerFireOutputTransform;
-    public LayerMask layerMaskBLU;
-    public LayerMask layerMaskRED;
 
     private GameObject previousUI;
+    private PlayerStats.Team playerTeam;
 
     /// <summary>
     /// Triggered when script is loaded
@@ -26,6 +24,8 @@ public class PlayerCommand : NetworkBehaviour
         {
             CreateUI();
         }
+
+        playerTeam = GetComponent<PlayerStats>().playerTeam;
     }
 
     /// <summary>
@@ -55,7 +55,16 @@ public class PlayerCommand : NetworkBehaviour
     /// <param name="targetrotation">Rotation of the rocket when spawned</param>
     public void Call_ShootRocket()
     {
+        Debug.Log(playerTeam);
         Cmd_ShootRocket();
+    }
+
+    public void GetExploded(Vector3 explosionpos)
+    {
+        if (isLocalPlayer)
+        {
+            gameObject.GetComponent<Rigidbody>().AddExplosionForce(10.0f, explosionpos, 2.0f, 0.0f, ForceMode.VelocityChange);
+        }
     }
 
     [Command]
@@ -87,23 +96,23 @@ public class PlayerCommand : NetworkBehaviour
     [Command]
     void Cmd_ShootRocket()
     {
-        LayerMask layerMask = gameObject.layer;
+        LayerMask layerMask = 10;
         if (gameObject.layer == 11)
         {
-            layerMask = layerMaskBLU;
+            layerMask = m_Custom.layerMaskBLU;
         }
         else
         {
-            layerMask = layerMaskRED;
+            layerMask = m_Custom.layerMaskRED;
         }
 
         RaycastHit hit;                                                                                                 //Used to store raycast hit data
-        //Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));                   //Define ray as player aiming point
-        Physics.Raycast(playerCamera.transform.position,playerCamera.transform.forward, out hit, 1000.0f,layerMask,QueryTriggerInteraction.Ignore);                                //Casts the ray
+        Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));                   //Define ray as player aiming point
+        Physics.Raycast(ray, out hit, 1000.0f,layerMask,QueryTriggerInteraction.Ignore);                                //Casts the ray
         Vector3 relativepos = hit.point - playerFireOutputTransform.position;                                           //Get the vector to parcour
         Quaternion targetrotation = Quaternion.LookRotation(relativepos);                                               //Get the needed rotation of the rocket to reach that point
         GameObject rocket = (GameObject)Instantiate(rocketBody, playerFireOutputTransform.position, targetrotation);    //Spawns rocket at gunpoint with needed rotation
-        rocket.layer = playerCollider.layer;                                                                            //Give rocket same layer as player
+        rocket.GetComponent<RocketMove>().rocketTeam = playerTeam;                                                      //Give rocket same layer as player
         NetworkServer.Spawn(rocket);
     }
 }

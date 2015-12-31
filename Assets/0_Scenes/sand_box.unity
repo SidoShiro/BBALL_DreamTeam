@@ -1353,7 +1353,8 @@ GameObject:
   - 4: {fileID: 1714273943}
   - 33: {fileID: 1714273945}
   - 23: {fileID: 1714273944}
-  m_Layer: 0
+  - 65: {fileID: 1714273946}
+  m_Layer: 11
   m_Name: DemoMatBLU
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1405,6 +1406,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1714273942}
   m_Mesh: {fileID: 4300000, guid: 320b1c2af77554f99a1658df4a6d3d5c, type: 3}
+--- !u!65 &1714273946
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1714273942}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.301141, y: 1.7998507, z: 0.3357823}
+  m_Center: {x: 0, y: 0.8996202, z: -0.008096032}
 --- !u!1 &1880074324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1565,7 +1578,8 @@ GameObject:
   - 4: {fileID: 1994746026}
   - 33: {fileID: 1994746028}
   - 23: {fileID: 1994746027}
-  m_Layer: 0
+  - 65: {fileID: 1994746029}
+  m_Layer: 12
   m_Name: DemoMatRED
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1617,6 +1631,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1994746025}
   m_Mesh: {fileID: 4300000, guid: 320b1c2af77554f99a1658df4a6d3d5c, type: 3}
+--- !u!65 &1994746029
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1994746025}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.301141, y: 1.7998507, z: 0.3357823}
+  m_Center: {x: 0, y: 0.8996202, z: -0.008096032}
 --- !u!1 &2056875378
 GameObject:
   m_ObjectHideFlags: 0

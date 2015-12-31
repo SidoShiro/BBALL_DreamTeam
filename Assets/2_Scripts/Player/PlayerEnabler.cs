@@ -19,7 +19,7 @@ public class PlayerEnabler : NetworkBehaviour
     public Camera playerCamera;         //Self-explanatory
 
     public LayerMask layerMaskClassic;  //Self-explanatory
-    public LayerMask layerMaskSPE;      //Self-explanatory
+    public LayerMask layerMaskNorender;      //Self-explanatory
 
     /// <summary>
     /// Triggered when script is enabled
@@ -45,7 +45,7 @@ public class PlayerEnabler : NetworkBehaviour
             {
                 playerShoot.enabled = false;
                 playerRigidBody.isKinematic = true;
-                playerCamera.cullingMask = layerMaskSPE;
+                playerCamera.cullingMask = layerMaskNorender;
             }
 
             playerModel.gameObject.layer = 9;       //Place PlayerModel on "NORENDER" layer to disable rendering for this client

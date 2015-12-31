@@ -54,9 +54,10 @@ GameObject:
   - 114: {fileID: 11486318}
   - 114: {fileID: 11494860}
   - 114: {fileID: 11480584}
+  - 114: {fileID: 11462924}
   m_Layer: 0
   m_Name: PlayerRigidBody
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -336,7 +337,7 @@ MonoBehaviour:
   layerMaskClassic:
     serializedVersion: 2
     m_Bits: 4294965759
-  layerMaskSPE:
+  layerMaskNorender:
     serializedVersion: 2
     m_Bits: 4294966783
 --- !u!114 &11454134
@@ -371,15 +372,27 @@ MonoBehaviour:
   playerRigidBody: {fileID: 169552}
   playerUI: {fileID: 123544, guid: e59face906fc82f4896f59eeb332f754, type: 2}
   rocketBody: {fileID: 128804, guid: 89db5062cd5c17b4ba6e670e5c7238df, type: 2}
-  playerCollider: {fileID: 174668}
   playerCamera: {fileID: 2043206}
   playerFireOutputTransform: {fileID: 411506}
-  layerMaskBLU:
-    serializedVersion: 2
-    m_Bits: 4097
-  layerMaskRED:
-    serializedVersion: 2
-    m_Bits: 4294961609
+--- !u!114 &11462924
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1267208747, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Target: {fileID: 453554}
+  m_ChildIndex: 0
+  m_SendInterval: 0.033333335
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_MovementThreshold: 0.001
+  m_InterpolateRotation: 0.5
+  m_InterpolateMovement: 0.5
 --- !u!114 &11466942
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -508,6 +521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCommand: {fileID: 11460046}
+  playerCollider: {fileID: 174668}
   playerFireOutputTransform: {fileID: 411506}
   playerCamera: {fileID: 2043206}
   DBG_aim: 1
@@ -655,11 +669,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: layerMaskRED.m_Bits
-      value: 4294961609
+      value: 2049
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_ChildIndex
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Target
+      value: 
+      objectReference: {fileID: 453554}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: layerMaskNorender.m_Bits
+      value: 4294966783
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

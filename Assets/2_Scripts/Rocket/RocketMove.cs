@@ -8,10 +8,9 @@ public class RocketMove : NetworkBehaviour
     public GameObject rocketModel;
     public GameObject rocketTrail;
     public GameObject rocketExplosion;
-
-    [Header("LAYERMASKS")]
-    public LayerMask layerMaskBLU;
-    public LayerMask layerMaskRED;
+    
+    [SyncVar]
+    public PlayerStats.Team rocketTeam;
 
     private Transform rocketTransform;
 
@@ -27,8 +26,23 @@ public class RocketMove : NetworkBehaviour
     /// </summary>
     void Start()
     {
+        Debug.Log(rocketTeam);
         rocketTransform = gameObject.transform;
         Destroy(gameObject, 10.0f);
+        switch (rocketTeam)
+        {
+            case PlayerStats.Team.BLU:
+                gameObject.layer = 11;
+                break;
+
+            case PlayerStats.Team.RED:
+                gameObject.layer = 12;
+                break;
+
+            default:
+                gameObject.layer = 10;
+                break;
+        }
     }
 
     /// <summary>
@@ -47,17 +61,17 @@ public class RocketMove : NetworkBehaviour
         RaycastHit hit;
         Vector3 movediff = rocketTransform.forward * moveSpeed * Time.deltaTime;
 
-        LayerMask layerMask = gameObject.layer;
+        LayerMask layerMask = 10;
         if (gameObject.layer == 11)
         {
-            layerMask = layerMaskBLU;
+            layerMask = m_Custom.layerMaskBLU;
         }
         else
         {
-            layerMask = layerMaskRED;
+            layerMask = m_Custom.layerMaskRED;
         }
 
-        if (Physics.Linecast(rocketTransform.position, rocketTransform.position + movediff, out hit, layerMask))
+        if (Physics.Linecast(rocketTransform.position, rocketTransform.position + movediff, out hit, layerMask,QueryTriggerInteraction.Ignore))
         {
             Explode(hit.point);
         }
@@ -80,15 +94,24 @@ public class RocketMove : NetworkBehaviour
     /// <param name="explosionpos">Position of the explosion</param>
     void Explode(Vector3 explosionpos)
     {
+        rocketTrail.transform.parent = null;    //Remove the smoketrail from being child of the rocket to prevent deletion
+        Destroy(gameObject);                    //Destroys the rocket and everything still attached to it
+        ParticleSystem.EmissionModule em = rocketTrail.GetComponent<ParticleSystem>().emission;
+        em.enabled = false;                     //Stops the trail from emitting more particles
+        Destroy(rocketTrail, 1.0f);             //Destroys the trail (Once every particle disapeared)
+
         if (isServer)
         {
-            rocketTrail.transform.parent = null;    //Remove the smoketrail from being child of the rocket to prevent deletion
-            Destroy(gameObject);                    //Destroys the rocket and everything still attached to it
-            //Explosion
-            ParticleSystem.EmissionModule em = rocketTrail.GetComponent<ParticleSystem>().emission;
-            em.enabled = false;                     //Stops the trail from emitting more particles
-            Destroy(rocketTrail, 1.0f);             //Destroys the trail (Once every particle disapeared)
             NetworkServer.Destroy(gameObject);
+        }
+
+        if (isClient)
+        {
+            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+            foreach(GameObject player in players)
+            {
+                player.GetComponent<PlayerCommand>().GetExploded(explosionpos);
+            }
         }
 
         #region DEBUG
