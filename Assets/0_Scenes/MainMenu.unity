@@ -5144,6 +5144,7 @@ MonoBehaviour:
   m_OnlineScene: sand_box
   m_SpawnPrefabs:
   - {fileID: 169552, guid: 98cc675f9e78ec14a9b0b8ca46b38205, type: 2}
+  - {fileID: 128804, guid: 89db5062cd5c17b4ba6e670e5c7238df, type: 2}
   m_CustomConfig: 1
   m_MaxConnections: 10
   m_ConnectionConfig:

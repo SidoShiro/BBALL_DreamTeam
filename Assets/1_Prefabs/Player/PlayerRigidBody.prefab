@@ -363,6 +363,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRigidBody: {fileID: 169552}
   playerUI: {fileID: 123544, guid: e59face906fc82f4896f59eeb332f754, type: 2}
+  rocketBody: {fileID: 128804, guid: 89db5062cd5c17b4ba6e670e5c7238df, type: 2}
+  playerCollider: {fileID: 174668}
+  playerCamera: {fileID: 2043206}
+  playerFireOutputTransform: {fileID: 411506}
 --- !u!114 &11466942
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -490,8 +494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23042aab2cabd074db40de20e6438ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rocketBody: {fileID: 128804, guid: 89db5062cd5c17b4ba6e670e5c7238df, type: 2}
-  playerCollider: {fileID: 174668}
+  playerCommand: {fileID: 11460046}
   playerFireOutputTransform: {fileID: 411506}
   playerCamera: {fileID: 2043206}
   DBG_aim: 1
@@ -625,6 +628,10 @@ Prefab:
       propertyPath: playerShoot
       value: 
       objectReference: {fileID: 11497470}
+    - target: {fileID: 0}
+      propertyPath: playerCommand
+      value: 
+      objectReference: {fileID: 11460046}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 169552}

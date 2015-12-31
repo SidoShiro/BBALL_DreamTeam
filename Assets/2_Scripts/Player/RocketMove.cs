@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.Networking;
 
-public class RocketMove : MonoBehaviour
+public class RocketMove : NetworkBehaviour
 {
     [Header("STATS")]
     public float moveSpeed = 20.0f;
@@ -46,8 +46,9 @@ public class RocketMove : MonoBehaviour
     {
         RaycastHit hit;
         Vector3 movediff = rocketTransform.forward * moveSpeed * Time.deltaTime;
+
         LayerMask layerMask = gameObject.layer;
-        if(gameObject.layer == 11)
+        if (gameObject.layer == 11)
         {
             layerMask = layerMaskBLU;
         }
@@ -79,7 +80,16 @@ public class RocketMove : MonoBehaviour
     /// <param name="explosionpos">Position of the explosion</param>
     void Explode(Vector3 explosionpos)
     {
-        Destroy(gameObject);
+        if (isServer)
+        {
+            rocketTrail.transform.parent = null;    //Remove the smoketrail from being child of the rocket to prevent deletion
+            Destroy(gameObject);                    //Destroys the rocket and everything still attached to it
+            //Explosion
+            ParticleSystem.EmissionModule em = rocketTrail.GetComponent<ParticleSystem>().emission;
+            em.enabled = false;                     //Stops the trail from emitting more particles
+            Destroy(rocketTrail, 1.0f);             //Destroys the trail (Once every particle disapeared)
+            NetworkServer.Destroy(gameObject);
+        }
 
         #region DEBUG
         if (DBG_Explosion)
