@@ -11,6 +11,7 @@ public class PlayerEnabler : NetworkBehaviour
 {
     [Header("Enable on client")]
     public Component[] scripts; //List of scripts (Mainly inputs scripts) to enable client side
+    public PlayerShoot playerShoot;
 
     [Header("Others")]
     public GameObject playerModel;      //Self-explanatory
@@ -33,10 +34,12 @@ public class PlayerEnabler : NetworkBehaviour
             //Enable client side objects
             if (GetComponent<PlayerStats>().playerTeam != PlayerStats.Team.SPE) //TODO : Clean that shit
             {
+                playerShoot.enabled = true;
                 playerRigidBody.isKinematic = false; 
             }    
             else
             {
+                playerShoot.enabled = false;
                 playerRigidBody.isKinematic = true;
             }
             playerModel.gameObject.layer = 10;      //Place PlayerModel on "SPE" layer to disable rendering for this client

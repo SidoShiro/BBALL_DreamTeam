@@ -47,6 +47,7 @@ GameObject:
   - 114: {fileID: 11454134}
   - 114: {fileID: 11442238}
   - 114: {fileID: 11473954}
+  - 114: {fileID: 11497470}
   - 114: {fileID: 11414454}
   - 114: {fileID: 11471712}
   - 114: {fileID: 11486318}
@@ -328,6 +329,7 @@ MonoBehaviour:
   - {fileID: 11414454}
   - {fileID: 11471712}
   - {fileID: 11486318}
+  playerShoot: {fileID: 11497470}
   playerModel: {fileID: 182066}
   playerRigidBody: {fileID: 5487520}
   playerCamera: {fileID: 2043206}
@@ -477,6 +479,22 @@ MonoBehaviour:
     i15: 5
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
+--- !u!114 &11497470
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169552}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23042aab2cabd074db40de20e6438ea8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rocketBody: {fileID: 128804, guid: 89db5062cd5c17b4ba6e670e5c7238df, type: 2}
+  playerCollider: {fileID: 174668}
+  playerFireOutputTransform: {fileID: 411506}
+  playerCamera: {fileID: 2043206}
+  DBG_aim: 1
 --- !u!124 &12494452
 Behaviour:
   m_ObjectHideFlags: 1
@@ -491,6 +509,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: scripts.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_TransformSyncMode
       value: 1
@@ -591,6 +613,18 @@ Prefab:
       propertyPath: m_SnapThreshold
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: rocketBody
+      value: 
+      objectReference: {fileID: 128804, guid: 89db5062cd5c17b4ba6e670e5c7238df, type: 2}
+    - target: {fileID: 0}
+      propertyPath: scripts.Array.data[4]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: playerShoot
+      value: 
+      objectReference: {fileID: 11497470}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 169552}

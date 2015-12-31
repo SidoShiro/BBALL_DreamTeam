@@ -425,7 +425,7 @@ public class TCP2_MaterialInspector : MaterialEditor
 			{
 				TCP2_GUI.HeaderAndHelp("DIRECTIONAL AMBIENT", "Directional Ambient");
 
-				//TODO Special Inspector for DirAmb
+				//Special Inspector for DirAmb
 				DirectionalAmbientGUI("#DAMB#", props);
 //				ShowFilteredProperties("#DAMB#", props);
 				

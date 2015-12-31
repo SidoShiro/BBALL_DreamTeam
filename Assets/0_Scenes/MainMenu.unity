@@ -5183,10 +5183,6 @@ MonoBehaviour:
   matchMaker: {fileID: 0}
   matchName: default
   matchSize: 4
-  playerGM: {fileID: 100712, guid: 04b33dcb2aa9d2a48859790350c6e97f, type: 2}
-  playerRigidBody: {fileID: 169552, guid: 98cc675f9e78ec14a9b0b8ca46b38205, type: 2}
-  playerTeam: 1
-  playerSpawnPos: {x: 0, y: 1, z: 0}
 --- !u!4 &1945006415
 Transform:
   m_ObjectHideFlags: 0
