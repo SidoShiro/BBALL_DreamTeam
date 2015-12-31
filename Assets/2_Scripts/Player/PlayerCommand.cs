@@ -19,12 +19,19 @@ public class PlayerCommand : NetworkBehaviour
         }
     }
 
+    /// <summary>
+    /// Creates new PlayerUI and destroys previous one
+    /// </summary>
     void CreateUI()
     {
         playerUI.GetComponent<PlayerMenu>().playerCommand = this;
         previousUI = Instantiate(playerUI);
     }
 
+    /// <summary>
+    /// Call for a player respawn in specified team
+    /// </summary>
+    /// <param name="newteam"></param>
     public void CallRespawnPlayer(PlayerStats.Team newteam)
     {
         Destroy(previousUI);

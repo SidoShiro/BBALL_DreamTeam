@@ -5,8 +5,8 @@
 /// </summary>
 public class PlayerLook : MonoBehaviour
 {
-    public GameObject targetObject;
-    private SceneOverlord sceneOverlord;
+    public GameObject targetObject;         //Object to rotate
+    private SceneOverlord sceneOverlord;    //Used to disable inputs
 
     public enum RotationAxes { MouseXAndY = 0, MouseX = 1, MouseY = 2 }
     public RotationAxes axes = RotationAxes.MouseXAndY;
@@ -29,6 +29,9 @@ public class PlayerLook : MonoBehaviour
         sceneOverlord = GameObject.Find("SceneGM").GetComponent<SceneOverlord>();
     }
 
+    /// <summary>
+    /// Trigerred every frame
+    /// </summary>
     void Update()
     {
         if (sceneOverlord.isReceivingInputs)

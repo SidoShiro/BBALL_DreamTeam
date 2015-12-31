@@ -51,7 +51,7 @@ public class PlayerMove : MonoBehaviour
     }
 
     /// <summary>
-    /// Self-explanatory
+    /// Get player inputs and move accordingly (SPE have different movement)
     /// </summary>
     void Move()
     {

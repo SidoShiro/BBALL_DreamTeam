@@ -101,4 +101,10 @@ public class PlayerMenu : MonoBehaviour
         HidePlayerMenu();
     }
 
+    public void JoinSPE()
+    {
+        playerCommand.CallRespawnPlayer(PlayerStats.Team.SPE);
+        HidePlayerMenu();
+    }
+
 }

@@ -32,7 +32,13 @@ public class PlayerEnabler : NetworkBehaviour
 
             //Enable client side objects
             if (GetComponent<PlayerStats>().playerTeam != PlayerStats.Team.SPE) //TODO : Clean that shit
-                playerRigidBody.isKinematic = false;    //Allows only this player to move/be moved client side (Prevent pushing others)
+            {
+                playerRigidBody.isKinematic = false; 
+            }    
+            else
+            {
+                playerRigidBody.isKinematic = true;
+            }
             playerModel.gameObject.layer = 10;      //Place PlayerModel on "SPE" layer to disable rendering for this client
             playerCamera.enabled = true;            //Enables the camera component of this player
         }
