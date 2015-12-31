@@ -3,5 +3,8 @@ using UnityEngine.Networking;
 
 public class NetworkOverlord : NetworkManager
 {
-    //Used to override server functions
+    public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
+    {
+        base.OnServerAddPlayer(conn, playerControllerId);
+    }
 }

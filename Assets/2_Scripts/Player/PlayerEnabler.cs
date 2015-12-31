@@ -18,6 +18,9 @@ public class PlayerEnabler : NetworkBehaviour
     public Rigidbody playerRigidBody;   //Self-explanatory
     public Camera playerCamera;         //Self-explanatory
 
+    public LayerMask layerMaskClassic;  //Self-explanatory
+    public LayerMask layerMaskSPE;      //Self-explanatory
+
     /// <summary>
     /// Triggered when script is enabled
     /// </summary>
@@ -35,14 +38,17 @@ public class PlayerEnabler : NetworkBehaviour
             if (GetComponent<PlayerStats>().playerTeam != PlayerStats.Team.SPE) //TODO : Clean that shit
             {
                 playerShoot.enabled = true;
-                playerRigidBody.isKinematic = false; 
-            }    
+                playerRigidBody.isKinematic = false;
+                playerCamera.cullingMask = layerMaskClassic;
+            }
             else
             {
                 playerShoot.enabled = false;
                 playerRigidBody.isKinematic = true;
+                playerCamera.cullingMask = layerMaskSPE;
             }
-            playerModel.gameObject.layer = 10;      //Place PlayerModel on "SPE" layer to disable rendering for this client
+
+            playerModel.gameObject.layer = 9;       //Place PlayerModel on "NORENDER" layer to disable rendering for this client
             playerCamera.enabled = true;            //Enables the camera component of this player
         }
     }

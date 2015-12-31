@@ -4,41 +4,22 @@ using UnityEngine.Networking;
 public class PlayerOverlord : NetworkBehaviour
 {
     public GameObject playerRigidBody;
-    public GameObject playerUI;
-    
-    /// <summary>
-    /// Triggered when script is loaded
-    /// </summary>
-    void Awake()
-    {
-
-    }
 
     void Start()
     {
-        if (isLocalPlayer)
-        {
-            CreateUI();
-        }   
+        Cmd_CreateFirstPlayer();
     }
 
-    void CreateUI()
-    {
-        //playerUI.GetComponent<PlayerMenu>().playerCommand = this;
-        Instantiate(playerUI);
-    }
-
-    public void TrySHit()
-    {
-        CmdSpawnPlayerRigidBody();
-    }
-
-    //*
     [Command]
-    private void CmdSpawnPlayerRigidBody()
+    private void Cmd_CreateFirstPlayer()
     {
-        ClientScene.RemovePlayer(1);
-        ClientScene.AddPlayer(1);
+        GameObject[] spawnTab = GameObject.FindGameObjectsWithTag("SPESpawn");
+
+        Transform spawnPoint = spawnTab[Random.Range(0, (spawnTab.Length - 1))].transform;
+        GameObject playerNew = (GameObject)Instantiate(playerRigidBody, spawnPoint.position, spawnPoint.rotation);
+        playerNew.GetComponent<PlayerStats>().playerTeam = PlayerStats.Team.SPE;
+        playerNew.name = "PlayerRigidBody(Clone)";
+        NetworkServer.DestroyPlayersForConnection(connectionToClient);
+        NetworkServer.AddPlayerForConnection(connectionToClient, playerNew, playerControllerId);
     }
-    //*/
 }

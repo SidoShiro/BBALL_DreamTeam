@@ -7,6 +7,7 @@ public class PlayerColor : MonoBehaviour
 {
     public PlayerStats playerStats;         //Self-explanatory
     public GameObject playerCollider;       //Self-explanatory
+    public GameObject playerModel;          //Self-explanatory
     public Renderer playerModelRenderer;    //Self-explanatory
 
     [Header("Materials")]
@@ -23,17 +24,20 @@ public class PlayerColor : MonoBehaviour
         switch (playerStats.playerTeam)
         {
             case PlayerStats.Team.BLU:
+                playerModel.gameObject.layer = 11;
                 playerCollider.gameObject.layer = 11;
                 playerModelRenderer.material = BLUMaterial;
                 break;
 
             case PlayerStats.Team.RED:
                 playerCollider.gameObject.layer = 12;
+                playerModel.gameObject.layer = 12;
                 playerModelRenderer.material = REDMaterial;
                 break;
 
             default:
                 playerCollider.gameObject.layer = 10;
+                playerModel.gameObject.layer = 10;
                 playerModelRenderer.material = SPEMaterial;
                 break;
         }

@@ -46,6 +46,7 @@ GameObject:
   - 114: {fileID: 11466942}
   - 114: {fileID: 11454134}
   - 114: {fileID: 11442238}
+  - 114: {fileID: 11460046}
   - 114: {fileID: 11473954}
   - 114: {fileID: 11497470}
   - 114: {fileID: 11414454}
@@ -53,7 +54,6 @@ GameObject:
   - 114: {fileID: 11486318}
   - 114: {fileID: 11494860}
   - 114: {fileID: 11480584}
-  - 114: {fileID: 11460046}
   m_Layer: 0
   m_Name: PlayerRigidBody
   m_TagString: Untagged
@@ -210,7 +210,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294966271
+    m_Bits: 4294966783
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -333,6 +333,12 @@ MonoBehaviour:
   playerModel: {fileID: 182066}
   playerRigidBody: {fileID: 5487520}
   playerCamera: {fileID: 2043206}
+  layerMaskClassic:
+    serializedVersion: 2
+    m_Bits: 4294965759
+  layerMaskSPE:
+    serializedVersion: 2
+    m_Bits: 4294966783
 --- !u!114 &11454134
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -346,6 +352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11466942}
   playerCollider: {fileID: 174668}
+  playerModel: {fileID: 182066}
   playerModelRenderer: {fileID: 2336412}
   SPEMaterial: {fileID: 2100000, guid: 3172993801abd004081afea2ac3ffbe2, type: 2}
   BLUMaterial: {fileID: 2100000, guid: 0927b051354d59044b87fc8518640552, type: 2}
@@ -367,6 +374,12 @@ MonoBehaviour:
   playerCollider: {fileID: 174668}
   playerCamera: {fileID: 2043206}
   playerFireOutputTransform: {fileID: 411506}
+  layerMaskBLU:
+    serializedVersion: 2
+    m_Bits: 4097
+  layerMaskRED:
+    serializedVersion: 2
+    m_Bits: 4294961609
 --- !u!114 &11466942
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -632,6 +645,18 @@ Prefab:
       propertyPath: playerCommand
       value: 
       objectReference: {fileID: 11460046}
+    - target: {fileID: 0}
+      propertyPath: playerModel
+      value: 
+      objectReference: {fileID: 182066}
+    - target: {fileID: 0}
+      propertyPath: layerMaskBLU.m_Bits
+      value: 4097
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: layerMaskRED.m_Bits
+      value: 4294961609
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 169552}

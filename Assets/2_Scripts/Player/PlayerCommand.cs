@@ -12,6 +12,8 @@ public class PlayerCommand : NetworkBehaviour
     public GameObject playerCollider;
     public Camera playerCamera;
     public Transform playerFireOutputTransform;
+    public LayerMask layerMaskBLU;
+    public LayerMask layerMaskRED;
 
     private GameObject previousUI;
 
@@ -75,19 +77,29 @@ public class PlayerCommand : NetworkBehaviour
                 break;
         }
         Transform spawnPoint = spawnTab[Random.Range(0, (spawnTab.Length - 1))].transform;
-
         GameObject playerNew = (GameObject)Instantiate(playerRigidBody, spawnPoint.position, spawnPoint.rotation);
         playerNew.GetComponent<PlayerStats>().playerTeam = newteam;
-        NetworkServer.ReplacePlayerForConnection(connectionToClient, playerNew, playerControllerId);
-        NetworkServer.Destroy(gameObject);
+        playerNew.name = "PlayerRigidBody(Clone)";
+        NetworkServer.DestroyPlayersForConnection(connectionToClient);
+        NetworkServer.AddPlayerForConnection(connectionToClient, playerNew, playerControllerId);
     }
 
     [Command]
     void Cmd_ShootRocket()
     {
+        LayerMask layerMask = gameObject.layer;
+        if (gameObject.layer == 11)
+        {
+            layerMask = layerMaskBLU;
+        }
+        else
+        {
+            layerMask = layerMaskRED;
+        }
+
         RaycastHit hit;                                                                                                 //Used to store raycast hit data
         Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));                   //Define ray as player aiming point
-        Physics.Raycast(ray, out hit, 1000.0f, 9);                                                                      //Casts the ray
+        Physics.Raycast(ray, out hit, 1000.0f,layerMask,QueryTriggerInteraction.Ignore);                                //Casts the ray
         Vector3 relativepos = hit.point - playerFireOutputTransform.position;                                           //Get the vector to parcour
         Quaternion targetrotation = Quaternion.LookRotation(relativepos);                                               //Get the needed rotation of the rocket to reach that point
         GameObject rocket = (GameObject)Instantiate(rocketBody, playerFireOutputTransform.position, targetrotation);    //Spawns rocket at gunpoint with needed rotation

@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 466024}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: PlayerSpawnBLU
   m_TagString: BLUSpawn
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ GameObject:
   - 4: {fileID: 473802}
   - 33: {fileID: 3328124}
   - 23: {fileID: 2334022}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: PlayerSpawnBLUModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,6 +100,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: BLUSpawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
