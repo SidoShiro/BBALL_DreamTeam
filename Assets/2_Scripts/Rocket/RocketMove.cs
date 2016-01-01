@@ -26,7 +26,6 @@ public class RocketMove : NetworkBehaviour
     /// </summary>
     void Start()
     {
-        Debug.Log(rocketTeam);
         rocketTransform = gameObject.transform;
         Destroy(gameObject, 10.0f);
         switch (rocketTeam)

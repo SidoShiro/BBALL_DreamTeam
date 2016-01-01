@@ -63,6 +63,7 @@ public class PlayerCommand : NetworkBehaviour
         if (isLocalPlayer)
         {
             gameObject.GetComponent<Rigidbody>().AddExplosionForce(10.0f, explosionpos, 2.0f, 0.0f, ForceMode.VelocityChange);
+            DebugExtension.DebugWireSphere(explosionpos, Color.green, 2.0f, 10.0f, true);
         }
     }
 
@@ -95,8 +96,8 @@ public class PlayerCommand : NetworkBehaviour
     [Command]
     void Cmd_ShootRocket()
     {
-        LayerMask layerMask = 10;
-        if (gameObject.layer == 11)
+        LayerMask layerMask = 11;
+        if (playerTeam == PlayerStats.Team.BLU)
         {
             layerMask = m_Custom.layerMaskBLU;
         }
@@ -107,7 +108,7 @@ public class PlayerCommand : NetworkBehaviour
 
         RaycastHit hit;                                                                                                 //Used to store raycast hit data
         Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));                   //Define ray as player aiming point
-        Physics.Raycast(ray, out hit, 1000.0f,layerMask,QueryTriggerInteraction.Ignore);                                //Casts the ray
+        Physics.Raycast(ray, out hit, 1000.0f, layerMask, QueryTriggerInteraction.Ignore);                                //Casts the ray
         Vector3 relativepos = hit.point - playerFireOutputTransform.position;                                           //Get the vector to parcour
         Quaternion targetrotation = Quaternion.LookRotation(relativepos);                                               //Get the needed rotation of the rocket to reach that point
         GameObject rocket = (GameObject)Instantiate(rocketBody, playerFireOutputTransform.position, targetrotation);    //Spawns rocket at gunpoint with needed rotation
