@@ -55,7 +55,6 @@ public class PlayerCommand : NetworkBehaviour
     /// <param name="targetrotation">Rotation of the rocket when spawned</param>
     public void Call_ShootRocket()
     {
-        Debug.Log(playerTeam);
         Cmd_ShootRocket();
     }
 
