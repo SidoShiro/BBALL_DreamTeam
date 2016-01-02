@@ -19,7 +19,7 @@ public class PlayerEnabler : NetworkBehaviour
     public Camera playerCamera;         //Self-explanatory
 
     public LayerMask layerMaskClassic;  //Self-explanatory
-    public LayerMask layerMaskNorender;      //Self-explanatory
+    public LayerMask layerMaskNorender; //Self-explanatory
 
     /// <summary>
     /// Triggered when script is enabled
