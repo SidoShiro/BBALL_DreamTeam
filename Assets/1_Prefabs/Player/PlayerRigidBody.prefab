@@ -495,7 +495,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundspeed: 3
   airspeed: 1
-  maxairacceleration: 1
+  maxairacceleration: -1
   jumpheight: 1.2
   smoothfactor: 1
   PossibleJumps: 1
@@ -763,6 +763,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxairacceleration
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
