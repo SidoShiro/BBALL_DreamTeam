@@ -12,6 +12,9 @@ public class RocketMove : NetworkBehaviour
     [SyncVar]
     public PlayerStats.Team rocketTeam;
 
+    [SyncVar]
+    public Quaternion rocketRotation;
+
     private Transform rocketTransform;
 
     #region DEBUG
@@ -27,6 +30,7 @@ public class RocketMove : NetworkBehaviour
     void Start()
     {
         rocketTransform = gameObject.transform;
+        rocketTransform.rotation = rocketRotation;
         Destroy(gameObject, 10.0f);
         switch (rocketTeam)
         {
