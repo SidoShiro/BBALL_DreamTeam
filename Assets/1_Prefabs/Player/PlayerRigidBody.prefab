@@ -514,7 +514,7 @@ MonoBehaviour:
   airspeed: 1
   maxairacceleration: 0
   jumpheight: 1.2
-  smoothfactor: 1
+  smoothfactor: 5
   PossibleJumps: 1
   DBG_movements: 1
   DBG_time: 0.2
@@ -795,6 +795,10 @@ Prefab:
       propertyPath: m_VisualizerPrefab
       value: 
       objectReference: {fileID: 189090, guid: b5ab51668c280d64c90e923e1397621c, type: 2}
+    - target: {fileID: 0}
+      propertyPath: smoothfactor
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 169552}
