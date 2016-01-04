@@ -102,6 +102,8 @@ public class RocketMove : NetworkBehaviour
         ParticleSystem.EmissionModule em = rocketTrail.GetComponent<ParticleSystem>().emission;
         em.enabled = false;                     //Stops the trail from emitting more particles
         Destroy(rocketTrail, 1.0f);             //Destroys the trail (Once every particle disapeared)
+        GameObject explosion = (GameObject)Instantiate(rocketExplosion, explosionpos, Quaternion.identity);
+        Destroy(explosion, 1.0f);
 
         if (isServer)
         {
