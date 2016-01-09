@@ -40,15 +40,7 @@ public class PlayerShoot : MonoBehaviour
         #region DEBUG
         if (DBG_aim)
         {
-            LayerMask layerMask = -1;
-            if (playerCollider.layer == 11)
-            {
-                layerMask = m_Custom.layerMaskBLU;
-            }
-            else
-            {
-                layerMask = m_Custom.layerMaskRED;
-            }
+            LayerMask layerMask = ~LayerMask.GetMask("BLU", "RED", "SPE");
             RaycastHit hit;
             Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
             Physics.Raycast(ray, out hit, 1000.0f, layerMask, QueryTriggerInteraction.Ignore);

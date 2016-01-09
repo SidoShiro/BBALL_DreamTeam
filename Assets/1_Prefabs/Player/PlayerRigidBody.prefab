@@ -547,8 +547,8 @@ MonoBehaviour:
   playerModelRenderer: {fileID: 2336412}
   playerCollider: {fileID: 174668}
   SPEMaterial: {fileID: 2100000, guid: 3172993801abd004081afea2ac3ffbe2, type: 2}
-  BLUMaterial: {fileID: 2100000, guid: 01a1058652ae2344cbd9c71c91a2af1a, type: 2}
-  REDMaterial: {fileID: 2100000, guid: 0927b051354d59044b87fc8518640552, type: 2}
+  BLUMaterial: {fileID: 2100000, guid: 0927b051354d59044b87fc8518640552, type: 2}
+  REDMaterial: {fileID: 2100000, guid: 01a1058652ae2344cbd9c71c91a2af1a, type: 2}
 --- !u!114 &11460046
 MonoBehaviour:
   m_ObjectHideFlags: 1

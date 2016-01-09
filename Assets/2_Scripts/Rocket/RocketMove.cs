@@ -4,11 +4,15 @@ using UnityEngine.Networking;
 public class RocketMove : NetworkBehaviour
 {
     [Header("STATS")]
-    public float moveSpeed = 20.0f;
-    public GameObject rocketModel;
-    public GameObject rocketTrail;
-    public GameObject rocketExplosion;
-    
+    [SerializeField]
+    private float moveSpeed = 20.0f;
+    [SerializeField]
+    private GameObject rocketModel;
+    [SerializeField]
+    private GameObject rocketTrail;
+    [SerializeField]
+    private GameObject rocketExplosion;
+
     [SyncVar]
     public PlayerStats.Team rocketTeam;
 
@@ -25,12 +29,21 @@ public class RocketMove : NetworkBehaviour
     #endregion
 
     /// <summary>
+    /// Called once when instantiated
+    /// </summary>
+    void Awake()
+    {
+        rocketTrail.SetActive(false);
+    }
+
+    /// <summary>
     /// Called once when script is enabled
     /// </summary>
     void Start()
     {
         rocketTransform = gameObject.transform;
         rocketTransform.rotation = rocketRotation;  //TODO: Fix Client bug
+        rocketTrail.SetActive(true);
         Destroy(gameObject, 10.0f);
         switch (rocketTeam)
         {
