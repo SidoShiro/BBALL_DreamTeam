@@ -30,7 +30,7 @@ public class RocketMove : NetworkBehaviour
     void Start()
     {
         rocketTransform = gameObject.transform;
-        rocketTransform.rotation = rocketRotation;
+        rocketTransform.rotation = rocketRotation;  //TODO: Fix Client bug
         Destroy(gameObject, 10.0f);
         switch (rocketTeam)
         {
@@ -124,6 +124,7 @@ public class RocketMove : NetworkBehaviour
         {
             DebugExtension.DebugWireSphere(explosionpos, Color.blue, 0.05f, DBG_time * 10.0f, true);
             DebugExtension.DebugPoint(explosionpos, Color.red, 0.05f, DBG_time * 10.0f, true);
+            DebugExtension.DebugWireSphere(explosionpos, Color.green, 2.0f, 10.0f, true);
         }
         #endregion
     }

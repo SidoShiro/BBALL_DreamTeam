@@ -9,23 +9,71 @@ using UnityEngine.Networking;
 /// </summary>
 public class PlayerEnabler : NetworkBehaviour
 {
-    [Header("Enable on client")]
+    [Header("Modify on client")]
+    [SerializeField]
     public Component[] scripts; //List of scripts (Mainly inputs scripts) to enable client side
-    public PlayerShoot playerShoot;
+    [SerializeField]
+    private GameObject playerModel;     //Used to place model on NORENDER layer on client
+    [SerializeField]
+    private Rigidbody playerRigidBody;  //Used to enable isKinematic depending on team
+    [SerializeField]
+    private Camera playerCamera;        //Used to enable camera and define render layer according to team
 
-    [Header("Others")]
-    public GameObject playerModel;      //Self-explanatory
-    public Rigidbody playerRigidBody;   //Self-explanatory
-    public Camera playerCamera;         //Self-explanatory
+    [Header("Team specific")]
+    [SerializeField]
+    private PlayerStats playerStats;        //Reference to acces player team
+    [SerializeField]
+    private PlayerShoot playerShoot;        //This script will be disabled if on SPE team
+    [SerializeField]
+    private Renderer playerModelRenderer;   //Used to set material according to team
+    [SerializeField]
+    public GameObject playerCollider;       //Used to place collider on team layer
 
-    public LayerMask layerMaskClassic;  //Self-explanatory
-    public LayerMask layerMaskNorender; //Self-explanatory
+    [Header("Materials")]
+    [SerializeField]
+    private Material SPEMaterial;    //Material to use when on SPE team
+    [SerializeField]
+    private Material BLUMaterial;    //Material to use when on BLU team
+    [SerializeField]
+    private Material REDMaterial;    //Material to use when on RED team
+
 
     /// <summary>
-    /// Triggered when script is enabled
+    /// Called when script is enabled
     /// </summary>
     void Start()
     {
+        /*
+        - Set collider layer according to team
+        - Set model layer according to team
+        - Set model material according to team
+        */
+        switch (playerStats.playerTeam)
+        {
+            case PlayerStats.Team.BLU:
+                playerCollider.gameObject.layer = 11;
+                playerModel.gameObject.layer = 11;
+                playerModelRenderer.material = BLUMaterial;
+                break;
+
+            case PlayerStats.Team.RED:
+                playerCollider.gameObject.layer = 12;
+                playerModel.gameObject.layer = 12;
+                playerModelRenderer.material = REDMaterial;
+                break;
+
+            case PlayerStats.Team.SPE:
+                playerCollider.gameObject.layer = 10;
+                playerModel.gameObject.layer = 10;
+                playerModelRenderer.material = SPEMaterial;
+                break;
+
+            default:
+                Debug.Log("SHOULD NOT HAPPEND: Player team was not found in PlayerEnabler/Global");
+                break;
+        }
+
+        //Called only when the player spawned is owned by the client
         if (isLocalPlayer)
         {
             //Enable client side scripts (So you only control this player and not others)
@@ -34,22 +82,33 @@ public class PlayerEnabler : NetworkBehaviour
                 mono.enabled = true;
             }
 
-            //Enable client side objects
-            if (GetComponent<PlayerStats>().playerTeam != PlayerStats.Team.SPE) //TODO : Clean that shit
-            {
-                playerShoot.enabled = true;
-                playerRigidBody.isKinematic = false;
-                playerCamera.cullingMask = layerMaskClassic;
-            }
-            else
-            {
-                playerShoot.enabled = false;
-                playerRigidBody.isKinematic = true;
-                playerCamera.cullingMask = layerMaskNorender;
-            }
+            playerModel.gameObject.layer = 9;   //Place PlayerModel on "NORENDER" layer to disable rendering for this client
+            playerCamera.enabled = true;        //Enables the camera component of this player
 
-            playerModel.gameObject.layer = 9;       //Place PlayerModel on "NORENDER" layer to disable rendering for this client
-            playerCamera.enabled = true;            //Enables the camera component of this player
+            /*
+            - Disable shooting if spectator
+            - Disable rigidbody if spectator
+            - Defines camera culling mask according to team
+            */
+            switch (playerStats.playerTeam)
+            {
+                case PlayerStats.Team.SPE:
+                    playerShoot.enabled = false;
+                    playerRigidBody.isKinematic = true;
+                    playerCamera.cullingMask = m_Custom.layerMaskWTSPE;
+                    break;
+
+                case PlayerStats.Team.BLU:
+                case PlayerStats.Team.RED:
+                    playerShoot.enabled = true;
+                    playerRigidBody.isKinematic = false;
+                    playerCamera.cullingMask = m_Custom.layerMaskNOSPE;
+                    break;
+
+                default:
+                    Debug.Log("SHOULD NOT HAPPEND: Player team was not found in PlayerEnabler/LocalPlayer");
+                    break;
+            }
         }
     }
 }

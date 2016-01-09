@@ -77,7 +77,6 @@ public class PlayerCommand : NetworkBehaviour
         if (isLocalPlayer)
         {
             gameObject.GetComponent<Rigidbody>().AddExplosionForce(10.0f, explosionpos, 2.0f, 0.1f, ForceMode.VelocityChange);
-            DebugExtension.DebugWireSphere(explosionpos, Color.green, 2.0f, 10.0f, true);
         }
     }
 
