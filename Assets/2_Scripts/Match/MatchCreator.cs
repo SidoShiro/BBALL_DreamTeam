@@ -82,7 +82,7 @@ public class MatchCreator : MonoBehaviour
 
     private void SwitchSelectedMap()
     {
-        Debug.Log(MapName.options[MapName.value].text);
+        Debug.Log("Joined : " + MapName.options[MapName.value].text);
         networkOverlord.onlineScene = MapName.options[MapName.value].text;
     }
 }

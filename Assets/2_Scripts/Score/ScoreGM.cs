@@ -9,6 +9,7 @@ public class ScoreGM : MonoBehaviour {
 
     public void TeamScored(PlayerStats.Team team)
     {
+        Debug.Log(team + " scored!");
         switch (team)
         {
             case PlayerStats.Team.BLU:

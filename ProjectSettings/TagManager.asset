@@ -7,6 +7,7 @@ TagManager:
   - BLUSpawn
   - REDSpawn
   - SPESpawn
+  - PlayerCollider
   layers:
   - Default
   - TransparentFX
