@@ -41,7 +41,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 6
-  m_GIWorkflowMode: 1
+  m_GIWorkflowMode: 0
   m_LightmapsMode: 0
   m_GISettings:
     serializedVersion: 2
@@ -115,7 +115,7 @@ Transform:
   - {fileID: 1150641890}
   - {fileID: 1210700283}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1001 &618888333
 Prefab:
   m_ObjectHideFlags: 0
