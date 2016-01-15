@@ -19,6 +19,7 @@ public class RocketMove : NetworkBehaviour
     [SyncVar]
     public Quaternion rocketRotation;
 
+    [SerializeField]
     private Transform rocketTransform;
 
     #region DEBUG
@@ -41,7 +42,6 @@ public class RocketMove : NetworkBehaviour
     /// </summary>
     void Start()
     {
-        rocketTransform = gameObject.transform;
         rocketTransform.rotation = rocketRotation;  //TODO: Fix Client bug
         rocketTrail.SetActive(true);
         Destroy(gameObject, 10.0f);

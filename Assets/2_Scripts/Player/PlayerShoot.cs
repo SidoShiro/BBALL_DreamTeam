@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class PlayerShoot : MonoBehaviour
 {
@@ -55,16 +54,6 @@ public class PlayerShoot : MonoBehaviour
     /// </summary>
     void ShootRocket()
     {
-
-        /*
-        RaycastHit hit;                                                                                                 //Used to store raycast hit data
-        Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));                   //Define ray as player aiming point
-        Physics.Raycast(ray, out hit, 1000.0f, 9);                                                                      //Casts the ray
-        Vector3 relativepos = hit.point - playerFireOutputTransform.position;                                           //Get the vector to parcour
-        Quaternion targetrotation = Quaternion.LookRotation(relativepos);                                               //Get the needed rotation of the rocket to reach that point
-        GameObject rocket = (GameObject)Instantiate(rocketBody, playerFireOutputTransform.position, targetrotation);    //Spawns rocket at gunpoint with needed rotation
-        rocket.layer = playerCollider.layer;                                                                            //Give rocket same layer as player
-        //*/
         playerCommand.Call_ShootRocket();
     }
 

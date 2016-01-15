@@ -58,7 +58,7 @@ public class PlayerCommand : NetworkBehaviour
         LayerMask layerMask = ~LayerMask.GetMask("BLU", "RED", "SPE");
         RaycastHit hit;                                                                                 //Used to store raycast hit data
         Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));   //Define ray as player aiming point
-            Physics.Raycast(ray, out hit, 1000.0f, layerMask, QueryTriggerInteraction.Ignore);          //Casts the ray
+        Physics.Raycast(ray, out hit, 1000.0f, layerMask, QueryTriggerInteraction.Ignore);              //Casts the ray
         Vector3 relativepos = hit.point - playerFireOutputTransform.position;                           //Get the vector to parcour
         Quaternion targetrotation = Quaternion.LookRotation(relativepos);                               //Get the needed rotation of the rocket to reach that point
         Cmd_ShootRocket(playerFireOutputTransform.position, targetrotation);

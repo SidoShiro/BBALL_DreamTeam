@@ -139,8 +139,9 @@ MonoBehaviour:
   rocketExplosion: {fileID: 133762, guid: 2b6bfa00035c3a248a7a550f00cd15db, type: 2}
   rocketTeam: 0
   rocketRotation: {x: 0, y: 0, z: 0, w: 0}
-  DBG_Trail: 0
-  DBG_Explosion: 0
+  rocketTransform: {fileID: 472594}
+  DBG_Trail: 1
+  DBG_Explosion: 1
   DBG_time: 1
 --- !u!114 &11494862
 MonoBehaviour:
@@ -1790,12 +1791,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: DBG_Trail
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: DBG_Explosion
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: rocketTransform
+      value: 
+      objectReference: {fileID: 472594}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 128804}

@@ -34,7 +34,8 @@ public class MatchCreator : MonoBehaviour
     {
         if (LANGameToggle.isOn)
         {
-            networkOverlord.StartHost(); //Creates LAN game
+            CreateMatchRequest();
+            //networkOverlord.StartHost(); //Creates LAN game
         }
         else
         {
@@ -70,11 +71,18 @@ public class MatchCreator : MonoBehaviour
         if (matchResponse.success)
         {
             Debug.Log("OnMatchCreate > Success");
+            SwitchSelectedMap();
             networkOverlord.StartHost(); //Host a game with current map in networkManager
         }
         else
         {
             Debug.LogError("OnMatchCreate > Failure");
         }
+    }
+
+    private void SwitchSelectedMap()
+    {
+        Debug.Log(MapName.options[MapName.value].text);
+        networkOverlord.onlineScene = MapName.options[MapName.value].text;
     }
 }

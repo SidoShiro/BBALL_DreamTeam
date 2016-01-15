@@ -6,6 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/0_Scenes/MainMenu.unity
+    path: Assets/0_Scenes/_MainMenu.unity
   - enabled: 1
     path: Assets/0_Scenes/sand_box.unity
+  - enabled: 1
+    path: Assets/0_Scenes/bball_test.unity
