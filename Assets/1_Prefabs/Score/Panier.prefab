@@ -75,7 +75,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 455880}
   - 65: {fileID: 6575604}
-  - 114: {fileID: 11464502}
+  - 114: {fileID: 11413134}
   - 114: {fileID: 11476512}
   m_Layer: 0
   m_Name: Panier
@@ -223,7 +223,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147698}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.6404128, y: -3.800065, z: -1.6397941}
+  m_LocalPosition: {x: 3.896, y: -3.0976505, z: 2.3442993}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 422302}
@@ -459,7 +459,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11464502
+--- !u!114 &11413134
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -470,8 +470,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f5f195f1b7733a449ce140fbd96e5d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 0
-  valid_point: 0
+  scoreGM: {fileID: 0}
+  adv: 1
 --- !u!114 &11476512
 MonoBehaviour:
   m_ObjectHideFlags: 1

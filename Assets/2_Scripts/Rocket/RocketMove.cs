@@ -45,20 +45,6 @@ public class RocketMove : NetworkBehaviour
         rocketTransform.rotation = rocketRotation;  //TODO: Fix Client bug
         rocketTrail.SetActive(true);
         Destroy(gameObject, 10.0f);
-        switch (rocketTeam)
-        {
-            case PlayerStats.Team.BLU:
-                gameObject.layer = 11;
-                break;
-
-            case PlayerStats.Team.RED:
-                gameObject.layer = 12;
-                break;
-
-            default:
-                gameObject.layer = 10;
-                break;
-        }
     }
 
     /// <summary>
@@ -78,13 +64,19 @@ public class RocketMove : NetworkBehaviour
         Vector3 movediff = rocketTransform.forward * moveSpeed * Time.deltaTime;
 
         LayerMask layerMask = 10;
-        if (gameObject.layer == 11)
+        switch (rocketTeam)
         {
-            layerMask = m_Custom.layerMaskBLU;
-        }
-        else
-        {
-            layerMask = m_Custom.layerMaskRED;
+            case PlayerStats.Team.BLU:
+                layerMask = m_Custom.layerMaskBLU;
+                break;
+
+            case PlayerStats.Team.RED:
+                layerMask = m_Custom.layerMaskRED;
+                break;
+
+            default:
+                Debug.Log("Rocket team was not expected: This should never happend");
+                break;
         }
 
         if (Physics.Linecast(rocketTransform.position, rocketTransform.position + movediff, out hit, layerMask,QueryTriggerInteraction.Ignore))

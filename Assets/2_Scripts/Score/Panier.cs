@@ -20,7 +20,6 @@ public class Panier : NetworkBehaviour {
         {
             if (hitObject.GetComponentInParent<PlayerStats>().playerTeam == adv)
             {
-                Debug.Log("Adv");
                 scoreGM.TeamScored(adv);
             }
         }

@@ -64,6 +64,10 @@ public class PlayerCommand : NetworkBehaviour
         Cmd_ShootRocket(playerFireOutputTransform.position, targetrotation);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="explosionpos"></param>
     public void GetExploded(Vector3 explosionpos)
     {
         if (isLocalPlayer)
