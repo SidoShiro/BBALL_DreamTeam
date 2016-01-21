@@ -74,7 +74,7 @@ public class PlayerCommand : NetworkBehaviour
         {
             gameObject.GetComponent<Rigidbody>().AddExplosionForce(10.0f, explosionpos, 2.0f, 0.1f, ForceMode.VelocityChange);
         }
-    }
+    } 
 
     [Command]
     void Cmd_RespawnPlayer(PlayerStats.Team newteam)
