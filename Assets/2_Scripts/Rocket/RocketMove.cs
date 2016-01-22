@@ -104,8 +104,9 @@ public class RocketMove : NetworkBehaviour
     {
         rocketTrail.transform.parent = null;    //Remove the smoketrail from being child of the rocket to prevent deletion
         Destroy(gameObject);                    //Destroys the rocket and everything still attached to it
-        ParticleSystem.EmissionModule em = rocketTrail.GetComponent<ParticleSystem>().emission;
-        em.enabled = false;                     //Stops the trail from emitting more particles
+        //TODO : uncofsldf
+       // ParticleSystem.EmissionModule em = rocketTrail.GetComponent<ParticleSystem>().emission;
+      //  em.enabled = false;                     //Stops the trail from emitting more particles
         Destroy(rocketTrail, 1.0f);             //Destroys the trail (Once every particle disapeared)
         GameObject explosion = (GameObject)Instantiate(rocketExplosion, explosionpos, Quaternion.identity);
         Destroy(explosion, 1.0f);
