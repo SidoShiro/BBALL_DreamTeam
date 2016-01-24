@@ -22,6 +22,10 @@ public class RocketMove : NetworkBehaviour
     [SerializeField]
     private Transform rocketTransform;
 
+    [SerializeField]
+    private ParticleSystem ps;
+    private ParticleSystem.EmissionModule em;
+
     #region DEBUG
     [Header("DEBUG")]
     public bool DBG_Trail = false;
@@ -34,6 +38,7 @@ public class RocketMove : NetworkBehaviour
     /// </summary>
     void Awake()
     {
+        em = ps.emission;
         rocketTrail.SetActive(false);
     }
 
@@ -75,7 +80,7 @@ public class RocketMove : NetworkBehaviour
                 break;
 
             default:
-                Debug.Log("Rocket team was not expected: This should never happend");
+                Debug.Log("SHOULD NOT HAVE HAPPENED: Player team not expected in RocketMove/Move");
                 break;
         }
 
@@ -104,9 +109,7 @@ public class RocketMove : NetworkBehaviour
     {
         rocketTrail.transform.parent = null;    //Remove the smoketrail from being child of the rocket to prevent deletion
         Destroy(gameObject);                    //Destroys the rocket and everything still attached to it
-        //TODO : uncofsldf
-       // ParticleSystem.EmissionModule em = rocketTrail.GetComponent<ParticleSystem>().emission;
-      //  em.enabled = false;                     //Stops the trail from emitting more particles
+        em.enabled = false;                     //Stops the trail from emitting more particles
         Destroy(rocketTrail, 1.0f);             //Destroys the trail (Once every particle disapeared)
         GameObject explosion = (GameObject)Instantiate(rocketExplosion, explosionpos, Quaternion.identity);
         Destroy(explosion, 1.0f);
@@ -121,7 +124,7 @@ public class RocketMove : NetworkBehaviour
             GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
             foreach(GameObject player in players)
             {
-                player.GetComponent<PlayerCommand>().GetExploded(explosionpos);
+                player.GetComponent<PlayerCall>().Call_AddExplosionForce(explosionpos);
             }
         }
 

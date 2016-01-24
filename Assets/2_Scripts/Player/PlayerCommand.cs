@@ -3,81 +3,17 @@ using UnityEngine.Networking;
 
 public class PlayerCommand : NetworkBehaviour
 {
-    [Header("SPAWN PLAYER")]
+    [Header("Player")]
     public GameObject playerRigidBody;
     public GameObject playerUI;
 
-    [Header("SHOOT ROCKET")]
+    [Header("Rocket")]
     public GameObject rocketBody;
     public Camera playerCamera;
     public Transform playerFireOutputTransform;
 
-    private GameObject previousUI;
-    private PlayerStats.Team playerTeam;
-
-    /// <summary>
-    /// Triggered when script is loaded
-    /// </summary>
-    void Start()
-    {
-        if (isLocalPlayer)
-        {
-            CreateUI();
-        }
-
-        playerTeam = GetComponent<PlayerStats>().playerTeam;
-    }
-
-    /// <summary>
-    /// Creates new PlayerUI and destroys previous one
-    /// </summary>
-    void CreateUI()
-    {
-        playerUI.GetComponent<PlayerMenu>().playerCommand = this;
-        previousUI = Instantiate(playerUI);
-    }
-
-    /// <summary>
-    /// Call for a player respawn in specified team
-    /// </summary>
-    /// <param name="newteam"></param>
-    public void Call_RespawnPlayer(PlayerStats.Team newteam)
-    {
-        Destroy(previousUI);
-        Cmd_RespawnPlayer(newteam);
-    }
-
-    /// <summary>
-    /// Call for this player to shoot a rocket
-    /// </summary>
-    /// <param name="rocketBody">Rocket prefab</param>
-    /// <param name="playerFireOutputTransform">Transform to spawn the rocket from rocket</param>
-    /// <param name="targetrotation">Rotation of the rocket when spawned</param>
-    public void Call_ShootRocket()
-    {
-        LayerMask layerMask = ~LayerMask.GetMask("BLU", "RED", "SPE");
-        RaycastHit hit;                                                                                 //Used to store raycast hit data
-        Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));   //Define ray as player aiming point
-        Physics.Raycast(ray, out hit, 1000.0f, layerMask, QueryTriggerInteraction.Ignore);              //Casts the ray
-        Vector3 relativepos = hit.point - playerFireOutputTransform.position;                           //Get the vector to parcour
-        Quaternion targetrotation = Quaternion.LookRotation(relativepos);                               //Get the needed rotation of the rocket to reach that point
-        Cmd_ShootRocket(playerFireOutputTransform.position, targetrotation);
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="explosionpos"></param>
-    public void GetExploded(Vector3 explosionpos)
-    {
-        if (isLocalPlayer)
-        {
-            gameObject.GetComponent<Rigidbody>().AddExplosionForce(10.0f, explosionpos, 2.0f, 0.1f, ForceMode.VelocityChange);
-        }
-    } 
-
     [Command]
-    void Cmd_RespawnPlayer(PlayerStats.Team newteam)
+    public void Cmd_RespawnPlayer(PlayerStats.Team newteam)
     {
         GameObject[] spawnTab;
         switch (newteam)
@@ -103,10 +39,10 @@ public class PlayerCommand : NetworkBehaviour
     }
 
     [Command]
-    void Cmd_ShootRocket(Vector3 targetposition, Quaternion targetrotation)
+    public void Cmd_ShootRocket(Vector3 targetposition, Quaternion targetrotation, PlayerStats.Team newteam)
     {
-        GameObject rocket = (GameObject)Instantiate(rocketBody, targetposition, targetrotation);        //Spawns rocket at gunpoint with needed rotation
-        rocket.GetComponent<RocketMove>().rocketTeam = playerTeam;                                      //Give rocket same layer as player
+        GameObject rocket = (GameObject)Instantiate(rocketBody, targetposition, targetrotation);    //Spawns rocket at gunpoint with needed rotation
+        rocket.GetComponent<RocketMove>().rocketTeam = newteam;                                     //Give rocket same layer as player
         rocket.GetComponent<RocketMove>().rocketRotation = targetrotation;
         NetworkServer.Spawn(rocket);
     }

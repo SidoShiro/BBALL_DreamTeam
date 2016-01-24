@@ -9,6 +9,9 @@ using UnityEngine.Networking;
 /// </summary>
 public class PlayerEnabler : NetworkBehaviour
 {
+    [SerializeField]
+    private PlayerCall playerCall;
+
     [Header("Modify on client")]
     [SerializeField]
     public Component[] scripts; //List of scripts (Mainly inputs scripts) to enable client side
@@ -29,13 +32,19 @@ public class PlayerEnabler : NetworkBehaviour
     [SerializeField]
     public GameObject playerCollider;       //Used to place collider on team layer
 
-    [Header("Materials")]
+    [Header("Interface")]
+    [SerializeField]
+    private GameObject playerUI;     //Material to use when on SPE team
+
+    [Header("Objects")]
     [SerializeField]
     private Material SPEMaterial;    //Material to use when on SPE team
     [SerializeField]
     private Material BLUMaterial;    //Material to use when on BLU team
     [SerializeField]
     private Material REDMaterial;    //Material to use when on RED team
+
+
 
 
     /// <summary>
@@ -84,6 +93,7 @@ public class PlayerEnabler : NetworkBehaviour
 
             playerModel.gameObject.layer = 9;   //Place PlayerModel on "NORENDER" layer to disable rendering for this client
             playerCamera.enabled = true;        //Enables the camera component of this player
+            playerCall.Call_CreateUI(playerUI);
 
             /*
             - Disable shooting if spectator
@@ -106,7 +116,7 @@ public class PlayerEnabler : NetworkBehaviour
                     break;
 
                 default:
-                    Debug.Log("SHOULD NOT HAPPEND: Player team was not found in PlayerEnabler/LocalPlayer");
+                    Debug.Log("SHOULD NOT HAVE HAPPENED: Player team not expected in PlayerEnabler/LocalPlayer");
                     break;
             }
         }

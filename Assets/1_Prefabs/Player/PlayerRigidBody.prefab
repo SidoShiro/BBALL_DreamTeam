@@ -51,6 +51,7 @@ GameObject:
   - 54: {fileID: 5487520}
   - 114: {fileID: 11466942}
   - 114: {fileID: 11442238}
+  - 114: {fileID: 11494308}
   - 114: {fileID: 11460046}
   - 114: {fileID: 11473954}
   - 114: {fileID: 11497470}
@@ -305,7 +306,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169174}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1fd999d1b2cf94a45a5b0a47ce074bef, type: 3}
   m_Name: 
@@ -441,7 +442,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169174}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c12500f3afdeb24d9444042960a4cb9, type: 3}
   m_Name: 
@@ -476,7 +477,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169174}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a970acddb8696a4792ca6e022840a0e, type: 3}
   m_Name: 
@@ -504,7 +505,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169174}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e50e925fb93c78246bf995d9dc3a2330, type: 3}
   m_Name: 
@@ -534,6 +535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de964696ed16494d86bb55cc49be518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCall: {fileID: 11494308}
   scripts:
   - {fileID: 11473954}
   - {fileID: 11414454}
@@ -546,6 +548,7 @@ MonoBehaviour:
   playerShoot: {fileID: 11497470}
   playerModelRenderer: {fileID: 2336412}
   playerCollider: {fileID: 174668}
+  playerUI: {fileID: 123544, guid: e59face906fc82f4896f59eeb332f754, type: 2}
   SPEMaterial: {fileID: 2100000, guid: 3172993801abd004081afea2ac3ffbe2, type: 2}
   BLUMaterial: {fileID: 2100000, guid: 0927b051354d59044b87fc8518640552, type: 2}
   REDMaterial: {fileID: 2100000, guid: 01a1058652ae2344cbd9c71c91a2af1a, type: 2}
@@ -643,7 +646,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169174}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 646b5bc27a658f447b1d929fd5ffbd70, type: 3}
   m_Name: 
@@ -681,7 +684,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169174}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd6d4281e5d7cd44d8c6e38bc2c1b8d8, type: 3}
   m_Name: 
@@ -698,6 +701,20 @@ MonoBehaviour:
   separableBlurShader: {fileID: 4800000, guid: e97c14fbb5ea04c3a902cc533d7fc5d1, type: 3}
   chromAberrationShader: {fileID: 4800000, guid: 2b4f29398d9484ccfa9fd220449f5eee,
     type: 3}
+--- !u!114 &11494308
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de6a3a2556b384e41901f32d9608cb99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStats: {fileID: 11466942}
+  playerCommand: {fileID: 11460046}
+  playerRigidBody: {fileID: 5487520}
 --- !u!114 &11494860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -741,7 +758,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23042aab2cabd074db40de20e6438ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCommand: {fileID: 11460046}
+  playerStats: {fileID: 11466942}
+  playerCall: {fileID: 11494308}
   playerCollider: {fileID: 174668}
   playerFireOutputTransform: {fileID: 411506}
   playerCamera: {fileID: 2043206}
@@ -956,6 +974,10 @@ Prefab:
       propertyPath: airspeed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: playerCall
+      value: 
+      objectReference: {fileID: 11494308}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 169552}

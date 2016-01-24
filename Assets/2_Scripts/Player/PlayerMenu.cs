@@ -7,7 +7,7 @@ public class PlayerMenu : MonoBehaviour
 {
     public GameObject playerMenuPanel;          //Panel to show/hide
     public GameObject playerRigidBody;          //Panel to show/hide
-    public PlayerCommand playerCommand;
+    public PlayerCall playerCall;
 
     private SceneOverlord sceneOverlord;
     private NetworkOverlord networkOverlord;
@@ -91,19 +91,19 @@ public class PlayerMenu : MonoBehaviour
 
     public void JoinBLU()
     {
-        playerCommand.Call_RespawnPlayer(PlayerStats.Team.BLU);
+        playerCall.Call_RespawnPlayer(PlayerStats.Team.BLU);
         HidePlayerMenu();
     }
 
     public void JoinRED()
     {
-        playerCommand.Call_RespawnPlayer(PlayerStats.Team.RED);
+        playerCall.Call_RespawnPlayer(PlayerStats.Team.RED);
         HidePlayerMenu();
     }
 
     public void JoinSPE()
     {
-        playerCommand.Call_RespawnPlayer(PlayerStats.Team.SPE);
+        playerCall.Call_RespawnPlayer(PlayerStats.Team.SPE);
         HidePlayerMenu();
     }
 
