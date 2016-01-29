@@ -30,7 +30,7 @@ public class PlayerEnabler : NetworkBehaviour
     [SerializeField]
     private Renderer playerModelRenderer;   //Used to set material according to team
     [SerializeField]
-    public GameObject playerCollider;       //Used to place collider on team layer
+    private GameObject playerCollider;       //Used to place collider on team layer
 
     [Header("Interface")]
     [SerializeField]
@@ -43,9 +43,6 @@ public class PlayerEnabler : NetworkBehaviour
     private Material BLUMaterial;    //Material to use when on BLU team
     [SerializeField]
     private Material REDMaterial;    //Material to use when on RED team
-
-
-
 
     /// <summary>
     /// Called when script is enabled

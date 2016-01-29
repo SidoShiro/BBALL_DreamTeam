@@ -34,8 +34,8 @@ public class MatchCreator : MonoBehaviour
     {
         if (LANGameToggle.isOn)
         {
-            CreateMatchRequest();
-            //networkOverlord.StartHost(); //Creates LAN game
+            //CreateMatchRequest();
+            networkOverlord.StartHost(); //Creates LAN game
         }
         else
         {

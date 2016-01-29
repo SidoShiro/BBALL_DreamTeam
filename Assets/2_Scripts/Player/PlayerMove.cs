@@ -2,18 +2,32 @@
 
 /// <summary>
 /// Player movement
-/// TODO: COMMENT THAT SHIT
 /// </summary>
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMove : MonoBehaviour
 {
-    [Header("STATS")]
-    public float groundspeed = 3.0f;		//Normal moving speed multiplier
-    public float airspeed = 1.0f;			//Air acceleration multiplier
-    public float maxairacceleration = 1.0f;	//Maximal acceleration in the air
-    public float jumpheight = 1.2f;			//Jump height
-    public float smoothfactor = 1.0f;       //Movement smoothing factor
-    public int PossibleJumps = 1;           //Number of jumps
+
+    [Header("References")]
+    [SerializeField]
+    private Transform playerTransform;
+    [SerializeField]
+    private Rigidbody playerRigidBody;
+    [SerializeField]
+    private PlayerStats playerStats;
+
+    [Header("Stats")]
+    [SerializeField]
+    private float groundspeed = 3.0f;		    //Normal moving speed multiplier
+    [SerializeField]
+    private float airspeed = 1.0f;			    //Air acceleration multiplier
+    [SerializeField]
+    private float maxairacceleration = 1.0f;    //Maximal acceleration in the air
+    [SerializeField]
+    private float jumpheight = 1.2f;			//Jump height
+    [SerializeField]
+    private float smoothfactor = 1.0f;          //Movement smoothing factor
+    [SerializeField]
+    private int PossibleJumps = 1;              //Number of jumps
 
     //Private variables
     private bool isGrounded;    //Stores grounded state
@@ -21,9 +35,6 @@ public class PlayerMove : MonoBehaviour
 
     //Cache
     private SceneOverlord sceneOverlord;
-    private Rigidbody playerRigidBody;
-    private Transform playerTransform;
-    private PlayerStats.Team playerTeam;
 
     #region DEBUG
     [Header("DEBUG")]
@@ -37,9 +48,6 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         sceneOverlord = GameObject.Find("SceneGM").GetComponent<SceneOverlord>();
-        playerRigidBody = GetComponent<Rigidbody>();
-        playerTransform = GetComponent<Transform>();
-        playerTeam = GetComponent<PlayerStats>().playerTeam;
     }
 
     /// <summary>
@@ -58,7 +66,7 @@ public class PlayerMove : MonoBehaviour
         Vector3 playerInputs = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
         bool isControllable = sceneOverlord.isReceivingInputs;
 
-        if (playerTeam != PlayerStats.Team.SPE)
+        if (playerStats.playerTeam != PlayerStats.Team.SPE)
         {
             if (isControllable)
             {

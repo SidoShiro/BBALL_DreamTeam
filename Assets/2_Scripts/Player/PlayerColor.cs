@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 /// <summary>
+/// OBSOLETE > Properties moved to PlayerEnabler
 /// This script is used to set the player material and layer according to his team
 /// </summary>
 public class PlayerColor : MonoBehaviour
