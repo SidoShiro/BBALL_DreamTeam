@@ -47,7 +47,7 @@ public class RocketMove : NetworkBehaviour
     /// </summary>
     void Start()
     {
-        rocketTransform.rotation = rocketRotation;  //TODO: Fix Client bug
+        rocketTransform.rotation = rocketRotation;  //hack Fix Client bug
         rocketTrail.SetActive(true);
         Destroy(gameObject, 10.0f);
     }

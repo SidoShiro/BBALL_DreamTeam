@@ -350,6 +350,10 @@ Prefab:
       propertyPath: scoreGM
       value: 
       objectReference: {fileID: 1220586383}
+    - target: {fileID: 11413134, guid: 1dcc8d51d4c7ff741b750935e1de1ffc, type: 2}
+      propertyPath: adv
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1dcc8d51d4c7ff741b750935e1de1ffc, type: 2}
   m_IsPrefabParent: 0

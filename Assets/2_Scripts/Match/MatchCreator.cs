@@ -34,8 +34,8 @@ public class MatchCreator : MonoBehaviour
     {
         if (LANGameToggle.isOn)
         {
-            //CreateMatchRequest();
-            networkOverlord.StartHost(); //Creates LAN game
+            CreateMatchRequest();
+            //networkOverlord.StartHost(); //Creates LAN game
         }
         else
         {
@@ -52,7 +52,7 @@ public class MatchCreator : MonoBehaviour
         MatchRequest.name = "Match " + System.Guid.NewGuid().ToString("N"); //This GUID is to prevent 2 matches from having the same name
         MatchRequest.size = 10;                                             //Max numbers of player in a match (Spectators included)
         MatchRequest.advertise = true;                                      //The match is visible to all on the network
-        MatchRequest.password = "";                                         //No password  (TODO/FEATURE : Add passwords)
+        MatchRequest.password = "";                                         //TODO : Add passwords
 
         MatchRequest.matchAttributesCustom = new Dictionary<string, string>();
         MatchRequest.matchAttributesCustom.Add(MatchProperty.HostName, NickName.text);          //Name of original creator of the match (e.g. "DarkSasuke92")
@@ -76,6 +76,8 @@ public class MatchCreator : MonoBehaviour
         }
         else
         {
+            SwitchSelectedMap();
+            networkOverlord.StartHost(); //Host a game with current map in networkManager
             Debug.LogError("OnMatchCreate > Failure");
         }
     }

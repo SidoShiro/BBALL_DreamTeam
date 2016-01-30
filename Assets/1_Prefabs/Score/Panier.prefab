@@ -471,7 +471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreGM: {fileID: 0}
-  adv: 1
+  adv: 2
 --- !u!114 &11476512
 MonoBehaviour:
   m_ObjectHideFlags: 1
