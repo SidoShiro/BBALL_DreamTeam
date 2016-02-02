@@ -40,7 +40,7 @@ public class PlayerCommand : NetworkBehaviour
         Transform spawnPoint = spawnTab[Random.Range(0, (spawnTab.Length - 1))].transform;                          //Pick random spawn
         GameObject playerNew = (GameObject)Instantiate(playerRigidBody, spawnPoint.position, spawnPoint.rotation);  //Spawns new player
         playerNew.GetComponent<PlayerStats>().playerTeam = newteam;                                 //Set player team accordingly
-        playerNew.name = "PlayerRigidBody(Clone)";                                                  //Fix player name
+        playerNew.name = "PlayerRigidBody(Clone)";                                                  //TODO : Add player nickname
         NetworkServer.DestroyPlayersForConnection(connectionToClient);                              //Destroy all previous players for this conection
         NetworkServer.AddPlayerForConnection(connectionToClient, playerNew, playerControllerId);    //Instantiate new player
     }

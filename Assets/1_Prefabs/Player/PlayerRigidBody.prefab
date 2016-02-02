@@ -610,8 +610,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0abcbd3ff336d73459800f0b8bc0a5c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerRigidBody: {fileID: 5487520}
   playerTransform: {fileID: 495368}
+  playerRigidBody: {fileID: 5487520}
   playerStats: {fileID: 11466942}
   groundspeed: 3
   airspeed: 2
@@ -640,7 +640,7 @@ MonoBehaviour:
   m_MovementTheshold: 0.001
   m_SnapThreshold: 15
   m_InterpolateRotation: 25
-  m_InterpolateMovement: 0.1
+  m_InterpolateMovement: 1
 --- !u!114 &11485064
 MonoBehaviour:
   m_ObjectHideFlags: 1
