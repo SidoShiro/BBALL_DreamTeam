@@ -15,6 +15,28 @@ public class PlayerCall : MonoBehaviour
     private GameObject previousUI;
 
     /// <summary>
+    /// Apllies damage to the player
+    /// </summary>
+    /// <param name="dmg">Damage dealt</param>
+    public void Call_DamagePlayer(int dmg)
+    {
+        if(playerStats.playerHealth - dmg <= 0)
+        {
+            playerStats.playerHealth = 0;
+        }
+        else
+        {
+            playerStats.playerHealth -= dmg;
+        }
+    }
+
+    ///
+    public void Call_KillPlayer()
+    {
+
+    }
+
+    /// <summary>
     /// Creates new PlayerMenu
     /// </summary>
     public void Call_CreateUI(GameObject playerUI)
@@ -30,7 +52,7 @@ public class PlayerCall : MonoBehaviour
     public void Call_RespawnPlayer(PlayerStats.Team newteam)
     {
         Destroy(previousUI);
-        playerCommand.Cmd_RespawnPlayer(newteam);
+        playerCommand.Cmd_KillPlayer(newteam);
     }
 
     /// <summary>

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
+using System.Collections;
 
 /// <summary>
 /// This script is used to send player command to the server
@@ -16,13 +17,22 @@ public class PlayerCommand : NetworkBehaviour
     public GameObject rocketBody;   //Rocket prefab to spawn
 
     /// <summary>
+    /// TODO : Comment
+    /// </summary>
+    public void Cmd_KillPlayer(PlayerStats.Team newteam)
+    {
+        NetworkServer.Destroy(gameObject);
+        Invoke("Cmd_SpawnPlayer", 2.0f);
+    }
+
+    /// <summary>
     /// Destroys this player and command the server to spawn a new one
     /// </summary>
     /// <param name="newteam">Player team to spawn the player in</param>
     [Command]
-    public void Cmd_RespawnPlayer(PlayerStats.Team newteam)
+    public void Cmd_SpawnPlayer(PlayerStats.Team newteam)
     {
-        GameObject[] spawnTab;  //Array of possible spawns
+        GameObject[] spawnTab;  //Array of possible spawns$
         switch (newteam)
         {
             case PlayerStats.Team.BLU:
@@ -39,14 +49,13 @@ public class PlayerCommand : NetworkBehaviour
         }
         Transform spawnPoint = spawnTab[Random.Range(0, (spawnTab.Length - 1))].transform;                          //Pick random spawn
         GameObject playerNew = (GameObject)Instantiate(playerRigidBody, spawnPoint.position, spawnPoint.rotation);  //Spawns new player
-        playerNew.GetComponent<PlayerStats>().playerTeam = newteam;                                 //Set player team accordingly
-        playerNew.name = "PlayerRigidBody(Clone)";                                                  //TODO : Add player nickname
-        NetworkServer.DestroyPlayersForConnection(connectionToClient);                              //Destroy all previous players for this conection
-        NetworkServer.AddPlayerForConnection(connectionToClient, playerNew, playerControllerId);    //Instantiate new player
+        playerNew.GetComponent<PlayerStats>().playerTeam = newteam;     //Set player team accordingly
+        playerNew.name = "PlayerRigidBody(Clone)";                      //TODO : Add player nickname
+        NetworkServer.ReplacePlayerForConnection(connectionToClient, playerNew, playerControllerId);    //Instantiate new player
     }
 
     /// <summary>
-    /// 
+    /// Command the server to spawn a rocket at given position/rotation
     /// </summary>
     /// <param name="targetposition">Position to spawn the rocket at</param>
     /// <param name="targetrotation">Rotation to give the rocket</param>
