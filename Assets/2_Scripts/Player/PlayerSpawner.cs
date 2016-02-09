@@ -1,24 +1,37 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Networking;
-using System.Collections;
 
 public class PlayerSpawner : NetworkBehaviour
 {
     [SerializeField]
     private GameObject playerRigidBody;
+    [SerializeField]
+    private Text playerRespawnTimeText;
 
     public PlayerStats.Team newteam = PlayerStats.Team.SPE;
     public int respawntime = 2;
 
+    private float spawntime;
+    private bool stop = false;
+
     void Start()
     {
-        StartCoroutine(WaitFor(respawntime));
+        spawntime = Time.time + respawntime;
     }
 
-    IEnumerator WaitFor(int seconds)
+    void Update()
     {
-        yield return new WaitForSeconds(seconds);
-        Cmd_CreatePlayer();
+        float time = Time.time;
+
+        if (time > spawntime && !stop)
+        {
+            Cmd_CreatePlayer();
+            stop = true;
+        }
+            
+        playerRespawnTimeText.text = (spawntime - time).ToString("0.00");
+
     }
 
     [Command]

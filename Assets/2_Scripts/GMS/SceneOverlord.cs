@@ -5,5 +5,18 @@
 /// </summary>
 public class SceneOverlord : MonoBehaviour
 {
-    public bool isReceivingInputs;  //Used to disable inputs when bringing PlayerMenuPanel up
+    private bool _isReceivingInputs;  //Used to disable inputs when bringing PlayerMenuPanel up
+
+    public bool isReceivingInputs
+    {
+        get
+        {
+            return _isReceivingInputs;
+        }
+
+        set
+        {
+            _isReceivingInputs = value;
+        }
+    }
 }
