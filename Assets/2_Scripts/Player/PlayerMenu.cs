@@ -91,19 +91,19 @@ public class PlayerMenu : MonoBehaviour
 
     public void JoinBLU()
     {
-        playerCall.Call_RespawnPlayer(PlayerStats.Team.BLU);
+        playerCall.Call_ChangePlayerTeam(PlayerStats.Team.BLU);
         HidePlayerMenu();
     }
 
     public void JoinRED()
     {
-        playerCall.Call_RespawnPlayer(PlayerStats.Team.RED);
+        playerCall.Call_ChangePlayerTeam(PlayerStats.Team.RED);
         HidePlayerMenu();
     }
 
     public void JoinSPE()
     {
-        playerCall.Call_RespawnPlayer(PlayerStats.Team.SPE);
+        playerCall.Call_ChangePlayerTeam(PlayerStats.Team.SPE);
         HidePlayerMenu();
     }
 

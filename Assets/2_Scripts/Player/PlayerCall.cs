@@ -22,7 +22,7 @@ public class PlayerCall : MonoBehaviour
     {
         if(playerStats.playerHealth - dmg <= 0)
         {
-            playerStats.playerHealth = 0;
+            Call_KillPlayer();
         }
         else
         {
@@ -30,10 +30,23 @@ public class PlayerCall : MonoBehaviour
         }
     }
 
-    ///
+    /// <summary>
+    /// Kills Player
+    /// </summary>
     public void Call_KillPlayer()
     {
+        Destroy(previousUI);
+        playerCommand.Cmd_KillPlayer(playerStats.playerTeam);
+    }
 
+    /// <summary>
+    /// Call for a player respawn in specified team
+    /// </summary>
+    /// <param name="newteam"></param>
+    public void Call_ChangePlayerTeam(PlayerStats.Team newteam)
+    {
+        playerStats.playerTeam = newteam;
+        Call_KillPlayer();
     }
 
     /// <summary>
@@ -43,16 +56,6 @@ public class PlayerCall : MonoBehaviour
     {
         playerUI.GetComponent<PlayerMenu>().playerCall = this;
         previousUI = Instantiate(playerUI);
-    }
-
-    /// <summary>
-    /// Call for a player respawn in specified team
-    /// </summary>
-    /// <param name="newteam"></param>
-    public void Call_RespawnPlayer(PlayerStats.Team newteam)
-    {
-        Destroy(previousUI);
-        playerCommand.Cmd_KillPlayer(newteam);
     }
 
     /// <summary>

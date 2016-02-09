@@ -2,7 +2,7 @@
 using UnityEngine.Networking;
 using System.Collections;
 
-public class PlayerOverlord : NetworkBehaviour
+public class PlayerSpawner : NetworkBehaviour
 {
     [SerializeField]
     private GameObject playerRigidBody;

@@ -563,6 +563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e232bda92ca1a54e8f8a988bd9b7571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSpawner: {fileID: 154870, guid: 48f6af5783280be4cbb09e94408b8e9b, type: 2}
   playerRigidBody: {fileID: 169552}
   playerUI: {fileID: 123544, guid: e59face906fc82f4896f59eeb332f754, type: 2}
   rocketBody: {fileID: 128804, guid: 89db5062cd5c17b4ba6e670e5c7238df, type: 2}
