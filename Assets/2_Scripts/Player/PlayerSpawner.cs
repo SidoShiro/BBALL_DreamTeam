@@ -17,7 +17,14 @@ public class PlayerSpawner : NetworkBehaviour
 
     void Start()
     {
-        spawntime = Time.time + respawntime;
+        if (newteam == PlayerStats.Team.SPE)
+        {
+            spawntime = Time.time;
+        }
+        else
+        {
+            spawntime = Time.time + respawntime;
+        }
     }
 
     void Update()
@@ -29,7 +36,7 @@ public class PlayerSpawner : NetworkBehaviour
             Cmd_CreatePlayer();
             stop = true;
         }
-            
+
         playerRespawnTimeText.text = (spawntime - time).ToString("0.00");
 
     }
