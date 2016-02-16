@@ -550,7 +550,7 @@ MonoBehaviour:
   playerCollider: {fileID: 174668}
   playerUI: {fileID: 123544, guid: e59face906fc82f4896f59eeb332f754, type: 2}
   SPEMaterial: {fileID: 2100000, guid: 3172993801abd004081afea2ac3ffbe2, type: 2}
-  BLUMaterial: {fileID: 2100000, guid: 0927b051354d59044b87fc8518640552, type: 2}
+  BLUMaterial: {fileID: 2100000, guid: c958d559ddfc88b48b5f55c5a7bbff71, type: 2}
   REDMaterial: {fileID: 2100000, guid: 01a1058652ae2344cbd9c71c91a2af1a, type: 2}
 --- !u!114 &11460046
 MonoBehaviour:
@@ -871,7 +871,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: BLUMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 0927b051354d59044b87fc8518640552, type: 2}
+      objectReference: {fileID: 2100000, guid: c958d559ddfc88b48b5f55c5a7bbff71, type: 2}
     - target: {fileID: 0}
       propertyPath: SPEMaterial
       value: 
