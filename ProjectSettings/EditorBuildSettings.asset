@@ -13,3 +13,5 @@ EditorBuildSettings:
     path: Assets/0_Scenes/bball_test.unity
   - enabled: 1
     path: Assets/0_Scenes/bball_score.unity
+  - enabled: 1
+    path: Assets/0_Scenes/bball_tuto.unity
