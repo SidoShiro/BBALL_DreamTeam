@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// This script is used to trigger calls on the player (Damage, kill, etc ...)
+/// Those calls will be repercuted on the server via commands.
+/// </summary>
 public class PlayerCall : MonoBehaviour
 {
     [Header("References")]
@@ -49,8 +53,10 @@ public class PlayerCall : MonoBehaviour
         Call_KillPlayer();
     }
 
+    #region AUTOCALLS
+
     /// <summary>
-    /// Creates new PlayerMenu
+    /// Creates new PlayerMenu ( !!! Should not be called by anything else than PlayerEnabler !!! )
     /// </summary>
     public void Call_CreateUI(GameObject playerUI)
     {
@@ -59,7 +65,7 @@ public class PlayerCall : MonoBehaviour
     }
 
     /// <summary>
-    /// Call for this player to shoot a rocket
+    /// Call for this player to shoot a rocket ( !!! Should not be called by anything else than PlayerShoot !!! )
     /// </summary>
     /// <param name="rocketBody">Rocket prefab</param>
     /// <param name="playerFireOutputTransform">Transform to spawn the rocket from rocket</param>
@@ -70,11 +76,14 @@ public class PlayerCall : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Add explosion force to this player ( !!! Should not be called by anything else than locally exploding rockets !!! )
     /// </summary>
     /// <param name="explosionpos"></param>
     public void Call_AddExplosionForce(Vector3 explosionpos)
     {
         playerRigidBody.AddExplosionForce(10.0f, explosionpos, 2.0f, 0.1f, ForceMode.VelocityChange);
     }
+
+    #endregion
+
 }

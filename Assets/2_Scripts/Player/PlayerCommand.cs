@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
-using System.Collections;
 
 /// <summary>
 /// This script is used to send player command to the server
@@ -9,10 +8,9 @@ using System.Collections;
 /// </summary>
 public class PlayerCommand : NetworkBehaviour
 {
-    [Header("Player")]
-    public GameObject playerSpawner;    //Player spawner
-    public GameObject playerRigidBody;  //Player Prefab to spawn
-    public GameObject playerUI;         //Player UI to spawn
+    [Header("Prefabs")]
+    public GameObject playerSpawner;    //Player spawner prefab
+    public GameObject playerRigidBody;  //Player prefab
 
     [Header("Rocket")]
     public GameObject rocketBody;   //Rocket prefab to spawn
