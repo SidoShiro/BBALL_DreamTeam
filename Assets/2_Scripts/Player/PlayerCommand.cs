@@ -9,11 +9,14 @@ using UnityEngine.Networking;
 public class PlayerCommand : NetworkBehaviour
 {
     [Header("Prefabs")]
-    public GameObject playerSpawner;    //Player spawner prefab
-    public GameObject playerRigidBody;  //Player prefab
+    [SerializeField]
+    private GameObject playerSpawner;    //Player spawner prefab
+    [SerializeField]
+    private GameObject playerRigidBody;  //Player prefab
 
     [Header("Rocket")]
-    public GameObject rocketBody;   //Rocket prefab to spawn
+    [SerializeField]
+    private GameObject rocketBody;   //Rocket prefab
 
     /// <summary>
     /// Kills the player, and creates a spawner for that player with given team
