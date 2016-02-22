@@ -17,45 +17,18 @@ public class PlayerCommand : NetworkBehaviour
     [Header("Rocket")]
     public GameObject rocketBody;   //Rocket prefab to spawn
 
+    /// <summary>
+    /// Kills the player, and creates a spawner for that player with given team
+    /// </summary>
+    /// <param name="newteam">Team the player will respawn in</param>
     [Command]
     public void Cmd_KillPlayer(PlayerStats.Team newteam)
     {
-        GameObject spawner = Instantiate(playerSpawner);
-        spawner.GetComponent<PlayerSpawner>().newteam = newteam;
-        NetworkServer.DestroyPlayersForConnection(connectionToClient);
-        NetworkServer.ReplacePlayerForConnection(connectionToClient, spawner, playerControllerId);
+        GameObject spawner = Instantiate(playerSpawner);                                            //Creates spawner                
+        spawner.GetComponent<PlayerSpawner>().newteam = newteam;                                    //Set spawner team
+        NetworkServer.DestroyPlayersForConnection(connectionToClient);                              //Clean connection (to prevent duplicates)
+        NetworkServer.ReplacePlayerForConnection(connectionToClient, spawner, playerControllerId);  //Instantiate spawner on network
     }
-
-    /*/
-    /// <summary>
-    /// Destroys this player and command the server to spawn a new one
-    /// </summary>
-    /// <param name="newteam">Player team to spawn the player in</param>
-    [Command]
-    public void Cmd_SpawnPlayer(PlayerStats.Team newteam)
-    {
-        GameObject[] spawnTab;  //Array of possible spawns
-        switch (newteam)
-        {
-            case PlayerStats.Team.BLU:
-                spawnTab = GameObject.FindGameObjectsWithTag("BLUSpawn");
-                break;
-
-            case PlayerStats.Team.RED:
-                spawnTab = GameObject.FindGameObjectsWithTag("REDSpawn");
-                break;
-
-            default:
-                spawnTab = GameObject.FindGameObjectsWithTag("SPESpawn");
-                break;
-        }
-        Transform spawnPoint = spawnTab[Random.Range(0, (spawnTab.Length - 1))].transform;                          //Pick random spawn
-        GameObject playerNew = (GameObject)Instantiate(playerRigidBody, spawnPoint.position, spawnPoint.rotation);  //Spawns new player
-        playerNew.GetComponent<PlayerStats>().playerTeam = newteam;     //Set player team accordingly
-        playerNew.name = "Bob";                      //TODO : Add player nickname
-        NetworkServer.ReplacePlayerForConnection(connectionToClient, playerNew, playerControllerId);    //Instantiate new player
-    }
-    //*/
 
     /// <summary>
     /// Command the server to spawn a rocket at given position/rotation
