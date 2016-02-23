@@ -51,7 +51,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &154870
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,6 +61,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 456140}
   - 114: {fileID: 11459890}
+  - 114: {fileID: 11467546}
   - 114: {fileID: 11455378}
   m_Layer: 0
   m_Name: PlayerSpawner
@@ -296,6 +297,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11467546
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0555ab878cf9aa1458d07e3a4d4f4942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSpawnerPanel: {fileID: 151170}
+  playerSpawner: {fileID: 11455378}
 --- !u!114 &11487646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -466,7 +480,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: respawntime
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 154870}

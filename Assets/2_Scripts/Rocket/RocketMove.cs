@@ -125,7 +125,7 @@ public class RocketMove : NetworkBehaviour
             foreach(GameObject player in players)
             {
                 player.GetComponent<PlayerCall>().Call_AddExplosionForce(explosionpos);
-                player.GetComponent<PlayerCall>().Call_DamagePlayer(10);    //TODO : You where here trying to figure how to add damage based on distance
+                player.GetComponent<PlayerCall>().Call_ExplosionDamage(explosionpos, rocketTeam);
             }
         }
 

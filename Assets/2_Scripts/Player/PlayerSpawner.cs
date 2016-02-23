@@ -11,9 +11,9 @@ using UnityEngine.Networking;
 public class PlayerSpawner : NetworkBehaviour
 {
     [SerializeField]
-    private GameObject playerRigidBody; //Player prefab to spawn
+    private GameObject playerRigidBody;     //Player prefab to spawn
     [SerializeField]
-    private Text playerRespawnTimeText; //Text to display respawn time
+    private Text playerRespawnTimeText;     //Text to display respawn time
 
     //Public
     public PlayerStats.Team newteam = PlayerStats.Team.SPE; //Team to respawn in (to set before respawn)

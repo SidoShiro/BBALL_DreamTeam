@@ -9,6 +9,8 @@ public class PlayerCall : MonoBehaviour
     [Header("References")]
     #region References
     [SerializeField]
+    private Transform playerTransform;
+    [SerializeField]
     private PlayerStats playerStats;
     [SerializeField]
     private PlayerCommand playerCommand;
@@ -87,6 +89,23 @@ public class PlayerCall : MonoBehaviour
         playerRigidBody.AddExplosionForce(10.0f, explosionpos, 2.0f, 0.1f, ForceMode.VelocityChange);
     }
 
+    /// <summary>
+    /// Calculates damage according to position
+    /// </summary>
+    /// <param name="explosionpos"></param>
+    public void Call_ExplosionDamage(Vector3 explosionpos, PlayerStats.Team rocketTeam)
+    {
+        //Damage calculs
+        float distance = Vector3.Distance(playerTransform.position, explosionpos);  //Distance between player and explosion
+        if (distance > 2.0f || playerStats.playerTeam == PlayerStats.Team.SPE || playerStats.playerTeam == rocketTeam)
+        {
+            return;
+        }
+        int damage = (int)((2.0f - distance) * 100 / 2.0f);
+
+        //Damage application
+        Call_DamagePlayer(damage);
+    }
     #endregion
 
 }
