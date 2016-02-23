@@ -62,6 +62,8 @@ public class PlayerCall : MonoBehaviour
     public void Call_CreateUI(GameObject playerUI)
     {
         playerUI.GetComponent<PlayerMenu>().playerCall = this;
+        playerUI.GetComponent<PlayerHUD>().playerStats = playerStats;
+        playerUI.GetComponent<PlayerHUD>().enabled = true;
         previousUI = Instantiate(playerUI);
     }
 
