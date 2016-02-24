@@ -14,10 +14,20 @@ public class PlayerSpawnerEnabler : NetworkBehaviour
     /// </summary>
     void Start()
     {
+        ToggleSpawner();
+    }
+
+    private void ToggleSpawner()
+    {
         if (isLocalPlayer)
         {
-            playerSpawnerPanel.SetActive(true); //Activates spawner UI
-            playerSpawner.enabled = true;       //Enables respawn
+            playerSpawnerPanel.SetActive(true);
+            playerSpawner.enabled = true;
+        }
+        else
+        {
+            playerSpawnerPanel.SetActive(false);
+            playerSpawner.enabled = false;
         }
     }
 

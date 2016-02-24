@@ -26,7 +26,7 @@ public class PlayerHUD : MonoBehaviour
     /// </summary>
     void Update()
     {
-        UpdateHealth();
+        UpdateHealth(); //TODO : Only update on change
     }
 
     /// <summary>

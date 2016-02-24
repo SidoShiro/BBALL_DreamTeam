@@ -122,7 +122,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 186648}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3, y: -0.2, z: 0.4}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 453554}
@@ -617,7 +617,7 @@ MonoBehaviour:
   airspeed: 2
   maxairacceleration: 0
   jumpheight: 1.2
-  smoothfactor: 5
+  smoothfactor: 1
   PossibleJumps: 1
   DBG_movements: 1
   DBG_time: 0.2
@@ -942,7 +942,7 @@ Prefab:
       objectReference: {fileID: 189090, guid: b5ab51668c280d64c90e923e1397621c, type: 2}
     - target: {fileID: 0}
       propertyPath: smoothfactor
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_StaticEditorFlags
