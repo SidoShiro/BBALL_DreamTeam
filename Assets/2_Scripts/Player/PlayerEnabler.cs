@@ -7,6 +7,7 @@ using UnityEngine.Networking;
 /// We only want one camera active: our player's camera
 /// etc...
 /// </summary>
+[NetworkSettings(channel=3,sendInterval=0.1f)]
 public class PlayerEnabler : NetworkBehaviour
 {
     [Header("References(Player)")]

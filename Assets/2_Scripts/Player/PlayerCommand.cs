@@ -6,6 +6,7 @@ using UnityEngine.Networking;
 /// /!\ THOSE COMMANDS SHOULD NEVER BE CALLED DIRECTLY /!\ 
 /// >>>>> Use PlayerCall instead! <<<<<
 /// </summary>
+[NetworkSettings(channel=3,sendInterval=0.1f)]
 public class PlayerCommand : NetworkBehaviour
 {
     [Header("Prefabs")]

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 
+[NetworkSettings(channel = 3, sendInterval = 0.1f)]
 public class RocketMove : NetworkBehaviour
 {
     [Header("STATS")]
