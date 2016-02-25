@@ -6,8 +6,8 @@
 /// </summary>
 public class PlayerCall : MonoBehaviour
 {
-    [Header("References")]
-    #region References
+    [Header("References(Player)")]
+    #region References(Player)
     [SerializeField]
     private Transform playerTransform;
     [SerializeField]
@@ -17,9 +17,6 @@ public class PlayerCall : MonoBehaviour
     [SerializeField]
     private Rigidbody playerRigidBody;
     #endregion
-
-    //Local
-    private GameObject previousUI;
 
     /// <summary>
     /// Apllies damage to the player
@@ -42,7 +39,6 @@ public class PlayerCall : MonoBehaviour
     /// </summary>
     public void Call_KillPlayer()
     {
-        Destroy(previousUI);
         playerCommand.Cmd_KillPlayer(playerStats.playerTeam);
     }
 
@@ -57,17 +53,6 @@ public class PlayerCall : MonoBehaviour
     }
 
     #region AUTOCALLS
-
-    /// <summary>
-    /// Creates new PlayerMenu ( !!! Should not be called by anything else than PlayerEnabler !!! )
-    /// </summary>
-    public void Call_CreateUI(GameObject playerUI)
-    {
-        playerUI.GetComponent<PlayerMenu>().playerCall = this;
-        playerUI.GetComponent<PlayerHUD>().playerStats = playerStats;
-        playerUI.GetComponent<PlayerHUD>().enabled = true;
-        previousUI = Instantiate(playerUI);
-    }
 
     /// <summary>
     /// Call for this player to shoot a rocket ( !!! Should not be called by anything else than PlayerShoot !!! )

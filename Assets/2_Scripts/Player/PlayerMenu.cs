@@ -5,12 +5,18 @@
 /// </summary>
 public class PlayerMenu : MonoBehaviour
 {
-    public GameObject playerMenuPanel;          //Panel to show/hide
-    public GameObject playerRigidBody;          //Panel to show/hide
-    public PlayerCall playerCall;
+    [Header("References(Player)")]
+    [SerializeField]
+    private PlayerStats playerStats;
+    [SerializeField]
+    private PlayerCall playerCall;
 
-    private SceneOverlord sceneOverlord;
-    private NetworkOverlord networkOverlord;
+    [Header("References(Interface)")]
+    [SerializeField]
+    private GameObject playerMenuPanel;          //Panel to show/hide
+
+    //Local
+    private NetworkOverlord networkOverlord;    //Used to cache current NetworkOverlord
     private bool isShowing;                     //Used to toggle between showing/hidden state
 
     /// <summary>
@@ -18,7 +24,6 @@ public class PlayerMenu : MonoBehaviour
     /// </summary>
     void Awake()
     {
-        sceneOverlord = GameObject.Find("SceneGM").GetComponent<SceneOverlord>();
         networkOverlord = GameObject.Find("NetworkGM").GetComponent<NetworkOverlord>();
     }
 
@@ -57,7 +62,7 @@ public class PlayerMenu : MonoBehaviour
     /// </summary>
     void ShowPlayerMenu()
     {
-        sceneOverlord.isReceivingInputs = false;
+        playerStats.isReceivingInputs = false;
         playerMenuPanel.SetActive(true);
 
         Cursor.visible = true;
@@ -71,7 +76,7 @@ public class PlayerMenu : MonoBehaviour
     /// </summary>
     void HidePlayerMenu()
     {
-        sceneOverlord.isReceivingInputs = true;
+        playerStats.isReceivingInputs = true;
         playerMenuPanel.SetActive(false);
 
         Cursor.visible = false;

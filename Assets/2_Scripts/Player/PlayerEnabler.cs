@@ -9,32 +9,31 @@ using UnityEngine.Networking;
 /// </summary>
 public class PlayerEnabler : NetworkBehaviour
 {
+    [Header("References(Player)")]
     [SerializeField]
-    private PlayerCall playerCall;
+    private PlayerStats playerStats;    //Reference to acces player team
+    [SerializeField]
+    private PlayerCall playerCall;      //Reference to access player calls
 
     [Header("Modify on client")]
     [SerializeField]
-    public Component[] scripts; //List of scripts (Mainly inputs scripts) to enable client side
+    public Component[] scripts;         //List of scripts (Mainly inputs scripts) to enable client side
     [SerializeField]
     private GameObject playerModel;     //Used to place model on NORENDER layer on client
     [SerializeField]
     private Rigidbody playerRigidBody;  //Used to enable isKinematic depending on team
     [SerializeField]
     private Camera playerCamera;        //Used to enable camera and define render layer according to team
+    [SerializeField]
+    private GameObject playerUI;        //Used to Enable UI if client
 
     [Header("Team specific")]
-    [SerializeField]
-    private PlayerStats playerStats;        //Reference to acces player team
     [SerializeField]
     private PlayerShoot playerShoot;        //This script will be disabled if on SPE team
     [SerializeField]
     private Renderer playerModelRenderer;   //Used to set material according to team
     [SerializeField]
-    private GameObject playerCollider;       //Used to place collider on team layer
-
-    [Header("Interface")]
-    [SerializeField]
-    private GameObject playerUI;     //Material to use when on SPE team
+    private GameObject playerCollider;      //Used to place collider on team layer
 
     [Header("Objects")]
     [SerializeField]
@@ -49,6 +48,15 @@ public class PlayerEnabler : NetworkBehaviour
     /// </summary>
     void Start()
     {
+        EnablePlayer();
+    }
+
+    /// <summary>
+    /// Initialize player taking in account client side specifications
+    /// </summary>
+    private void EnablePlayer()
+    {
+        //Always called for each player on every client/server
         /*
         - Set collider layer according to team
         - Set model layer according to team
@@ -90,7 +98,7 @@ public class PlayerEnabler : NetworkBehaviour
 
             playerModel.gameObject.layer = 9;   //Place PlayerModel on "NORENDER" layer to disable rendering for this client
             playerCamera.enabled = true;        //Enables the camera component of this player
-            playerCall.Call_CreateUI(playerUI);
+            playerUI.SetActive(true);           //Enables player UI (Crosshair, HUD, Menu, etc...)
 
             /*
             - Disable shooting if spectator

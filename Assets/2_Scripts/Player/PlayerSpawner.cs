@@ -16,8 +16,9 @@ public class PlayerSpawner : NetworkBehaviour
     private Text playerRespawnTimeText;     //Text to display respawn time
 
     //Public
-    public PlayerStats.Team newteam = PlayerStats.Team.SPE; //Team to respawn in (to set before respawn)
-    public int respawntime = 2;                             //Time before respawn (Spectator is always 0)
+    [SyncVar]
+    public PlayerStats.Team newteam;    //Team to respawn in (to set before respawn)
+    public int respawntime = 2;         //Time before respawn (Spectator is always 0)
 
     //Local
     private float spawntime;
@@ -28,7 +29,7 @@ public class PlayerSpawner : NetworkBehaviour
         //Instant respawn if in SPE Team
         if (newteam == PlayerStats.Team.SPE)
         {
-            spawntime = Time.time;
+            Cmd_CreatePlayer();
         }
         else
         {

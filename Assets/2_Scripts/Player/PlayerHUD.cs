@@ -3,12 +3,13 @@ using UnityEngine.UI;
 
 public class PlayerHUD : MonoBehaviour
 {
-    [Header("References")]
+    [Header("References(Player)")]
+    [SerializeField]
+    private PlayerStats playerStats; //Used to track player health, defined by playerCall
+
+    [Header("References(Interface)")]
     [SerializeField]
     private Text healthText;
-
-    [Header("Modular")]
-    public PlayerStats playerStats; //Used to track player health, defined by playerCall
 
     /// <summary>
     /// Called whn enabled
@@ -36,6 +37,5 @@ public class PlayerHUD : MonoBehaviour
     {
         healthText.text = playerStats.playerHealth.ToString();
     }
-
 
 }

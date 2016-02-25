@@ -7,7 +7,7 @@
 public class PlayerMove : MonoBehaviour
 {
 
-    [Header("References")]
+    [Header("References(Player)")]
     [SerializeField]
     private Transform playerTransform;
     [SerializeField]
@@ -15,7 +15,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     private PlayerStats playerStats;
 
-    [Header("Stats")]
+    [Header("MoveStats")]
     [SerializeField]
     private float groundspeed = 3.0f;		    //Normal moving speed multiplier
     [SerializeField]
@@ -33,22 +33,11 @@ public class PlayerMove : MonoBehaviour
     private bool isGrounded;    //Stores grounded state
     private int jumpsleft;      //Stores jumps left
 
-    //Cache
-    private SceneOverlord sceneOverlord;
-
     #region DEBUG
     [Header("DEBUG")]
     public bool DBG_movements = false;
     public float DBG_time = 0.2f;
     #endregion
-
-    /// <summary>
-    /// Triggered when script is loaded
-    /// </summary>
-    void Start()
-    {
-        sceneOverlord = GameObject.Find("SceneGM").GetComponent<SceneOverlord>();
-    }
 
     /// <summary>
     /// Called once every frame
@@ -64,7 +53,7 @@ public class PlayerMove : MonoBehaviour
     void Move()
     {
         Vector3 playerInputs = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
-        bool isControllable = sceneOverlord.isReceivingInputs;
+        bool isControllable = playerStats.isReceivingInputs;
 
         if (playerStats.playerTeam != PlayerStats.Team.SPE)
         {

@@ -8,6 +8,7 @@ TagManager:
   - REDSpawn
   - SPESpawn
   - PlayerCollider
+  - PlayerUI
   layers:
   - Default
   - TransparentFX

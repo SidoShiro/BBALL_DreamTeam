@@ -2,12 +2,13 @@
 
 public class PlayerShoot : MonoBehaviour
 {
-    [Header("REFERENCES")]
-    public PlayerStats playerStats;
-    public PlayerCall playerCall;
-    public GameObject playerCollider;
-
-    private SceneOverlord sceneOverlord;
+    [Header("References(Player)")]
+    [SerializeField]
+    private PlayerStats playerStats;
+    [SerializeField]
+    private PlayerCall playerCall;
+    [SerializeField]
+    private GameObject playerCollider;
 
     #region DEBUG
     [Header("DEBUG")]
@@ -17,19 +18,11 @@ public class PlayerShoot : MonoBehaviour
     #endregion
 
     /// <summary>
-    /// Called once when enabled
-    /// </summary>
-    void Start()
-    {
-        sceneOverlord = GameObject.Find("SceneGM").GetComponent<SceneOverlord>();
-    }
-
-    /// <summary>
     /// Called once every frame
     /// </summary>
     void Update()
     {
-        if (sceneOverlord.isReceivingInputs)
+        if (playerStats.isReceivingInputs)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
