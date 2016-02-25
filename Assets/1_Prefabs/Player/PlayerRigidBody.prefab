@@ -271,7 +271,7 @@ GameObject:
   - 224: {fileID: 22435766}
   - 222: {fileID: 22222926}
   - 114: {fileID: 11436110}
-  - 114: {fileID: 11412248}
+  - 114: {fileID: 11449718}
   m_Layer: 5
   m_Name: HealthText
   m_TagString: Untagged
@@ -815,20 +815,6 @@ MonoBehaviour:
   lensDirtTexture: {fileID: 0}
   lensDirtIntensity: 0.05
   inputIsHDR: 1
---- !u!114 &11412248
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 172984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0.17254902, g: 0.18431373, b: 0.2, a: 0.78431374}
-  m_EffectDistance: {x: 2, y: 1}
-  m_UseGraphicAlpha: 1
 --- !u!114 &11414454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -982,7 +968,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 200
+  m_Text: 
 --- !u!114 &11437704
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1227,6 +1213,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11449718
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 172984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1573420865, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.13725491, g: 0.15294118, b: 0.16470589, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!114 &11454090
 MonoBehaviour:
   m_ObjectHideFlags: 1
