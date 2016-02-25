@@ -31,7 +31,8 @@ public class RocketMove : NetworkBehaviour
     [Header("DEBUG")]
     public bool DBG_Trail = false;
     public bool DBG_Explosion = false;
-    public float DBG_time = 1.0f;
+    public float DBG_time_trail = 1.0f;
+    public float DBG_time_explosion = 1.0f;
     #endregion
 
     /// <summary>
@@ -97,7 +98,7 @@ public class RocketMove : NetworkBehaviour
         #region DEBUG
         if (DBG_Trail)
         {
-            DebugExtension.DebugArrow(rocketTransform.position, movediff, new Color32(28, 188, 156, 255), DBG_time, true);
+            DebugExtension.DebugArrow(rocketTransform.position, movediff, new Color32(28, 188, 156, 255), DBG_time_trail, true);
         }
         #endregion
     }
@@ -133,9 +134,9 @@ public class RocketMove : NetworkBehaviour
         #region DEBUG
         if (DBG_Explosion)
         {
-            DebugExtension.DebugWireSphere(explosionpos, Color.blue, 0.05f, DBG_time * 10.0f, true);
-            DebugExtension.DebugPoint(explosionpos, Color.red, 0.05f, DBG_time * 10.0f, true);
-            DebugExtension.DebugWireSphere(explosionpos, Color.green, 2.0f, 10.0f, true);
+            DebugExtension.DebugWireSphere(explosionpos, Color.blue, 0.05f, DBG_time_explosion * 10.0f, true);
+            DebugExtension.DebugPoint(explosionpos, Color.red, 0.05f, DBG_time_explosion * 10.0f, true);
+            DebugExtension.DebugWireSphere(explosionpos, Color.green, 2.0f, DBG_time_explosion * 10.0f, true);
         }
         #endregion
     }

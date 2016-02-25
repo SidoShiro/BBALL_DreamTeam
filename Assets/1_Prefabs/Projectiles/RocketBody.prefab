@@ -143,7 +143,7 @@ MonoBehaviour:
   ps: {fileID: 19869192}
   DBG_Trail: 1
   DBG_Explosion: 1
-  DBG_time: 2
+  DBG_time: 1
 --- !u!114 &11494862
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1816,7 +1816,7 @@ Prefab:
       objectReference: {fileID: 19869192}
     - target: {fileID: 0}
       propertyPath: DBG_time
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
