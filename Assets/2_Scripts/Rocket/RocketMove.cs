@@ -98,7 +98,7 @@ public class RocketMove : NetworkBehaviour
         #region DEBUG
         if (DBG_Trail)
         {
-            DebugExtension.DebugArrow(rocketTransform.position, movediff, new Color32(28, 188, 156, 255), DBG_time_trail, true);
+            DebugExtension.DebugArrow(rocketTransform.position, movediff, new Color32(126, 52, 157, 255), DBG_time_trail, true);
         }
         #endregion
     }

@@ -70,6 +70,14 @@ public class PlayerCall : MonoBehaviour
     }
 
     /// <summary>
+    /// Updates ammo display on HUD
+    /// </summary>
+    public void Call_UpdateAmmo(int ammo)
+    {
+        playerHUD.UpdateAmmo(ammo);
+    }
+
+    /// <summary>
     /// Call for this player to shoot a rocket ( !!! Should not be called by anything else than PlayerShoot !!! )
     /// </summary>
     /// <param name="rocketBody">Rocket prefab</param>
@@ -104,7 +112,7 @@ public class PlayerCall : MonoBehaviour
         int damage = (int)((2.0f - distance) * 100 / 2.0f);
 
         //Damage application
-        Call_DamagePlayer(damage);
+        Call_DamagePlayer(10 + damage * 0); // HACK : replace by "damage"
     }
     #endregion
 
