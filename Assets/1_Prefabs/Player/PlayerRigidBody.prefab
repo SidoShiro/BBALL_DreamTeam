@@ -273,7 +273,7 @@ GameObject:
   - 114: {fileID: 11471712}
   - 114: {fileID: 11486318}
   - 114: {fileID: 11494860}
-  - 114: {fileID: 11480584}
+  - 114: {fileID: 11496596}
   m_Layer: 0
   m_Name: PlayerRigidBody
   m_TagString: Player
@@ -1424,7 +1424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTeam: 0
-  playerHealth: 200
+  playerHealth: 300
   isCarrying: 0
   isReceivingInputs: 0
 --- !u!114 &11468270
@@ -1597,26 +1597,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11480584
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
-  m_SendInterval: 0.033333335
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_SnapThreshold: 15
-  m_InterpolateRotation: 25
-  m_InterpolateMovement: 1
 --- !u!114 &11484288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1837,6 +1817,18 @@ MonoBehaviour:
     i15: 5
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
+--- !u!114 &11496596
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4ee212a5931d454cb459639c69175a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 495368}
 --- !u!114 &11497470
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1851,7 +1843,7 @@ MonoBehaviour:
   playerStats: {fileID: 11466942}
   playerCall: {fileID: 11494308}
   playerCollider: {fileID: 174668}
-  maxammo: 3
+  maxammo: 5
   recoiltime: 0.8
   reloadtime: 1
   playerFireOutputTransform: {fileID: 411506}
