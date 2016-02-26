@@ -16,6 +16,10 @@ public class PlayerEnabler : NetworkBehaviour
     [SerializeField]
     private PlayerCall playerCall;      //Reference to access player calls
 
+    [Header("References(Interface)")]
+    [SerializeField]
+    private PlayerHUD playerHUD;
+
     [Header("Modify on client")]
     [SerializeField]
     public Component[] scripts;         //List of scripts (Mainly inputs scripts) to enable client side
@@ -89,7 +93,7 @@ public class PlayerEnabler : NetworkBehaviour
         }
 
         //Called only when the player spawned is owned by the client
-        if (isLocalPlayer)
+        if (isLocalPlayer)  //TODO : Safeguards (Disable if not local, etc ...)
         {
             //Enable client side scripts (So you only control this player and not others)
             foreach (MonoBehaviour mono in scripts)
@@ -97,9 +101,18 @@ public class PlayerEnabler : NetworkBehaviour
                 mono.enabled = true;
             }
 
-            playerModel.gameObject.layer = 9;   //Place PlayerModel on "NORENDER" layer to disable rendering for this client
-            playerCamera.enabled = true;        //Enables the camera component of this player
-            playerUI.SetActive(true);           //Enables player UI (Crosshair, HUD, Menu, etc...)
+            playerModel.gameObject.layer = 9;                   //Place PlayerModel on "NORENDER" layer to disable rendering for this client
+            playerCamera.enabled = true;                        //Enables the camera component of this player
+            playerUI.SetActive(true);                           //Enables player UI (Crosshair, HUD, Menu, etc...)
+
+            if(playerStats.playerTeam == PlayerStats.Team.SPE)
+            {
+                playerHUD.enabled = false;
+            }
+            else
+            {
+                playerCall.Call_UpdateHealth();
+            }
 
             /*
             - Disable shooting if spectator

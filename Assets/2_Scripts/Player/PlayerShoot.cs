@@ -10,6 +10,19 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField]
     private GameObject playerCollider;
 
+    [Header("Settings")]
+    [SerializeField]
+    private int maxammo;
+    [SerializeField]
+    private float recoiltime;
+    [SerializeField]
+    private float reloadtime;
+
+    //Local
+    private float nextshottime;
+    private int currentammo;
+    private float nextreloadtime;
+
     #region DEBUG
     [Header("DEBUG")]
     public Transform playerFireOutputTransform;
@@ -18,17 +31,29 @@ public class PlayerShoot : MonoBehaviour
     #endregion
 
     /// <summary>
+    /// Called once when enabled
+    /// </summary>
+    void Start()
+    {
+        nextshottime = Time.time;
+        currentammo = maxammo;
+        playerCall.Call_UpdateAmmo(currentammo);
+    }
+
+    /// <summary>
     /// Called once every frame
     /// </summary>
     void Update()
     {
         if (playerStats.isReceivingInputs)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKey(KeyCode.Mouse0))
             {
-                ShootRocket();
+                TryShootRocket();
             }
         }
+
+        ConstantReload();
 
         #region DEBUG
         if (DBG_aim)
@@ -43,10 +68,37 @@ public class PlayerShoot : MonoBehaviour
         #endregion
     }
 
+    private void ConstantReload()
+    {
+        float time = Time.time;
+        if(currentammo < maxammo && nextreloadtime < time)
+        {
+            ++currentammo;
+            nextreloadtime = time + reloadtime;
+            playerCall.Call_UpdateAmmo(currentammo);
+        }
+    }
+
+    /// <summary>
+    /// Tries to shoot a rocket
+    /// </summary>
+    private void TryShootRocket()
+    {
+        float time = Time.time;
+        if(nextshottime <= time && currentammo > 0)
+        {
+            ShootRocket();
+            nextshottime = time + recoiltime;
+            --currentammo;
+            nextreloadtime = time + reloadtime;
+            playerCall.Call_UpdateAmmo(currentammo);
+        }
+    }
+
     /// <summary>
     /// Instantiante a rocket at gun position with correct rotation in order to reach player aiming point
     /// </summary>
-    void ShootRocket()
+    private void ShootRocket()
     {
         LayerMask layerMask = ~LayerMask.GetMask("BLU", "RED", "SPE");
         RaycastHit hit;                                                                                 //Used to store raycast hit data
