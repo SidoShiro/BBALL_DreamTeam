@@ -1418,6 +1418,18 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11466942, guid: 98cc675f9e78ec14a9b0b8ca46b38205, type: 2}
+      propertyPath: playerHealth
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 11466942, guid: 98cc675f9e78ec14a9b0b8ca46b38205, type: 2}
+      propertyPath: isCarrying
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11466942, guid: 98cc675f9e78ec14a9b0b8ca46b38205, type: 2}
+      propertyPath: isReceivingInputs
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 98cc675f9e78ec14a9b0b8ca46b38205, type: 2}
   m_IsPrefabParent: 0
