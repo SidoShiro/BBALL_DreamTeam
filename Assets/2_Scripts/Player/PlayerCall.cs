@@ -18,6 +18,12 @@ public class PlayerCall : MonoBehaviour
     private Rigidbody playerRigidBody;
     #endregion
 
+    [Header("References(Interface)")]
+    #region References(Interface)
+    [SerializeField]
+    private PlayerHUD playerHUD;
+    #endregion
+
     /// <summary>
     /// Apllies damage to the player
     /// </summary>
@@ -32,6 +38,7 @@ public class PlayerCall : MonoBehaviour
         {
             playerStats.playerHealth -= dmg;
         }
+        Call_UpdateHealth();
     }
 
     /// <summary>
@@ -53,6 +60,14 @@ public class PlayerCall : MonoBehaviour
     }
 
     #region AUTOCALLS
+
+    /// <summary>
+    /// Updates health display on HUD
+    /// </summary>
+    public void Call_UpdateHealth()
+    {
+        playerHUD.UpdateHealth(playerStats.playerHealth);
+    }
 
     /// <summary>
     /// Call for this player to shoot a rocket ( !!! Should not be called by anything else than PlayerShoot !!! )
@@ -82,7 +97,7 @@ public class PlayerCall : MonoBehaviour
     {
         //Damage calculs
         float distance = Vector3.Distance(playerTransform.position, explosionpos);  //Distance between player and explosion
-        if (distance > 2.0f || playerStats.playerTeam == PlayerStats.Team.SPE || playerStats.playerTeam == rocketTeam)
+        if (distance > 2.0f || playerStats.playerTeam == PlayerStats.Team.SPE /*|| playerStats.playerTeam == rocketTeam*/)
         {
             return;
         }

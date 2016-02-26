@@ -6,7 +6,7 @@ public class JoinTuto : MonoBehaviour
 
     public void TutoJoin()
     {
-        Application.LoadLevel(4);
+        //Application.LoadLevel(4);
     }
 
     
