@@ -5411,7 +5411,7 @@ MonoBehaviour:
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 0
   m_OfflineScene: _MainMenu
-  m_OnlineScene: bball_tuto
+  m_OnlineScene: sand_box
   m_SpawnPrefabs:
   - {fileID: 169552, guid: 98cc675f9e78ec14a9b0b8ca46b38205, type: 2}
   - {fileID: 128804, guid: 89db5062cd5c17b4ba6e670e5c7238df, type: 2}
@@ -5603,6 +5603,60 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1960266333}
+--- !u!1001 &1961390005
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 472594, guid: 89db5062cd5c17b4ba6e670e5c7238df, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 472594, guid: 89db5062cd5c17b4ba6e670e5c7238df, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.1554
+      objectReference: {fileID: 0}
+    - target: {fileID: 472594, guid: 89db5062cd5c17b4ba6e670e5c7238df, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 472594, guid: 89db5062cd5c17b4ba6e670e5c7238df, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 472594, guid: 89db5062cd5c17b4ba6e670e5c7238df, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 472594, guid: 89db5062cd5c17b4ba6e670e5c7238df, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 472594, guid: 89db5062cd5c17b4ba6e670e5c7238df, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 472594, guid: 89db5062cd5c17b4ba6e670e5c7238df, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 19914898, guid: 89db5062cd5c17b4ba6e670e5c7238df, type: 2}
+      propertyPath: m_RenderAlignment
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19914898, guid: 89db5062cd5c17b4ba6e670e5c7238df, type: 2}
+      propertyPath: m_SortMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19914898, guid: 89db5062cd5c17b4ba6e670e5c7238df, type: 2}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 89db5062cd5c17b4ba6e670e5c7238df, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1971475037
 GameObject:
   m_ObjectHideFlags: 0
