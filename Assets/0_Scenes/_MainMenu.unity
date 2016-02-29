@@ -5642,18 +5642,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 19914898, guid: 89db5062cd5c17b4ba6e670e5c7238df, type: 2}
-      propertyPath: m_RenderAlignment
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 19914898, guid: 89db5062cd5c17b4ba6e670e5c7238df, type: 2}
-      propertyPath: m_SortMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 19914898, guid: 89db5062cd5c17b4ba6e670e5c7238df, type: 2}
-      propertyPath: m_ReceiveShadows
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 89db5062cd5c17b4ba6e670e5c7238df, type: 2}
   m_IsPrefabParent: 0
