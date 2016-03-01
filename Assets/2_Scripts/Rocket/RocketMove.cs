@@ -4,13 +4,11 @@ using UnityEngine.Networking;
 [NetworkSettings(channel = 3, sendInterval = 0.1f)]
 public class RocketMove : NetworkBehaviour
 {
-    [Header("STATS")]
+    [Header("References(Rocket)")]
     [SerializeField]
     private float moveSpeed = 20.0f;
     [SerializeField]
     private GameObject rocketModel;
-    [SerializeField]
-    private GameObject rocketTrail;
     [SerializeField]
     private GameObject rocketExplosion;
 
@@ -23,10 +21,6 @@ public class RocketMove : NetworkBehaviour
     [SerializeField]
     private Transform rocketTransform;
 
-    [SerializeField]
-    private ParticleSystem ps;
-    private ParticleSystem.EmissionModule em;
-
     #region DEBUG
     [Header("DEBUG")]
     public bool DBG_Trail = false;
@@ -36,21 +30,11 @@ public class RocketMove : NetworkBehaviour
     #endregion
 
     /// <summary>
-    /// Called once when instantiated
-    /// </summary>
-    void Awake()
-    {
-        em = ps.emission;
-        rocketTrail.SetActive(false);
-    }
-
-    /// <summary>
     /// Called once when script is enabled
     /// </summary>
     void Start()
     {
         rocketTransform.rotation = rocketRotation;  //hack Fix Client bug
-        //rocketTrail.SetActive(true);
         Destroy(gameObject, 10.0f);
     }
 
@@ -86,13 +70,14 @@ public class RocketMove : NetworkBehaviour
                 break;
         }
 
-        if (Physics.Linecast(rocketTransform.position, rocketTransform.position + movediff, out hit, layerMask,QueryTriggerInteraction.Ignore))
+        if (Physics.Linecast(rocketTransform.position, rocketTransform.position + movediff, out hit, layerMask, QueryTriggerInteraction.Ignore))
         {
             Explode(hit.point);
         }
         else
         {
             rocketTransform.position += movediff;
+            //trailrend.material.SetTextureOffset("_MainTex", new Vector2(trailrend.material.mainTextureOffset.x - movediff.magnitude / 10, 0.0f));
         }
 
         #region DEBUG
@@ -109,10 +94,7 @@ public class RocketMove : NetworkBehaviour
     /// <param name="explosionpos">Position of the explosion</param>
     void Explode(Vector3 explosionpos)
     {
-        rocketTrail.transform.parent = null;    //Remove the smoketrail from being child of the rocket to prevent deletion
         Destroy(gameObject);                    //Destroys the rocket and everything still attached to it
-        em.enabled = false;                     //Stops the trail from emitting more particles
-        Destroy(rocketTrail, 1.0f);             //Destroys the trail (Once every particle disapeared)
         GameObject explosion = (GameObject)Instantiate(rocketExplosion, explosionpos, Quaternion.identity);
         Destroy(explosion, 1.0f);
 
@@ -124,7 +106,7 @@ public class RocketMove : NetworkBehaviour
         if (isClient)
         {
             GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-            foreach(GameObject player in players)
+            foreach (GameObject player in players)
             {
                 player.GetComponent<PlayerCall>().Call_AddExplosionForce(explosionpos);
                 player.GetComponent<PlayerCall>().Call_ExplosionDamage(explosionpos, rocketTeam);
