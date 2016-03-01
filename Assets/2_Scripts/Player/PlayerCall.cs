@@ -94,7 +94,7 @@ public class PlayerCall : MonoBehaviour
     /// <param name="explosionpos"></param>
     public void Call_AddExplosionForce(Vector3 explosionpos)
     {
-        playerRigidBody.AddExplosionForce(10.0f, explosionpos, 2.0f, 0.1f, ForceMode.VelocityChange);
+        playerRigidBody.AddExplosionForce(10.0f, explosionpos, 2.0f, 0.0f, ForceMode.VelocityChange);
     }
 
     /// <summary>

@@ -119,7 +119,7 @@ public class PlayerMove : MonoBehaviour
     /// </summary>
     void Jump(Vector3 inputsvector)
     {
-        if (jumpsleft != 0)
+        if (jumpsleft != 0 && isGrounded)
         {
             inputsvector = transform.TransformDirection(inputsvector);  //Change orientation of jumpdirection to local
             inputsvector.y = Mathf.Sqrt(2.0f * jumpheight * 9.81f);     //Calculate jump power needed to reach height
