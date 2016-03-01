@@ -39,6 +39,7 @@ public class PlayerCommand : NetworkBehaviour
     [Command]
     public void Cmd_ShootRocket(Vector3 targetposition, Quaternion targetrotation, PlayerStats.Team newteam)
     {
+        //rocketBody.transform.rotation = targetrotation;
         GameObject rocket = (GameObject)Instantiate(rocketBody, targetposition, targetrotation);    //Spawns rocket at gunpoint with needed rotation
         rocket.GetComponent<RocketMove>().rocketTeam = newteam;                                     //Give rocket same layer as player
         rocket.GetComponent<RocketMove>().rocketRotation = targetrotation;                          //Set rocket starting rotation
