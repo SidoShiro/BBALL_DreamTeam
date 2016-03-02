@@ -94,7 +94,7 @@ public class PlayerCall : MonoBehaviour
     /// <param name="explosionpos"></param>
     public void Call_AddExplosionForce(Vector3 explosionpos)
     {
-        playerRigidBody.AddExplosionForce(10.0f, explosionpos, 2.0f, 0.0f, ForceMode.VelocityChange);
+        playerRigidBody.AddExplosionForce(10.0f, explosionpos, 2.0f, 0.5f, ForceMode.VelocityChange);
     }
 
     /// <summary>
@@ -105,14 +105,14 @@ public class PlayerCall : MonoBehaviour
     {
         //Damage calculs
         float distance = Vector3.Distance(playerTransform.position, explosionpos);  //Distance between player and explosion
-        if (distance > 2.0f || playerStats.playerTeam == PlayerStats.Team.SPE /*|| playerStats.playerTeam == rocketTeam*/)
+        if (distance > 2.0f || playerStats.playerTeam == PlayerStats.Team.SPE || playerStats.playerTeam == rocketTeam)
         {
             return;
         }
         int damage = (int)((2.0f - distance) * 100 / 2.0f);
 
         //Damage application
-        Call_DamagePlayer(10 + damage * 0); // HACK : replace by "damage"
+        Call_DamagePlayer(damage);
     }
     #endregion
 

@@ -166,6 +166,8 @@ MonoBehaviour:
   moveSpeed: 20
   rocketModel: {fileID: 188256}
   rocketExplosion: {fileID: 133762, guid: 2b6bfa00035c3a248a7a550f00cd15db, type: 2}
+  rocketTrail: {fileID: 171572}
+  ps: {fileID: 19812450}
   rocketTeam: 0
   rocketRotation: {x: 0, y: 0, z: 0, w: 0}
   rocketTransform: {fileID: 472594}

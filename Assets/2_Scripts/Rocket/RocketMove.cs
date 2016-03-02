@@ -11,6 +11,10 @@ public class RocketMove : NetworkBehaviour
     private GameObject rocketModel;
     [SerializeField]
     private GameObject rocketExplosion;
+    [SerializeField]
+    private GameObject rocketTrail;
+    [SerializeField]
+    private ParticleSystem ps;
 
     [SyncVar]
     public PlayerStats.Team rocketTeam;
@@ -21,6 +25,7 @@ public class RocketMove : NetworkBehaviour
     [SerializeField]
     private Transform rocketTransform;
 
+    private ParticleSystem.EmissionModule em;
     #region DEBUG
     [Header("DEBUG")]
     public bool DBG_Trail = false;
@@ -34,6 +39,7 @@ public class RocketMove : NetworkBehaviour
     /// </summary>
     void Start()
     {
+        em = ps.emission;
         rocketTransform.rotation = rocketRotation;  //hack Fix Client bug
         Destroy(gameObject, 10.0f);
     }
@@ -94,6 +100,9 @@ public class RocketMove : NetworkBehaviour
     /// <param name="explosionpos">Position of the explosion</param>
     void Explode(Vector3 explosionpos)
     {
+        rocketTrail.transform.parent = null;
+        em.enabled = false;
+        Destroy(rocketTrail, 0.4f);
         Destroy(gameObject);                    //Destroys the rocket and everything still attached to it
         GameObject explosion = (GameObject)Instantiate(rocketExplosion, explosionpos, Quaternion.identity);
         Destroy(explosion, 1.0f);

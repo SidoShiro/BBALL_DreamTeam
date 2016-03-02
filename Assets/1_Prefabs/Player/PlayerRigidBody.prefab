@@ -286,7 +286,6 @@ GameObject:
   - 114: {fileID: 11497470}
   - 114: {fileID: 11414454}
   - 114: {fileID: 11471712}
-  - 114: {fileID: 11486318}
   - 114: {fileID: 11494860}
   - 114: {fileID: 11496596}
   - 114: {fileID: 11431692}
@@ -323,8 +322,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 451572}
-  - 65: {fileID: 6503254}
-  - 136: {fileID: 13626824}
+  - 135: {fileID: 13574416}
   m_Layer: 0
   m_Name: PlayerCollider
   m_TagString: PlayerCollider
@@ -590,18 +588,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
---- !u!65 &6503254
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 174668}
-  m_Material: {fileID: 13400000, guid: 03296bc911ba38a42a473a9b95248849, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!81 &8150304
 AudioListener:
   m_ObjectHideFlags: 1
@@ -857,7 +843,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169174}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c12500f3afdeb24d9444042960a4cb9, type: 3}
   m_Name: 
@@ -980,7 +966,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169552}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
   m_Name: 
@@ -1000,7 +986,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169174}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a970acddb8696a4792ca6e022840a0e, type: 3}
   m_Name: 
@@ -1017,7 +1003,7 @@ MonoBehaviour:
   OcclusionColor: {r: 0, g: 0, b: 0, a: 1}
   CutoffDistance: 150
   CutoffFalloff: 50
-  Blur: 0
+  Blur: 1
   BlurDownsampling: 0
   BlurPasses: 1
   BlurBilateralThreshold: 0.1
@@ -1145,7 +1131,6 @@ MonoBehaviour:
   - {fileID: 11473954}
   - {fileID: 11414454}
   - {fileID: 11471712}
-  - {fileID: 11486318}
   playerModel: {fileID: 182066}
   playerRigidBody: {fileID: 5487520}
   playerCamera: {fileID: 2043206}
@@ -1473,7 +1458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ad1467103ad1c4696fd4c6b43655db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTeam: 0
+  playerTeam: 1
   playerHealth: 300
   isCarrying: 0
   isReceivingInputs: 0
@@ -1706,18 +1691,6 @@ MonoBehaviour:
   shaderFXAAPreset3: {fileID: 4800000, guid: c182fa94a5a0a4c02870641efcd38cd5, type: 3}
   shaderFXAAII: {fileID: 4800000, guid: cd5b323dcc592457790ff18b528f5e67, type: 3}
   shaderFXAAIII: {fileID: 4800000, guid: c547503fff0e8482ea5793727057041c, type: 3}
---- !u!114 &11486318
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169552}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1efbc0600e7ac754aa84eefadb6a33e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerCollider: {fileID: 6503254}
 --- !u!114 &11487110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1873,7 +1846,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169552}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4ee212a5931d454cb459639c69175a0, type: 3}
   m_Name: 
@@ -1906,8 +1879,8 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169174}
   m_Enabled: 0
---- !u!136 &13626824
-CapsuleCollider:
+--- !u!135 &13574416
+SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -1915,9 +1888,8 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: 03296bc911ba38a42a473a9b95248849, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.25
-  m_Height: 1
-  m_Direction: 1
+  serializedVersion: 2
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!222 &22203022
 CanvasRenderer:
@@ -2387,7 +2359,7 @@ Prefab:
       objectReference: {fileID: 174668}
     - target: {fileID: 0}
       propertyPath: playerTeam
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsKinematic
