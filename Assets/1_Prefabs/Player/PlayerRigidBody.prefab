@@ -524,7 +524,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 70
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -836,7 +836,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: REDLOW
+  m_Text: '> JOIN <'
 --- !u!114 &11411192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1073,7 +1073,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: BLURPLE
+  m_Text: '> JOIN <'
 --- !u!114 &11438324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1532,7 +1532,7 @@ MonoBehaviour:
   groundspeed: 3
   airspeed: 2
   maxairacceleration: 0
-  jumpheight: 1.2
+  jumpheight: 0.5
   smoothfactor: 1
   PossibleJumps: 1
   DBG_movements: 1
@@ -1576,7 +1576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.44705883, g: 0.5372549, b: 0.85490197, a: 1}
+  m_Color: {r: 0.20392157, g: 0.59607846, b: 0.85882354, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1617,7 +1617,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9529412, g: 0.6117647, b: 0.07058824, a: 1}
+  m_Color: {r: 0.90588236, g: 0.29803923, b: 0.23529412, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
