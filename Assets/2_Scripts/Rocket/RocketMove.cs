@@ -26,6 +26,7 @@ public class RocketMove : NetworkBehaviour
     private Transform rocketTransform;
 
     private ParticleSystem.EmissionModule em;
+
     #region DEBUG
     [Header("DEBUG")]
     public bool DBG_Trail = false;
@@ -60,31 +61,14 @@ public class RocketMove : NetworkBehaviour
         RaycastHit hit;
         Vector3 movediff = rocketTransform.forward * moveSpeed * Time.deltaTime;
 
-        LayerMask layerMask = 10;
-        switch (rocketTeam)
+        LayerMask layerMask = m_Custom.GetLayerFromTeam(rocketTeam);
+
+        if (isServer && Physics.Linecast(rocketTransform.position, rocketTransform.position + movediff, out hit, layerMask, QueryTriggerInteraction.Ignore))
         {
-            case PlayerStats.Team.BLU:
-                layerMask = m_Custom.layerMaskBLU;
-                break;
-
-            case PlayerStats.Team.RED:
-                layerMask = m_Custom.layerMaskRED;
-                break;
-
-            default:
-                Debug.Log("SHOULD NOT HAVE HAPPENED: Player team not expected in RocketMove/Move");
-                break;
+            Rpc_Explode(hit.point);
         }
 
-        if (Physics.Linecast(rocketTransform.position, rocketTransform.position + movediff, out hit, layerMask, QueryTriggerInteraction.Ignore))
-        {
-            Explode(hit.point);
-        }
-        else
-        {
-            rocketTransform.position += movediff;
-            //trailrend.material.SetTextureOffset("_MainTex", new Vector2(trailrend.material.mainTextureOffset.x - movediff.magnitude / 10, 0.0f));
-        }
+        rocketTransform.position += movediff;
 
         #region DEBUG
         if (DBG_Trail)
@@ -94,33 +78,23 @@ public class RocketMove : NetworkBehaviour
         #endregion
     }
 
-    /// <summary>
-    /// Makes the rocket explode
-    /// </summary>
-    /// <param name="explosionpos">Position of the explosion</param>
-    void Explode(Vector3 explosionpos)
+    [ClientRpc]
+    void Rpc_Explode(Vector3 explosionpos)
     {
-        rocketTrail.transform.parent = null;
-        em.enabled = false;
-        Destroy(rocketTrail, 0.4f);
-        Destroy(gameObject);                    //Destroys the rocket and everything still attached to it
+        //Explosion
         GameObject explosion = (GameObject)Instantiate(rocketExplosion, explosionpos, Quaternion.identity);
         Destroy(explosion, 1.0f);
 
-        if (isServer)
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject player in players)
         {
-            NetworkServer.Destroy(gameObject);
+            player.GetComponent<PlayerCall>().Call_ExplosionDamage(explosionpos, rocketTeam);
         }
 
-        if (isClient)
-        {
-            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-            foreach (GameObject player in players)
-            {
-                player.GetComponent<PlayerCall>().Call_AddExplosionForce(explosionpos);
-                player.GetComponent<PlayerCall>().Call_ExplosionDamage(explosionpos, rocketTeam);
-            }
-        }
+        //Trail
+        rocketTrail.transform.parent = null;
+        em.enabled = false;
+        Destroy(rocketTrail, 0.4f);
 
         #region DEBUG
         if (DBG_Explosion)
@@ -130,5 +104,7 @@ public class RocketMove : NetworkBehaviour
             DebugExtension.DebugWireSphere(explosionpos, Color.green, 2.0f, DBG_time_explosion * 10.0f, true);
         }
         #endregion
+
+        Destroy(gameObject);    //Destroys the rocket and everything still attached to it
     }
 }

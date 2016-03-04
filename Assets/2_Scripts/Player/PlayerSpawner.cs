@@ -49,7 +49,13 @@ public class PlayerSpawner : NetworkBehaviour
             stop = true;
         }
 
-        playerRespawnTimeText.text = (spawntime - time).ToString("0.00");   //Display format respawn timer and siplay it
+        float rtime = spawntime - time;
+        if (rtime < 0)
+        {
+            rtime = 0;
+        }
+
+        playerRespawnTimeText.text = rtime.ToString("0.00");   //Display format respawn timer and siplay it
 
     }
 

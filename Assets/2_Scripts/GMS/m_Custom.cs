@@ -8,6 +8,22 @@ public class m_Custom : MonoBehaviour
     private static LayerMask _layerMaskNOSPE = ~LayerMask.GetMask("NORENDER", "SPE");
     private static LayerMask _layerMaskWTSPE = ~LayerMask.GetMask("NORENDER");
 
+    public static LayerMask GetLayerFromTeam(PlayerStats.Team team)
+    {
+        switch (team)
+        {
+            case PlayerStats.Team.BLU:
+                return layerMaskBLU;
+
+            case PlayerStats.Team.RED:
+                return layerMaskRED;
+
+            default:
+                Debug.Log("SHOULD NOT HAVE HAPPENED: Player team not expected in m_Custom/GetLayerFromTeam");
+                return 10;
+        }
+    }
+
     #region GET/SET
     public static LayerMask layerMaskBLU
     {

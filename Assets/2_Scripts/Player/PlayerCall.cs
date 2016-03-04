@@ -9,7 +9,7 @@ public class PlayerCall : MonoBehaviour
     [Header("References(Player)")]
     #region References(Player)
     [SerializeField]
-    private Transform playerTransform;
+    private Transform playerCenter;
     [SerializeField]
     private PlayerStats playerStats;
     [SerializeField]
@@ -94,25 +94,29 @@ public class PlayerCall : MonoBehaviour
     /// <param name="explosionpos"></param>
     public void Call_AddExplosionForce(Vector3 explosionpos)
     {
-        playerRigidBody.AddExplosionForce(10.0f, explosionpos, 2.0f, 0.5f, ForceMode.VelocityChange);
+        playerRigidBody.AddExplosionForce(10.0f, explosionpos, 2.0f, 0.0f, ForceMode.VelocityChange);
     }
 
     /// <summary>
     /// Calculates damage according to position
     /// </summary>
     /// <param name="explosionpos"></param>
-    public void Call_ExplosionDamage(Vector3 explosionpos, PlayerStats.Team rocketTeam)
+    public void Call_ExplosionDamage(Vector3 explosionpos, PlayerStats.Team explosionTeam)
     {
         //Damage calculs
-        float distance = Vector3.Distance(playerTransform.position, explosionpos);  //Distance between player and explosion
-        if (distance > 2.0f || playerStats.playerTeam == PlayerStats.Team.SPE || playerStats.playerTeam == rocketTeam)
+        if (!Physics.Linecast(explosionpos, playerCenter.position, LayerMask.GetMask("Default"), QueryTriggerInteraction.Ignore))
         {
-            return;
-        }
-        int damage = (int)((2.0f - distance) * 100 / 2.0f);
+            Call_AddExplosionForce(explosionpos);
+            float distance = Vector3.Distance(playerCenter.position, explosionpos);  //Distance between player and explosion
+            if (distance > 2.0f || playerStats.playerTeam == PlayerStats.Team.SPE || playerStats.playerTeam == explosionTeam)
+            {
+                return;
+            }
+            int damage = (int)((2.0f - distance) * 100 / 2.0f);
 
-        //Damage application
-        Call_DamagePlayer(damage);
+            //Damage application
+            Call_DamagePlayer(damage);
+        }
     }
     #endregion
 

@@ -288,7 +288,6 @@ GameObject:
   - 114: {fileID: 11471712}
   - 114: {fileID: 11494860}
   - 114: {fileID: 11496596}
-  - 114: {fileID: 11431692}
   m_Layer: 0
   m_Name: PlayerRigidBody
   m_TagString: Player
@@ -867,7 +866,7 @@ MonoBehaviour:
   playerStats: {fileID: 11466942}
   targetObject: {fileID: 156104}
   axes: 2
-  sensitivityX: 10
+  sensitivityX: 5
   sensitivityY: 10
   minimumX: -360
   maximumX: 360
@@ -960,26 +959,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11431692
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169552}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
-  m_SendInterval: 0.033333335
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_SnapThreshold: 50
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
 --- !u!114 &11433006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1509,7 +1488,7 @@ MonoBehaviour:
   playerStats: {fileID: 11466942}
   targetObject: {fileID: 169552}
   axes: 1
-  sensitivityX: 10
+  sensitivityX: 5
   sensitivityY: 10
   minimumX: -360
   maximumX: 360
@@ -1532,7 +1511,7 @@ MonoBehaviour:
   groundspeed: 3
   airspeed: 2
   maxairacceleration: 0
-  jumpheight: 0.5
+  jumpheight: 1.2
   smoothfactor: 1
   PossibleJumps: 1
   DBG_movements: 1
@@ -1782,7 +1761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de6a3a2556b384e41901f32d9608cb99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 495368}
+  playerCenter: {fileID: 420356}
   playerStats: {fileID: 11466942}
   playerCommand: {fileID: 11460046}
   playerRigidBody: {fileID: 5487520}
