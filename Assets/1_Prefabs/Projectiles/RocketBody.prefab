@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32acf70cb79dbcf4fbd86d954095d742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 20
+  moveSpeed: 15
   rocketModel: {fileID: 188256}
   rocketExplosion: {fileID: 133762, guid: 2b6bfa00035c3a248a7a550f00cd15db, type: 2}
   rocketTrail: {fileID: 171572}
@@ -3352,7 +3352,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: moveSpeed
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: InitialModule.startColor.maxColor.rgba
