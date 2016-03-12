@@ -28,10 +28,13 @@ public class PlayerMove : MonoBehaviour
     private float smoothfactor = 1.0f;          //Movement smoothing factor
     [SerializeField]
     private int PossibleJumps = 1;              //Number of jumps
+    [SerializeField]
+    private float forceairtime;
 
     //Private variables
-    private bool isGrounded;    //Stores grounded state
-    private int jumpsleft;      //Stores jumps left
+    private bool isGrounded;        //Stores grounded state
+    private int jumpsleft;          //Stores jumps left
+    private float nextairtime;      //Stores next unground time
 
     #region DEBUG
     [Header("DEBUG")]
@@ -39,17 +42,33 @@ public class PlayerMove : MonoBehaviour
     public float DBG_time = 0.2f;
     #endregion
 
-    public void SetGrounded(bool b)
+    /// <summary>
+    /// Called once every frame
+    /// </summary>
+	void Update()
     {
-        isGrounded = b;
+        CheckAirborne();
+        Move();
     }
 
-/// <summary>
-/// Called once every frame
-/// </summary>
-void Update()
+    /// <summary>
+    /// Force airborne state
+    /// </summary>
+    public void ForceAirborne()
     {
-        Move();
+        nextairtime = Time.time + forceairtime;
+    }
+
+    /// <summary>
+    /// Prevent being grounded if in force Mode
+    /// </summary>
+    void CheckAirborne()
+    {
+        float time = Time.time;
+        if (time < nextairtime)
+        {
+            isGrounded = false;
+        }
     }
 
     /// <summary>

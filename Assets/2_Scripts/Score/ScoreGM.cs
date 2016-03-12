@@ -1,9 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 
-public class ScoreGM : MonoBehaviour {
+
+public class ScoreGM : NetworkBehaviour
+{
 
     // Scores
+    [SyncVar]
     public int score_blue;
+    [SyncVar]
     public int score_red;
 
     public void TeamScored(PlayerStats.Team team)
@@ -24,5 +29,13 @@ public class ScoreGM : MonoBehaviour {
                 break;
 
         }
+
+        GameObject[] player_list = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach (GameObject player in player_list)
+        {
+            player.GetComponent<PlayerCommand>().Rpc_UpdateScore();
+        }
+
     }
 }
