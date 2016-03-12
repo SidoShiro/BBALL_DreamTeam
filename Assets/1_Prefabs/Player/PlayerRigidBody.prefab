@@ -1514,6 +1514,7 @@ MonoBehaviour:
   jumpheight: 1.2
   smoothfactor: 1
   PossibleJumps: 1
+  forceairtime: 0.1
   DBG_movements: 1
   DBG_time: 0.2
 --- !u!114 &11476872
@@ -1764,6 +1765,7 @@ MonoBehaviour:
   playerCenter: {fileID: 420356}
   playerStats: {fileID: 11466942}
   playerCommand: {fileID: 11460046}
+  playerMove: {fileID: 11473954}
   playerRigidBody: {fileID: 5487520}
   playerHUD: {fileID: 11418040}
 --- !u!114 &11494484
@@ -1845,9 +1847,9 @@ MonoBehaviour:
   playerStats: {fileID: 11466942}
   playerCall: {fileID: 11494308}
   playerCollider: {fileID: 174668}
-  maxammo: 5
+  maxammo: 3
   recoiltime: 0.8
-  reloadtime: 1
+  reloadtime: 1.2
   playerFireOutputTransform: {fileID: 449778}
   playerCamera: {fileID: 2043206}
   DBG_aim: 1
