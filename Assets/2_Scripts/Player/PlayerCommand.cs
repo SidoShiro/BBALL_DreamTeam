@@ -9,6 +9,11 @@ using UnityEngine.Networking;
 [NetworkSettings(channel=3,sendInterval=0.1f)]
 public class PlayerCommand : NetworkBehaviour
 {
+    //TODO Felix
+
+    [SerializeField]
+    private PlayerCall playerCall;
+
     [Header("Prefabs")]
     [SerializeField]
     private GameObject playerSpawner;   //Player spawner prefab
@@ -16,6 +21,7 @@ public class PlayerCommand : NetworkBehaviour
     private GameObject playerRigidBody; //Player prefab
     [SerializeField]
     private GameObject rocketBody;      //Rocket prefab
+
 
     /// <summary>
     /// Kills the player, and creates a spawner for that player with given team
@@ -45,4 +51,11 @@ public class PlayerCommand : NetworkBehaviour
         rocket.GetComponent<RocketMove>().rocketRotation = targetrotation;                          //Set rocket starting rotation
         NetworkServer.Spawn(rocket);                                                                //Instantiate new rocket
     }
+
+    [ClientRpc]
+    public void Rpc_UpdateScore()
+    {
+        playerCall.Call_UpdateScore();
+    }
+
 }

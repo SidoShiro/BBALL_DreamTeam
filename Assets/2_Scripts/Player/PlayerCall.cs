@@ -79,6 +79,17 @@ public class PlayerCall : MonoBehaviour
         playerHUD.UpdateAmmo(ammo);
     }
 
+    
+    public void Call_UpdateScore()
+    {
+        GameObject scoreGM = GameObject.Find("ScoreGM");
+        int scoreBlu = scoreGM.GetComponent<ScoreGM>().score_blue;
+        int scoreRed = scoreGM.GetComponent<ScoreGM>().score_red;
+        playerHUD.UpdateScore(scoreBlu, scoreRed);
+    }
+
+
+
     /// <summary>
     /// Call for this player to shoot a rocket ( !!! Should not be called by anything else than PlayerShoot !!! )
     /// </summary>
