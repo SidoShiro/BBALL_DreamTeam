@@ -5,7 +5,6 @@ public class Panier : NetworkBehaviour {
 
     public ScoreGM scoreGM;
 
-
     public PlayerStats.Team adv; // Team des adversaires
 
 
@@ -16,21 +15,14 @@ public class Panier : NetworkBehaviour {
 
     void OnTriggerEnter(Collider collider)
     {
-        if (isServer)
+        GameObject hitObject = collider.gameObject;
+        if (hitObject.tag == "PlayerCollider")
         {
-            GameObject hitObject = collider.gameObject;
-            if (hitObject.tag == "PlayerCollider")
+            if (hitObject.GetComponentInParent<PlayerStats>().playerTeam == adv)
             {
-                if (hitObject.GetComponentInParent<PlayerStats>().playerTeam == adv)
-                {
-                    scoreGM.TeamScored(adv);
-
-                    
-                    
-                }
+                scoreGM.TeamScored(adv);
             }
         }
-        
         
     }
 
