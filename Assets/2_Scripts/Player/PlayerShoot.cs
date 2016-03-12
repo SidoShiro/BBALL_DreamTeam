@@ -60,15 +60,17 @@ public class PlayerShoot : MonoBehaviour
         {
             LayerMask layerMask = ~LayerMask.GetMask("BLU", "RED", "SPE");
             RaycastHit hit;
-            if (Physics.Linecast(playerCamera.transform.position, playerCamera.transform.forward * 100, out hit, layerMask, QueryTriggerInteraction.Ignore))
+            Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+            if (Physics.Raycast(ray, out hit, 1000.0f, layerMask, QueryTriggerInteraction.Ignore))
             {
-                Debug.DrawLine(playerCamera.transform.position, hit.point, new Color32(52, 152, 219, 255), 0.0f, true);
+                Debug.DrawLine(ray.origin, hit.point, new Color32(52, 152, 219, 255), 0.0f, true);
                 Debug.DrawLine(playerFireOutputTransform.position, hit.point, new Color32(231, 76, 60, 255), 0.0f, true);
             }
             else
             {
-                Debug.DrawLine(playerCamera.transform.position, playerCamera.transform.forward * 100, new Color32(52, 152, 219, 255), 0.0f, true);
-                Debug.DrawLine(playerFireOutputTransform.position, playerCamera.transform.forward * 100, new Color32(231, 76, 60, 255), 0.0f, true);
+                Vector3 targetpos = ray.origin + ray.direction * 1000;
+                Debug.DrawLine(ray.origin, targetpos, new Color32(52, 152, 219, 255), 0.0f, true);
+                Debug.DrawLine(playerFireOutputTransform.position, targetpos, new Color32(231, 76, 60, 255), 0.0f, true);
             }
         }
         #endregion
@@ -108,9 +110,8 @@ public class PlayerShoot : MonoBehaviour
     {
         LayerMask layerMask = ~LayerMask.GetMask("BLU", "RED", "SPE");
         RaycastHit hit;                                                                                 //Used to store raycast hit data
-        //Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));   //Define ray as player aiming point
-        //Physics.Raycast(ray, out hit, 1000.0f, layerMask, QueryTriggerInteraction.Ignore);              //Casts the ray
-        if (Physics.Linecast(playerCamera.transform.position, playerCamera.transform.forward * 100, out hit, layerMask, QueryTriggerInteraction.Ignore))
+        Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));   //Define ray as player aiming point
+        if (Physics.Raycast(ray, out hit, 1000, layerMask, QueryTriggerInteraction.Ignore))
         {
             Vector3 relativepos = hit.point - playerFireOutputTransform.position;   //Get the vector to parcour
             Quaternion targetrotation = Quaternion.LookRotation(relativepos);       //Get the needed rotation of the rocket to reach that point
@@ -118,12 +119,11 @@ public class PlayerShoot : MonoBehaviour
         }
         else
         {
-            Vector3 relativepos = playerCamera.transform.forward * 100 - playerFireOutputTransform.position;           //Get the vector to parcour
-            Quaternion targetrotation = Quaternion.LookRotation(relativepos);                                           //Get the needed rotation of the rocket to reach that point
+            Vector3 targetpos = ray.origin + ray.direction * 1000;
+            Vector3 relativepos = targetpos - playerFireOutputTransform.position;   //Get the vector to parcour
+            Quaternion targetrotation = Quaternion.LookRotation(relativepos);       //Get the needed rotation of the rocket to reach that point
             playerCall.Call_ShootRocket(playerFireOutputTransform.position, targetrotation, playerStats.playerTeam);
         }
-
-
     }
 
 }
