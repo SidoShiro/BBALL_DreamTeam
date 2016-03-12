@@ -15,6 +15,8 @@ public class PlayerCall : MonoBehaviour
     [SerializeField]
     private PlayerCommand playerCommand;
     [SerializeField]
+    private PlayerMove playerMove;
+    [SerializeField]
     private Rigidbody playerRigidBody;
     #endregion
 
@@ -30,7 +32,7 @@ public class PlayerCall : MonoBehaviour
     /// <param name="dmg">Damage dealt</param>
     public void Call_DamagePlayer(int dmg)
     {
-        if(playerStats.playerHealth - dmg <= 0)
+        if (playerStats.playerHealth - dmg <= 0)
         {
             Call_KillPlayer();
         }
@@ -77,6 +79,17 @@ public class PlayerCall : MonoBehaviour
         playerHUD.UpdateAmmo(ammo);
     }
 
+    
+    public void Call_UpdateScore()
+    {
+        GameObject scoreGM = GameObject.Find("ScoreGM");
+        int scoreBlu = scoreGM.GetComponent<ScoreGM>().score_blue;
+        int scoreRed = scoreGM.GetComponent<ScoreGM>().score_red;
+        playerHUD.UpdateScore(scoreBlu, scoreRed);
+    }
+
+
+
     /// <summary>
     /// Call for this player to shoot a rocket ( !!! Should not be called by anything else than PlayerShoot !!! )
     /// </summary>
@@ -94,7 +107,8 @@ public class PlayerCall : MonoBehaviour
     /// <param name="explosionpos"></param>
     public void Call_AddExplosionForce(Vector3 explosionpos)
     {
-        playerRigidBody.AddExplosionForce(10.0f, explosionpos, 2.0f, 0.5f, ForceMode.VelocityChange);
+        playerMove.ForceAirborne();
+        playerRigidBody.AddExplosionForce(10.0f, explosionpos, 2.0f, 0.2f, ForceMode.VelocityChange);
     }
 
     /// <summary>
@@ -104,19 +118,16 @@ public class PlayerCall : MonoBehaviour
     public void Call_ExplosionDamage(Vector3 explosionpos, PlayerStats.Team explosionTeam)
     {
         //Damage calculs
-        if (!Physics.Linecast(explosionpos, playerCenter.position, LayerMask.GetMask("Default"), QueryTriggerInteraction.Ignore))
+        Call_AddExplosionForce(explosionpos);
+        float distance = Vector3.Distance(playerCenter.position, explosionpos);  //Distance between player and explosion
+        if (distance > 2.0f || playerStats.playerTeam == PlayerStats.Team.SPE || playerStats.playerTeam == explosionTeam)
         {
-            Call_AddExplosionForce(explosionpos);
-            float distance = Vector3.Distance(playerCenter.position, explosionpos);  //Distance between player and explosion
-            if (distance > 2.0f || playerStats.playerTeam == PlayerStats.Team.SPE || playerStats.playerTeam == explosionTeam)
-            {
-                return;
-            }
-            int damage = (int)((2.0f - distance) * 100 / 2.0f);
-
-            //Damage application
-            Call_DamagePlayer(damage);
+            return;
         }
+        int damage = (int)((2.0f - distance) * 100);
+
+        //Damage application
+        Call_DamagePlayer(damage);
     }
     #endregion
 

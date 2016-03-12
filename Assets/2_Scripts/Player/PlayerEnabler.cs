@@ -105,6 +105,8 @@ public class PlayerEnabler : NetworkBehaviour
             playerCamera.enabled = true;                        //Enables the camera component of this player
             playerUI.SetActive(true);                           //Enables player UI (Crosshair, HUD, Menu, etc...)
 
+            playerCall.Call_UpdateScore();
+
             if(playerStats.playerTeam == PlayerStats.Team.SPE)
             {
                 playerHUD.enabled = false;
