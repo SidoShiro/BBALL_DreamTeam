@@ -14,6 +14,6 @@ public class PlayerJump : MonoBehaviour {
 	void OnCollisionEnter (Collision col) {
 
         col.transform.GetComponent<Rigidbody>().AddForce(Vector3.up * force, ForceMode.VelocityChange);
-        col.transform.GetComponent<Rigidbody>().AddForce(Vector3.forward * force , ForceMode.VelocityChange);
+        col.transform.GetComponent<Rigidbody>().AddForce(Vector3.forward * force * , ForceMode.VelocityChange);
     }
 }
