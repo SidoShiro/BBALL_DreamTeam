@@ -6,11 +6,11 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: tex1_128x128_1ab712d4165bbcae_2
-  m_Shader: {fileID: 207, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: circle
+  m_Shader: {fileID: 200, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: e38ad2daa7b39cd429c65b6db34de647, type: 3}
+          m_Texture: {fileID: 2800000, guid: afe772c1db36e4f47aeffc65738a9071, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -27,4 +27,8 @@ Material:
         first:
           name: _InvFade
         second: 1
-    m_Colors: {}
+    m_Colors:
+      data:
+        first:
+          name: _TintColor
+        second: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}

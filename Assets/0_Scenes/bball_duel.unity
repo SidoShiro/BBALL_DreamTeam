@@ -759,16 +759,30 @@ Prefab:
       propertyPath: m_Name
       value: PanierRED
       objectReference: {fileID: 0}
-    - target: {fileID: 2353958, guid: 1dcc8d51d4c7ff741b750935e1de1ffc, type: 2}
-      propertyPath: m_Materials.Array.data[0]
+    - target: {fileID: 11413134, guid: 1dcc8d51d4c7ff741b750935e1de1ffc, type: 2}
+      propertyPath: particlesBLU
       value: 
-      objectReference: {fileID: 2100000, guid: 6246283fe4717ce439a7b7d6ce241da9, type: 2}
+      objectReference: {fileID: 358289073}
+    - target: {fileID: 11413134, guid: 1dcc8d51d4c7ff741b750935e1de1ffc, type: 2}
+      propertyPath: particlesRED
+      value: 
+      objectReference: {fileID: 358289072}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1dcc8d51d4c7ff741b750935e1de1ffc, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &358289071 stripped
 Transform:
   m_PrefabParentObject: {fileID: 455880, guid: 1dcc8d51d4c7ff741b750935e1de1ffc, type: 2}
+  m_PrefabInternal: {fileID: 358289070}
+--- !u!198 &358289072 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 19882686, guid: 1dcc8d51d4c7ff741b750935e1de1ffc,
+    type: 2}
+  m_PrefabInternal: {fileID: 358289070}
+--- !u!198 &358289073 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 19801996, guid: 1dcc8d51d4c7ff741b750935e1de1ffc,
+    type: 2}
   m_PrefabInternal: {fileID: 358289070}
 --- !u!1 &438613071
 GameObject:
@@ -2355,9 +2369,27 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ee191a375aaa3444c97333a6747df843, type: 2}
+    - target: {fileID: 11413134, guid: 1dcc8d51d4c7ff741b750935e1de1ffc, type: 2}
+      propertyPath: particlesBLU
+      value: 
+      objectReference: {fileID: 1235119334}
+    - target: {fileID: 11413134, guid: 1dcc8d51d4c7ff741b750935e1de1ffc, type: 2}
+      propertyPath: particlesRED
+      value: 
+      objectReference: {fileID: 1235119333}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1dcc8d51d4c7ff741b750935e1de1ffc, type: 2}
   m_IsPrefabParent: 0
+--- !u!198 &1235119333 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 19882686, guid: 1dcc8d51d4c7ff741b750935e1de1ffc,
+    type: 2}
+  m_PrefabInternal: {fileID: 1235119332}
+--- !u!198 &1235119334 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 19801996, guid: 1dcc8d51d4c7ff741b750935e1de1ffc,
+    type: 2}
+  m_PrefabInternal: {fileID: 1235119332}
 --- !u!1 &1237864157
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,10 +4,11 @@ using UnityEngine.Networking;
 public class Panier : NetworkBehaviour {
 
     public ScoreGM scoreGM;
+    public ParticleSystem particlesBLU;
+    public ParticleSystem particlesRED;
 
 
     public PlayerStats.Team adv; // Team des adversaires
-
 
     /*
     Premier bug : yavais pas de event system sur la map pour que l'UI fonctionne
@@ -24,7 +25,7 @@ public class Panier : NetworkBehaviour {
                 if (hitObject.GetComponentInParent<PlayerStats>().playerTeam == adv)
                 {
                     scoreGM.TeamScored(adv);
-
+                    Rpc_ParticlePlay(adv);
                     
                     
                 }
@@ -32,6 +33,18 @@ public class Panier : NetworkBehaviour {
         }
         
         
+    }
+
+    void Rpc_ParticlePlay(PlayerStats.Team adv)
+    {
+        if (adv == PlayerStats.Team.BLU)
+        {
+            particlesRED.Play();
+        }
+        else if (adv == PlayerStats.Team.RED)
+        {
+            particlesBLU.Play();
+        }
     }
 
     

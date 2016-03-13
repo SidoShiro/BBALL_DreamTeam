@@ -10,6 +10,7 @@ public class Login : MonoBehaviour
     public InputField pass;
     public Text Wrong_pass;
     public static string[,] check_list_login = new string[5, 2];  // 5 Comptes sont créées pour l'instant.
+    private bool is_valid = false;
 
     // Use this for initialization
     void Start()
@@ -42,10 +43,14 @@ public class Login : MonoBehaviour
                     if (pass.text == check_list_login[i, 1])
                     {
                         SceneManager.LoadScene("_MainMenu");
+                        is_valid = true;
                     }
                 }
             }
-            Wrong_pass.text = "Wrong password";
+            if (!is_valid)
+            {
+                Wrong_pass.text = "Wrong password";
+            }
         }
 
     }
