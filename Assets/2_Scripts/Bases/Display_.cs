@@ -4,16 +4,17 @@ using UnityEngine.UI;
 
 public class Display_ : MonoBehaviour {
 
-    public Text to_display;
-
+    Player player;
     // Use this for initialization
-    void Start () {
-	
+    void Start () { 
 	}
 	
 	// Update is called once per frame
-	void OnTriggerEnter () {
+	void OnTriggerStay(Collider col) {
 
-        //to_display = true;
+        /*if (col.tag == "Player")
+        {
+            player.
+        }*/
 	}
 }
