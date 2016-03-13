@@ -25,21 +25,26 @@ public class Panier : NetworkBehaviour {
                 if (hitObject.GetComponentInParent<PlayerStats>().playerTeam == adv)
                 {
                     scoreGM.TeamScored(adv);
-
-                    if (adv == PlayerStats.Team.BLU)
-                    {
-                        particlesRED.Play();
-                    }
-                    else if (adv == PlayerStats.Team.RED)
-                    {
-                        particlesBLU.Play();
-                    }
+                    Rpc_ParticlePlay(adv);
+                    
                     
                 }
             }
         }
         
         
+    }
+
+    void Rpc_ParticlePlay(PlayerStats.Team adv)
+    {
+        if (adv == PlayerStats.Team.BLU)
+        {
+            particlesRED.Play();
+        }
+        else if (adv == PlayerStats.Team.RED)
+        {
+            particlesBLU.Play();
+        }
     }
 
     
