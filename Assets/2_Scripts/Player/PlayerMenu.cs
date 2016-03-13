@@ -14,6 +14,8 @@ public class PlayerMenu : MonoBehaviour
     [Header("References(Interface)")]
     [SerializeField]
     private GameObject playerMenuPanel;          //Panel to show/hide
+    [SerializeField]
+    private GameObject playerCrosshairPanel;
 
     //Local
     private NetworkOverlord networkOverlord;    //Used to cache current NetworkOverlord
@@ -32,6 +34,10 @@ public class PlayerMenu : MonoBehaviour
     /// </summary>
     void Start()
     {
+        if (playerStats.playerTeam != PlayerStats.Team.SPE)
+        {
+            playerCrosshairPanel.SetActive(true);
+        }
         isShowing = false;
         HidePlayerMenu();
     }

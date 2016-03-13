@@ -300,6 +300,11 @@ Prefab:
       propertyPath: m_ReflectionProbeUsage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 10215256, guid: 81afbb8d58c148e4180ed4f8e538b2f8, type: 2}
+      propertyPath: m_Text
+      value: "If your are reading \nthis, that means that\n you understood how to
+        control\nthe camera !f"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 81afbb8d58c148e4180ed4f8e538b2f8, type: 2}
   m_IsPrefabParent: 0
@@ -780,6 +785,14 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 10228994, guid: 06a25ed54798da7458c8fc60439c849c, type: 2}
+      propertyPath: m_Text
+      value: "use your mouse\nto control \nthe camera"
+      objectReference: {fileID: 0}
+    - target: {fileID: 10228994, guid: 06a25ed54798da7458c8fc60439c849c, type: 2}
+      propertyPath: m_LineSpacing
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 06a25ed54798da7458c8fc60439c849c, type: 2}
   m_IsPrefabParent: 0
@@ -1233,6 +1246,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1146814653}
   - 114: {fileID: 1146814652}
+  - 114: {fileID: 1146814654}
   m_Layer: 0
   m_Name: SceneGM
   m_TagString: Untagged
@@ -1263,6 +1277,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &1146814654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1146814651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20f109976a1fbc04fa270bb9213e5656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1190611916 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22454452, guid: fd0da175bc5a575468fc2f6d81d440dc,
@@ -2522,6 +2547,18 @@ Prefab:
     - target: {fileID: 22454452, guid: fd0da175bc5a575468fc2f6d81d440dc, type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 10244638, guid: fd0da175bc5a575468fc2f6d81d440dc, type: 2}
+      propertyPath: m_Text
+      value: 'Controls :
+
+        z       ^
+
+        qsd <v>'
+      objectReference: {fileID: 0}
+    - target: {fileID: 10244638, guid: fd0da175bc5a575468fc2f6d81d440dc, type: 2}
+      propertyPath: m_LineSpacing
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fd0da175bc5a575468fc2f6d81d440dc, type: 2}

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 /// <summary>
 /// This class stores player stats to be used in game
@@ -12,10 +13,18 @@ public class PlayerStats : NetworkBehaviour
     [Header("Stats")]
     [SyncVar]
     public Team playerTeam = Team.BLU;  //Player's current team
-    public int playerHealth = 200;      //Player's current health   //TODO : Max health managment
+    public int playerHealth;      //Player's current health   //TODO : Max health managment
     public bool isCarrying;             //Ball carrying toggle
+   
 
     [Header("Local")]
     public bool isReceivingInputs;  //Used to disable inputs on Menu/etc ...
+
+    public void ChangeHealth(InputField health)
+    {
+        string h = health.text;
+        playerHealth = int.Parse(h);
+        Debug.Log("Health changed");
+    }
 
 }
