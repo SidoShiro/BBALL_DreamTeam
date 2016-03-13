@@ -82,9 +82,9 @@ public class PlayerCall : MonoBehaviour
     
     public void Call_UpdateScore()
     {
-        GameObject scoreGM = GameObject.Find("ScoreGM");
-        int scoreBlu = scoreGM.GetComponent<ScoreGM>().score_blue;
-        int scoreRed = scoreGM.GetComponent<ScoreGM>().score_red;
+        ScoreGM scoreGM = GameObject.Find("ScoreGM").GetComponent<ScoreGM>();
+        int scoreBlu = scoreGM.score_blue;
+        int scoreRed = scoreGM.score_red;
         playerHUD.UpdateScore(scoreBlu, scoreRed);
     }
 

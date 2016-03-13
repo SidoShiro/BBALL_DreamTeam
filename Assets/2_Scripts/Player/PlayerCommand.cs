@@ -58,4 +58,10 @@ public class PlayerCommand : NetworkBehaviour
         playerCall.Call_UpdateScore();
     }
 
+    [ClientRpc]
+    public void Rpc_KillPlayer()
+    {
+        playerCall.Call_KillPlayer();
+    }
+
 }
