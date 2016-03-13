@@ -41,7 +41,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 6
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_LightmapsMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -66,7 +66,8 @@ LightmapSettings:
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
     m_ReflectionCompression: 2
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000001, guid: 01e74dd7b11d33249aaa41e11eeff45e,
+    type: 2}
   m_RuntimeCPUUsage: 25
 --- !u!196 &4
 NavMeshSettings:
@@ -1533,6 +1534,7 @@ GameObject:
   - 33: {fileID: 1076055889}
   - 64: {fileID: 1076055888}
   - 23: {fileID: 1076055887}
+  - 114: {fileID: 1076055891}
   - 114: {fileID: 1076055886}
   m_Layer: 0
   m_Name: Wall_Bounds
@@ -1549,7 +1551,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1076055885}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec29ee1be73e2914abf6d73548106c8e, type: 3}
+  m_Script: {fileID: 11500000, guid: d2230dcf17b084f4b9607fc49722bfd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!23 &1076055887
@@ -1609,6 +1611,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1834703993}
   m_RootOrder: 3
+--- !u!114 &1076055891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1076055885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 0
+    i1: 0
+    i2: 0
+    i3: 0
+    i4: 0
+    i5: 0
+    i6: 0
+    i7: 0
+    i8: 0
+    i9: 0
+    i10: 0
+    i11: 0
+    i12: 0
+    i13: 0
+    i14: 0
+    i15: 0
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!1001 &1077741894
 Prefab:
   m_ObjectHideFlags: 0

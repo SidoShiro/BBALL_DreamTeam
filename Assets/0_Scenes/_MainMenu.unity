@@ -1676,11 +1676,7 @@ MonoBehaviour:
     m_Options:
     - m_Text: bball_duel
       m_Image: {fileID: 0}
-    - m_Text: bball_test
-      m_Image: {fileID: 0}
-    - m_Text: bball_score
-      m_Image: {fileID: 0}
-    - m_Text: bball_qwerty
+    - m_Text: bball_bases
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5825,7 +5821,7 @@ MonoBehaviour:
   m_RunInBackground: 1
   m_ScriptCRCCheck: 1
   m_MaxDelay: 0.01
-  m_LogLevel: 1
+  m_LogLevel: 2
   m_PlayerPrefab: {fileID: 154870, guid: 48f6af5783280be4cbb09e94408b8e9b, type: 2}
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 0

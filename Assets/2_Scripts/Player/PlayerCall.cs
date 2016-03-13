@@ -79,13 +79,16 @@ public class PlayerCall : MonoBehaviour
         playerHUD.UpdateAmmo(ammo);
     }
 
-    
+
     public void Call_UpdateScore()
     {
-        ScoreGM scoreGM = GameObject.Find("ScoreGM").GetComponent<ScoreGM>();
-        int scoreBlu = scoreGM.score_blue;
-        int scoreRed = scoreGM.score_red;
-        playerHUD.UpdateScore(scoreBlu, scoreRed);
+        if (GameObject.Find("ScoreGM") != null)
+        {
+            ScoreGM scoreGM = GameObject.Find("ScoreGM").GetComponent<ScoreGM>();
+            int scoreBlu = scoreGM.score_blue;
+            int scoreRed = scoreGM.score_red;
+            playerHUD.UpdateScore(scoreBlu, scoreRed);
+        }
     }
 
 
