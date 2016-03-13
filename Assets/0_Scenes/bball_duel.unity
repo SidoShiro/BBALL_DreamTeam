@@ -558,15 +558,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 463692, guid: 2e88df7f37fb1b14cb079f4ac0db4ca7, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -3.1383471
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 463692, guid: 2e88df7f37fb1b14cb079f4ac0db4ca7, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.6618953
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 463692, guid: 2e88df7f37fb1b14cb079f4ac0db4ca7, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 4.1618953
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 463692, guid: 2e88df7f37fb1b14cb079f4ac0db4ca7, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2297,6 +2297,10 @@ Prefab:
     - target: {fileID: 147698, guid: 1dcc8d51d4c7ff741b750935e1de1ffc, type: 2}
       propertyPath: m_Name
       value: PanierBLU
+      objectReference: {fileID: 0}
+    - target: {fileID: 11413134, guid: 1dcc8d51d4c7ff741b750935e1de1ffc, type: 2}
+      propertyPath: adv
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1dcc8d51d4c7ff741b750935e1de1ffc, type: 2}
