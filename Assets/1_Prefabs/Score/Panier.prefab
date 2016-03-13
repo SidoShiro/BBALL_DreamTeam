@@ -155,8 +155,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 166856}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.8204126, y: 3.120065, z: 1.9197941}
   m_LocalScale: {x: 55.636158, y: 55.63623, z: 55.63623}
   m_Children:
   - {fileID: 457882}
@@ -223,7 +223,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147698}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.35, y: 0.6999998, z: -0.51569533}
+  m_LocalPosition: {x: 3.896, y: -3.0976505, z: 2.3442993}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 422302}
@@ -441,7 +441,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: -9.98, y: 5.67, z: 4.02}
+  m_Center: {x: -6.13, y: 5.77, z: 1.93}
 --- !u!95 &9511778
 Animator:
   serializedVersion: 3
@@ -471,7 +471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreGM: {fileID: 0}
-  adv: 1
+  adv: 2
 --- !u!114 &11476512
 MonoBehaviour:
   m_ObjectHideFlags: 1
