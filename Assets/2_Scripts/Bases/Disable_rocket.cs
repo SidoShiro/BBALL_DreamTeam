@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Robot_tuto : MonoBehaviour {
+public class Disable_rocket : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -9,7 +9,8 @@ public class Robot_tuto : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void OnCollisionEnter (Collision col) {
-        Destroy(gameObject);
+	void OnTriggerEnter () {
+	
+        //Disable The rocket launcher attribute here
 	}
 }
