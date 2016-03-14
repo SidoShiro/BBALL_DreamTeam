@@ -15,10 +15,16 @@ public class PlayerStats : NetworkBehaviour
     public Team playerTeam = Team.BLU;  //Player's current team
     public int playerHealth;      //Player's current health   //TODO : Max health managment
     public bool isCarrying;             //Ball carrying toggle
-   
+    private int life =0;
 
-    [Header("Local")]
-    public bool isReceivingInputs;  //Used to disable inputs on Menu/etc ...
+    void Start()
+    {
+        if (life != 0)
+        {
+            playerHealth = life;
+            Debug.Log("Life = " + playerHealth.ToString());
+        }
+    }
 
     public void ChangeHealth(InputField health)
     {
@@ -26,5 +32,10 @@ public class PlayerStats : NetworkBehaviour
         playerHealth = int.Parse(h);
         Debug.Log("Health changed");
     }
+
+    [Header("Local")]
+    public bool isReceivingInputs;  //Used to disable inputs on Menu/etc ...
+
+    
 
 }

@@ -793,6 +793,10 @@ Prefab:
       propertyPath: m_LineSpacing
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 10228994, guid: 06a25ed54798da7458c8fc60439c849c, type: 2}
+      propertyPath: m_RichText
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 06a25ed54798da7458c8fc60439c849c, type: 2}
   m_IsPrefabParent: 0

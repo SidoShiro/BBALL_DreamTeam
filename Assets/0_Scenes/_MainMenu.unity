@@ -1164,12 +1164,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 314898339}
---- !u!114 &346583444 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11466942, guid: 98cc675f9e78ec14a9b0b8ca46b38205,
-    type: 2}
-  m_PrefabInternal: {fileID: 1669593901}
-  m_Script: {fileID: 11500000, guid: d1ad1467103ad1c4696fd4c6b43655db, type: 3}
 --- !u!1 &419490862
 GameObject:
   m_ObjectHideFlags: 0
@@ -1918,7 +1912,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 346583444}
+      - m_Target: {fileID: 11466942, guid: 98cc675f9e78ec14a9b0b8ca46b38205, type: 2}
         m_MethodName: ChangeHealth
         m_Mode: 2
         m_Arguments:
@@ -3668,7 +3662,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Golum's den
+  m_Text: 500
 --- !u!222 &1091506599
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3747,7 +3741,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: d743fa4274da5c344a253b086849b861, type: 3}
-    m_FontSize: 26
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
