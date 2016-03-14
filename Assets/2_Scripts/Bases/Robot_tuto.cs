@@ -10,7 +10,6 @@ public class Robot_tuto : MonoBehaviour {
 	
 	// Update is called once per frame
 	void OnCollisionEnter(Collision col) {
-        Debug.Log("A");
         Destroy(gameObject);
 	}
 }
