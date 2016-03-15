@@ -38,11 +38,13 @@ public class Panier : NetworkBehaviour {
         if (adv == PlayerStats.Team.BLU)
         {
             particlesRED.Stop();
+            particlesRED.time = 0;
             particlesRED.Play();
         }
         else if (adv == PlayerStats.Team.RED)
         {
             particlesBLU.Stop();
+            particlesBLU.time = 0;
             particlesBLU.Play();
         }
     }
