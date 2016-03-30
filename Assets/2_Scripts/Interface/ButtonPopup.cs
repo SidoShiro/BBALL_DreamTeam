@@ -28,7 +28,7 @@ public class ButtonPopup : MonoBehaviour
     /// </summary>
     private void PopUp()
     {
-        Vector3 target;
+        Vector3 target; //TODO : Clean that shit up
         if (IsPopped)
         {
             target = new Vector3(scale, scale, scale);

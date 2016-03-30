@@ -8,6 +8,8 @@ public class m_Custom : MonoBehaviour
     private static LayerMask _layerMaskNOSPE = ~LayerMask.GetMask("NORENDER", "SPE");
     private static LayerMask _layerMaskWTSPE = ~LayerMask.GetMask("NORENDER");
 
+    private static LayerMask _layerMaskRocket = LayerMask.GetMask("Default", "BLU", "RED");
+
     public static LayerMask GetLayerFromTeam(PlayerStats.Team team)
     {
         switch (team)
@@ -51,6 +53,13 @@ public class m_Custom : MonoBehaviour
         get
         {
             return _layerMaskWTSPE;
+        }
+    }
+    public static LayerMask layerMaskRocket
+    {
+        get
+        {
+            return _layerMaskRocket;
         }
     }
     #endregion

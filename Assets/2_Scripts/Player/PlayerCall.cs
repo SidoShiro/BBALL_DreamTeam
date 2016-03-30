@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 
 /// <summary>
 /// This script is used to trigger calls on the player (Damage, kill, etc ...)
@@ -10,6 +11,8 @@ public class PlayerCall : MonoBehaviour
     #region References(Player)
     [SerializeField]
     private Transform playerCenter;
+    [SerializeField]
+    private NetworkIdentity playerIdentity;
     [SerializeField]
     private PlayerStats playerStats;
     [SerializeField]
@@ -25,6 +28,10 @@ public class PlayerCall : MonoBehaviour
     [SerializeField]
     private PlayerHUD playerHUD;
     #endregion
+
+    [Header("Parameters")]
+    [SerializeField]
+    private float selfdmgfactor;
 
     /// <summary>
     /// Apllies damage to the player
@@ -91,17 +98,15 @@ public class PlayerCall : MonoBehaviour
         }
     }
 
-
-
     /// <summary>
     /// Call for this player to shoot a rocket ( !!! Should not be called by anything else than PlayerShoot !!! )
     /// </summary>
     /// <param name="rocketBody">Rocket prefab</param>
     /// <param name="playerFireOutputTransform">Transform to spawn the rocket from rocket</param>
     /// <param name="targetrotation">Rotation of the rocket when spawned</param>
-    public void Call_ShootRocket(Vector3 targetposition, Quaternion targetrotation, PlayerStats.Team newteam)
+    public void Call_ShootRocket(Vector3 targetposition, Quaternion targetrotation, PlayerStats.Team newteam, NetworkIdentity owner_nI)
     {
-        playerCommand.Cmd_ShootRocket(targetposition, targetrotation, newteam);
+        playerCommand.Cmd_ShootRocket(targetposition, targetrotation, newteam, owner_nI);
     }
 
     /// <summary>
@@ -118,19 +123,30 @@ public class PlayerCall : MonoBehaviour
     /// Calculates damage according to position
     /// </summary>
     /// <param name="explosionpos"></param>
-    public void Call_ExplosionDamage(Vector3 explosionpos, PlayerStats.Team explosionTeam)
+    public void Call_ExplosionDamage(Vector3 explosionpos, PlayerStats.Team explosionTeam, NetworkIdentity ownerIdentity)
     {
+        playerHUD.ToggleHitMarker();
+
         //Damage calculs
         Call_AddExplosionForce(explosionpos);
-        float distance = Vector3.Distance(playerCenter.position, explosionpos);  //Distance between player and explosion
-        if (distance > 2.0f || playerStats.playerTeam == PlayerStats.Team.SPE || playerStats.playerTeam == explosionTeam)
+        float distance = Vector3.Distance(playerCenter.position, explosionpos);
+        if (playerStats.playerTeam == PlayerStats.Team.SPE || distance > 2.0f || (explosionTeam == playerStats.playerTeam && ownerIdentity != playerIdentity))
         {
             return;
         }
+
+        //Calculate damage
         int damage = (int)((2.0f - distance) * 100);
 
         //Damage application
-        Call_DamagePlayer(damage);
+        if(playerIdentity == ownerIdentity)
+        {
+            Call_DamagePlayer((int)(damage * selfdmgfactor));
+        }
+        else
+        {
+            Call_DamagePlayer(damage);
+        }
     }
     #endregion
 

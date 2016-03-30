@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class PlayerHUD : MonoBehaviour
 {
@@ -12,6 +13,12 @@ public class PlayerHUD : MonoBehaviour
     private Text scoreBluText;
     [SerializeField]
     private Text scoreRedText;
+
+    [Header("Parameters")]
+    [SerializeField]
+    private GameObject hitMarker;
+    [SerializeField]
+    private float displayTime;
 
     /// <summary>
     /// Updates HUD health text to player current health
@@ -36,5 +43,20 @@ public class PlayerHUD : MonoBehaviour
     {
         scoreBluText.text = scoreBlu.ToString();
         scoreRedText.text = scoreRed.ToString();
+    }
+
+    /// <summary>
+    /// Enables hit marker
+    /// </summary>
+    public void ToggleHitMarker()
+    {
+        StartCoroutine(HitMark());
+    }
+
+    IEnumerator HitMark()
+    {
+        hitMarker.SetActive(true);
+        yield return new WaitForSeconds(displayTime);
+        hitMarker.SetActive(false);
     }
 }
