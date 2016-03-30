@@ -1811,6 +1811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e232bda92ca1a54e8f8a988bd9b7571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerIdentity: {fileID: 11494860}
   playerCall: {fileID: 11494308}
   playerSpawner: {fileID: 154870, guid: 48f6af5783280be4cbb09e94408b8e9b, type: 2}
   playerRigidBody: {fileID: 169552}

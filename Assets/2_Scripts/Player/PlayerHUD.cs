@@ -48,7 +48,7 @@ public class PlayerHUD : MonoBehaviour
     /// <summary>
     /// Enables hit marker
     /// </summary>
-    public void ToggleHitMarker()
+    public void ToggleHitMarker(float magnitude)
     {
         StartCoroutine(HitMark());
     }
