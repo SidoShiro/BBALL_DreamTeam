@@ -37,11 +37,11 @@ public class PlayerCall : MonoBehaviour
     /// Apllies damage to the player
     /// </summary>
     /// <param name="dmg">Damage dealt</param>
-    public void Call_DamagePlayer(int dmg)
+    public void Call_DamagePlayer(int dmg, NetworkIdentity ownerIdentity)
     {
         if (playerStats.playerHealth - dmg <= 0)
         {
-            Call_KillPlayer();
+            Call_KillPlayer(ownerIdentity);
         }
         else
         {
@@ -56,6 +56,15 @@ public class PlayerCall : MonoBehaviour
     public void Call_KillPlayer()
     {
         playerCommand.Cmd_KillPlayer(playerStats.playerTeam);
+    }
+
+    /// <summary>
+    /// Kills Player
+    /// </summary>
+    public void Call_KillPlayer(NetworkIdentity killerIdentity)
+    {
+        playerCommand.Cmd_SendKill(killerIdentity, playerIdentity);
+        //playerCommand.Cmd_KillPlayer(playerStats.playerTeam);
     }
 
     /// <summary>
@@ -98,9 +107,9 @@ public class PlayerCall : MonoBehaviour
     /// <param name="rocketBody">Rocket prefab</param>
     /// <param name="playerFireOutputTransform">Transform to spawn the rocket from rocket</param>
     /// <param name="targetrotation">Rotation of the rocket when spawned</param>
-    public void Call_ShootRocket(Vector3 targetposition, Quaternion targetrotation, PlayerStats.Team newteam, NetworkIdentity owner_nI)
+    public void Call_ShootRocket(Vector3 targetposition, Quaternion targetrotation, PlayerStats.Team newteam, NetworkIdentity ownerIdentity)
     {
-        playerCommand.Cmd_ShootRocket(targetposition, targetrotation, newteam, owner_nI);
+        playerCommand.Cmd_ShootRocket(targetposition, targetrotation, newteam, ownerIdentity);
     }
 
     /// <summary>
@@ -133,12 +142,12 @@ public class PlayerCall : MonoBehaviour
         //Damage application
         if (playerIdentity == ownerIdentity)
         {
-            Call_DamagePlayer((int)(damage * selfdmgfactor));
+            Call_DamagePlayer((int)(damage * selfdmgfactor), ownerIdentity);
         }
         else
         {
             playerCommand.Cmd_SendHit(ownerIdentity, 1.0f);
-            Call_DamagePlayer(damage);
+            Call_DamagePlayer(damage, ownerIdentity);
         }
     }
 

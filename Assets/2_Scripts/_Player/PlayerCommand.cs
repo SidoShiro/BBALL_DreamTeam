@@ -68,6 +68,16 @@ public class PlayerCommand : NetworkBehaviour
         ownerIdentity.gameObject.GetComponent<PlayerCommand>().Rpc_GetHit(magnitude);
     }
 
+    [Command]
+    public void Cmd_SendKill(NetworkIdentity killerIdentity, NetworkIdentity victimIdentity)
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach(GameObject go in players)
+        {
+            go.GetComponent<PlayerCommand>().Rpc_ParseKill(killerIdentity, victimIdentity);
+        }
+    }
+
     /// <summary>
     /// Receives a hit
     /// </summary>
@@ -85,5 +95,22 @@ public class PlayerCommand : NetworkBehaviour
     public void Rpc_UpdateScore()
     {
         playerCall.Call_UpdateScore();
+    }
+
+    [ClientRpc]
+    public void Rpc_ParseKill(NetworkIdentity killerIdentity, NetworkIdentity victimIdentity)
+    {
+        if (isLocalPlayer)
+        {
+            bool isInvolved = killerIdentity == playerIdentity || victimIdentity == playerIdentity;
+            if(GameObject.FindGameObjectWithTag("KillFeedPanel") != null)
+            {
+                GameObject.FindGameObjectWithTag("KillFeedPanel").GetComponent<KillFeedInput>().ParseKill(killerIdentity, victimIdentity, isInvolved);
+            }
+            else
+            {
+                Debug.Log("No KillFeedPanel in scene");
+            }
+        }
     }
 }

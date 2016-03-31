@@ -10,6 +10,22 @@ public class m_Custom : MonoBehaviour
 
     private static LayerMask _layerMaskRocket = LayerMask.GetMask("Default", "BLU", "RED");
 
+    public static Color GetColorFromTeam(PlayerStats.Team team)
+    {
+        switch (team)
+        {
+            case PlayerStats.Team.BLU:
+                return new Color32(52, 152, 219,255);
+
+            case PlayerStats.Team.RED:
+                return new Color32(231, 76, 60,255);
+
+            default:
+                Debug.Log("SHOULD NOT HAPPEND: Player team was not found in m_Custom/GetColorFromTeam");
+                return new Color32(155, 89, 182,255);
+        }
+    }
+
     public static LayerMask GetLayerFromTeam(PlayerStats.Team team)
     {
         switch (team)
