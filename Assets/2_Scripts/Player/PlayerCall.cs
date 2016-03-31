@@ -125,19 +125,17 @@ public class PlayerCall : MonoBehaviour
     /// <param name="explosionpos"></param>
     public void Call_ExplosionDamage(Vector3 explosionpos, PlayerStats.Team explosionTeam, NetworkIdentity ownerIdentity)
     {
-        //Damage calculs
+        //Send explosion force
         Call_AddExplosionForce(explosionpos);
-        playerCommand.Cmd_SendHit(ownerIdentity, 1.0f);
 
+        //Calculates distance
         float distance = Vector3.Distance(playerCenter.position, explosionpos);
         if (playerStats.playerTeam == PlayerStats.Team.SPE || distance > 2.0f || (explosionTeam == playerStats.playerTeam && ownerIdentity != playerIdentity))
         {
             return;
         }
-        
         //Calculate damage
         int damage = (int)((2.0f - distance) * 100);
-
         //Damage application
         if (playerIdentity == ownerIdentity)
         {
@@ -145,7 +143,7 @@ public class PlayerCall : MonoBehaviour
         }
         else
         {
-            //playerCommand.Cmd_SendHit(ownerIdentity, 1.0f);
+            playerCommand.Cmd_SendHit(ownerIdentity, 1.0f);
             Call_DamagePlayer(damage);
         }
     }

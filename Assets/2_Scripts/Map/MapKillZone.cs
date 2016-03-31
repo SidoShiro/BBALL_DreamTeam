@@ -8,7 +8,7 @@ public class MapKillZone : NetworkBehaviour
         GameObject playerRigidBody = col.gameObject;
         if (isServer && playerRigidBody.tag == "Player")
         {
-            playerRigidBody.GetComponent<PlayerCommand>().Rpc_KillPlayer();
+            playerRigidBody.GetComponent<PlayerCall>().Call_KillPlayer();
         }
     }
 }

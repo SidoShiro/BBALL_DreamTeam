@@ -56,29 +56,20 @@ public class PlayerCommand : NetworkBehaviour
 
     //TODO : Comment that shit
     [Command]
-    public void Cmd_SendHit(NetworkIdentity ownerIdentity, float magnitude)
+    public void Cmd_SendHit(NetworkIdentity ownerIdentity,float magnitude)
     {
-        Rpc_GetHit(ownerIdentity, magnitude);
+        ownerIdentity.gameObject.GetComponent<PlayerCommand>().Rpc_GetHit(magnitude);
     }
 
     [ClientRpc]
-    public void Rpc_GetHit(NetworkIdentity ownerIdentity, float magnitude)
+    public void Rpc_GetHit(float magnitude)
     {
-        if(ownerIdentity == playerIdentity)
-        {
-            playerCall.Call_ToggleHitMarker(magnitude);
-        }
+        playerCall.Call_ToggleHitMarker(magnitude);
     }
 
     [ClientRpc]
     public void Rpc_UpdateScore()
     {
         playerCall.Call_UpdateScore();
-    }
-
-    [ClientRpc]
-    public void Rpc_KillPlayer()
-    {
-        playerCall.Call_KillPlayer();
     }
 }

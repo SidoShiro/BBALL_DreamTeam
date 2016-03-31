@@ -55,6 +55,7 @@ public class PlayerHUD : MonoBehaviour
 
     IEnumerator HitMark()
     {
+        yield return 500;
         hitMarker.SetActive(true);
         yield return new WaitForSeconds(displayTime);
         hitMarker.SetActive(false);
