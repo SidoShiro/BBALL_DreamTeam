@@ -6,23 +6,26 @@ using UnityEngine.Networking;
 /// /!\ THOSE COMMANDS SHOULD NEVER BE CALLED DIRECTLY /!\ 
 /// >>>>> Use PlayerCall instead! <<<<<
 /// </summary>
-[NetworkSettings(channel=3,sendInterval=0.1f)]
+[NetworkSettings(channel = 3, sendInterval = 0.1f)]
 public class PlayerCommand : NetworkBehaviour
 {
     [Header("References(Player)")]
+    #region References(Player)
     [SerializeField]
     private NetworkIdentity playerIdentity;
     [SerializeField]
     private PlayerCall playerCall;
+    #endregion
 
     [Header("Prefabs")]
+    #region Instantiation(Prefabs)
     [SerializeField]
     private GameObject playerSpawner;   //Player spawner prefab
     [SerializeField]
     private GameObject playerRigidBody; //Player prefab
     [SerializeField]
     private GameObject rocketBody;      //Rocket prefab
-
+    #endregion
 
     /// <summary>
     /// Kills the player, and creates a spawner for that player with given team
@@ -48,25 +51,36 @@ public class PlayerCommand : NetworkBehaviour
     {
         //rocketBody.transform.rotation = targetrotation;
         GameObject rocket = (GameObject)Instantiate(rocketBody, targetposition, targetrotation);    //Spawns rocket at gunpoint with needed rotation
-        rocket.GetComponent<RocketMove>().ownerIdentity = ownerIdentity;                            //
-        rocket.GetComponent<RocketMove>().rocketTeam = newteam;                                     //To give rocket same layer as player
+        rocket.GetComponent<RocketMove>().ownerIdentity = ownerIdentity;                            //Set the rocket owner accordingly
+        rocket.GetComponent<RocketMove>().rocketTeam = newteam;                                     //Set the rocket team accordingly
         rocket.GetComponent<RocketMove>().rocketRotation = targetrotation;                          //Set rocket starting rotation
-        NetworkServer.Spawn(rocket);                                                                //Instantiate new rocket
+        NetworkServer.Spawn(rocket);                                                                //Instantiate new rocket on the server
     }
 
-    //TODO : Comment that shit
+    /// <summary>
+    /// Sends a hit info to the player corresponding to the identity
+    /// </summary>
+    /// <param name="ownerIdentity">Identity of the player to send the hit to</param>
+    /// <param name="magnitude">Magnitude of the hit</param>
     [Command]
-    public void Cmd_SendHit(NetworkIdentity ownerIdentity,float magnitude)
+    public void Cmd_SendHit(NetworkIdentity ownerIdentity, float magnitude)
     {
         ownerIdentity.gameObject.GetComponent<PlayerCommand>().Rpc_GetHit(magnitude);
     }
 
+    /// <summary>
+    /// Receives a hit
+    /// </summary>
+    /// <param name="magnitude">Magnitude of the hit</param>
     [ClientRpc]
     public void Rpc_GetHit(float magnitude)
     {
         playerCall.Call_ToggleHitMarker(magnitude);
     }
 
+    /// <summary>
+    /// Calls for an update of the score on this player
+    /// </summary>
     [ClientRpc]
     public void Rpc_UpdateScore()
     {

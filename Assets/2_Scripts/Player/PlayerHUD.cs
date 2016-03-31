@@ -8,8 +8,6 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField]
     private Text healthText;
     [SerializeField]
-    private Text ammoText;
-    [SerializeField]
     private Text scoreBluText;
     [SerializeField]
     private Text scoreRedText;
@@ -26,14 +24,6 @@ public class PlayerHUD : MonoBehaviour
     public void UpdateHealth(int health)
     {
         healthText.text = health.ToString();
-    }
-
-    /// <summary>
-    /// Updates HUD ammo text to player current ammo
-    /// </summary>
-    public void UpdateAmmo(int ammo)
-    {
-        ammoText.text = ammo.ToString();
     }
 
     /// <summary>

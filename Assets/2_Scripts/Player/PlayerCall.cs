@@ -79,14 +79,8 @@ public class PlayerCall : MonoBehaviour
     }
 
     /// <summary>
-    /// Updates ammo display on HUD
+    /// Updates score display on HUD
     /// </summary>
-    public void Call_UpdateAmmo(int ammo)
-    {
-        playerHUD.UpdateAmmo(ammo);
-    }
-
-
     public void Call_UpdateScore()
     {
         if (GameObject.Find("ScoreGM") != null)

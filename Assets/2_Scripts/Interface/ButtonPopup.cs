@@ -12,40 +12,13 @@ public class ButtonPopup : MonoBehaviour
     [SerializeField]
     private float scale = 1.2f;             //Scale factor
 
-    //Local
-    private bool IsPopped = false;
-
-    /// <summary>
-    /// Called every frame
-    /// </summary>
-    void Update()
-    {
-        PopUp();
-    }
-
-    /// <summary>
-    /// Makes the button Lerp to target according to IsPopped
-    /// </summary>
-    private void PopUp()
-    {
-        Vector3 target; //TODO : Clean that shit up
-        if (IsPopped)
-        {
-            target = new Vector3(scale, scale, scale);
-        }
-        else
-        {
-            target = new Vector3(1.0f, 1.0f, 1.0f);
-        }
-        rectTransform.localScale = Vector3.Lerp(rectTransform.localScale, target, 0.2f);
-    }
-
     /// <summary>
     /// Called when mouse hovers button
     /// </summary>
     public void OnMouseEnter()
     {
-        IsPopped = true;
+        StopAllCoroutines();
+        StartCoroutine(UpScale());
     }
 
     /// <summary>
@@ -53,6 +26,25 @@ public class ButtonPopup : MonoBehaviour
     /// </summary>
     public void OnMouseExit()
     {
-        IsPopped = false;
+        StopAllCoroutines();
+        StartCoroutine(DownScale());
+    }
+
+    IEnumerator UpScale()
+    {
+        while (rectTransform.localScale.x < scale - 0.01f)
+        {
+            rectTransform.localScale = Vector3.Lerp(rectTransform.localScale, new Vector3(scale, scale, scale), 0.2f);
+            yield return null;
+        }
+    }
+
+    IEnumerator DownScale()
+    {
+        while (rectTransform.localScale.x > 1.0f + 0.01f)
+        {
+            rectTransform.localScale = Vector3.Lerp(rectTransform.localScale, new Vector3(1.0f, 1.0f, 1.0f), 0.2f);
+            yield return null;
+        }
     }
 }
