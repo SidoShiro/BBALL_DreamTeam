@@ -29,11 +29,11 @@ public class KillFeedInfoImage : MonoBehaviour
 
         if (isInvolved)
         {
-            BGImage.color = new Color32(255, 146, 107, 255);
+            BGImage.color = new Color32(255, 146, 107, 100);
         }
         else
         {
-            BGImage.color = new Color32(53, 69, 70, 255);
+            BGImage.color = new Color32(53, 69, 70, 100);
         }
 
         foreach (GameObject go in toActivate)
