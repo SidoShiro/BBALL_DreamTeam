@@ -104,6 +104,7 @@ public class PlayerEnabler : NetworkBehaviour
             playerModel.gameObject.layer = 9;                   //Place PlayerModel on "NORENDER" layer to disable rendering for this client
             playerCamera.enabled = true;                        //Enables the camera component of this player
             playerUI.SetActive(true);                           //Enables player UI (Crosshair, HUD, Menu, etc...)
+            GameObject.FindGameObjectWithTag("KillFeedPanel").GetComponent<KillFeedInput>().localPlayerName = name;
 
             playerCall.Call_UpdateScore();
 

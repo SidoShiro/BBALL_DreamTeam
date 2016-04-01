@@ -69,13 +69,9 @@ public class PlayerCommand : NetworkBehaviour
     }
 
     [Command]
-    public void Cmd_SendKill(NetworkIdentity killerIdentity, NetworkIdentity victimIdentity)
+    public void Cmd_SendKill(string killerName, string victimName, PlayerStats.Team killerTeam, PlayerStats.Team victimTeam)
     {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        foreach(GameObject go in players)
-        {
-            go.GetComponent<PlayerCommand>().Rpc_ParseKill(killerIdentity, victimIdentity);
-        }
+        GameObject.FindGameObjectWithTag("KillFeedPanel").GetComponent<KillFeedInput>().Rpc_ParseKill(killerName, victimName, killerTeam, victimTeam);
     }
 
     /// <summary>
@@ -95,22 +91,5 @@ public class PlayerCommand : NetworkBehaviour
     public void Rpc_UpdateScore()
     {
         playerCall.Call_UpdateScore();
-    }
-
-    [ClientRpc]
-    public void Rpc_ParseKill(NetworkIdentity killerIdentity, NetworkIdentity victimIdentity)
-    {
-        if (isLocalPlayer)
-        {
-            bool isInvolved = killerIdentity == playerIdentity || victimIdentity == playerIdentity;
-            if(GameObject.FindGameObjectWithTag("KillFeedPanel") != null)
-            {
-                GameObject.FindGameObjectWithTag("KillFeedPanel").GetComponent<KillFeedInput>().ParseKill(killerIdentity, victimIdentity, isInvolved);
-            }
-            else
-            {
-                Debug.Log("No KillFeedPanel in scene");
-            }
-        }
     }
 }

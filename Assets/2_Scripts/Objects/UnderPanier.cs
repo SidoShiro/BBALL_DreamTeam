@@ -18,7 +18,7 @@ public class UnderPanier : MonoBehaviour
             if (player.GetComponentInParent<PlayerStats>().playerTeam == adv)
             {
                 playerH = player.GetComponentInParent<PlayerStats>().playerHealth;
-                player.GetComponentInParent<PlayerCall>().Call_DamagePlayer(playerH, new NetworkIdentity());
+                player.GetComponentInParent<PlayerCall>().Call_DamagePlayer(playerH, " ", PlayerStats.Team.SPE);
                 /*un joueur adverse qui passe en dessous, repop sans marquer le point
                 un joueur adverse qui passe par dessus, repop après avoir marqué le point -> changer le temps de respawn
                 */

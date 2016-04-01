@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using System.Collections;
 
 
 /// <summary>
@@ -20,9 +21,8 @@ public class PlayerSpawner : NetworkBehaviour
     public PlayerStats.Team newteam;    //Team to respawn in (to set before respawn)
     public int respawntime = 2;         //Time before respawn (Spectator is always 0)
 
-    //Local
     private float spawntime;
-    private bool stop = false;
+    private bool b_CanRespawn;
 
     void Start()
     {
@@ -33,30 +33,35 @@ public class PlayerSpawner : NetworkBehaviour
         }
         else
         {
-            spawntime = Time.time + respawntime;
+            StartCoroutine(WaitUntilRespawn());
         }
     }
 
-    void Update()
+    IEnumerator WaitUntilRespawn()
     {
-        //Timer
-        float time = Time.time;
+        spawntime = Time.time + respawntime;
+        IEnumerator animation = AnimateRespawnTime();
+        StartCoroutine(animation);
 
-        //Timer checker
-        if (time > spawntime && !stop)
+        yield return new WaitForSeconds(respawntime);
+
+        StopCoroutine(animation);
+        Cmd_CreatePlayer();
+    }
+
+    IEnumerator AnimateRespawnTime()
+    {
+        while (Time.time < spawntime)
         {
-            Cmd_CreatePlayer();
-            stop = true;
+            float rtime = spawntime - Time.time;
+            if (rtime < 0)
+            {
+                rtime = 0;
+            }
+
+            playerRespawnTimeText.text = rtime.ToString("0.00");   //Format respawn timer and diplay it
+            yield return null;
         }
-
-        float rtime = spawntime - time;
-        if (rtime < 0)
-        {
-            rtime = 0;
-        }
-
-        playerRespawnTimeText.text = rtime.ToString("0.00");   //Display format respawn timer and siplay it
-
     }
 
     [Command]
@@ -80,7 +85,7 @@ public class PlayerSpawner : NetworkBehaviour
         Transform spawnPoint = spawnTab[Random.Range(0, (spawnTab.Length - 1))].transform;                          //Pick random spawn
         GameObject playerNew = (GameObject)Instantiate(playerRigidBody, spawnPoint.position, spawnPoint.rotation);  //Spawns new player
         playerNew.GetComponent<PlayerStats>().playerTeam = newteam;                                                 //Set player team accordingly
-        playerNew.name = "Bob";                                                                                     //TODO : Add player nickname
+        playerNew.name = m_Custom.RandomGUID(10);                                                                   //TODO : Add player nickname
         NetworkServer.DestroyPlayersForConnection(connectionToClient);                                              //Clean connection (prevents duplicate)
         NetworkServer.ReplacePlayerForConnection(connectionToClient, playerNew, playerControllerId);                //Instantiate new player
     }

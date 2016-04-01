@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 public class m_Custom : MonoBehaviour
 {
@@ -21,7 +22,6 @@ public class m_Custom : MonoBehaviour
                 return new Color32(231, 76, 60,255);
 
             default:
-                Debug.Log("SHOULD NOT HAPPEND: Player team was not found in m_Custom/GetColorFromTeam");
                 return new Color32(155, 89, 182,255);
         }
     }
@@ -40,6 +40,11 @@ public class m_Custom : MonoBehaviour
                 Debug.Log("SHOULD NOT HAVE HAPPENED: Player team not expected in m_Custom/GetLayerFromTeam");
                 return 10;
         }
+    }
+
+    public static string RandomGUID(int maxSize)
+    {
+        return Guid.NewGuid().ToString().Substring(0, maxSize);
     }
 
     #region GET/SET

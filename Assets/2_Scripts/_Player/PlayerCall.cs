@@ -37,11 +37,11 @@ public class PlayerCall : MonoBehaviour
     /// Apllies damage to the player
     /// </summary>
     /// <param name="dmg">Damage dealt</param>
-    public void Call_DamagePlayer(int dmg, NetworkIdentity ownerIdentity)
+    public void Call_DamagePlayer(int dmg, string originName, PlayerStats.Team originTeam)
     {
         if (playerStats.playerHealth - dmg <= 0)
         {
-            Call_KillPlayer(ownerIdentity);
+            Call_KillPlayer(originName, originTeam);
         }
         else
         {
@@ -53,18 +53,10 @@ public class PlayerCall : MonoBehaviour
     /// <summary>
     /// Kills Player
     /// </summary>
-    public void Call_KillPlayer()
+    public void Call_KillPlayer(string killerName, PlayerStats.Team killerTeam)
     {
+        playerCommand.Cmd_SendKill(killerName, playerIdentity.name, killerTeam, playerStats.playerTeam);
         playerCommand.Cmd_KillPlayer(playerStats.playerTeam);
-    }
-
-    /// <summary>
-    /// Kills Player
-    /// </summary>
-    public void Call_KillPlayer(NetworkIdentity killerIdentity)
-    {
-        playerCommand.Cmd_SendKill(killerIdentity, playerIdentity);
-        //playerCommand.Cmd_KillPlayer(playerStats.playerTeam);
     }
 
     /// <summary>
@@ -74,7 +66,7 @@ public class PlayerCall : MonoBehaviour
     public void Call_ChangePlayerTeam(PlayerStats.Team newteam)
     {
         playerStats.playerTeam = newteam;
-        Call_KillPlayer();
+        Call_KillPlayer(" ", PlayerStats.Team.SPE);
     }
 
     #region AUTOCALLS
@@ -142,12 +134,12 @@ public class PlayerCall : MonoBehaviour
         //Damage application
         if (playerIdentity == ownerIdentity)
         {
-            Call_DamagePlayer((int)(damage * selfdmgfactor), ownerIdentity);
+            Call_DamagePlayer((int)(damage * selfdmgfactor), ownerIdentity.name, explosionTeam);
         }
         else
         {
             playerCommand.Cmd_SendHit(ownerIdentity, 1.0f);
-            Call_DamagePlayer(damage, ownerIdentity);
+            Call_DamagePlayer(damage, ownerIdentity.name, explosionTeam);
         }
     }
 

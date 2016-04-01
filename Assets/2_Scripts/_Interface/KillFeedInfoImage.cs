@@ -19,21 +19,21 @@ public class KillFeedInfoImage : MonoBehaviour
     private Text VictimText;
     #endregion
 
-    public void DisplayKill(NetworkIdentity killerIdentity, NetworkIdentity victimIdentity, bool isInvolved)
+    public void DisplayKill(string killerName, string victimName, PlayerStats.Team killerTeam, PlayerStats.Team victimTeam, bool isInvolved)
     {
-        KillerText.text = killerIdentity.gameObject.name;
-        VictimText.text = victimIdentity.gameObject.name;
+        KillerText.text = killerName;
+        VictimText.text = victimName;
 
-        KillerText.color = m_Custom.GetColorFromTeam(killerIdentity.gameObject.GetComponent<PlayerStats>().playerTeam);
-        VictimText.color = m_Custom.GetColorFromTeam(victimIdentity.gameObject.GetComponent<PlayerStats>().playerTeam);
+        KillerText.color = m_Custom.GetColorFromTeam(killerTeam);
+        VictimText.color = m_Custom.GetColorFromTeam(victimTeam);
 
         if (isInvolved)
         {
-            BGImage.color = new Color32(255, 146, 107, 100);
+            BGImage.color = new Color32(255, 162, 123, 255);
         }
         else
         {
-            BGImage.color = new Color32(53, 69, 70, 100);
+            BGImage.color = new Color32(53, 69, 70, 255);
         }
 
         foreach (GameObject go in toActivate)
