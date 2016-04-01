@@ -12,7 +12,7 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField]
     private Text scoreRedText;
     [SerializeField]
-    private Slider healthBar;
+    public Slider healthBar;
 
     [Header("Parameters")]
     [SerializeField]
@@ -25,8 +25,9 @@ public class PlayerHUD : MonoBehaviour
     /// </summary>
     public void UpdateHealth(int health)
     {
-        //     healthBar.value = health;
         healthText.text = health.ToString();
+        healthBar.value = health;
+
     }
 
     /// <summary>
