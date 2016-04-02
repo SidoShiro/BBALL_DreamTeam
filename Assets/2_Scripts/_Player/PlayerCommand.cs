@@ -81,7 +81,10 @@ public class PlayerCommand : NetworkBehaviour
     [ClientRpc]
     public void Rpc_GetHit(float magnitude)
     {
-        playerCall.Call_ToggleHitMarker(magnitude);
+        if (isLocalPlayer)
+        {
+            playerCall.Call_ToggleHitMarker(magnitude);
+        }
     }
 
     /// <summary>
