@@ -399,6 +399,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 451572}
   - 135: {fileID: 13574416}
+  - 65: {fileID: 6550614}
+  - 114: {fileID: 11455690}
   m_Layer: 0
   m_Name: PlayerCollider
   m_TagString: PlayerCollider
@@ -715,6 +717,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
+--- !u!65 &6550614
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174668}
+  m_Material: {fileID: 13400000, guid: 03296bc911ba38a42a473a9b95248849, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!81 &8150304
 AudioListener:
   m_ObjectHideFlags: 1
@@ -1760,6 +1774,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11455690
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1efbc0600e7ac754aa84eefadb6a33e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerCollider: {fileID: 6550614}
 --- !u!114 &11457436
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1965,7 +1991,7 @@ MonoBehaviour:
   playerRigidBody: {fileID: 5487520}
   playerStats: {fileID: 11466942}
   groundspeed: 3
-  airspeed: 2
+  airspeed: 1
   maxairacceleration: 0
   jumpheight: 1.2
   smoothfactor: 1
@@ -2454,7 +2480,7 @@ SphereCollider:
   m_GameObject: {fileID: 174668}
   m_Material: {fileID: 13400000, guid: 03296bc911ba38a42a473a9b95248849, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}

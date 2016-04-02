@@ -198,9 +198,9 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
-
-            projection = Vector3.Project(velocity, acceleration);                       //Get projection of velocity/acceleration
-            float projectionAngle = Vector3.Angle(velocity, acceleration);              //Get angle between velocity & acceleration
+            Vector3 flatvelocity = new Vector3(velocity.x, 0.0f, velocity.z);
+            projection = Vector3.Project(flatvelocity, acceleration);                       //Get projection of velocity/acceleration
+            float projectionAngle = Vector3.Angle(flatvelocity, acceleration);              //Get angle between velocity & acceleration
             if (projection.magnitude <= maxairacceleration || projectionAngle > 90.0f)  //If normal is not over the limit or backwards
                 playerRigidBody.AddForce(acceleration, ForceMode.VelocityChange);       //Move according to acceleration
 
