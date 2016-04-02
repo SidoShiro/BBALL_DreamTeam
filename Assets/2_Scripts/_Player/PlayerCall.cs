@@ -130,7 +130,9 @@ public class PlayerCall : MonoBehaviour
             return;
         }
         //Calculate damage
+        float magnitude = (2.0f - distance) / 1.5f;
         int damage = (int)((2.0f - distance) * 100);
+        
         //Damage application
         if (playerIdentity == ownerIdentity)
         {
@@ -138,7 +140,7 @@ public class PlayerCall : MonoBehaviour
         }
         else
         {
-            playerCommand.Cmd_SendHit(ownerIdentity, 1.0f);
+            playerCommand.Cmd_SendHit(ownerIdentity, magnitude);
             Call_DamagePlayer(damage, ownerIdentity.name, explosionTeam);
         }
     }

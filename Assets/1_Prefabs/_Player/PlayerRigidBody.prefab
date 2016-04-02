@@ -259,6 +259,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 453554}
+  - 82: {fileID: 8254422}
   m_Layer: 0
   m_Name: PlayerHead
   m_TagString: Untagged
@@ -736,6 +737,80 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169174}
   m_Enabled: 0
+--- !u!82 &8254422
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156104}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: da8bd7c97921b7f448c0a6f13fedad23, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 0
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 1
+  BypassListenerEffects: 1
+  BypassReverbZones: 1
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!92 &9254966
 Behaviour:
   m_ObjectHideFlags: 1
@@ -1149,6 +1224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9665c9b9db395064686d5e0aca39e043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitsound: {fileID: 8254422}
   healthText: {fileID: 11468270}
   scoreBluText: {fileID: 11436110}
   scoreRedText: {fileID: 11487548}
@@ -1488,6 +1564,7 @@ MonoBehaviour:
   playerModel: {fileID: 182066}
   playerRigidBody: {fileID: 5487520}
   playerCamera: {fileID: 2043206}
+  playerAudio: {fileID: 8150304}
   playerUI: {fileID: 126778}
   playerShoot: {fileID: 11497470}
   playerModelRenderer: {fileID: 2336412}

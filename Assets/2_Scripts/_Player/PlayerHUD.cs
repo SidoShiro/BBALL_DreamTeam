@@ -4,6 +4,10 @@ using System.Collections;
 
 public class PlayerHUD : MonoBehaviour
 {
+    [Header("References(Player)")]
+    [SerializeField]
+    private AudioSource hitsound;
+
     [Header("References(Interface)")]
     [SerializeField]
     private Text healthText;
@@ -40,12 +44,15 @@ public class PlayerHUD : MonoBehaviour
     /// </summary>
     public void ToggleHitMarker(float magnitude)
     {
+        float scale = 1.0f + magnitude * 3.0f; //TODO : Animate hitmarker ?
+        hitMarker.transform.localScale = new Vector3(scale, scale, scale);
         StartCoroutine(HitMark());
+        hitsound.pitch = 2.0f - magnitude;
+        hitsound.Play();
     }
 
     IEnumerator HitMark()
     {
-        yield return 500;
         hitMarker.SetActive(true);
         yield return new WaitForSeconds(displayTime);
         hitMarker.SetActive(false);
