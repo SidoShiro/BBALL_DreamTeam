@@ -69,9 +69,9 @@ public class PlayerCommand : NetworkBehaviour
     }
 
     [Command]
-    public void Cmd_SendKill(string killerName, string victimName, PlayerStats.Team killerTeam, PlayerStats.Team victimTeam)
+    public void Cmd_SendKill(string killerIdentity, string victimIdentity, int killerTeam, int victimTeam)
     {
-        GameObject.FindGameObjectWithTag("KillFeedPanel").GetComponent<KillFeedInput>().Rpc_ParseKill(killerName, victimName, killerTeam, victimTeam);
+        GameObject.FindGameObjectWithTag("KillFeedPanel").GetComponent<KillFeedInput>().Rpc_ParseKill(killerIdentity, victimIdentity, killerTeam, victimTeam);
     }
 
     /// <summary>
@@ -94,5 +94,14 @@ public class PlayerCommand : NetworkBehaviour
     public void Rpc_UpdateScore()
     {
         playerCall.Call_UpdateScore();
+    }
+
+    /// <summary>
+    /// Kills player
+    /// </summary>
+    [ClientRpc]
+    public void Rpc_KillPlayer(string reason)
+    {
+        playerCall.Call_KillPlayer(reason);
     }
 }

@@ -1,14 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
-using System.Collections.Generic;
 
 public class KillFeedInfoImage : MonoBehaviour
 {
     [Header("References(Interface)")]
     #region References(Interface)
-    [SerializeField]
-    private List<GameObject> toActivate;
     [SerializeField]
     private Image BGImage;
     [SerializeField]
@@ -19,10 +16,10 @@ public class KillFeedInfoImage : MonoBehaviour
     private Text VictimText;
     #endregion
 
-    public void DisplayKill(string killerName, string victimName, PlayerStats.Team killerTeam, PlayerStats.Team victimTeam, bool isInvolved)
+    public void DisplayKill(string killerIdentity, string victimIdentity, int killerTeam, int victimTeam, bool isInvolved)
     {
-        KillerText.text = killerName;
-        VictimText.text = victimName;
+        KillerText.text = killerIdentity;
+        VictimText.text = victimIdentity;
 
         KillerText.color = m_Custom.GetColorFromTeam(killerTeam);
         VictimText.color = m_Custom.GetColorFromTeam(victimTeam);
@@ -34,11 +31,6 @@ public class KillFeedInfoImage : MonoBehaviour
         else
         {
             BGImage.color = new Color32(53, 69, 70, 150);
-        }
-
-        foreach (GameObject go in toActivate)
-        {
-            go.SetActive(true);
         }
     }
 }

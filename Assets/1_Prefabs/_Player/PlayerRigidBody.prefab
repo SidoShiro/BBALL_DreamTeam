@@ -1554,6 +1554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de964696ed16494d86bb55cc49be518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerIdentity: {fileID: 11494860}
   playerStats: {fileID: 11466942}
   playerCall: {fileID: 11494308}
   playerHUD: {fileID: 11418040}

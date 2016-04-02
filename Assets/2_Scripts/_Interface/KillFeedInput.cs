@@ -10,16 +10,15 @@ public class KillFeedInput : NetworkBehaviour
     private GameObject KillFeedInfoPrefab;
     #endregion
 
-    public string localPlayerName;
+    public string localPlayerIdentity;
 
     [ClientRpc]
-    public void Rpc_ParseKill(string killerName, string victimName, PlayerStats.Team killerTeam, PlayerStats.Team victimTeam)
+    public void Rpc_ParseKill(string killerIdentity, string victimIdentity, int killerTeam, int victimTeam)
     {
-        bool isInvolved = killerName == localPlayerName || victimName == localPlayerName;
+        bool isInvolved = killerIdentity == localPlayerIdentity || victimIdentity == localPlayerIdentity;
         GameObject newFeed = Instantiate(KillFeedInfoPrefab);
         newFeed.transform.SetParent(transform);
-        newFeed.GetComponent<KillFeedInfoImage>().DisplayKill(killerName, victimName, killerTeam, victimTeam, isInvolved);
+        newFeed.GetComponent<KillFeedInfoImage>().DisplayKill(killerIdentity, victimIdentity, killerTeam, victimTeam, isInvolved);
         Destroy(newFeed, 5.0f);
     }
-
 }

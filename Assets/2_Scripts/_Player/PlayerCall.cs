@@ -37,11 +37,11 @@ public class PlayerCall : MonoBehaviour
     /// Apllies damage to the player
     /// </summary>
     /// <param name="dmg">Damage dealt</param>
-    public void Call_DamagePlayer(int dmg, string originName, PlayerStats.Team originTeam)
+    public void Call_DamagePlayer(int dmg, string originIdentity, int originTeam)
     {
         if (playerStats.playerHealth - dmg <= 0)
         {
-            Call_KillPlayer(originName, originTeam);
+            Call_KillPlayer(originIdentity, originTeam);
         }
         else
         {
@@ -53,9 +53,18 @@ public class PlayerCall : MonoBehaviour
     /// <summary>
     /// Kills Player
     /// </summary>
-    public void Call_KillPlayer(string killerName, PlayerStats.Team killerTeam)
+    public void Call_KillPlayer(string killerIdentity, int killerTeam)
     {
-        playerCommand.Cmd_SendKill(killerName, playerIdentity.name, killerTeam, playerStats.playerTeam);
+        playerCommand.Cmd_SendKill(killerIdentity, playerIdentity.name, killerTeam, (int)playerStats.playerTeam);
+        playerCommand.Cmd_KillPlayer(playerStats.playerTeam);
+    }
+
+    /// <summary>
+    /// Kills Player
+    /// </summary>
+    public void Call_KillPlayer(string reason)
+    {
+        playerCommand.Cmd_SendKill(reason, playerIdentity.name, 0, (int)playerStats.playerTeam);
         playerCommand.Cmd_KillPlayer(playerStats.playerTeam);
     }
 
@@ -66,7 +75,7 @@ public class PlayerCall : MonoBehaviour
     public void Call_ChangePlayerTeam(PlayerStats.Team newteam)
     {
         playerStats.playerTeam = newteam;
-        Call_KillPlayer(" ", PlayerStats.Team.SPE);
+        Call_KillPlayer("TeamSwitch");
     }
 
     #region AUTOCALLS
@@ -132,16 +141,16 @@ public class PlayerCall : MonoBehaviour
         //Calculate damage
         float magnitude = (2.0f - distance) / 1.5f;
         int damage = (int)((2.0f - distance) * 100);
-        
+
         //Damage application
         if (playerIdentity == ownerIdentity)
         {
-            Call_DamagePlayer((int)(damage * selfdmgfactor), ownerIdentity.name, explosionTeam);
+            Call_DamagePlayer((int)(damage * selfdmgfactor), ownerIdentity.name, (int)explosionTeam);
         }
         else
         {
             playerCommand.Cmd_SendHit(ownerIdentity, magnitude);
-            Call_DamagePlayer(damage, ownerIdentity.name, explosionTeam);
+            Call_DamagePlayer(damage, ownerIdentity.name, (int)explosionTeam);
         }
     }
 

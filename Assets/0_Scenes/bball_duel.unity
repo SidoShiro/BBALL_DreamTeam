@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.039215688}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   KillFeedInfoPrefab: {fileID: 197414, guid: 82abef89c3169fb48be9d318dd51a8c8, type: 2}
-  localPlayerName: 
+  localPlayerIdentity: 
 --- !u!114 &52827945
 MonoBehaviour:
   m_ObjectHideFlags: 0

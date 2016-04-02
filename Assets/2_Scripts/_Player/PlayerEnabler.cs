@@ -12,9 +12,11 @@ public class PlayerEnabler : NetworkBehaviour
 {
     [Header("References(Player)")]
     [SerializeField]
-    private PlayerStats playerStats;    //Reference to acces player team
+    private NetworkIdentity playerIdentity; //Reference to acces player team
     [SerializeField]
-    private PlayerCall playerCall;      //Reference to access player calls
+    private PlayerStats playerStats;        //Reference to acces player team
+    [SerializeField]
+    private PlayerCall playerCall;          //Reference to access player calls
 
     [Header("References(Interface)")]
     [SerializeField]
@@ -107,7 +109,7 @@ public class PlayerEnabler : NetworkBehaviour
             playerCamera.enabled = true;                        //Enables the camera component of this player
             playerAudio.enabled = true;                         //Enables the audio component of this player
             playerUI.SetActive(true);                           //Enables player UI (Crosshair, HUD, Menu, etc...)
-            GameObject.FindGameObjectWithTag("KillFeedPanel").GetComponent<KillFeedInput>().localPlayerName = name;
+            GameObject.FindGameObjectWithTag("KillFeedPanel").GetComponent<KillFeedInput>().localPlayerIdentity = playerIdentity.name;
 
             playerCall.Call_UpdateScore();
 

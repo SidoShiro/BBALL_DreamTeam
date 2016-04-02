@@ -11,6 +11,21 @@ public class m_Custom : MonoBehaviour
 
     private static LayerMask _layerMaskRocket = LayerMask.GetMask("Default", "BLU", "RED");
 
+    public static Color GetColorFromTeam(int team)
+    {
+        switch (team)
+        {
+            case 1:
+                return new Color32(52, 152, 219, 255);
+
+            case 2:
+                return new Color32(231, 76, 60, 255);
+
+            default:
+                return new Color32(155, 89, 182, 255);
+        }
+    }
+
     public static Color GetColorFromTeam(PlayerStats.Team team)
     {
         switch (team)
