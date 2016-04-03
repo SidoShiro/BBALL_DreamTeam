@@ -81,20 +81,6 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Ramp
-        second:
-          m_Texture: {fileID: 2800000, guid: ea267fafe0b5b4044a5ec467f6494f57, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Cube
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
           name: _MatCap
         second:
           m_Texture: {fileID: 2800000, guid: 7f5077d68b405ce45a95a2638a373656, type: 3}
@@ -105,6 +91,20 @@ Material:
           name: _ToonShade
         second:
           m_Texture: {fileID: 2800000, guid: 5da13de1423af4fc2bc2719a8513c0db, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Ramp
+        second:
+          m_Texture: {fileID: 2800000, guid: ea267fafe0b5b4044a5ec467f6494f57, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Cube
+        second:
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -162,16 +162,24 @@ Material:
         second: 0
       data:
         first:
+          name: _Outline
+        second: 1
+      data:
+        first:
+          name: _MatCapAccurate
+        second: 0
+      data:
+        first:
+          name: _TintColor
+        second: 1
+      data:
+        first:
           name: _RampThreshold
         second: 0.5
       data:
         first:
           name: _RampSmooth
         second: 0.1
-      data:
-        first:
-          name: _Outline
-        second: 1
       data:
         first:
           name: _TexLod
@@ -206,14 +214,6 @@ Material:
         second: 1
       data:
         first:
-          name: _MatCapAccurate
-        second: 0
-      data:
-        first:
-          name: _TintColor
-        second: 1
-      data:
-        first:
           name: _DetailTex
         second: 1
       data:
@@ -228,7 +228,7 @@ Material:
       data:
         first:
           name: _EmissionColor
-        second: {r: 0.20392157, g: 0.59607846, b: 0.85882354, a: 1}
+        second: {r: 0.23744291, g: 0.69406384, b: 1, a: 1}
       data:
         first:
           name: _Color
@@ -239,16 +239,16 @@ Material:
         second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       data:
         first:
+          name: _OutlineColor
+        second: {r: 0.20392157, g: 0.59607846, b: 0.85882354, a: 1}
+      data:
+        first:
           name: _HColor
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
           name: _SColor
         second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _OutlineColor
-        second: {r: 0.20392157, g: 0.59607846, b: 0.85882354, a: 1}
       data:
         first:
           name: _RimColor
