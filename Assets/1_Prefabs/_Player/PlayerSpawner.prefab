@@ -34,7 +34,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &151170
 GameObject:
   m_ObjectHideFlags: 1
@@ -104,7 +104,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &456140
 Transform:
   m_ObjectHideFlags: 1
@@ -237,6 +237,7 @@ MonoBehaviour:
   playerRigidBody: {fileID: 169552, guid: 98cc675f9e78ec14a9b0b8ca46b38205, type: 2}
   playerRespawnTimeText: {fileID: 11487646}
   newteam: 0
+  newname: _N_
   respawntime: 2
 --- !u!114 &11459890
 MonoBehaviour:
@@ -382,6 +383,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0

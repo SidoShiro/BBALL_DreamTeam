@@ -35,7 +35,8 @@ public class PlayerCommand : NetworkBehaviour
     public void Cmd_KillPlayer(PlayerStats.Team newteam)
     {
         GameObject spawner = Instantiate(playerSpawner);                                            //Creates spawner                
-        spawner.GetComponent<PlayerSpawner>().newteam = newteam;                                    //Set spawner team
+        spawner.GetComponent<PlayerSpawner>().newteam = newteam;                                    //Set spawning player team
+        spawner.GetComponent<PlayerSpawner>().newname = name;                                       //Set spawning player name
         NetworkServer.DestroyPlayersForConnection(connectionToClient);                              //Clean connection (to prevent duplicates)
         NetworkServer.ReplacePlayerForConnection(connectionToClient, spawner, playerControllerId);  //Instantiate spawner on network
     }

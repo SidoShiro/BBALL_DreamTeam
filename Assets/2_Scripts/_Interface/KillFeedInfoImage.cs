@@ -26,11 +26,11 @@ public class KillFeedInfoImage : MonoBehaviour
 
         if (isInvolved)
         {
-            BGImage.color = new Color32(246, 196, 163, 150);
+            BGImage.color = new Color32(246, 196, 163, 255);
         }
         else
         {
-            BGImage.color = new Color32(53, 69, 70, 150);
+            BGImage.color = new Color32(76, 90, 105, 255);
         }
     }
 }

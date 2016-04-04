@@ -12,6 +12,8 @@ public class PlayerStats : NetworkBehaviour
 
     [Header("Stats")]
     [SyncVar]
+    public string playerName;
+    [SyncVar]
     public Team playerTeam = Team.BLU;  //Player's current team
     public int playerHealth;            //Player's current health
     public bool isCarrying;             //Ball carrying toggle

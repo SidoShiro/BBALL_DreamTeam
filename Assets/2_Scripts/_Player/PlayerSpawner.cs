@@ -18,8 +18,11 @@ public class PlayerSpawner : NetworkBehaviour
 
     //Public
     [SyncVar]
-    public PlayerStats.Team newteam;    //Team to respawn in (to set before respawn)
-    public int respawntime = 2;         //Time before respawn (Spectator is always 0)
+    public PlayerStats.Team newteam;      //Team to respawn in (to set before respawn)
+    [SyncVar]
+    public string newname = "_N_";
+    [SerializeField]
+    private int respawntime = 2;   //Time before respawn (Spectator is always 0)
 
     private float spawntime;
     private bool b_CanRespawn;
@@ -54,11 +57,7 @@ public class PlayerSpawner : NetworkBehaviour
         while (Time.time < spawntime)
         {
             float rtime = spawntime - Time.time;
-            if (rtime < 0)
-            {
-                rtime = 0;
-            }
-
+            rtime = rtime < 0 ? 0 : rtime;
             playerRespawnTimeText.text = rtime.ToString("0.00");   //Format respawn timer and diplay it
             yield return null;
         }
@@ -85,7 +84,7 @@ public class PlayerSpawner : NetworkBehaviour
         Transform spawnPoint = spawnTab[Random.Range(0, (spawnTab.Length - 1))].transform;                          //Pick random spawn
         GameObject playerNew = (GameObject)Instantiate(playerRigidBody, spawnPoint.position, spawnPoint.rotation);  //Spawns new player
         playerNew.GetComponent<PlayerStats>().playerTeam = newteam;                                                 //Set player team accordingly
-        playerNew.name = m_Custom.RandomGUID(10);                                                                   //TODO : Add player nickname
+        playerNew.GetComponent<PlayerStats>().playerName = newname == "_N_" ? m_Custom.RandomGUID(10) : newname;    //TODO : Add player nickname
         NetworkServer.DestroyPlayersForConnection(connectionToClient);                                              //Clean connection (prevents duplicate)
         NetworkServer.ReplacePlayerForConnection(connectionToClient, playerNew, playerControllerId);                //Instantiate new player
     }

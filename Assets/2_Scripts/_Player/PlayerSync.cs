@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
-using System.Collections.Generic;
 
 [NetworkSettings(channel = 0, sendInterval = 0f)]
 public class PlayerSync : NetworkBehaviour
@@ -33,5 +32,4 @@ public class PlayerSync : NetworkBehaviour
         position = newposition;
         rotation = newrotation;
     }
-
 }
