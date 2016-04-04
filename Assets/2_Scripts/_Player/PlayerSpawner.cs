@@ -3,12 +3,12 @@ using UnityEngine.UI;
 using UnityEngine.Networking;
 using System.Collections;
 
-
 /// <summary>
 /// This script should be attached to the PlayerSpawner object
 /// It will recreate a player for that connection after a given amount of time.
 /// The team and respawn time can be changed accordingly
 /// </summary>
+[NetworkSettings(channel = 3, sendInterval = 0.1f)]
 public class PlayerSpawner : NetworkBehaviour
 {
     [SerializeField]

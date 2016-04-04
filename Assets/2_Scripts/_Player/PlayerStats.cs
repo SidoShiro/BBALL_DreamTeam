@@ -13,7 +13,7 @@ public class PlayerStats : NetworkBehaviour
     [Header("Stats")]
     [SyncVar]
     public Team playerTeam = Team.BLU;  //Player's current team
-    public int playerHealth;      //Player's current health   //TODO : Max health managment
+    public int playerHealth;            //Player's current health
     public bool isCarrying;             //Ball carrying toggle
 
     public void ChangeHealth(InputField health)

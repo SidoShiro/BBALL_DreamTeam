@@ -141,6 +141,7 @@ public class PlayerCall : MonoBehaviour
         //Calculate damage
         float magnitude = (2.0f - distance) / 1.5f;
         int damage = (int)((2.0f - distance) * 100);
+        playerCommand.Cmd_SendHit(ownerIdentity, magnitude);
 
         //Damage application
         if (playerIdentity == ownerIdentity)

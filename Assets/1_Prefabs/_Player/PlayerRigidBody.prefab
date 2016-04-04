@@ -746,7 +746,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: da8bd7c97921b7f448c0a6f13fedad23, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2e54bc5378402954096caed9ff300c3c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
@@ -817,7 +817,7 @@ Behaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169174}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!114 &11400990
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2549,7 +2549,7 @@ Behaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169174}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!135 &13574416
 SphereCollider:
   m_ObjectHideFlags: 1
