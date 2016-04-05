@@ -79,7 +79,7 @@ public class PlayerMove : MonoBehaviour
         Vector3 playerInputs = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
         bool isControllable = playerStats.isReceivingInputs;
 
-        if (playerStats.playerTeam != PlayerStats.Team.SPE)
+        if (playerStats.playerTeam != Team.SPE)
         {
             if (isControllable)
             {

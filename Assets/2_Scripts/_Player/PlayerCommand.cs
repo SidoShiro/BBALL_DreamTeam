@@ -32,7 +32,7 @@ public class PlayerCommand : NetworkBehaviour
     /// </summary>
     /// <param name="newteam">Team the player will respawn in</param>
     [Command]
-    public void Cmd_KillPlayer(PlayerStats.Team newteam)
+    public void Cmd_KillPlayer(Team newteam)
     {
         GameObject spawner = Instantiate(playerSpawner);                                            //Creates spawner                
         spawner.GetComponent<PlayerSpawner>().newteam = newteam;                                    //Set spawning player team
@@ -48,7 +48,7 @@ public class PlayerCommand : NetworkBehaviour
     /// <param name="targetrotation">Rotation to give the rocket</param>
     /// <param name="newteam">Team of the rocket</param>
     [Command]
-    public void Cmd_ShootRocket(Vector3 targetposition, Quaternion targetrotation, PlayerStats.Team newteam, NetworkIdentity ownerIdentity)
+    public void Cmd_ShootRocket(Vector3 targetposition, Quaternion targetrotation, Team newteam, NetworkIdentity ownerIdentity)
     {
         //rocketBody.transform.rotation = targetrotation;
         GameObject rocket = (GameObject)Instantiate(rocketBody, targetposition, targetrotation);    //Spawns rocket at gunpoint with needed rotation
@@ -70,9 +70,9 @@ public class PlayerCommand : NetworkBehaviour
     }
 
     [Command]
-    public void Cmd_SendKill(string killerIdentity, string victimIdentity, int killerTeam, int victimTeam)
+    public void Cmd_SendKill(string killerIdentity, string victimIdentity, Team killerTeam, Team victimTeam, DeathType deathtype)
     {
-        GameObject.FindGameObjectWithTag("KillFeedPanel").GetComponent<KillFeedInput>().Rpc_ParseKill(killerIdentity, victimIdentity, killerTeam, victimTeam);
+        GameObject.FindGameObjectWithTag("KillFeedPanel").GetComponent<KillFeedInput>().Rpc_ParseKill(killerIdentity, victimIdentity, killerTeam, victimTeam, deathtype);
     }
 
     /// <summary>

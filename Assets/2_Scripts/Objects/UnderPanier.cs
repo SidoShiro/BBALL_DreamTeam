@@ -3,7 +3,7 @@ using UnityEngine.Networking;
 
 public class UnderPanier : MonoBehaviour
 {
-    public PlayerStats.Team adv;
+    public Team adv;
     //private int playerH;
     //public PlayerStats player; 
 

@@ -2,13 +2,20 @@
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
+public enum Team
+{
+    SPE = 0,
+    BLU = 1,
+    RED = 2
+}
+
 /// <summary>
 /// This class stores player stats to be used in game
 /// </summary>
 [NetworkSettings(channel = 3, sendInterval = 0.1f)]
 public class PlayerStats : NetworkBehaviour
 {
-    public enum Team { SPE = 0, BLU = 1, RED = 2 }  //Enum for Teams (Used by calling PlayerStats.Team)
+    //Enum for Teams (Used by calling Team)
 
     [Header("Stats")]
     [SyncVar]

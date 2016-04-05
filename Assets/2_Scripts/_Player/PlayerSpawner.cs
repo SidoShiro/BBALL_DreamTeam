@@ -18,7 +18,7 @@ public class PlayerSpawner : NetworkBehaviour
 
     //Public
     [SyncVar]
-    public PlayerStats.Team newteam;      //Team to respawn in (to set before respawn)
+    public Team newteam;      //Team to respawn in (to set before respawn)
     [SyncVar]
     public string newname = "_N_";
     [SerializeField]
@@ -30,7 +30,7 @@ public class PlayerSpawner : NetworkBehaviour
     void Start()
     {
         //Instant respawn if in SPE Team
-        if (newteam == PlayerStats.Team.SPE)
+        if (newteam == Team.SPE)
         {
             Cmd_CreatePlayer();
         }
@@ -69,11 +69,11 @@ public class PlayerSpawner : NetworkBehaviour
         GameObject[] spawnTab;  //Array of possible spawns
         switch (newteam)
         {
-            case PlayerStats.Team.BLU:
+            case Team.BLU:
                 spawnTab = GameObject.FindGameObjectsWithTag("BLUSpawn");
                 break;
 
-            case PlayerStats.Team.RED:
+            case Team.RED:
                 spawnTab = GameObject.FindGameObjectsWithTag("REDSpawn");
                 break;
 

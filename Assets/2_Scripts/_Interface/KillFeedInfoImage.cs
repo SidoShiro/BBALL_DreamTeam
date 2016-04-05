@@ -2,6 +2,12 @@
 using UnityEngine.UI;
 using UnityEngine.Networking;
 
+public enum DeathType
+{
+    Hazard,
+    Explosion
+}
+
 public class KillFeedInfoImage : MonoBehaviour
 {
     [Header("References(Interface)")]
@@ -16,13 +22,29 @@ public class KillFeedInfoImage : MonoBehaviour
     private Text VictimText;
     #endregion
 
-    public void DisplayKill(string killerIdentity, string victimIdentity, int killerTeam, int victimTeam, bool isInvolved)
+    [Header("Parameters")]
+    [SerializeField]
+    private Sprite HazardSprite;
+    [SerializeField]
+    private Sprite ExplosionSprite;
+
+    public void DisplayKill(string killerIdentity, string victimIdentity, Team killerTeam, Team victimTeam, DeathType deathtype, bool isInvolved)
     {
         KillerText.text = killerIdentity;
         VictimText.text = victimIdentity;
 
         KillerText.color = m_Custom.GetColorFromTeam(killerTeam);
         VictimText.color = m_Custom.GetColorFromTeam(victimTeam);
+
+        switch (deathtype)
+        {
+            case DeathType.Hazard:
+                KillImage.sprite = HazardSprite;
+                break;
+            case DeathType.Explosion:
+                KillImage.sprite = ExplosionSprite;
+                break;
+        }
 
         if (isInvolved)
         {

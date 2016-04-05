@@ -746,7 +746,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2e54bc5378402954096caed9ff300c3c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 90aa38656fc5cd64fbaba1e9c8c8883a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
@@ -1970,6 +1970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ad1467103ad1c4696fd4c6b43655db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerName: 
   playerTeam: 1
   playerHealth: 300
   isCarrying: 0
@@ -2522,7 +2523,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 495368}
-  playerName: 
 --- !u!114 &11497470
 MonoBehaviour:
   m_ObjectHideFlags: 1

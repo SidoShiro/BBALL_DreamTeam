@@ -20,7 +20,7 @@ public class RocketMove : NetworkBehaviour
     [SyncVar]
     public NetworkIdentity ownerIdentity;// { get; set; }
     [SyncVar]
-    public PlayerStats.Team rocketTeam;
+    public Team rocketTeam;
     [SyncVar]
     public Quaternion rocketRotation;
 

@@ -11,16 +11,16 @@ public class ScoreGM : NetworkBehaviour
     [SyncVar]
     public int score_red;
 
-    public void TeamScored(PlayerStats.Team team)
+    public void TeamScored(Team team)
     {
         Debug.Log(team + " scored!");
         switch (team)
         {
-            case PlayerStats.Team.BLU:
+            case Team.BLU:
                 score_blue++;
                 break;
 
-            case PlayerStats.Team.RED:
+            case Team.RED:
                 score_red++;
                 break;
 

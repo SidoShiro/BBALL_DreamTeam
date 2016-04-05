@@ -26,14 +26,14 @@ public class m_Custom : MonoBehaviour
         }
     }
 
-    public static Color GetColorFromTeam(PlayerStats.Team team)
+    public static Color GetColorFromTeam(Team team)
     {
         switch (team)
         {
-            case PlayerStats.Team.BLU:
+            case Team.BLU:
                 return new Color32(52, 152, 219,255);
 
-            case PlayerStats.Team.RED:
+            case Team.RED:
                 return new Color32(231, 76, 60,255);
 
             default:
@@ -41,14 +41,14 @@ public class m_Custom : MonoBehaviour
         }
     }
 
-    public static LayerMask GetLayerFromTeam(PlayerStats.Team team)
+    public static LayerMask GetLayerFromTeam(Team team)
     {
         switch (team)
         {
-            case PlayerStats.Team.BLU:
+            case Team.BLU:
                 return layerMaskBLU;
 
-            case PlayerStats.Team.RED:
+            case Team.RED:
                 return layerMaskRED;
 
             default:

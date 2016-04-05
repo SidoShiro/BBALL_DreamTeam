@@ -10,7 +10,7 @@ public class MapKillZone : NetworkBehaviour
 
         if (playerRigidBody.tag == "Player")
         {
-            playerRigidBody.GetComponent<PlayerCall>().Call_KillPlayer("Hazard");
+            playerRigidBody.GetComponent<PlayerCall>().Call_KillPlayer("");
         }
     }
 }

@@ -34,7 +34,7 @@ public class PlayerMenu : MonoBehaviour
     /// </summary>
     void Start()
     {
-        if (playerStats.playerTeam != PlayerStats.Team.SPE)
+        if (playerStats.playerTeam != Team.SPE)
         {
             playerCrosshairPanel.SetActive(true);
         }
@@ -102,19 +102,19 @@ public class PlayerMenu : MonoBehaviour
 
     public void JoinBLU()
     {
-        playerCall.Call_ChangePlayerTeam(PlayerStats.Team.BLU);
+        playerCall.Call_ChangePlayerTeam(Team.BLU);
         HidePlayerMenu();
     }
 
     public void JoinRED()
     {
-        playerCall.Call_ChangePlayerTeam(PlayerStats.Team.RED);
+        playerCall.Call_ChangePlayerTeam(Team.RED);
         HidePlayerMenu();
     }
 
     public void JoinSPE()
     {
-        playerCall.Call_ChangePlayerTeam(PlayerStats.Team.SPE);
+        playerCall.Call_ChangePlayerTeam(Team.SPE);
         HidePlayerMenu();
     }
 

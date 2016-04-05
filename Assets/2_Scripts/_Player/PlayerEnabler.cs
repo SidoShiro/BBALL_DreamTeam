@@ -73,19 +73,19 @@ public class PlayerEnabler : NetworkBehaviour
         */
         switch (playerStats.playerTeam)
         {
-            case PlayerStats.Team.BLU:
+            case Team.BLU:
                 playerCollider.gameObject.layer = 11;
                 playerModel.gameObject.layer = 11;
                 playerModelRenderer.material = BLUMaterial;
                 break;
 
-            case PlayerStats.Team.RED:
+            case Team.RED:
                 playerCollider.gameObject.layer = 12;
                 playerModel.gameObject.layer = 12;
                 playerModelRenderer.material = REDMaterial;
                 break;
 
-            case PlayerStats.Team.SPE:
+            case Team.SPE:
                 playerCollider.gameObject.layer = 10;
                 playerModel.gameObject.layer = 10;
                 playerModelRenderer.material = SPEMaterial;
@@ -115,7 +115,7 @@ public class PlayerEnabler : NetworkBehaviour
 
             playerCall.Call_UpdateScore();
 
-            if (playerStats.playerTeam == PlayerStats.Team.SPE)
+            if (playerStats.playerTeam == Team.SPE)
             {
                 playerHUD.enabled = false;
             }
@@ -131,14 +131,14 @@ public class PlayerEnabler : NetworkBehaviour
             */
             switch (playerStats.playerTeam)
             {
-                case PlayerStats.Team.SPE:
+                case Team.SPE:
                     playerShoot.enabled = false;
                     playerRigidBody.isKinematic = true;
                     playerCamera.cullingMask = m_Custom.layerMaskWTSPE;
                     break;
 
-                case PlayerStats.Team.BLU:
-                case PlayerStats.Team.RED:
+                case Team.BLU:
+                case Team.RED:
                     playerShoot.enabled = true;
                     playerRigidBody.isKinematic = false;
                     playerCamera.cullingMask = m_Custom.layerMaskNOSPE;
@@ -169,14 +169,14 @@ public class PlayerEnabler : NetworkBehaviour
             */
             switch (playerStats.playerTeam)
             {
-                case PlayerStats.Team.SPE:
+                case Team.SPE:
                     playerShoot.enabled = false;
                     playerRigidBody.isKinematic = true;
                     playerCamera.cullingMask = m_Custom.layerMaskWTSPE;
                     break;
 
-                case PlayerStats.Team.BLU:
-                case PlayerStats.Team.RED:
+                case Team.BLU:
+                case Team.RED:
                     playerShoot.enabled = false;
                     playerRigidBody.isKinematic = true;
                     playerCamera.cullingMask = m_Custom.layerMaskNOSPE;

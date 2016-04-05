@@ -156,6 +156,8 @@ MonoBehaviour:
   KillerText: {fileID: 11473814}
   KillImage: {fileID: 11458936}
   VictimText: {fileID: 11403470}
+  HazardSprite: {fileID: 21300000, guid: 108f32276796f9947b51400d2e48ee09, type: 3}
+  ExplosionSprite: {fileID: 21300000, guid: 3f31f8cf6c62e40468e051eef21e7082, type: 3}
 --- !u!114 &11422804
 MonoBehaviour:
   m_ObjectHideFlags: 1
