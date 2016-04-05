@@ -70,9 +70,9 @@ public class PlayerCommand : NetworkBehaviour
     }
 
     [Command]
-    public void Cmd_SendKill(string killerIdentity, string victimIdentity, Team killerTeam, Team victimTeam, DeathType deathtype)
+    public void Cmd_SendKill(string killerIdentity, string victimIdentity, Team killerTeam, Team victimTeam, DamageType damagetype)
     {
-        GameObject.FindGameObjectWithTag("KillFeedPanel").GetComponent<KillFeedInput>().Rpc_ParseKill(killerIdentity, victimIdentity, killerTeam, victimTeam, deathtype);
+        GameObject.FindGameObjectWithTag("KillFeedPanel").GetComponent<KillFeedInput>().Rpc_ParseKill(killerIdentity, victimIdentity, killerTeam, victimTeam, damagetype);
     }
 
     /// <summary>

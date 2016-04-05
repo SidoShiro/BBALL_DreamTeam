@@ -1,6 +1,20 @@
 ﻿using UnityEngine;
 using System;
 
+
+public enum Team
+{
+    SPE = 0,
+    BLU = 1,
+    RED = 2
+}
+
+public enum DamageType
+{
+    Hazard,
+    Explosion
+}
+
 public class m_Custom : MonoBehaviour
 {
     private static LayerMask _layerMaskBLU = LayerMask.GetMask("Default", "RED");

@@ -2,13 +2,6 @@
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-public enum Team
-{
-    SPE = 0,
-    BLU = 1,
-    RED = 2
-}
-
 /// <summary>
 /// This class stores player stats to be used in game
 /// </summary>
