@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Used on the KillFeedInfoImage prefab to modify text, image and colors accoring to input
+/// </summary>
 public class KillFeedInfoImage : MonoBehaviour
 {
     [Header("References(Interface)")]
@@ -16,19 +19,33 @@ public class KillFeedInfoImage : MonoBehaviour
     #endregion
 
     [Header("Parameters")]
+    #region Parameters
     [SerializeField]
     private Sprite HazardSprite;
     [SerializeField]
     private Sprite ExplosionSprite;
+    #endregion
 
-    public void DisplayKill(string killerIdentity, string victimIdentity, Team killerTeam, Team victimTeam, DamageType damagetype, bool isInvolved)
+    /// <summary>
+    /// Updates components according to inputs
+    /// </summary>
+    /// <param name="killerName">Name of the eventual killer (Empty for hazards)</param>
+    /// <param name="victimName">Name of the victim</param>
+    /// <param name="killerTeam">Team of the killer (used to set color accordingly)</param>
+    /// <param name="victimTeam">Team of the victim (used to set color accordingly)</param>
+    /// <param name="damagetype">Type of damage (used to change icon)</param>
+    /// <param name="isInvolved">Is the local player involved in the kill (killer or victim)</param>
+    public void DisplayKill(string killerName, string victimName, Team killerTeam, Team victimTeam, DamageType damagetype, bool isInvolved)
     {
-        KillerText.text = killerIdentity;
-        VictimText.text = victimIdentity;
+        //Set player names
+        KillerText.text = killerName;
+        VictimText.text = victimName;
 
+        //Define player names color according to team
         KillerText.color = m_Custom.GetColorFromTeam(killerTeam);
         VictimText.color = m_Custom.GetColorFromTeam(victimTeam);
 
+        //Define icon according to damage
         switch (damagetype)
         {
             case DamageType.Hazard:
@@ -39,6 +56,7 @@ public class KillFeedInfoImage : MonoBehaviour
                 break;
         }
 
+        //Set background color according on player involvment in the kill
         if (isInvolved)
         {
             BGImage.color = new Color32(246, 196, 163, 255);

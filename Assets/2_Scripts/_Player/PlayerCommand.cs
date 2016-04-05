@@ -2,7 +2,7 @@
 using UnityEngine.Networking;
 
 /// <summary>
-/// This script is used to send player command to the server
+/// This script is used to send local player command to the server
 /// /!\ THOSE COMMANDS SHOULD NEVER BE CALLED DIRECTLY /!\ 
 /// >>>>> Use PlayerCall instead! <<<<<
 /// </summary>
@@ -69,10 +69,18 @@ public class PlayerCommand : NetworkBehaviour
         ownerIdentity.gameObject.GetComponent<PlayerCommand>().Rpc_GetHit(magnitude);
     }
 
+    /// <summary>
+    /// Command sent to the server containing information on the kill
+    /// </summary>
+    /// <param name="killerName">Name of the eventual killer (Empty for hazards)</param>
+    /// <param name="victimName">Name of the victim</param>
+    /// <param name="killerTeam">Team of the killer (used to set color accordingly)</param>
+    /// <param name="victimTeam">Team of the victim (used to set color accordingly)</param>
+    /// <param name="damagetype">Type of damage (used to change icon)</param>
     [Command]
-    public void Cmd_SendKill(string killerIdentity, string victimIdentity, Team killerTeam, Team victimTeam, DamageType damagetype)
+    public void Cmd_SendKill(string killerName, string victimName, Team killerTeam, Team victimTeam, DamageType damagetype)
     {
-        GameObject.FindGameObjectWithTag("KillFeedPanel").GetComponent<KillFeedInput>().Rpc_ParseKill(killerIdentity, victimIdentity, killerTeam, victimTeam, damagetype);
+        GameObject.FindGameObjectWithTag("KillFeedPanel").GetComponent<KillFeedInput>().Rpc_ParseKill(killerName, victimName, killerTeam, victimTeam, damagetype);
     }
 
     /// <summary>
@@ -95,14 +103,5 @@ public class PlayerCommand : NetworkBehaviour
     public void Rpc_UpdateScore()
     {
         playerCall.Call_UpdateScore();
-    }
-
-    /// <summary>
-    /// Kills player
-    /// </summary>
-    [ClientRpc]
-    public void Rpc_KillPlayer(string reason)
-    {
-        playerCall.Call_KillPlayer(reason);
     }
 }

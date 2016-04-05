@@ -53,9 +53,9 @@ public class PlayerCall : MonoBehaviour
     /// <summary>
     /// Kills Player
     /// </summary>
-    public void Call_KillPlayer(string killerIdentity, Team killerTeam, DamageType damagetype)
+    public void Call_KillPlayer(string killerName, Team killerTeam, DamageType damagetype)
     {
-        playerCommand.Cmd_SendKill(killerIdentity, playerIdentity.name, killerTeam, playerStats.playerTeam, damagetype);
+        playerCommand.Cmd_SendKill(killerName, playerIdentity.name, killerTeam, playerStats.playerTeam, damagetype);
         playerCommand.Cmd_KillPlayer(playerStats.playerTeam);
     }
 
@@ -78,6 +78,7 @@ public class PlayerCall : MonoBehaviour
         Call_KillPlayer("");
     }
 
+    /* Autocalls should never be called except if you really know what you are doing */
     #region AUTOCALLS
 
     /// <summary>
@@ -141,7 +142,7 @@ public class PlayerCall : MonoBehaviour
         //Calculate damage
         float magnitude = (2.0f - distance) / 1.5f;
         int damage = (int)((2.0f - distance) * 100);
-        //playerCommand.Cmd_SendHit(ownerIdentity, magnitude);
+        //playerCommand.Cmd_SendHit(ownerIdentity, magnitude); //Used to debug hitmarker/hitsound
 
         //Damage application
         if (playerIdentity == ownerIdentity)
