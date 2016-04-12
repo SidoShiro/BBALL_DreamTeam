@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fa5279b2ef50704eb0b4afd702c85be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerRigidBody: {fileID: 100574, guid: 98cc675f9e78ec14a9b0b8ca46b38205, type: 2}
+  playerRigidBody: {fileID: 183104, guid: 98cc675f9e78ec14a9b0b8ca46b38205, type: 2}
   playerRespawnTimeText: {fileID: 11487646}
   newteam: 0
   newname: _N_
