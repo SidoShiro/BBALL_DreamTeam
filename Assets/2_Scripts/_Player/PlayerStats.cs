@@ -18,6 +18,10 @@ public class PlayerStats : NetworkBehaviour
     public int playerHealth;            //Player's current health
     public bool isCarrying;             //Ball carrying toggle
 
+
+    /// <summary>
+    /// Donne le droit au createur d'une partie de choisir la vie max
+    /// </summary>
     public void ChangeHealth(InputField health)
     {
         string h = health.text;
