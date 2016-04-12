@@ -29,10 +29,9 @@ public class PlayerHUD : MonoBehaviour
     /// </summary>
     public void UpdateHealth(int health)
     {
-        healthBar.gameObject.SetActive(true); //pas opti a changer
+        //healthBar.gameObject.SetActive(true); //pas opti a changer
         healthText.text = health.ToString();
-        healthBar.value = health;
-
+        //healthBar.value = health;
     }
 
     /// <summary>
