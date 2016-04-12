@@ -3,8 +3,8 @@ using UnityEngine.Networking;
 
 public class UnderPanier : MonoBehaviour
 {
-    public PlayerStats.Team adv;
-    private int playerH;
+    public Team adv;
+    //private int playerH;
     //public PlayerStats player; 
 
     //empeche le joueur de passer en dessous du panier sans pour autant l'ampecher de marquer
@@ -17,8 +17,8 @@ public class UnderPanier : MonoBehaviour
         {
             if (player.GetComponentInParent<PlayerStats>().playerTeam == adv)
             {
-                playerH = player.GetComponentInParent<PlayerStats>().playerHealth;
-                player.GetComponentInParent<PlayerCall>().Call_DamagePlayer(playerH);
+                //playerH = player.GetComponentInParent<PlayerStats>().playerHealth;
+                //player.GetComponentInParent<PlayerCall>().Call_DamagePlayer(playerH);
                 /*un joueur adverse qui passe en dessous, repop sans marquer le point
                 un joueur adverse qui passe par dessus, repop après avoir marqué le point -> changer le temps de respawn
                 */

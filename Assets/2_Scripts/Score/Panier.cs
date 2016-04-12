@@ -9,7 +9,7 @@ public class Panier : NetworkBehaviour {
     public ParticleSystem particlesRED;
 
 
-    public PlayerStats.Team adv; // Team des adversaires
+    public Team adv; // Team des adversaires
 
     /*
     Premier bug : yavais pas de event system sur la map pour que l'UI fonctionne
@@ -34,15 +34,15 @@ public class Panier : NetworkBehaviour {
         
     }
 
-    void Rpc_ParticlePlay(PlayerStats.Team adv)
+    void Rpc_ParticlePlay(Team adv)
     {
-        if (adv == PlayerStats.Team.BLU)
+        if (adv == Team.BLU)
         {
             particlesRED.Stop();
             particlesRED.time = 0;
             particlesRED.Play();
         }
-        else if (adv == PlayerStats.Team.RED)
+        else if (adv == Team.RED)
         {
             particlesBLU.Stop();
             particlesBLU.time = 0;

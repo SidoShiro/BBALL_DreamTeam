@@ -9,6 +9,7 @@ TagManager:
   - SPESpawn
   - PlayerCollider
   - PlayerUI
+  - KillFeedPanel
   layers:
   - Default
   - TransparentFX
