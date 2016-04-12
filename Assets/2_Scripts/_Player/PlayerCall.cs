@@ -84,7 +84,7 @@ public class PlayerCall : MonoBehaviour
     /// Updates health display on HUD
     /// </summary>
     public void Call_UpdateHealth()
-    {
+    {        
         playerHUD.UpdateHealth(playerStats.playerHealth);
     }
 

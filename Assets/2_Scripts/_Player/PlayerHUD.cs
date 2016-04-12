@@ -15,7 +15,9 @@ public class PlayerHUD : MonoBehaviour
     private Text scoreBluText;
     [SerializeField]
     private Text scoreRedText;
-
+    [SerializeField]
+    public Slider healthBar;
+    
     [Header("Parameters")]
     [SerializeField]
     private GameObject hitMarker;
@@ -27,7 +29,10 @@ public class PlayerHUD : MonoBehaviour
     /// </summary>
     public void UpdateHealth(int health)
     {
+        healthBar.gameObject.SetActive(true); //pas opti a changer
         healthText.text = health.ToString();
+        healthBar.value = health;
+
     }
 
     /// <summary>
@@ -57,4 +62,5 @@ public class PlayerHUD : MonoBehaviour
         yield return new WaitForSeconds(displayTime);
         hitMarker.SetActive(false);
     }
+
 }
