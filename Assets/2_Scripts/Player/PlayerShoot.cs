@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Networking;
+using System.Collections;
 
 public class PlayerShoot : MonoBehaviour
 {
     [Header("References(Player)")]
+    #region References(Player)
     [SerializeField]
     private NetworkIdentity playerIdentity;
     [SerializeField]
@@ -12,19 +15,25 @@ public class PlayerShoot : MonoBehaviour
     private PlayerCall playerCall;
     [SerializeField]
     private GameObject playerCollider;
+    #endregion
+
+    [Header("References(Interface)")]
+    #region References(Interface)
+    [SerializeField]
+    private Image PrimaryReloadImage;
+    [SerializeField]
+    private Image PrimaryReloadBGImage;
+    #endregion
 
     [Header("Settings")]
+    #region Settings
     [SerializeField]
-    private int maxammo;
-    [SerializeField]
-    private float recoiltime;
-    [SerializeField]
-    private float reloadtime;
+    private float f_reloadtime;
+    #endregion
 
-    //Local
-    private float nextshottime;
-    private int currentammo;
-    private float nextreloadtime;
+    //Locals
+    private bool b_CanShootPrimary;
+    private bool b_CanShootSecondary;
 
     #region DEBUG
     [Header("DEBUG")]
@@ -38,9 +47,7 @@ public class PlayerShoot : MonoBehaviour
     /// </summary>
     void Start()
     {
-        nextshottime = Time.time;
-        currentammo = maxammo;
-        playerCall.Call_UpdateAmmo(currentammo);
+        b_CanShootPrimary = true;
     }
 
     /// <summary>
@@ -52,11 +59,9 @@ public class PlayerShoot : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Mouse0))
             {
-                TryShootRocket();
+                TryShootPrimary();
             }
         }
-
-        ConstantReload();
 
         #region DEBUG
         if (DBG_aim)
@@ -79,37 +84,58 @@ public class PlayerShoot : MonoBehaviour
         #endregion
     }
 
-    private void ConstantReload()
+    /// <summary>
+    /// Tries to shoot a rocket
+    /// </summary>
+    private void TryShootPrimary()
     {
-        float time = Time.time;
-        if (currentammo < maxammo && nextreloadtime < time)
+        if (b_CanShootPrimary)
         {
-            ++currentammo;
-            nextreloadtime = time + reloadtime;
-            playerCall.Call_UpdateAmmo(currentammo);
+            StartCoroutine(ReloadPrimary());
+            ShootPrimary();
         }
     }
 
     /// <summary>
-    /// Tries to shoot a rocket
+    /// Prevent shooting and triggers reload animations
     /// </summary>
-    private void TryShootRocket()
+    /// <returns></returns>
+    IEnumerator ReloadPrimary()
     {
-        float time = Time.time;
-        if (nextshottime <= time && currentammo > 0)
+        //Starts reload animation and prevent shooting
+        b_CanShootPrimary = false;
+        IEnumerator animation = ReloadPrimaryAnimate();
+        PrimaryReloadImage.fillAmount = 1.0f;
+        PrimaryReloadBGImage.fillAmount = 1.0f;
+        StartCoroutine(animation);
+
+        yield return new WaitForSeconds(f_reloadtime);
+
+        //Ends animation and allow shooting
+        b_CanShootPrimary = true;
+        PrimaryReloadImage.fillAmount = 0.0f;
+        PrimaryReloadBGImage.fillAmount = 0.0f;
+        StopCoroutine(animation);
+    }
+
+    /// <summary>
+    /// Animate reload images
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator ReloadPrimaryAnimate()
+    {
+        while (!b_CanShootPrimary)
         {
-            ShootRocket();
-            nextshottime = time + recoiltime;
-            --currentammo;
-            nextreloadtime = time + reloadtime;
-            playerCall.Call_UpdateAmmo(currentammo);
+            PrimaryReloadImage.fillAmount -= 1.0f / f_reloadtime * Time.deltaTime;
+            PrimaryReloadBGImage.fillAmount -= 1.0f / f_reloadtime * Time.deltaTime;
+            yield return null;
         }
     }
 
     /// <summary>
     /// Instantiante a rocket at gun position with correct rotation in order to reach player aiming point
     /// </summary>
-    private void ShootRocket()
+    private void ShootPrimary()
     {
         LayerMask layerMask = ~LayerMask.GetMask("BLU", "RED", "SPE");
         RaycastHit hit;                                                                                 //Used to store raycast hit data

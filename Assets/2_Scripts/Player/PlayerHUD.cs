@@ -8,8 +8,6 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField]
     private Text healthText;
     [SerializeField]
-    private Text ammoText;
-    [SerializeField]
     private Text scoreBluText;
     [SerializeField]
     private Text scoreRedText;
@@ -32,14 +30,6 @@ public class PlayerHUD : MonoBehaviour
     }
 
     /// <summary>
-    /// Updates HUD ammo text to player current ammo
-    /// </summary>
-    public void UpdateAmmo(int ammo)
-    {
-        ammoText.text = ammo.ToString();
-    }
-
-    /// <summary>
     /// Update HUD score text to player current score
     /// </summary>
     public void UpdateScore(int scoreBlu, int scoreRed)
@@ -58,6 +48,7 @@ public class PlayerHUD : MonoBehaviour
 
     IEnumerator HitMark()
     {
+        yield return 500;
         hitMarker.SetActive(true);
         yield return new WaitForSeconds(displayTime);
         hitMarker.SetActive(false);

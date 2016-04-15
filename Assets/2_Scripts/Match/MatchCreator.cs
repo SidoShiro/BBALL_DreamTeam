@@ -14,8 +14,8 @@ public class MatchCreator : MonoBehaviour
     public Toggle LANGameToggle;    //The toggle for LAN/ONLINE         (From CreateGamePanel)
     public Dropdown MapName;        //The dropdown for map selection    (From CreateGamePanel)
 
-    private NetworkOverlord networkOverlord;  //Used to send server creation in the network
-    private NetworkMatch networkMatch;      //Used to send match creation in the network
+    private NetworkOverlord networkOverlord;    //Used to send server creation in the network
+    private NetworkMatch networkMatch;          //Used to send match creation in the network
 
     /// <summary>
     /// Triggered when script is loaded
@@ -77,8 +77,8 @@ public class MatchCreator : MonoBehaviour
         else
         {
             Debug.LogError("OnMatchCreate > Failure");
-            SwitchSelectedMap();
-            networkOverlord.StartHost(); //Host a game with current map in networkManager
+            //SwitchSelectedMap();
+            //networkOverlord.StartHost(); //Host a game with current map in networkManager
         }
     }
 
