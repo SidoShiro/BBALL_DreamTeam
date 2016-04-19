@@ -106,12 +106,9 @@ public class PlayerCall : MonoBehaviour
         //New (Globalization of GMS)
         if (GameObject.Find("SceneGM") != null)
         {
-            Debug.Log("HEY");
             SceneOverlord sceneOverlord = GameObject.Find("SceneGM").GetComponent<SceneOverlord>();
             int scoreBLU = sceneOverlord.scoreBLU;
             int scoreRED = sceneOverlord.scoreRED;
-            Debug.Log(scoreBLU + " " + scoreRED);
-
             playerHUD.UpdateScore(scoreBLU, scoreRED);
         }
         else
