@@ -2,12 +2,11 @@
 using UnityEngine.Networking;
 
 /// <summary>
-/// 
+/// This script is used to handle the ball on the player when playing BBALL
 /// </summary>
 [NetworkSettings(channel = 3, sendInterval = 0.1f)]
 public class PlayerBallHandle : NetworkBehaviour
 {
-    //TODO : Comment
     [Header("References(Player)")]
     [SerializeField]
     private PlayerStats playerStats;
@@ -24,7 +23,18 @@ public class PlayerBallHandle : NetworkBehaviour
 
     public bool isCarrying; //Ball carrying toggle
 
+    /// <summary>
+    /// Called once when enabled
+    /// </summary>
     void Start()
+    {
+        InitializeTrail();
+    }
+
+    /// <summary>
+    /// Initialize trail component of ball according to team
+    /// </summary>
+    void InitializeTrail()
     {
         switch (playerStats.playerTeam)
         {
@@ -42,6 +52,9 @@ public class PlayerBallHandle : NetworkBehaviour
         }
     }
 
+    /// <summary>
+    /// Called to make the player carry a ball
+    /// </summary>
     [ClientRpc]
     public void Rpc_PickBall()
     {
@@ -49,6 +62,9 @@ public class PlayerBallHandle : NetworkBehaviour
         playerBallModel.SetActive(true);
     }
 
+    /// <summary>
+    /// Called to make the player drop the ball (works even if he has none)
+    /// </summary>
     [ClientRpc]
     public void Rpc_DropBall()
     {
