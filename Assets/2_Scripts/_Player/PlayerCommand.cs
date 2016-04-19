@@ -28,7 +28,7 @@ public class PlayerCommand : NetworkBehaviour
     [SerializeField]
     private GameObject rocketBody;      //Rocket prefab
     [SerializeField]
-    private GameObject ballBody;
+    private GameObject ballBody;        //Ball prefab
     #endregion
 
     /// <summary>
@@ -38,15 +38,15 @@ public class PlayerCommand : NetworkBehaviour
     [Command]
     public void Cmd_KillPlayer(Team newteam)
     {
-        //Ball-Carrying
+        //Ball-Carrying related
         if (playerBallHandle.isCarrying)
         {
-            //playerBallHandle.Rpc_DropBall();
-            GameObject ball = Instantiate(ballBody);
-            NetworkServer.Spawn(ball);
+            //TODO : Make ball drop at feet of player
+            GameObject ball = Instantiate(ballBody);    //Creates new ball
+            NetworkServer.Spawn(ball);                  //Instantiate it on all clients
         }
 
-        //Spawner
+        //Player death related
         GameObject spawner = Instantiate(playerSpawner);                                            //Creates spawner                
         spawner.GetComponent<PlayerSpawner>().newteam = newteam;                                    //Set spawning player team
         spawner.GetComponent<PlayerSpawner>().newname = name;                                       //Set spawning player name
@@ -98,6 +98,7 @@ public class PlayerCommand : NetworkBehaviour
 
     /// <summary>
     /// Receives a hit
+    /// Used to toggle hitmarker/hitsound
     /// </summary>
     /// <param name="magnitude">Magnitude of the hit</param>
     [ClientRpc]

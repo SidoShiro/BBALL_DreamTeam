@@ -8,18 +8,22 @@ using UnityEngine.Networking;
 public class PlayerBallHandle : NetworkBehaviour
 {
     [Header("References(Player)")]
+    #region References(Player)
     [SerializeField]
     private PlayerStats playerStats;
     [SerializeField]
     private GameObject playerBallModel;
     [SerializeField]
     private TrailRenderer balltrailRenderer;
+    #endregion
 
     [Header("Parameters")]
+    #region Parameters
     [SerializeField]
     private Material BLUTrailMaterial;
     [SerializeField]
     private Material REDTrailMaterial;
+    #endregion
 
     public bool isCarrying; //Ball carrying toggle
 
