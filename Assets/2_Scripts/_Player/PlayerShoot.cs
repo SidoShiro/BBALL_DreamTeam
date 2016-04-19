@@ -32,8 +32,8 @@ public class PlayerShoot : MonoBehaviour
     #endregion
 
     //Locals
-    private bool b_CanShootPrimary;
-    private bool b_CanShootSecondary;
+    private bool isAbleToShootPrimary;
+    private bool isAbleToShootSecondary;
 
     #region DEBUG
     [Header("DEBUG")]
@@ -47,7 +47,7 @@ public class PlayerShoot : MonoBehaviour
     /// </summary>
     void Start()
     {
-        b_CanShootPrimary = true;
+        isAbleToShootPrimary = true;
     }
 
     /// <summary>
@@ -89,7 +89,7 @@ public class PlayerShoot : MonoBehaviour
     /// </summary>
     private void TryShootPrimary()
     {
-        if (b_CanShootPrimary)
+        if (isAbleToShootPrimary)
         {
             StartCoroutine(ReloadPrimary());
             ShootPrimary();
@@ -103,7 +103,7 @@ public class PlayerShoot : MonoBehaviour
     IEnumerator ReloadPrimary()
     {
         //Starts reload animation and prevent shooting
-        b_CanShootPrimary = false;
+        isAbleToShootPrimary = false;
         IEnumerator animation = ReloadPrimaryAnimate();
         PrimaryReloadImage.fillAmount = 1.0f;
         PrimaryReloadBGImage.fillAmount = 1.0f;
@@ -112,7 +112,7 @@ public class PlayerShoot : MonoBehaviour
         yield return new WaitForSeconds(f_reloadtime);
 
         //Ends animation and allow shooting
-        b_CanShootPrimary = true;
+        isAbleToShootPrimary = true;
         PrimaryReloadImage.fillAmount = 0.0f;
         PrimaryReloadBGImage.fillAmount = 0.0f;
         StopCoroutine(animation);
@@ -124,7 +124,7 @@ public class PlayerShoot : MonoBehaviour
     /// <returns></returns>
     IEnumerator ReloadPrimaryAnimate()
     {
-        while (!b_CanShootPrimary)
+        while (!isAbleToShootPrimary)
         {
             PrimaryReloadImage.fillAmount -= 1.0f / f_reloadtime * Time.deltaTime;
             PrimaryReloadBGImage.fillAmount -= 1.0f / f_reloadtime * Time.deltaTime;

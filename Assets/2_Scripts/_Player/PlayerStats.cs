@@ -18,6 +18,8 @@ public class PlayerStats : NetworkBehaviour
     public int playerHealth;            //Player's current health
     public bool isCarrying;             //Ball carrying toggle
 
+    [Header("Local")]
+    public bool isReceivingInputs;  //Used to disable inputs on Menu/etc ...
 
     /// <summary>
     /// Donne le droit au createur d'une partie de choisir la vie max
@@ -36,10 +38,4 @@ public class PlayerStats : NetworkBehaviour
             Debug.Log("Health changed");
         }
     }
-
-    [Header("Local")]
-    public bool isReceivingInputs;  //Used to disable inputs on Menu/etc ...
-
-
-
 }

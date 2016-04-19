@@ -35,13 +35,16 @@ public class ScoringZone : NetworkBehaviour
     void CheckScoring(Collider collider)
     {
         GameObject hitObject = collider.gameObject;
-            if (hitObject.tag == "PlayerCollider")
+        if (hitObject.tag == "PlayerCollider")
+        {
+            if (hitObject.GetComponentInParent<PlayerStats>().playerTeam == ScoringTeam)
             {
-                if (hitObject.GetComponentInParent<PlayerStats>().playerTeam == ScoringTeam)
+                if (hitObject.GetComponentInParent<PlayerStats>().isCarrying)
                 {
                     sceneOverlord.Score(ScoringTeam);
                 }
             }
+        }
     }
 
 }

@@ -69,6 +69,13 @@ public class PlayerCall : MonoBehaviour
     }
 
     /// <summary>
+    /// Kills Player
+    public void Call_KillPlayer()
+    {
+        playerCommand.Cmd_KillPlayer(playerStats.playerTeam);
+    }
+
+    /// <summary>
     /// Call for a player respawn in specified team
     /// </summary>
     /// <param name="newteam"></param>
