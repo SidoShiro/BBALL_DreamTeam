@@ -39,10 +39,7 @@ public class ScoringZone : NetworkBehaviour
         {
             if (hitObject.GetComponentInParent<PlayerStats>().playerTeam == ScoringTeam)
             {
-                if (hitObject.GetComponentInParent<PlayerStats>().isCarrying)
-                {
-                    sceneOverlord.Score(ScoringTeam);
-                }
+                sceneOverlord.Score(ScoringTeam);
             }
         }
     }

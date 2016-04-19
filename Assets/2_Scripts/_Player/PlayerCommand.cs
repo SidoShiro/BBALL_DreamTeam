@@ -15,6 +15,8 @@ public class PlayerCommand : NetworkBehaviour
     private NetworkIdentity playerIdentity;
     [SerializeField]
     private PlayerCall playerCall;
+    [SerializeField]
+    private PlayerBallHandle playerBallHandle;
     #endregion
 
     [Header("Prefabs")]
@@ -25,6 +27,8 @@ public class PlayerCommand : NetworkBehaviour
     private GameObject playerRigidBody; //Player prefab
     [SerializeField]
     private GameObject rocketBody;      //Rocket prefab
+    [SerializeField]
+    private GameObject ballBody;
     #endregion
 
     /// <summary>
@@ -34,6 +38,15 @@ public class PlayerCommand : NetworkBehaviour
     [Command]
     public void Cmd_KillPlayer(Team newteam)
     {
+        //Ball-Carrying
+        if (playerBallHandle.isCarrying)
+        {
+            //playerBallHandle.Rpc_DropBall();
+            GameObject ball = Instantiate(ballBody);
+            NetworkServer.Spawn(ball);
+        }
+
+        //Spawner
         GameObject spawner = Instantiate(playerSpawner);                                            //Creates spawner                
         spawner.GetComponent<PlayerSpawner>().newteam = newteam;                                    //Set spawning player team
         spawner.GetComponent<PlayerSpawner>().newname = name;                                       //Set spawning player name
