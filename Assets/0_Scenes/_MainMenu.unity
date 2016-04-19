@@ -5813,7 +5813,7 @@ MonoBehaviour:
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 0
   m_OfflineScene: _MainMenu
-  m_OnlineScene: bball_duel
+  m_OnlineScene: bball_test
   m_SpawnPrefabs:
   - {fileID: 0}
   - {fileID: 128804, guid: 89db5062cd5c17b4ba6e670e5c7238df, type: 2}

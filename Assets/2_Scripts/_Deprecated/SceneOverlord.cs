@@ -1,22 +1,40 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 
 /// <summary>
-/// Used to store global variables client-side for multiple use
+/// Used to store global scene variables
 /// </summary>
-public class SceneOverlord : MonoBehaviour
+[NetworkSettings(channel = 3, sendInterval = 0.1f)]
+public class SceneOverlord : NetworkBehaviour
 {
-    private bool _isReceivingInputs;  //Used to disable inputs when bringing PlayerMenuPanel up
+    [Header("Scoring")]
+    [SyncVar]
+    public int scoreBLU = 0;
+    [SyncVar]
+    public int scoreRED = 0;
 
-    public bool isReceivingInputs
+    public void Score(Team team)
     {
-        get
+        switch (team)
         {
-            return _isReceivingInputs;
+            case Team.BLU:
+                scoreBLU++;
+                break;
+
+            case Team.RED:
+                scoreRED++;
+                break;
+
+            default:
+                Debug.Log("This should not have happened!");
+                break;
         }
 
-        set
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach (GameObject player in players)
         {
-            _isReceivingInputs = value;
+            player.GetComponent<PlayerCommand>().Rpc_UpdateScore();
         }
     }
 }
