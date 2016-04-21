@@ -10,6 +10,7 @@ TagManager:
   - PlayerCollider
   - PlayerUI
   - KillFeedPanel
+  - Ball
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - UI
   - 
   - 
-  - Special
+  - NOPLAYER
   - NORENDER
   - SPE
   - BLU

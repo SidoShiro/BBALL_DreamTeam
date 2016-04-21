@@ -14,7 +14,7 @@ public class PlayerBallHandle : NetworkBehaviour
     [SerializeField]
     private GameObject playerBallModel;
     [SerializeField]
-    private TrailRenderer balltrailRenderer;
+    private TrailRenderer playerBallTrailRenderer;
     #endregion
 
     [Header("Parameters")]
@@ -43,15 +43,15 @@ public class PlayerBallHandle : NetworkBehaviour
         switch (playerStats.playerTeam)
         {
             case Team.BLU:
-                balltrailRenderer.material = BLUTrailMaterial;
+                playerBallTrailRenderer.material = BLUTrailMaterial;
                 break;
 
             case Team.RED:
-                balltrailRenderer.material = REDTrailMaterial;
+                playerBallTrailRenderer.material = REDTrailMaterial;
                 break;
 
             default:
-                balltrailRenderer.material = BLUTrailMaterial;
+                playerBallTrailRenderer.material = BLUTrailMaterial;
                 break;
         }
     }
@@ -62,17 +62,23 @@ public class PlayerBallHandle : NetworkBehaviour
     [ClientRpc]
     public void Rpc_PickBall()
     {
-        isCarrying = true;
-        playerBallModel.SetActive(true);
+        if (!isCarrying)
+        {
+            isCarrying = true;
+            playerBallModel.SetActive(true);
+        }
     }
 
     /// <summary>
-    /// Called to make the player drop the ball (works even if he has none)
+    /// Called to make the player drop the ball
     /// </summary>
     [ClientRpc]
     public void Rpc_DropBall()
     {
-        isCarrying = false;
-        playerBallModel.SetActive(false);
+        if (isCarrying)
+        {
+            isCarrying = false;
+            playerBallModel.SetActive(false);
+        }
     }
 }

@@ -7,10 +7,10 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: BallTrailRED
-  m_Shader: {fileID: 4800000, guid: 4a6aba8ad13e9704687a790b59eaf008, type: 3}
+  m_Shader: {fileID: 10753, guid: 0000000000000000e000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -39,6 +39,13 @@ Material:
       data:
         first:
           name: _ParallaxMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _MKGlowTex
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -85,13 +92,6 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _MKGlowTex
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -107,8 +107,28 @@ Material:
         second: 0.5
       data:
         first:
+          name: PixelSnap
+        second: 0
+      data:
+        first:
           name: _Parallax
         second: 0.02
+      data:
+        first:
+          name: _MKGlowPower
+        second: 5
+      data:
+        first:
+          name: _MKGlowTexStrength
+        second: 1
+      data:
+        first:
+          name: _MKGlowOffSet
+        second: 0
+      data:
+        first:
+          name: _InvFade
+        second: 1
       data:
         first:
           name: _ZWrite
@@ -145,18 +165,6 @@ Material:
         first:
           name: _MatCapAccurate
         second: 0
-      data:
-        first:
-          name: _MKGlowPower
-        second: 5
-      data:
-        first:
-          name: _MKGlowTexStrength
-        second: 1
-      data:
-        first:
-          name: _MKGlowOffSet
-        second: 0
     m_Colors:
       data:
         first:
@@ -174,3 +182,7 @@ Material:
         first:
           name: _MKGlowTexColor
         second: {r: 0.20392157, g: 0.59607846, b: 0.85882354, a: 1}
+      data:
+        first:
+          name: _TintColor
+        second: {r: 0.90588236, g: 0.29803923, b: 0.23529412, a: 1}

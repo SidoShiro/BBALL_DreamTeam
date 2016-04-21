@@ -41,8 +41,7 @@ public class PlayerCommand : NetworkBehaviour
         //Ball-Carrying related
         if (playerBallHandle.isCarrying)
         {
-            //TODO : Make ball drop at feet of player
-            GameObject ball = Instantiate(ballBody);    //Creates new ball
+            GameObject ball = (GameObject)Instantiate(ballBody,transform.position,Quaternion.identity);    //Creates new ball
             NetworkServer.Spawn(ball);                  //Instantiate it on all clients
         }
 

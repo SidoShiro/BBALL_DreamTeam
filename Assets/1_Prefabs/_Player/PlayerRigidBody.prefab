@@ -953,7 +953,7 @@ TrailRenderer:
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 0
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
@@ -965,26 +965,26 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Time: 1
+  m_Time: 2
   m_StartWidth: 0.3
-  m_EndWidth: 0
+  m_EndWidth: 0.2
   m_Colors:
     m_Color[0]:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 4043309055
     m_Color[1]:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 3036676095
     m_Color[2]:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 2030043135
     m_Color[3]:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 1023410175
     m_Color[4]:
       serializedVersion: 2
       rgba: 16777215
-  m_MinVertexDistance: 0.1
+  m_MinVertexDistance: 0.05
   m_Autodestruct: 0
 --- !u!114 &11401308
 MonoBehaviour:
@@ -2524,7 +2524,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11418880}
   playerBallModel: {fileID: 115748}
-  balltrailRenderer: {fileID: 9655920}
+  playerBallTrailRenderer: {fileID: 9655920}
+  playerBallTrail: {fileID: 171216}
   BLUTrailMaterial: {fileID: 2100000, guid: 823b6ee93b168254189358133b52b9a0, type: 2}
   REDTrailMaterial: {fileID: 2100000, guid: 70efd2b702a3616418feb460e64a34d2, type: 2}
   isCarrying: 0
