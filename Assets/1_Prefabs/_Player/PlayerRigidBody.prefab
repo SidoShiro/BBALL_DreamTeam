@@ -2271,7 +2271,7 @@ MonoBehaviour:
   playerRigidBody: {fileID: 5415386}
   playerStats: {fileID: 11418880}
   groundspeed: 3
-  airspeed: 2
+  airspeed: 1
   maxairacceleration: 0.1
   jumpheight: 1.2
   smoothfactor: 1
