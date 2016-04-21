@@ -741,7 +741,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 1000
+  far clip plane: 50
   field of view: 90
   orthographic: 0
   orthographic size: 5
@@ -1810,7 +1810,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 137516}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a970acddb8696a4792ca6e022840a0e, type: 3}
   m_Name: 
@@ -2272,7 +2272,7 @@ MonoBehaviour:
   playerStats: {fileID: 11418880}
   groundspeed: 3
   airspeed: 2
-  maxairacceleration: 0.2
+  maxairacceleration: 0.1
   jumpheight: 1.2
   smoothfactor: 1
   PossibleJumps: 1
@@ -2525,7 +2525,6 @@ MonoBehaviour:
   playerStats: {fileID: 11418880}
   playerBallModel: {fileID: 115748}
   playerBallTrailRenderer: {fileID: 9655920}
-  playerBallTrail: {fileID: 171216}
   BLUTrailMaterial: {fileID: 2100000, guid: 823b6ee93b168254189358133b52b9a0, type: 2}
   REDTrailMaterial: {fileID: 2100000, guid: 70efd2b702a3616418feb460e64a34d2, type: 2}
   isCarrying: 0

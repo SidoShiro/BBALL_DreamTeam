@@ -107,7 +107,7 @@ public class PlayerEnabler : NetworkBehaviour
                 mono.enabled = true;
             }
 
-            playerModel.gameObject.layer = 9;   //Place PlayerModel on "NORENDER" layer to disable rendering for this client
+            playerModelRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;   //Place PlayerModel on "NORENDER" layer to disable rendering for this client
             playerCamera.enabled = true;        //Enables the camera component of this player
             playerAudio.enabled = true;         //Enables the audio component of this player
             playerUI.SetActive(true);           //Enables player UI (Crosshair, HUD, Menu, etc...)
@@ -157,7 +157,7 @@ public class PlayerEnabler : NetworkBehaviour
                 mono.enabled = false;
             }
 
-            playerModel.gameObject.layer = 0;   //Place PlayerModel on default layer to enable rendering for this client
+            playerModelRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;   //Place PlayerModel on default layer to enable rendering for this client
             playerCamera.enabled = false;       //Disable the camera component of this player
             playerAudio.enabled = false;        //Disable the audio component of this player
             playerUI.SetActive(false);          //Disable player UI (Crosshair, HUD, Menu, etc...)

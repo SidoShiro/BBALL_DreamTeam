@@ -17,10 +17,10 @@ public class ScoringZone : NetworkBehaviour
     private Team ScoringTeam;   //Team that will score in this zone
 
     /// <summary>
-    /// Triggered when a GameObject with a collider enters the zone
+    /// Triggered each frame a GameObject with a collider enters the zone
     /// </summary>
     /// <param name="collider"></param>
-    void OnTriggerEnter(Collider collider)
+    void OnTriggerStay(Collider collider)
     {
         if (isServer)
         {
@@ -39,7 +39,10 @@ public class ScoringZone : NetworkBehaviour
         {
             if (hitObject.GetComponentInParent<PlayerStats>().playerTeam == ScoringTeam)
             {
-                sceneOverlord.Score(ScoringTeam);
+                if (hitObject.GetComponentInParent<PlayerBallHandle>().isCarrying)
+                {
+                    sceneOverlord.Score(ScoringTeam);
+                }
             }
         }
     }

@@ -99,9 +99,9 @@ public class RocketMove : NetworkBehaviour
         #region DEBUG
         if (DBG_Explosion)
         {
-            DebugExtension.DebugWireSphere(explosionpos, Color.blue, 0.05f, DBG_time_explosion * 10.0f, true);
-            DebugExtension.DebugPoint(explosionpos, Color.red, 0.05f, DBG_time_explosion * 10.0f, true);
-            DebugExtension.DebugWireSphere(explosionpos, Color.green, 2.0f, DBG_time_explosion * 10.0f, true);
+            DebugExtension.DebugWireSphere(explosionpos, Color.blue, 0.05f, DBG_time_explosion, true);
+            DebugExtension.DebugPoint(explosionpos, Color.red, 0.05f, DBG_time_explosion, true);
+            DebugExtension.DebugWireSphere(explosionpos, Color.green, 2.0f, DBG_time_explosion, true);
         }
         #endregion
 

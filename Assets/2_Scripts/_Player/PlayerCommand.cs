@@ -41,8 +41,9 @@ public class PlayerCommand : NetworkBehaviour
         //Ball-Carrying related
         if (playerBallHandle.isCarrying)
         {
-            GameObject ball = (GameObject)Instantiate(ballBody,transform.position,Quaternion.identity);    //Creates new ball
-            NetworkServer.Spawn(ball);                  //Instantiate it on all clients
+            //TODO : add force to ball
+            GameObject ball = (GameObject)Instantiate(ballBody,transform.position,Quaternion.identity); //Creates new ball
+            NetworkServer.Spawn(ball);                                                                  //Instantiate it on all clients
         }
 
         //Player death related

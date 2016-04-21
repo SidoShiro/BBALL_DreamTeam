@@ -191,7 +191,7 @@ MonoBehaviour:
   DBG_Trail: 1
   DBG_Explosion: 1
   DBG_time_trail: 3
-  DBG_time_explosion: 1
+  DBG_time_explosion: 5
 --- !u!114 &11494862
 MonoBehaviour:
   m_ObjectHideFlags: 1

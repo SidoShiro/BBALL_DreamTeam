@@ -11,6 +11,9 @@ TagManager:
   - PlayerUI
   - KillFeedPanel
   - Ball
+  - SPEBallRespawn
+  - BLUBallRespawn
+  - REDBallRespawn
   layers:
   - Default
   - TransparentFX
