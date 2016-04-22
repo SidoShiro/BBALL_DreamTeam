@@ -884,7 +884,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 90aa38656fc5cd64fbaba1e9c8c8883a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: da8bd7c97921b7f448c0a6f13fedad23, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
@@ -1595,6 +1595,7 @@ MonoBehaviour:
   playerIdentity: {fileID: 11472174}
   playerCall: {fileID: 11476692}
   playerBallHandle: {fileID: 11471636}
+  playerBallHold: {fileID: 450128}
   playerSpawner: {fileID: 154870, guid: 48f6af5783280be4cbb09e94408b8e9b, type: 2}
   playerRigidBody: {fileID: 183104}
   rocketBody: {fileID: 128804, guid: 89db5062cd5c17b4ba6e670e5c7238df, type: 2}
@@ -2568,10 +2569,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11418880}
   playerBallModel: {fileID: 115748}
+  playerBallRenderer: {fileID: 2367400}
   playerBallTrailRenderer: {fileID: 9655920}
   ballHandleImage: {fileID: 138274}
   BLUTrailMaterial: {fileID: 2100000, guid: 823b6ee93b168254189358133b52b9a0, type: 2}
   REDTrailMaterial: {fileID: 2100000, guid: 70efd2b702a3616418feb460e64a34d2, type: 2}
+  BLUBallMaterial: {fileID: 2100000, guid: 1cf1097d8a9f39342ac9a64efd9e1b64, type: 2}
+  REDBallMaterial: {fileID: 2100000, guid: 437f0312f2982fe42a63f9cc6f76e45a, type: 2}
   isCarrying: 0
 --- !u!114 &11472174
 MonoBehaviour:

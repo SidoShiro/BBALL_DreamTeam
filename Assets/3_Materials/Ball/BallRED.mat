@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Ball
+  m_Name: BallRED
   m_Shader: {fileID: 4800000, guid: bea1129d02637fd489c76e5b9c373d21, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
@@ -195,7 +195,7 @@ Material:
       data:
         first:
           name: _RimColor
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: 0.90588236, g: 0.29803923, b: 0.23529412, a: 1}
       data:
         first:
           name: _MKGlowColor

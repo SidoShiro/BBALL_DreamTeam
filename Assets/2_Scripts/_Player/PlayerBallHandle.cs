@@ -14,6 +14,8 @@ public class PlayerBallHandle : NetworkBehaviour
     [SerializeField]
     private GameObject playerBallModel;
     [SerializeField]
+    private Renderer playerBallRenderer;
+    [SerializeField]
     private TrailRenderer playerBallTrailRenderer;
     #endregion
 
@@ -29,6 +31,10 @@ public class PlayerBallHandle : NetworkBehaviour
     private Material BLUTrailMaterial;
     [SerializeField]
     private Material REDTrailMaterial;
+    [SerializeField]
+    private Material BLUBallMaterial;
+    [SerializeField]
+    private Material REDBallMaterial;
     #endregion
 
     public bool isCarrying; //Ball carrying toggle
@@ -53,14 +59,17 @@ public class PlayerBallHandle : NetworkBehaviour
         {
             case Team.BLU:
                 playerBallTrailRenderer.material = BLUTrailMaterial;
+                playerBallRenderer.material = BLUBallMaterial;
                 break;
 
             case Team.RED:
                 playerBallTrailRenderer.material = REDTrailMaterial;
+                playerBallRenderer.material = REDBallMaterial;
                 break;
 
             default:
                 playerBallTrailRenderer.material = BLUTrailMaterial;
+                playerBallRenderer.material = BLUBallMaterial;
                 break;
         }
     }
