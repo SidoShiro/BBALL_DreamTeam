@@ -16,8 +16,8 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField]
     private Text scoreRedText;
     [SerializeField]
-    public Slider healthBar;
-    
+    public Slider healthBar;    //TODO : Serialize a public ???
+
     [Header("Parameters")]
     [SerializeField]
     private GameObject hitMarker;
