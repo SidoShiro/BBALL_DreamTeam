@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
+using System.Collections;
 
 /// <summary>
 /// This script is used to detect and trigger scoring on the server
@@ -16,16 +17,26 @@ public class ScoringZone : NetworkBehaviour
     [SerializeField]
     private Team ScoringTeam;   //Team that will score in this zone
 
+    private bool shouldCheck = true;
+
     /// <summary>
     /// Triggered each frame a GameObject with a collider enters the zone
     /// </summary>
     /// <param name="collider"></param>
     void OnTriggerStay(Collider collider)
     {
-        if (isServer)
+        if (isServer && shouldCheck)
         {
             CheckScoring(collider); //Call a scoring check
+            StartCoroutine(CheckReload());
         }
+    }
+
+    IEnumerator CheckReload()
+    {
+        shouldCheck = false;
+        yield return new WaitForSeconds(0.5f);
+        shouldCheck = true;
     }
 
     /// <summary>

@@ -44,6 +44,7 @@ public class PlayerCommand : NetworkBehaviour
             //TODO : add force to ball
             GameObject ball = (GameObject)Instantiate(ballBody,transform.position,Quaternion.identity); //Creates new ball
             NetworkServer.Spawn(ball);                                                                  //Instantiate it on all clients
+            ball.GetComponent<Rigidbody>().AddForce(GetComponent<Rigidbody>().velocity,ForceMode.VelocityChange);
         }
 
         //Player death related

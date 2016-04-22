@@ -35,7 +35,7 @@ public class SceneOverlord : NetworkBehaviour
         foreach (GameObject player in players)
         {
             //player.GetComponent<PlayerCommand>().Rpc_UpdateScore();
-            player.GetComponent<PlayerCall>().Call_KillPlayer();
+            player.GetComponent<PlayerCall>().Call_KillPlayer("");
         }
     }
 }
