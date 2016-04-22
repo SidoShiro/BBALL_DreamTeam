@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
 
 /// <summary>
 /// This script, when attached to any object with a collider, will kill any player colliding with it

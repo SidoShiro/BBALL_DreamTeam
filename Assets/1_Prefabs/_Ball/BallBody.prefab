@@ -269,6 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62ad576c9e335de499ffb39453c64cad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballBody: {fileID: 159950}
 --- !u!135 &13560968
 SphereCollider:
   m_ObjectHideFlags: 1

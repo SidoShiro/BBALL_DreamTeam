@@ -7,6 +7,12 @@ using UnityEngine.Networking;
 [NetworkSettings(channel = 3, sendInterval = 0.1f)]
 public class BallPickUp : NetworkBehaviour
 {
+    [Header("Prefabs")]
+    #region prefabs
+    [SerializeField]
+    private GameObject ballBody;
+    #endregion
+
     /// <summary>
     /// Called when something enters trigger
     /// </summary>
@@ -15,11 +21,24 @@ public class BallPickUp : NetworkBehaviour
     {
         if (isServer)   //We only want to check triggers on the server
         {
-            GameObject playerRigidBody = col.transform.parent.gameObject;           //Find the parent of the collider
-            if (playerRigidBody.tag == "Player")
+            GameObject colParent = col.transform.parent.gameObject;         //Find the parent of the collider
+            if (colParent.tag == "Player")
             {
-                playerRigidBody.GetComponent<PlayerBallHandle>().Rpc_PickBall();    //Tell the player he picked the ball on all clients
-                Rpc_DestroyBall();                                                  //Destroy the ball on all clients
+                colParent.GetComponent<PlayerBallHandle>().Rpc_PickBall();  //Tell the player he picked the ball on all clients
+                Rpc_DestroyBall();                                          //Destroy the ball on all clients
+            }
+
+            if (col.gameObject.GetComponent<KillZone>() != null)
+            {
+                Vector3 spawnpos = Vector3.zero;
+                GameObject defaultspawn = GameObject.FindGameObjectWithTag("SPEBallRespawn");
+                if (defaultspawn != null)
+                {
+                    spawnpos = defaultspawn.transform.position;
+                }
+                GameObject ball = (GameObject)Instantiate(ballBody, spawnpos, Quaternion.identity);     //Creates new ball
+                NetworkServer.Spawn(ball);                                                              //Instantiate it on all clients
+                Rpc_DestroyBall();
             }
         }
     }
@@ -28,7 +47,7 @@ public class BallPickUp : NetworkBehaviour
     /// Called to destroy the ball on all clients
     /// </summary>
     [ClientRpc]
-    void Rpc_DestroyBall()
+    public void Rpc_DestroyBall()
     {
         Destroy(gameObject);
     }

@@ -30,8 +30,6 @@ public class Panier : NetworkBehaviour {
                 }
             }
         }
-        
-        
     }
 
     void Rpc_ParticlePlay(Team adv)
