@@ -17,6 +17,12 @@ public class PlayerBallHandle : NetworkBehaviour
     private TrailRenderer playerBallTrailRenderer;
     #endregion
 
+    [Header("References(Interface)")]
+    #region References(Interface)
+    [SerializeField]
+    private GameObject ballHandleImage;
+    #endregion
+
     [Header("Parameters")]
     #region Parameters
     [SerializeField]
@@ -33,6 +39,9 @@ public class PlayerBallHandle : NetworkBehaviour
     void Start()
     {
         InitializeTrail();
+        isCarrying = false;
+        playerBallModel.SetActive(false);
+        ballHandleImage.SetActive(false);
     }
 
     /// <summary>
@@ -66,6 +75,7 @@ public class PlayerBallHandle : NetworkBehaviour
         {
             isCarrying = true;
             playerBallModel.SetActive(true);
+            ballHandleImage.SetActive(true);
         }
     }
 
@@ -79,6 +89,7 @@ public class PlayerBallHandle : NetworkBehaviour
         {
             isCarrying = false;
             playerBallModel.SetActive(false);
+            ballHandleImage.SetActive(false);
         }
     }
 }
