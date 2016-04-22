@@ -12,9 +12,13 @@ public class RocketMove : NetworkBehaviour
     [SerializeField]
     private GameObject rocketExplosion;
     [SerializeField]
-    private GameObject rocketTrail;
+    private GameObject rocketBits;
     [SerializeField]
-    private ParticleSystem ps;
+    private ParticleSystem rocketBitsPs;
+    [SerializeField]
+    private GameObject rocketSmoke;
+    [SerializeField]
+    private ParticleSystem rocketSmokePs;
 
     //Properties
     [SyncVar]
@@ -27,7 +31,8 @@ public class RocketMove : NetworkBehaviour
     //Local
     [SerializeField]
     private Transform rocketTransform;
-    private ParticleSystem.EmissionModule em;
+    private ParticleSystem.EmissionModule em1;
+    private ParticleSystem.EmissionModule em2;
     private LayerMask layerMask;
 
     #region DEBUG
@@ -43,7 +48,8 @@ public class RocketMove : NetworkBehaviour
     /// </summary>
     void Start()
     {
-        em = ps.emission;
+        em1 = rocketBitsPs.emission;
+        em2 = rocketSmokePs.emission;
         rocketTransform.rotation = rocketRotation;  //hack Fix Client bug
         Destroy(gameObject, 10.0f);
         layerMask = m_Custom.layerMaskRocket;
@@ -92,9 +98,12 @@ public class RocketMove : NetworkBehaviour
         }
 
         //Trail
-        rocketTrail.transform.parent = null;
-        em.enabled = false;
-        Destroy(rocketTrail, 0.4f);
+        rocketBits.transform.parent = null;
+        rocketSmoke.transform.parent = null;
+        em1.enabled = false;
+        em2.enabled = false;
+        Destroy(rocketBits, 0.4f);
+        Destroy(rocketSmoke, 1.0f);
 
         #region DEBUG
         if (DBG_Explosion)
