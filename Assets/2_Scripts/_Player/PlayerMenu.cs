@@ -21,6 +21,8 @@ public class PlayerMenu : MonoBehaviour
     private NetworkOverlord networkOverlord;    //Used to cache current NetworkOverlord
     private bool isShowing;                     //Used to toggle between showing/hidden state
 
+    public bool isOff { get { return !isShowing; } }
+
     /// <summary>
     /// Triggered when script is loaded
     /// </summary>

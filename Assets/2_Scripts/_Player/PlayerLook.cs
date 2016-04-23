@@ -7,7 +7,7 @@ public class PlayerLook : MonoBehaviour
 {
     [Header("References(Player)")]
     [SerializeField]
-    private PlayerStats playerStats;
+    private PlayerMenu playerMenu;
     [SerializeField]
     private GameObject targetObject;         //Object to rotate
 
@@ -29,7 +29,7 @@ public class PlayerLook : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (playerStats.isReceivingInputs)
+        if (playerMenu.isOff)
         {
             if (axes == RotationAxes.MouseXAndY)
             {

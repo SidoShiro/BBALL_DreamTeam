@@ -24,10 +24,9 @@ public class ScoringZone : NetworkBehaviour
     /// Triggered each frame a GameObject with a collider enters the zone
     /// </summary>
     /// <param name="collider"></param>
-    [Server]
     void OnTriggerStay(Collider collider)
     {
-        if (shouldCheck)
+        if (isServer && shouldCheck)
         {
             CheckScoring(collider);         //Call a scoring check
             StartCoroutine(CheckReload());  //Prevents checking for some time (To prevent sending multiple RPC)
