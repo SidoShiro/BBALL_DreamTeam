@@ -9,7 +9,7 @@ using System.Collections;
 [NetworkSettings(channel = 3, sendInterval = 0.1f)]
 public class ScoringZone : NetworkBehaviour
 {
-    //TODO : Felix, comment your shit
+    //TODO : comment your shit
     [Header("References(Scene)")]
     [SerializeField]
     private SceneOverlord sceneOverlord;    //Overlord used to transmit scoring to

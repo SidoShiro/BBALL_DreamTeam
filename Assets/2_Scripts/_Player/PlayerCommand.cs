@@ -43,7 +43,7 @@ public class PlayerCommand : NetworkBehaviour
         //Ball-Carrying related
         if (playerBallHandle.isCarrying)
         {
-            //TODO : add force to ball (Felix: LOOKS COOL BUT BAD IDEA, you thought about that, remember ?)
+            //TODO : add force to ball (LOOKS COOL BUT BAD IDEA, you thought about that, remember ?)
             GameObject ball = (GameObject)Instantiate(ballBody, playerBallHold.position, playerBallHold.rotation);  //Creates new ball
             NetworkServer.Spawn(ball);                                                                              //Instantiate it on all clients
             //ball.GetComponent<Rigidbody>().AddForce(GetComponent<Rigidbody>().velocity,ForceMode.VelocityChange);

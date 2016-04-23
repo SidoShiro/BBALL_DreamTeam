@@ -11,7 +11,7 @@ using System.Collections;
 [NetworkSettings(channel = 3, sendInterval = 0.1f)]
 public class PlayerSpawner : NetworkBehaviour
 {
-    //TODO : Felix, comment your shit
+    //TODO : comment your shit
     [SerializeField]
     private GameObject playerRigidBody; //Player prefab to spawn
     [SerializeField]

@@ -8,7 +8,7 @@ using System.Collections;
 [NetworkSettings(channel = 3, sendInterval = 0.1f)]
 public class SceneOverlord : NetworkBehaviour
 {
-    //TODO : Felix, comment your shit
+    //TODO : comment your shit
     [Header("References(Scene)")]
     [SerializeField]
     private EventPanel eventPanel;
