@@ -78,6 +78,21 @@ public class m_Custom : MonoBehaviour
         }
     }
 
+    public static string GetBallSpawnTagFromTeam(Team team)
+    {
+        switch (team)
+        {
+            case Team.BLU:
+                return "BLUBallRespawn";
+
+            case Team.RED:
+                return "REDBallRespawn";
+
+            default:
+                return "SPEBallRespawn";
+        }
+    }
+
     /// <summary>
     /// Used to generate random player names
     /// </summary>

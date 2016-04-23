@@ -21,6 +21,10 @@ public class SceneOverlord : NetworkBehaviour
     [SyncVar]
     public int scoreRED = 0;
 
+    [Header("Prefabs")]
+    [SerializeField]
+    private GameObject ballBody;
+
     [Server]
     public void Score(Team team)
     {
@@ -49,6 +53,7 @@ public class SceneOverlord : NetworkBehaviour
         KillAllPlayers();
         isFrozen = true;
         FreezeAllPlayerUpdate();
+        InitializeBall(losingteam);
         StartCoroutine(ReadyGO(3.0f));
     }
 
@@ -60,6 +65,7 @@ public class SceneOverlord : NetworkBehaviour
         FreezeAllPlayerUpdate();
     }
 
+    [Server]
     void FreezeAllPlayerUpdate()
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
@@ -72,6 +78,7 @@ public class SceneOverlord : NetworkBehaviour
         }
     }
 
+    [Server]
     void KillAllPlayers()
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
@@ -82,5 +89,30 @@ public class SceneOverlord : NetworkBehaviour
                 player.GetComponent<PlayerCall>().Call_KillPlayer();
             }
         }
+    }
+
+    [Server]
+    void InitializeBall(Team losingteam)
+    {
+        GameObject[] balls = GameObject.FindGameObjectsWithTag("Ball");
+        foreach (GameObject ball in balls)
+        {
+            ball.GetComponent<BallPickUp>().Rpc_DestroyBall();
+        }
+
+        Vector3 spawnpos = Vector3.zero;
+        GameObject defaultspawn = GameObject.FindGameObjectWithTag(m_Custom.GetBallSpawnTagFromTeam(losingteam));
+        if (defaultspawn != null)
+        {
+            spawnpos = defaultspawn.transform.position;
+        }
+        else
+        {
+            Debug.Log("Could not find ball spawn in scene, make sure there is one in the scene");
+        }
+
+        GameObject newball = (GameObject)Instantiate(ballBody, spawnpos, Quaternion.identity);     //Creates new ball
+        NetworkServer.Spawn(newball);                                                              //Instantiate it on all clients
+
     }
 }

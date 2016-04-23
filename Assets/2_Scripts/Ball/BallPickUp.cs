@@ -36,6 +36,10 @@ public class BallPickUp : NetworkBehaviour
                 {
                     spawnpos = defaultspawn.transform.position;
                 }
+                else
+                {
+                    Debug.Log("Could not find ball spawn in scene, make sure there is one in the scene");
+                }
                 GameObject ball = (GameObject)Instantiate(ballBody, spawnpos, Quaternion.identity);     //Creates new ball
                 NetworkServer.Spawn(ball);                                                              //Instantiate it on all clients
                 Rpc_DestroyBall();

@@ -16,7 +16,7 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField]
     private Text scoreRedText;
     [SerializeField]
-    public Slider healthBar;    //(From felix :) Wtf are you doing serializing a public ???
+    public Slider healthBar;    //Wtf are you doing serializing a public ???
 
     [Header("Parameters")]
     [SerializeField]
