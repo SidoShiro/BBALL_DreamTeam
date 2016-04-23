@@ -9,6 +9,10 @@ using System.Collections;
 public class SceneOverlord : NetworkBehaviour
 {
     //TODO : Felix, comment your shit
+    [Header("References(Scene)")]
+    [SerializeField]
+    private EventPanel eventPanel;
+
     [Header("Global settings")]
     [SyncVar]
     public bool isFrozen;
@@ -44,6 +48,8 @@ public class SceneOverlord : NetworkBehaviour
                 Debug.Log("Grats! You broke everything: this should not have happened!");
                 break;
         }
+
+        //TODO : Put score on global UI
     }
 
     [Server]
@@ -54,12 +60,17 @@ public class SceneOverlord : NetworkBehaviour
         isFrozen = true;
         FreezeAllPlayerUpdate();
         InitializeBall(losingteam);
-        StartCoroutine(ReadyGO(3.0f));
+        StartCoroutine(ReadySteadyGO());
     }
 
-    IEnumerator ReadyGO(float time)
+    IEnumerator ReadySteadyGO()
     {
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSeconds(1.0f);
+        eventPanel.Rpc_Ready();
+        yield return new WaitForSeconds(1.0f);
+        eventPanel.Rpc_Steady();
+        yield return new WaitForSeconds(1.0f);
+        eventPanel.Rpc_Go();
         respawntime = 2.0f;
         isFrozen = false;
         FreezeAllPlayerUpdate();

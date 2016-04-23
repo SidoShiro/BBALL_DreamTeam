@@ -2,7 +2,7 @@
 using UnityEngine.Networking;
 
 /// <summary>
-/// Used to receive kills from local player and parse them towards every online client
+/// Used to receive kills from local player and parse them towards every online client TODO : Place on SceneUI
 /// </summary>
 [NetworkSettings(channel = 3, sendInterval = 0.1f)]
 public class KillFeedInput : NetworkBehaviour
