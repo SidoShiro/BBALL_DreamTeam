@@ -82,7 +82,10 @@ public class PlayerMenu : MonoBehaviour
     /// </summary>
     void HidePlayerMenu()
     {
-        playerStats.isReceivingInputs = true;
+        if (!playerStats.isFrozen)  //We don't want to allow input if frozen 
+        {
+            playerStats.isReceivingInputs = true;
+        }
         playerMenuPanel.SetActive(false);
 
         Cursor.visible = false;

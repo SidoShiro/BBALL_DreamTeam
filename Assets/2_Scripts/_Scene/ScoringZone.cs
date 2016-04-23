@@ -9,6 +9,7 @@ using System.Collections;
 [NetworkSettings(channel = 3, sendInterval = 0.1f)]
 public class ScoringZone : NetworkBehaviour
 {
+    //TODO : Felix, comment your shit
     [Header("References(Scene)")]
     [SerializeField]
     private SceneOverlord sceneOverlord;    //Overlord used to transmit scoring to
@@ -23,15 +24,17 @@ public class ScoringZone : NetworkBehaviour
     /// Triggered each frame a GameObject with a collider enters the zone
     /// </summary>
     /// <param name="collider"></param>
+    [Server]
     void OnTriggerStay(Collider collider)
     {
-        if (isServer && shouldCheck)
+        if (shouldCheck)
         {
-            CheckScoring(collider); //Call a scoring check
-            StartCoroutine(CheckReload());
+            CheckScoring(collider);         //Call a scoring check
+            StartCoroutine(CheckReload());  //Prevents checking for some time (To prevent sending multiple RPC)
         }
     }
 
+    [Server]
     IEnumerator CheckReload()
     {
         shouldCheck = false;

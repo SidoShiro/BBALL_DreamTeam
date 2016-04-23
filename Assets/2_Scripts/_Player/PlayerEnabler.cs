@@ -122,6 +122,7 @@ public class PlayerEnabler : NetworkBehaviour
             else
             {
                 playerCall.Call_UpdateHealth();
+                playerCall.Call_FreezePlayerUpdate();
             }
 
             /*

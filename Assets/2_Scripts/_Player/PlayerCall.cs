@@ -70,9 +70,28 @@ public class PlayerCall : MonoBehaviour
 
     /// <summary>
     /// Kills Player
+    /// </summary>
     public void Call_KillPlayer()
     {
         playerCommand.Cmd_KillPlayer(playerStats.playerTeam);
+    }
+
+    /// <summary>
+    /// Freeze/unFreeze player
+    /// </summary>
+    public void Call_FreezePlayerUpdate()
+    {
+        GameObject sceneGM = GameObject.FindGameObjectWithTag("SceneGM");
+        if (sceneGM != null)
+        {
+            bool newstate = sceneGM.GetComponent<SceneOverlord>().isFrozen;
+            playerStats.isFrozen = newstate;
+            playerStats.isReceivingInputs = !newstate;
+        }
+        else
+        {
+            Debug.Log("Could not find SceneGM/SceneOverlord in scene, make sure there is one in the scene");
+        }
     }
 
     /// <summary>
@@ -142,7 +161,7 @@ public class PlayerCall : MonoBehaviour
     public void Call_AddExplosionForce(Vector3 explosionpos)
     {
         playerMove.ForceAirborne();
-        playerRigidBody.AddExplosionForce(10.0f, explosionpos, 2.0f, 0.2f, ForceMode.VelocityChange);
+        playerRigidBody.AddExplosionForce(8.0f, explosionpos, 2.0f, 0.1f, ForceMode.VelocityChange);
     }
 
     /// <summary>

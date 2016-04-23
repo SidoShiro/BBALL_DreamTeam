@@ -8,8 +8,6 @@ using UnityEngine.UI;
 [NetworkSettings(channel = 3, sendInterval = 0.1f)]
 public class PlayerStats : NetworkBehaviour
 {
-    //Enum for Teams (Used by calling Team)
-
     [Header("Stats")]
     [SyncVar]
     public string playerName;
@@ -17,25 +15,27 @@ public class PlayerStats : NetworkBehaviour
     public Team playerTeam = Team.BLU;  //Player's current team
     public int playerHealth;            //Player's current health
 
-
     [Header("Local")]
-    public bool isReceivingInputs;  //Used to disable inputs on Menu/etc ...
+    [SyncVar]
+    public bool isReceivingInputs = false;  //Used to disable inputs on Menu/etc ...
+    [SyncVar]
+    public bool isFrozen = false;
 
     /// <summary>
     /// Donne le droit au createur d'une partie de choisir la vie max
     /// </summary>
     public void ChangeHealth(InputField health)
+{
+    string h = health.text;
+    if (int.Parse(h) > 999)
     {
-        string h = health.text;
-        if (int.Parse(h) > 999)
-        {
-            Debug.Log("There is too much health for your player ! (must be under 999)");
-            playerHealth = 300;
-        }
-        else
-        {
-            playerHealth = int.Parse(h);
-            Debug.Log("Health changed");
-        }
+        Debug.Log("There is too much health for your player ! (must be under 999)");
+        playerHealth = 300;
     }
+    else
+    {
+        playerHealth = int.Parse(h);
+        Debug.Log("Health changed");
+    }
+}
 }

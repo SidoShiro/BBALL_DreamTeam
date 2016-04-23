@@ -250,7 +250,7 @@ GameObject:
   - 114: {fileID: 835533866}
   m_Layer: 0
   m_Name: SceneGM
-  m_TagString: Untagged
+  m_TagString: SceneGM
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -266,6 +266,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b102a7fdecd7eb540b69e5bee05197ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFrozen: 0
+  respawntime: 2
   scoreBLU: 0
   scoreRED: 0
 --- !u!114 &835533867
@@ -600,7 +602,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 488504, guid: 873a97729bbb1c54f951238543d62104, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.251
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 488504, guid: 873a97729bbb1c54f951238543d62104, type: 2}
       propertyPath: m_LocalPosition.z
@@ -964,7 +966,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 488504, guid: 873a97729bbb1c54f951238543d62104, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.251
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 488504, guid: 873a97729bbb1c54f951238543d62104, type: 2}
       propertyPath: m_LocalPosition.z

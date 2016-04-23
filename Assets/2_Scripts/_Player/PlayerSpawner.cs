@@ -11,24 +11,27 @@ using System.Collections;
 [NetworkSettings(channel = 3, sendInterval = 0.1f)]
 public class PlayerSpawner : NetworkBehaviour
 {
+    //TODO : Felix, comment your shit
     [SerializeField]
-    private GameObject playerRigidBody;     //Player prefab to spawn
+    private GameObject playerRigidBody; //Player prefab to spawn
     [SerializeField]
-    private Text playerRespawnTimeText;     //Text to display respawn time
+    private Text playerRespawnTimeText; //Text to display respawn time
 
     //Public
     [SyncVar]
-    public Team newteam;      //Team to respawn in (to set before respawn)
+    public Team newteam;            //Team to respawn in (to set before respawn)
     [SyncVar]
     public string newname = "_N_";
     [SerializeField]
-    private int respawntime = 2;   //Time before respawn (Spectator is always 0)
+    private float respawntime = 2;  //Time before respawn (Spectator is always 0)
 
+    private GameObject sceneGM;
     private float spawntime;
     private bool b_CanRespawn;
 
     void Start()
     {
+        InitializeRespawnTime();
         //Instant respawn if in SPE Team
         if (newteam == Team.SPE)
         {
@@ -37,6 +40,19 @@ public class PlayerSpawner : NetworkBehaviour
         else
         {
             StartCoroutine(WaitUntilRespawn());
+        }
+    }
+
+    void InitializeRespawnTime()
+    {
+        sceneGM = GameObject.FindGameObjectWithTag("SceneGM");
+        if (sceneGM != null)
+        {
+            respawntime = sceneGM.GetComponent<SceneOverlord>().respawntime;
+        }
+        else
+        {
+            Debug.Log("Could not find SceneGM/SceneOverlord in scene, make sure there is one in the scene");
         }
     }
 

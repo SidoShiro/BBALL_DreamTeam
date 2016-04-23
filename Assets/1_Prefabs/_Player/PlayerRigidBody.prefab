@@ -1487,6 +1487,7 @@ MonoBehaviour:
   playerTeam: 1
   playerHealth: 300
   isReceivingInputs: 0
+  isFrozen: 0
 --- !u!114 &11419652
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2795,7 +2796,7 @@ SphereCollider:
   m_GameObject: {fileID: 124556}
   m_Material: {fileID: 13400000, guid: 03296bc911ba38a42a473a9b95248849, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
