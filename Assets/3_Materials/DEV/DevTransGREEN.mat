@@ -46,16 +46,16 @@ Material:
     m_Floats:
       data:
         first:
-          name: _Outline
-        second: 0
-      data:
-        first:
           name: _RampThreshold
         second: 0.5
       data:
         first:
           name: _RampSmooth
         second: 0.1
+      data:
+        first:
+          name: _Outline
+        second: 0
       data:
         first:
           name: _TexLod
@@ -84,11 +84,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 0.18039212, g: 0.8, b: 0.44313723, a: 0.39215687}
-      data:
-        first:
-          name: _OutlineColor
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: 0.18039209, g: 0.8, b: 0.4431372, a: 0.5882353}
       data:
         first:
           name: _HColor
@@ -97,3 +93,7 @@ Material:
         first:
           name: _SColor
         second: {r: 0.4, g: 0.4, b: 0.4, a: 1}
+      data:
+        first:
+          name: _OutlineColor
+        second: {r: 1, g: 1, b: 1, a: 1}
