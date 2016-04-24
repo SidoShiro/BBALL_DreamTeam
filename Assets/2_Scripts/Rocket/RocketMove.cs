@@ -16,16 +16,19 @@ public class RocketMove : NetworkBehaviour
     [SerializeField]
     private ParticleSystem ps;
 
+    //Properties
+    [SyncVar]
+    public NetworkIdentity ownerIdentity;// { get; set; }
     [SyncVar]
     public PlayerStats.Team rocketTeam;
-
     [SyncVar]
     public Quaternion rocketRotation;
 
+    //Local
     [SerializeField]
     private Transform rocketTransform;
-
     private ParticleSystem.EmissionModule em;
+    private LayerMask layerMask;
 
     #region DEBUG
     [Header("DEBUG")]
@@ -43,6 +46,7 @@ public class RocketMove : NetworkBehaviour
         em = ps.emission;
         rocketTransform.rotation = rocketRotation;  //hack Fix Client bug
         Destroy(gameObject, 10.0f);
+        layerMask = m_Custom.layerMaskRocket;
     }
 
     /// <summary>
@@ -60,14 +64,10 @@ public class RocketMove : NetworkBehaviour
     {
         RaycastHit hit;
         Vector3 movediff = rocketTransform.forward * moveSpeed * Time.deltaTime;
-
-        LayerMask layerMask = m_Custom.GetLayerFromTeam(rocketTeam);
-
         if (isServer && Physics.Linecast(rocketTransform.position, rocketTransform.position + movediff, out hit, layerMask, QueryTriggerInteraction.Ignore))
         {
             Rpc_Explode(hit.point);
         }
-
         rocketTransform.position += movediff;
 
         #region DEBUG
@@ -88,7 +88,7 @@ public class RocketMove : NetworkBehaviour
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject player in players)
         {
-            player.GetComponent<PlayerCall>().Call_ExplosionDamage(explosionpos, rocketTeam);
+            player.GetComponent<PlayerCall>().Call_ExplosionDamage(explosionpos, rocketTeam, ownerIdentity);
         }
 
         //Trail

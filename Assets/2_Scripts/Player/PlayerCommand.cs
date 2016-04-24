@@ -9,8 +9,9 @@ using UnityEngine.Networking;
 [NetworkSettings(channel=3,sendInterval=0.1f)]
 public class PlayerCommand : NetworkBehaviour
 {
-    //TODO Felix
-
+    [Header("References(Player)")]
+    [SerializeField]
+    private NetworkIdentity playerIdentity;
     [SerializeField]
     private PlayerCall playerCall;
 
@@ -43,13 +44,30 @@ public class PlayerCommand : NetworkBehaviour
     /// <param name="targetrotation">Rotation to give the rocket</param>
     /// <param name="newteam">Team of the rocket</param>
     [Command]
-    public void Cmd_ShootRocket(Vector3 targetposition, Quaternion targetrotation, PlayerStats.Team newteam)
+    public void Cmd_ShootRocket(Vector3 targetposition, Quaternion targetrotation, PlayerStats.Team newteam, NetworkIdentity ownerIdentity)
     {
         //rocketBody.transform.rotation = targetrotation;
         GameObject rocket = (GameObject)Instantiate(rocketBody, targetposition, targetrotation);    //Spawns rocket at gunpoint with needed rotation
-        rocket.GetComponent<RocketMove>().rocketTeam = newteam;                                     //Give rocket same layer as player
+        rocket.GetComponent<RocketMove>().ownerIdentity = ownerIdentity;                            //
+        rocket.GetComponent<RocketMove>().rocketTeam = newteam;                                     //To give rocket same layer as player
         rocket.GetComponent<RocketMove>().rocketRotation = targetrotation;                          //Set rocket starting rotation
         NetworkServer.Spawn(rocket);                                                                //Instantiate new rocket
+    }
+
+    //TODO : Comment that shit
+    [Command]
+    public void Cmd_SendHit(NetworkIdentity ownerIdentity, float magnitude)
+    {
+        Rpc_GetHit(ownerIdentity, magnitude);
+    }
+
+    [ClientRpc]
+    public void Rpc_GetHit(NetworkIdentity ownerIdentity, float magnitude)
+    {
+        if(ownerIdentity == playerIdentity)
+        {
+            playerCall.Call_ToggleHitMarker(magnitude);
+        }
     }
 
     [ClientRpc]
@@ -63,5 +81,4 @@ public class PlayerCommand : NetworkBehaviour
     {
         playerCall.Call_KillPlayer();
     }
-
 }

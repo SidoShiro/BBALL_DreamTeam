@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 
 public class PlayerShoot : MonoBehaviour
 {
     [Header("References(Player)")]
+    [SerializeField]
+    private NetworkIdentity playerIdentity;
     [SerializeField]
     private PlayerStats playerStats;
     [SerializeField]
@@ -115,14 +118,14 @@ public class PlayerShoot : MonoBehaviour
         {
             Vector3 relativepos = hit.point - playerFireOutputTransform.position;   //Get the vector to parcour
             Quaternion targetrotation = Quaternion.LookRotation(relativepos);       //Get the needed rotation of the rocket to reach that point
-            playerCall.Call_ShootRocket(playerFireOutputTransform.position, targetrotation, playerStats.playerTeam);
+            playerCall.Call_ShootRocket(playerFireOutputTransform.position, targetrotation, playerStats.playerTeam, playerIdentity);
         }
         else
         {
             Vector3 targetpos = ray.origin + ray.direction * 1000;
             Vector3 relativepos = targetpos - playerFireOutputTransform.position;   //Get the vector to parcour
             Quaternion targetrotation = Quaternion.LookRotation(relativepos);       //Get the needed rotation of the rocket to reach that point
-            playerCall.Call_ShootRocket(playerFireOutputTransform.position, targetrotation, playerStats.playerTeam);
+            playerCall.Call_ShootRocket(playerFireOutputTransform.position, targetrotation, playerStats.playerTeam, playerIdentity);
         }
     }
 
