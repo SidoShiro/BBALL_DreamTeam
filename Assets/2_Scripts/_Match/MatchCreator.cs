@@ -11,7 +11,6 @@ public class MatchCreator : MonoBehaviour
 {
     public Text NickName;           //The text containing player name   (From MenuButtonsPanel)
     public Text ServerName;         //The text containing server name   (From CreateGamePanel)
-    public Toggle LANGameToggle;    //The toggle for LAN/ONLINE         (From CreateGamePanel)
     public Dropdown MapName;        //The dropdown for map selection    (From CreateGamePanel)
 
     private NetworkOverlord networkOverlord;    //Used to send server creation in the network
@@ -32,15 +31,7 @@ public class MatchCreator : MonoBehaviour
     /// </summary>
     public void CreateMatch()
     {
-        if (LANGameToggle.isOn)
-        {
-            CreateMatchRequest();
-            //networkOverlord.StartHost(); //Creates LAN game
-        }
-        else
-        {
-            CreateMatchRequest();       //Creates the match for online listing (Match browser)
-        }
+        CreateMatchRequest();
     }
 
     /// <summary>
@@ -76,7 +67,7 @@ public class MatchCreator : MonoBehaviour
         }
         else
         {
-            Debug.LogError("OnMatchCreate > Failure");
+            Debug.LogError("OnMatchCreate > Failure, please verify internet connection");
             //SwitchSelectedMap();
             //networkOverlord.StartHost(); //Host a game with current map in networkManager
         }
