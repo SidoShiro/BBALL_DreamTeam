@@ -12,6 +12,12 @@ public class ButtonPopup : MonoBehaviour
     [SerializeField]
     private float scale = 1.2f;             //Scale factor
 
+    void OnDisable()
+    {
+        StopAllCoroutines();
+        rectTransform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+    }
+
     /// <summary>
     /// Called when mouse hovers button
     /// </summary>

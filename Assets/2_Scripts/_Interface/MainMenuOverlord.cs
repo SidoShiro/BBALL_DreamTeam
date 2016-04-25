@@ -5,15 +5,27 @@ public class MainMenuOverlord : MonoBehaviour {
 
     public List<GameObject> Panellist;  //Used to store all panels for mass deactivation
 
+    //TODO : Comment
+    [SerializeField]
+    private GameObject MainPanel;
+    [SerializeField]
+    private GameObject BackButton;
+
     /// <summary>
     /// Triggers once when script loads
     /// </summary>
     void Start()
     {
         //Disables all panels on startup
-        SwitchAllPanelsTo(false);
+        BackToMain();
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void BackToMain()
+    {
+        SwitchToPanel(MainPanel);
+        BackButton.SetActive(false);
     }
 
     /// <summary>
@@ -37,6 +49,7 @@ public class MainMenuOverlord : MonoBehaviour {
     {
         SwitchAllPanelsTo(false);
         Panel.SetActive(true);
+        BackButton.SetActive(true);
     }
 
     /// <summary>
@@ -46,5 +59,4 @@ public class MainMenuOverlord : MonoBehaviour {
     {
         Application.Quit();
     }
-
 }
