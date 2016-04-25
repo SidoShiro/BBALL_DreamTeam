@@ -109,11 +109,13 @@ namespace UnityEngine.Networking
 
 			if (NetworkServer.active || NetworkClient.active)
 			{
+                //*/
 				if (GUI.Button(new Rect(xpos, ypos, 200, 20), "Stop (X)"))
 				{
 					manager.StopHost();
 				}
 				ypos += spacing;
+                //*/
 			}
 
 			if (!NetworkServer.active && !NetworkClient.active)

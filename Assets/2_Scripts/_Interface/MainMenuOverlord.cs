@@ -17,7 +17,7 @@ public class MainMenuOverlord : MonoBehaviour {
     void Start()
     {
         //Disables all panels on startup
-        BackToMain();
+        //BackToMain();
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }

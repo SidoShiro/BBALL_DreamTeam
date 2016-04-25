@@ -96,7 +96,7 @@ public class PlayerEnabler : NetworkBehaviour
                 break;
         }
 
-        name = playerStats.playerName;
+        name = PlayerPrefs.GetString(PlayerPrefProperties.NickName);
 
         //Called only when the player spawned is owned by the client
         if (isLocalPlayer)

@@ -40,7 +40,7 @@ public class MatchCreator : MonoBehaviour
     private void CreateMatchRequest()
     {
         MatchRequestCustom MatchRequest = new MatchRequestCustom();
-        MatchRequest.name = "Match " + System.Guid.NewGuid().ToString("N"); //This GUID is to prevent 2 matches from having the same name
+        MatchRequest.name = ServerName.text + "|" + MapName.options[0].text + "|" + NickName.text;
         MatchRequest.size = 10;                                             //Max numbers of player in a match (Spectators included)
         MatchRequest.advertise = true;                                      //The match is visible to all on the network
         MatchRequest.password = "";                                         //TODO : Add passwords
