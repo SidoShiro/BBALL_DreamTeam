@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
+//TODO : Comment
 public class NickNameOverlord : MonoBehaviour
 {
     [SerializeField]
@@ -17,7 +17,6 @@ public class NickNameOverlord : MonoBehaviour
         {
             NickNameInputField.text = "404";
         }
-        
     }
 
     public void UpdateNickName()
