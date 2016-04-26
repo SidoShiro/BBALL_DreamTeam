@@ -28,6 +28,7 @@ namespace UnityEngine.Networking
             if (!showGUI)
                 return;
 
+            /*/
             if (!NetworkClient.active && !NetworkServer.active && manager.matchMaker == null)
             {
                 if (Input.GetKeyDown(KeyCode.S))
@@ -50,6 +51,7 @@ namespace UnityEngine.Networking
                     manager.StopHost();
                 }
             }
+            //*/
         }
 
         void OnGUI()

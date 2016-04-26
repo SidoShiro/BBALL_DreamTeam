@@ -53,7 +53,7 @@ public class m_Custom : MonoBehaviour
                 return new Color32(231, 76, 60,255);
 
             default:
-                return new Color32(155, 89, 182,255);
+                return new Color32(255, 255, 255, 255);
         }
     }
 

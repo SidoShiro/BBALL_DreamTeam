@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Networking;
 
 /// <summary>
@@ -21,6 +22,8 @@ public class PlayerEnabler : NetworkBehaviour
     [Header("References(Interface)")]
     [SerializeField]
     private PlayerHUD playerHUD;
+    [SerializeField]
+    private Image teamImage;
 
     [Header("Modify on client")]
     [SerializeField]
@@ -97,6 +100,7 @@ public class PlayerEnabler : NetworkBehaviour
         }
 
         name = PlayerPrefs.GetString(PlayerPrefProperties.NickName);
+        teamImage.color = m_Custom.GetColorFromTeam(playerStats.playerTeam);
 
         //Called only when the player spawned is owned by the client
         if (isLocalPlayer)
