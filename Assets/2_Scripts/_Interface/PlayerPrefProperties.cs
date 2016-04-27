@@ -4,4 +4,6 @@
 public class PlayerPrefProperties
 {
     public const string NickName = "NN";    //NickName of player
+    public const string Sensivity = "SV";   //Preffered sensivity of player
+    public const string Hitsound = "HS";    //Preffered hitsound of player
 }

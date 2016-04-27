@@ -17,6 +17,7 @@ TagManager:
   - SceneGM
   - BallRespawn
   - SceneUI
+  - SettingsUI
   layers:
   - Default
   - TransparentFX

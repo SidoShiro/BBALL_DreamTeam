@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using System.Collections;
 
 /// <summary>
 /// This script is used to enable client specific components that are disabled by default server wise:
@@ -18,6 +19,12 @@ public class PlayerEnabler : NetworkBehaviour
     private PlayerStats playerStats;        //Reference to acces player team
     [SerializeField]
     private PlayerCall playerCall;          //Reference to access player calls
+    [SerializeField]
+    private PlayerLook playerLookX;
+    [SerializeField]
+    private PlayerLook playerLookY;
+    [SerializeField]
+    private AudioSource hitsoundSource;
 
     [Header("References(Interface)")]
     [SerializeField]
@@ -61,6 +68,19 @@ public class PlayerEnabler : NetworkBehaviour
     void Start()
     {
         EnablePlayer();
+        StartCoroutine(SettingsUpdater());
+    }
+
+    IEnumerator SettingsUpdater()
+    {
+        while (true)
+        {
+            playerLookX.sensitivityX = PlayerPrefs.GetInt(PlayerPrefProperties.Sensivity);
+            playerLookY.sensitivityY = PlayerPrefs.GetInt(PlayerPrefProperties.Sensivity);
+            SettingsMenuOverlord settings = GameObject.FindGameObjectWithTag("SettingsUI").GetComponent<SettingsMenuOverlord>();
+            hitsoundSource.GetComponent<AudioSource>().clip = settings.hitsoundList[PlayerPrefs.GetInt(PlayerPrefProperties.Hitsound)];
+            yield return new WaitForSeconds(1);
+        }
     }
 
     /// <summary>
@@ -116,7 +136,7 @@ public class PlayerEnabler : NetworkBehaviour
             playerAudio.enabled = true;         //Enables the audio component of this player
             playerUI.SetActive(true);           //Enables player UI (Crosshair, HUD, Menu, etc...)
             GameObject.FindGameObjectWithTag("KillFeedPanel").GetComponent<KillFeedInput>().localPlayerName = playerIdentity.name;
-
+            
             playerCall.Call_UpdateScore();
 
             if (playerStats.playerTeam == Team.SPE)
