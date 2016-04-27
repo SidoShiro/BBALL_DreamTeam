@@ -3401,6 +3401,7 @@ GameObject:
   - 65: {fileID: 1230693106}
   - 23: {fileID: 1230693105}
   - 114: {fileID: 1230693104}
+  - 114: {fileID: 1230693109}
   m_Layer: 0
   m_Name: Jumper
   m_TagString: Untagged
@@ -3477,6 +3478,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1834703993}
   m_RootOrder: 21
+--- !u!114 &1230693109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1230693103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adbc262bb514118428f57b485b4da8a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 10
 --- !u!1001 &1239364813
 Prefab:
   m_ObjectHideFlags: 0
