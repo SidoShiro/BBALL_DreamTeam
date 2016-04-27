@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 470558}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BallRespawn_RED
   m_TagString: REDBallRespawn
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -25,7 +25,7 @@ GameObject:
   - 4: {fileID: 471322}
   - 33: {fileID: 3365438}
   - 23: {fileID: 2353204}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BallRespawnModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

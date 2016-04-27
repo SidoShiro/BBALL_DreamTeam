@@ -13,7 +13,7 @@ GameObject:
   - 65: {fileID: 6520782}
   - 114: {fileID: 11422388}
   - 114: {fileID: 11445430}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ScoringZone_4RED
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
