@@ -59,8 +59,8 @@ namespace UnityEngine.Networking
             if (!showGUI)
                 return;
 
-            offsetX = Screen.width / 2 - 100;
-            offsetY = Screen.height / 2 - 100;
+            //offsetX = Screen.width / 2 - 100;
+            //offsetY = Screen.height / 2 - 100;
 
             int xpos = 10 + offsetX;
             int ypos = 40 + offsetY;

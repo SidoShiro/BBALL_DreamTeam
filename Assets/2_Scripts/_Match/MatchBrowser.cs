@@ -26,7 +26,8 @@ public class MatchBrowser : MonoBehaviour
 
     public void StopMatchMaker()
     {
-        networkOverlord.StopMatchMaker();
+        if (networkOverlord.matchMaker != null)
+            networkOverlord.StopMatchMaker();
     }
 
     IEnumerator AutoRefresh()
