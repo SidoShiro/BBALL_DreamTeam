@@ -3,11 +3,10 @@ using System.Collections;
 
 public class Tremplin : MonoBehaviour {
 
-    public int force;
+    public Vector3 force;
 
 	
-	// Update is called once per frame
-	/*void OnTriggerEnter (GameObject player) {
-        player.GetComponent<Rigidbody>().AddForce(transform.up * force);
-	}*/
+	void OnTriggerEnter (Collider player) {
+        player.GetComponent<Rigidbody>().AddForce(force);
+	}
 }
