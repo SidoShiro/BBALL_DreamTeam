@@ -7,7 +7,7 @@ public class Tremplin : MonoBehaviour {
 
 	
 	// Update is called once per frame
-	void OnTriggerEnter (GameObject player) {
+	/*void OnTriggerEnter (GameObject player) {
         player.GetComponent<Rigidbody>().AddForce(transform.up * force);
-	}
+	}*/
 }

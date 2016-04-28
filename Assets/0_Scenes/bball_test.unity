@@ -111,7 +111,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1895196470}
   - {fileID: 1928723637}
   - {fileID: 657750707}
   - {fileID: 1809077868}
@@ -371,7 +370,7 @@ Transform:
   - {fileID: 1150641890}
   - {fileID: 1877706492}
   m_Father: {fileID: 202042236}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!114 &835533866 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11422458, guid: 3f6dacbc0bc72b549894387c31ce16b1,
@@ -685,6 +684,7 @@ Transform:
   - {fileID: 618888334}
   - {fileID: 1942792414}
   - {fileID: 972859012}
+  - {fileID: 1895196470}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!1001 &1564311419
@@ -823,7 +823,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 202042236}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1 &1877706491
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,8 +970,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 202042236}
-  m_RootOrder: 0
+  m_Father: {fileID: 1470652861}
+  m_RootOrder: 10
 --- !u!1 &1928723636
 GameObject:
   m_ObjectHideFlags: 0
@@ -999,7 +999,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 202042236}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!108 &1928723638
 Light:
   m_ObjectHideFlags: 0
