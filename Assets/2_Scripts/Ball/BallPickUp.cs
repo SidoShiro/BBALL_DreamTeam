@@ -21,32 +21,35 @@ public class BallPickUp : NetworkBehaviour
     {
         if (isServer)   //We only want to check triggers on the server
         {
-            GameObject colParent = col.transform.parent.gameObject;         //Find the parent of the collider
-            if (colParent.tag == "Player")
+            if (col.transform.parent != null)
             {
-                colParent.GetComponent<PlayerBallHandle>().Rpc_PickBall();  //Tell the player he picked the ball on all clients
-                Rpc_DestroyBall();                                          //Destroy the ball on all clients
-            }
+                GameObject colParent = col.transform.parent.gameObject;         //Find the parent of the collider
+                if (colParent.tag == "Player")
+                {
+                    colParent.GetComponent<PlayerBallHandle>().Rpc_PickBall();  //Tell the player he picked the ball on all clients
+                    Rpc_DestroyBall();                                          //Destroy the ball on all clients
+                }
 
-            if (col.gameObject.GetComponent<KillZone>() != null)
-            {
-                Vector3 spawnpos = Vector3.zero;
-                GameObject defaultspawn = GameObject.FindGameObjectWithTag("SPEBallRespawn");
-                if (defaultspawn != null)
+                if (col.gameObject.GetComponent<KillZone>() != null)
                 {
-                    spawnpos = defaultspawn.transform.position;
+                    Vector3 spawnpos = Vector3.zero;
+                    GameObject defaultspawn = GameObject.FindGameObjectWithTag("SPEBallRespawn");
+                    if (defaultspawn != null)
+                    {
+                        spawnpos = defaultspawn.transform.position;
+                    }
+                    else
+                    {
+                        Debug.Log("Could not find ball spawn in scene, make sure there is one in the scene");
+                    }
+                    GameObject ball = (GameObject)Instantiate(ballBody, spawnpos, Quaternion.identity);     //Creates new ball
+                    NetworkServer.Spawn(ball);                                                              //Instantiate it on all clients
+                    Rpc_DestroyBall();
                 }
-                else
-                {
-                    Debug.Log("Could not find ball spawn in scene, make sure there is one in the scene");
-                }
-                GameObject ball = (GameObject)Instantiate(ballBody, spawnpos, Quaternion.identity);     //Creates new ball
-                NetworkServer.Spawn(ball);                                                              //Instantiate it on all clients
-                Rpc_DestroyBall();
             }
         }
     }
-    
+
     /// <summary>
     /// Called to destroy the ball on all clients
     /// </summary>

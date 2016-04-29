@@ -1564,7 +1564,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &825973371
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2394,7 +2394,6 @@ GameObject:
   - 33: {fileID: 1413181284}
   - 65: {fileID: 1413181283}
   - 23: {fileID: 1413181282}
-  - 114: {fileID: 1413181287}
   - 114: {fileID: 1413181286}
   m_Layer: 0
   m_Name: Blu Plane (3)
@@ -2455,7 +2454,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1413181281}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2769.7004, y: -51.943695, z: 39.72846}
+  m_LocalPosition: {x: 2769.7004, y: 0, z: 39.72846}
   m_LocalScale: {x: 2763.561, y: 0.11829879, z: 5273.4775}
   m_Children: []
   m_Father: {fileID: 1770720501}
@@ -2468,41 +2467,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1413181281}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2230dcf17b084f4b9607fc49722bfd5, type: 3}
+  m_Script: {fileID: 11500000, guid: dc1c2c2a4dd8dae48addab8b09e0e787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1413181287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1413181281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 0
-    i1: 0
-    i2: 0
-    i3: 0
-    i4: 0
-    i5: 0
-    i6: 0
-    i7: 0
-    i8: 0
-    i9: 0
-    i10: 0
-    i11: 0
-    i12: 0
-    i13: 0
-    i14: 0
-    i15: 0
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!1 &1423721323
 GameObject:
   m_ObjectHideFlags: 0
@@ -3561,8 +3528,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1770720501}
-  - 114: {fileID: 1770720500}
-  - 114: {fileID: 1770720499}
   m_Layer: 0
   m_Name: Lava_floor
   m_TagString: Untagged
@@ -3570,49 +3535,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1770720499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1770720498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2230dcf17b084f4b9607fc49722bfd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1770720500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1770720498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 0
-    i1: 0
-    i2: 0
-    i3: 0
-    i4: 0
-    i5: 0
-    i6: 0
-    i7: 0
-    i8: 0
-    i9: 0
-    i10: 0
-    i11: 0
-    i12: 0
-    i13: 0
-    i14: 0
-    i15: 0
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!4 &1770720501
 Transform:
   m_ObjectHideFlags: 0
@@ -3620,7 +3542,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1770720498}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.100336, y: -25.056305, z: -89.92846}
+  m_LocalPosition: {x: -7.100336, y: -10, z: -89.92846}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2105902755}
@@ -3714,7 +3636,6 @@ GameObject:
   - 33: {fileID: 1866633811}
   - 65: {fileID: 1866633810}
   - 23: {fileID: 1866633809}
-  - 114: {fileID: 1866633814}
   - 114: {fileID: 1866633813}
   m_Layer: 0
   m_Name: Blu Plane (2)
@@ -3775,7 +3696,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1866633808}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2758.4998, y: -51.943695, z: 39.72846}
+  m_LocalPosition: {x: -2758.4998, y: 0, z: 39.72846}
   m_LocalScale: {x: 2763.561, y: 0.11829879, z: 5273.4775}
   m_Children: []
   m_Father: {fileID: 1770720501}
@@ -3788,41 +3709,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1866633808}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2230dcf17b084f4b9607fc49722bfd5, type: 3}
+  m_Script: {fileID: 11500000, guid: dc1c2c2a4dd8dae48addab8b09e0e787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1866633814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1866633808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 0
-    i1: 0
-    i2: 0
-    i3: 0
-    i4: 0
-    i5: 0
-    i6: 0
-    i7: 0
-    i8: 0
-    i9: 0
-    i10: 0
-    i11: 0
-    i12: 0
-    i13: 0
-    i14: 0
-    i15: 0
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!1 &1935371156
 GameObject:
   m_ObjectHideFlags: 0
@@ -4315,7 +4204,6 @@ GameObject:
   - 33: {fileID: 2105902754}
   - 65: {fileID: 2105902753}
   - 23: {fileID: 2105902752}
-  - 114: {fileID: 2105902757}
   - 114: {fileID: 2105902756}
   m_Layer: 0
   m_Name: Blu Plane (1)
@@ -4376,7 +4264,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2105902751}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.999436, y: -51.943695, z: 39.72846}
+  m_LocalPosition: {x: 9.999436, y: 0, z: 39.72846}
   m_LocalScale: {x: 2763.561, y: 0.11829879, z: 5273.4775}
   m_Children: []
   m_Father: {fileID: 1770720501}
@@ -4389,41 +4277,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2105902751}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2230dcf17b084f4b9607fc49722bfd5, type: 3}
+  m_Script: {fileID: 11500000, guid: dc1c2c2a4dd8dae48addab8b09e0e787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2105902757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2105902751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 0
-    i1: 0
-    i2: 0
-    i3: 0
-    i4: 0
-    i5: 0
-    i6: 0
-    i7: 0
-    i8: 0
-    i9: 0
-    i10: 0
-    i11: 0
-    i12: 0
-    i13: 0
-    i14: 0
-    i15: 0
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!1 &2117417266
 GameObject:
   m_ObjectHideFlags: 0

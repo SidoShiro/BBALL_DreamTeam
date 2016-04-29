@@ -75,8 +75,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 455880}
   - 65: {fileID: 6575604}
-  - 114: {fileID: 11413134}
-  - 114: {fileID: 11476512}
   m_Layer: 0
   m_Name: Panier
   m_TagString: Untagged
@@ -519,51 +517,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11413134
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 147698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f5f195f1b7733a449ce140fbd96e5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreGM: {fileID: 0}
-  adv: 1
---- !u!114 &11476512
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 147698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 29
-    i1: 204
-    i2: 141
-    i3: 81
-    i4: 212
-    i5: 199
-    i6: 255
-    i7: 116
-    i8: 27
-    i9: 117
-    i10: 9
-    i11: 53
-    i12: 225
-    i13: 222
-    i14: 31
-    i15: 252
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!198 &19801996
 ParticleSystem:
   m_ObjectHideFlags: 1
