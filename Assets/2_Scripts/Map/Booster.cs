@@ -3,11 +3,11 @@ using System.Collections;
 
 public class Booster : MonoBehaviour {
 
-    public int force;
+    public int force = 10;
 	
-	void OnTriggerStay (Collider player) {
+	void OnCollisionEnter (Collision player) {
 
-        player.GetComponent<Rigidbody>().velocity *= 30;
+        player.transform.GetComponent<Rigidbody>().AddForce(Vector3.up * force, ForceMode.VelocityChange);
 	
 	}
 }
