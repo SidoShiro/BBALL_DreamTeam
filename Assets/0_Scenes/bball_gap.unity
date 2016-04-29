@@ -1102,7 +1102,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 470558, guid: 6148c3b67e7649f40bcd9d5d6fd43875, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -1.2
+      value: 2.82
       objectReference: {fileID: 0}
     - target: {fileID: 470558, guid: 6148c3b67e7649f40bcd9d5d6fd43875, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1217,6 +1217,7 @@ GameObject:
   - 33: {fileID: 586556709}
   - 65: {fileID: 586556708}
   - 23: {fileID: 586556707}
+  - 114: {fileID: 586556710}
   m_Layer: 0
   m_Name: "Plan inclin\xE9 (4)"
   m_TagString: Untagged
@@ -1281,6 +1282,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 586556705}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &586556710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 586556705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9022a3ecdcd12243858bdde822dcecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {x: -15, y: 5, z: -20}
 --- !u!1 &609593585
 GameObject:
   m_ObjectHideFlags: 0
@@ -1332,6 +1345,7 @@ GameObject:
   - 33: {fileID: 614800902}
   - 65: {fileID: 614800901}
   - 23: {fileID: 614800900}
+  - 114: {fileID: 614800903}
   m_Layer: 0
   m_Name: "Plan inclin\xE9 (3)"
   m_TagString: Untagged
@@ -1396,6 +1410,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 614800898}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &614800903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 614800898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9022a3ecdcd12243858bdde822dcecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {x: -8, y: 5, z: -20}
 --- !u!1 &664446864
 GameObject:
   m_ObjectHideFlags: 0
@@ -1482,6 +1508,7 @@ GameObject:
   - 33: {fileID: 743184180}
   - 65: {fileID: 743184179}
   - 23: {fileID: 743184178}
+  - 114: {fileID: 743184181}
   m_Layer: 0
   m_Name: "Plan inclin\xE9 (2)"
   m_TagString: Untagged
@@ -1546,6 +1573,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 743184176}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &743184181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 743184176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9022a3ecdcd12243858bdde822dcecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {x: -14, y: 8, z: -1}
 --- !u!1 &825973370
 GameObject:
   m_ObjectHideFlags: 0
@@ -1793,6 +1832,7 @@ GameObject:
   - 33: {fileID: 1091596654}
   - 65: {fileID: 1091596653}
   - 23: {fileID: 1091596652}
+  - 114: {fileID: 1091596655}
   m_Layer: 0
   m_Name: "Plan inclin\xE9"
   m_TagString: Untagged
@@ -1857,6 +1897,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1091596650}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1091596655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1091596650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9022a3ecdcd12243858bdde822dcecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {x: -8, y: 5, z: 21}
 --- !u!1001 &1155023637
 Prefab:
   m_ObjectHideFlags: 0
@@ -2204,7 +2256,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 408334, guid: c1d54d3ca4fc79743822582981d3cc41, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 2.84
+      value: -1.15
       objectReference: {fileID: 0}
     - target: {fileID: 408334, guid: c1d54d3ca4fc79743822582981d3cc41, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2662,94 +2714,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7918984}
   m_RootOrder: 15
---- !u!1 &1526446598
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1526446603}
-  - 33: {fileID: 1526446602}
-  - 65: {fileID: 1526446601}
-  - 23: {fileID: 1526446600}
-  - 114: {fileID: 1526446599}
-  m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1526446599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1526446598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adbc262bb514118428f57b485b4da8a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  force: {x: 14, y: 50, z: 10}
---- !u!23 &1526446600
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1526446598}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
---- !u!65 &1526446601
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1526446598}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &1526446602
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1526446598}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1526446603
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1526446598}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.27, y: 3.4, z: -19.16}
-  m_LocalScale: {x: 1.632087, y: 0.48397642, z: 0.7888283}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
 --- !u!1 &1544807312
 GameObject:
   m_ObjectHideFlags: 0
@@ -2836,6 +2800,7 @@ GameObject:
   - 33: {fileID: 1577437703}
   - 65: {fileID: 1577437702}
   - 23: {fileID: 1577437701}
+  - 114: {fileID: 1577437704}
   m_Layer: 0
   m_Name: "Plan inclin\xE9 (1)"
   m_TagString: Untagged
@@ -2900,6 +2865,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1577437699}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1577437704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1577437699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9022a3ecdcd12243858bdde822dcecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {x: -8, y: 5, z: 21}
 --- !u!1 &1608887257
 GameObject:
   m_ObjectHideFlags: 0
@@ -2911,6 +2888,7 @@ GameObject:
   - 33: {fileID: 1608887261}
   - 65: {fileID: 1608887260}
   - 23: {fileID: 1608887259}
+  - 114: {fileID: 1608887262}
   m_Layer: 0
   m_Name: "Plan inclin\xE9 (5)"
   m_TagString: Untagged
@@ -2975,6 +2953,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1608887257}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1608887262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1608887257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9022a3ecdcd12243858bdde822dcecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {x: -14, y: 8, z: 3}
 --- !u!1001 &1612858433
 Prefab:
   m_ObjectHideFlags: 0

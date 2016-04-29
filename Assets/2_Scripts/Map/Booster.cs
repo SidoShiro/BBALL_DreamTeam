@@ -7,7 +7,7 @@ public class Booster : MonoBehaviour {
 	
 	void OnTriggerStay (Collider player) {
 
-        player.GetComponent<Rigidbody>().velocity *= 3;
+        player.GetComponent<Rigidbody>().velocity *= 30;
 	
 	}
 }

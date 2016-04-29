@@ -3,10 +3,12 @@ using System.Collections;
 
 public class Tremplin : MonoBehaviour {
 
-    public Vector3 force;
+    public int force;
 
-	
-	void OnTriggerEnter (Collider player) {
-        player.GetComponent<Rigidbody>().AddForce(force);
-	}
+    void OnCollisionEnter(Collision col)
+    {
+
+        col.transform.GetComponent<Rigidbody>().AddForce(Vector3.up * force, ForceMode.VelocityChange);
+        col.transform.GetComponent<Rigidbody>().AddForce(Vector3.back * force * 10, ForceMode.VelocityChange);
+    }
 }
