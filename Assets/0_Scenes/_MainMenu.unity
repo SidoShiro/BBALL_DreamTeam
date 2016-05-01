@@ -1836,8 +1836,6 @@ MonoBehaviour:
     m_Options:
     - m_Text: bball_duel
       m_Image: {fileID: 0}
-    - m_Text: bball_bases
-      m_Image: {fileID: 0}
     - m_Text: bball_disco
       m_Image: {fileID: 0}
     - m_Text: bball_standard
