@@ -1092,6 +1092,8 @@ MonoBehaviour:
   hitsoundSource: {fileID: 8273550}
   playerHUD: {fileID: 11444658}
   teamImage: {fileID: 11459770}
+  ballModelRenderer: {fileID: 2367400}
+  ballTrailRenderer: {fileID: 9655920}
   scripts:
   - {fileID: 11461692}
   - {fileID: 11421474}
@@ -3541,7 +3543,7 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 25}
+  m_AnchoredPosition: {x: 0, y: 50}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!224 &22469088

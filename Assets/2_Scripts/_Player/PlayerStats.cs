@@ -21,21 +21,28 @@ public class PlayerStats : NetworkBehaviour
     [SyncVar]
     public bool isFrozen = false;
 
+    [Command]
+    public void Cmd_SetName(string newname)
+    {
+        name = newname;
+        playerName = newname;
+    }
+
     /// <summary>
     /// Donne le droit au createur d'une partie de choisir la vie max
     /// </summary>
     public void ChangeHealth(InputField health)
-{
-    string h = health.text;
-    if (int.Parse(h) > 999)
     {
-        Debug.Log("There is too much health for your player ! (must be under 999)");
-        playerHealth = 300;
+        string h = health.text;
+        if (int.Parse(h) > 999)
+        {
+            Debug.Log("There is too much health for your player ! (must be under 999)");
+            playerHealth = 300;
+        }
+        else
+        {
+            playerHealth = int.Parse(h);
+            Debug.Log("Health changed");
+        }
     }
-    else
-    {
-        playerHealth = int.Parse(h);
-        Debug.Log("Health changed");
-    }
-}
 }

@@ -100,7 +100,7 @@ public class PlayerSpawner : NetworkBehaviour
         Transform spawnPoint = spawnTab[Random.Range(0, (spawnTab.Length - 1))].transform;                          //Pick random spawn
         GameObject playerNew = (GameObject)Instantiate(playerRigidBody, spawnPoint.position, spawnPoint.rotation);  //Spawns new player
         playerNew.GetComponent<PlayerStats>().playerTeam = newteam;                                                 //Set player team accordingly
-        //playerNew.GetComponent<PlayerStats>().playerName = PlayerPrefs.GetString(PlayerPrefProperties.NickName);    //TODO : Add player nickname
+        playerNew.GetComponent<PlayerStats>().playerName = newname;                                                 //TODO : Add player nickname
         NetworkServer.DestroyPlayersForConnection(connectionToClient);                                              //Clean connection (prevents duplicate)
         NetworkServer.ReplacePlayerForConnection(connectionToClient, playerNew, playerControllerId);                //Instantiate new player
     }

@@ -32,6 +32,12 @@ public class PlayerEnabler : NetworkBehaviour
     [SerializeField]
     private Image teamImage;
 
+    [Header("References(Ball)")]
+    [SerializeField]
+    private Renderer ballModelRenderer;
+    [SerializeField]
+    private TrailRenderer ballTrailRenderer;
+
     [Header("Modify on client")]
     [SerializeField]
     public Component[] scripts;        //List of scripts (Mainly inputs scripts) to enable client side
@@ -68,13 +74,18 @@ public class PlayerEnabler : NetworkBehaviour
     void Start()
     {
         EnablePlayer();
-        StartCoroutine(SettingsUpdater());
+        if (isLocalPlayer)
+        {
+            StartCoroutine(SettingsUpdater());
+        }
     }
 
     IEnumerator SettingsUpdater()
     {
         while (true)
         {
+            GameObject.FindGameObjectWithTag("KillFeedPanel").GetComponent<KillFeedInput>().localPlayerName = playerIdentity.name;
+            playerStats.Cmd_SetName(PlayerPrefs.GetString(PlayerPrefProperties.NickName));
             playerLookX.sensitivityX = PlayerPrefs.GetInt(PlayerPrefProperties.Sensivity);
             playerLookY.sensitivityY = PlayerPrefs.GetInt(PlayerPrefProperties.Sensivity);
             SettingsMenuOverlord settings = GameObject.FindGameObjectWithTag("SettingsUI").GetComponent<SettingsMenuOverlord>();
@@ -124,13 +135,14 @@ public class PlayerEnabler : NetworkBehaviour
         //Called only when the player spawned is owned by the client
         if (isLocalPlayer)
         {
-            name = PlayerPrefs.GetString(PlayerPrefProperties.NickName);
             //Enable client side scripts (So you only control this player and not others)
             foreach (MonoBehaviour mono in scripts)
             {
                 mono.enabled = true;
             }
 
+            ballModelRenderer.enabled = false;
+            ballTrailRenderer.enabled = false;
             playerModelRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;   //Place PlayerModel on "NORENDER" layer to disable rendering for this client
             playerCamera.enabled = true;        //Enables the camera component of this player
             playerAudio.enabled = true;         //Enables the audio component of this player
@@ -186,6 +198,8 @@ public class PlayerEnabler : NetworkBehaviour
             playerCamera.enabled = false;       //Disable the camera component of this player
             playerAudio.enabled = false;        //Disable the audio component of this player
             playerUI.SetActive(false);          //Disable player UI (Crosshair, HUD, Menu, etc...)
+            ballModelRenderer.enabled = true;
+            ballTrailRenderer.enabled = true;
 
             /*
             - Disable shooting if spectator
