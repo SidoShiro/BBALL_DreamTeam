@@ -55,7 +55,7 @@ public class PlayerCall : MonoBehaviour
     /// </summary>
     public void Call_KillPlayer(string killerName, Team killerTeam, DamageType damagetype)
     {
-        playerCommand.Cmd_SendKill(killerName, playerIdentity.name, killerTeam, playerStats.playerTeam, damagetype);
+        playerCommand.Cmd_SendKill(killerName, gameObject.name, killerTeam, playerStats.playerTeam, damagetype);
         playerCommand.Cmd_KillPlayer(playerStats.playerTeam);
     }
 
@@ -64,7 +64,7 @@ public class PlayerCall : MonoBehaviour
     /// </summary>
     public void Call_KillPlayer(string reason)
     {
-        playerCommand.Cmd_SendKill(reason, playerIdentity.name, 0, playerStats.playerTeam, DamageType.Hazard);
+        playerCommand.Cmd_SendKill(reason, gameObject.name, 0, playerStats.playerTeam, DamageType.Hazard);
         playerCommand.Cmd_KillPlayer(playerStats.playerTeam);
     }
 
