@@ -119,12 +119,12 @@ public class PlayerEnabler : NetworkBehaviour
                 break;
         }
 
-        name = PlayerPrefs.GetString(PlayerPrefProperties.NickName);
         teamImage.color = m_Custom.GetColorFromTeam(playerStats.playerTeam);
 
         //Called only when the player spawned is owned by the client
         if (isLocalPlayer)
         {
+            name = PlayerPrefs.GetString(PlayerPrefProperties.NickName);
             //Enable client side scripts (So you only control this player and not others)
             foreach (MonoBehaviour mono in scripts)
             {
