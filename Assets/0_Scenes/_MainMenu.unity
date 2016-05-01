@@ -895,26 +895,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 138720, guid: 98cc675f9e78ec14a9b0b8ca46b38205, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22466622, guid: 98cc675f9e78ec14a9b0b8ca46b38205, type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -50
-      objectReference: {fileID: 0}
-    - target: {fileID: 22466622, guid: 98cc675f9e78ec14a9b0b8ca46b38205, type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22466622, guid: 98cc675f9e78ec14a9b0b8ca46b38205, type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22466622, guid: 98cc675f9e78ec14a9b0b8ca46b38205, type: 2}
-      propertyPath: m_Pivot.y
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 98cc675f9e78ec14a9b0b8ca46b38205, type: 2}
   m_IsPrefabParent: 0
