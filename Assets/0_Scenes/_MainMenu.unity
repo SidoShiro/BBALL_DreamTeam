@@ -5047,7 +5047,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11486124, guid: df60732276e3de244a9836b58195ab6f, type: 2}
       propertyPath: m_Text
-      value: Bob
+      value: Abdou
       objectReference: {fileID: 0}
     - target: {fileID: 22416390, guid: df60732276e3de244a9836b58195ab6f, type: 2}
       propertyPath: m_AnchorMin.y
@@ -5888,7 +5888,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11486124, guid: df60732276e3de244a9836b58195ab6f, type: 2}
       propertyPath: m_Text
-      value: Herbert
+      value: Michel
       objectReference: {fileID: 0}
     - target: {fileID: 22416390, guid: df60732276e3de244a9836b58195ab6f, type: 2}
       propertyPath: m_AnchorMin.y
