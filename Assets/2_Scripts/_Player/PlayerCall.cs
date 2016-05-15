@@ -64,7 +64,7 @@ public class PlayerCall : MonoBehaviour
     /// </summary>
     public void Call_KillPlayer(string reason)
     {
-        playerCommand.Cmd_SendKill(reason, name, 0, playerStats.playerTeam, DamageType.Hazard);
+        playerCommand.Cmd_SendKill(reason, playerStats.playerName, 0, playerStats.playerTeam, DamageType.Hazard);
         playerCommand.Cmd_KillPlayer(playerStats.playerTeam);
     }
 

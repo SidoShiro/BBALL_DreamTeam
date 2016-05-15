@@ -147,7 +147,7 @@ public class PlayerEnabler : NetworkBehaviour
             playerCamera.enabled = true;        //Enables the camera component of this player
             playerAudio.enabled = true;         //Enables the audio component of this player
             playerUI.SetActive(true);           //Enables player UI (Crosshair, HUD, Menu, etc...)
-            GameObject.FindGameObjectWithTag("KillFeedPanel").GetComponent<KillFeedInput>().localPlayerName = playerIdentity.name;
+            GameObject.FindGameObjectWithTag("KillFeedPanel").GetComponent<KillFeedInput>().localPlayerName = playerStats.name;
             
             playerCall.Call_UpdateScore();
 
