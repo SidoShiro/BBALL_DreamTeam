@@ -44,6 +44,14 @@ public class SettingsMenuOverlord : MonoBehaviour
         WriteHitsound();
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GoBack();
+        }
+    }
+
     /// <summary>
     /// Write sensivity to PlayerPrefs
     /// </summary>
