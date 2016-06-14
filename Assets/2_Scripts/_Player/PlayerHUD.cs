@@ -16,7 +16,9 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField]
     private Text scoreRedText;
     [SerializeField]
-    public Slider healthBar;    //Wtf are you doing serializing a public ???
+    private float barLenght;
+    [SerializeField]
+    private float percentOfHp;
 
     [Header("Parameters")]
     [SerializeField]
@@ -31,6 +33,7 @@ public class PlayerHUD : MonoBehaviour
     {
         //healthBar.gameObject.SetActive(true); //pas opti a changer
         healthText.text = health.ToString();
+        //Set lenght of Healthbar
         //healthBar.value = health;
     }
 
