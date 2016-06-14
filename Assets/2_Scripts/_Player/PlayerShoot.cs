@@ -34,6 +34,7 @@ public class PlayerShoot : MonoBehaviour
     //Locals
     private bool isAbleToShootPrimary;
     private bool isAbleToShootSecondary;
+    private string secondary = "None";
 
     #region DEBUG
     [Header("DEBUG")]
@@ -96,6 +97,25 @@ public class PlayerShoot : MonoBehaviour
         }
     }
 
+    private void TryShootSecondary()
+    {
+        if (isAbleToShootSecondary)
+        {
+            if (secondary == "Sniper")
+            {
+                ShootSniper();
+            }
+            else if (secondary == "Rifle")
+            {
+                //ShootRifle()
+            }
+            else
+            {
+                //ShootGrenade()
+            }
+        }
+    }
+
     /// <summary>
     /// Prevent shooting and triggers reload animations
     /// </summary>
@@ -153,6 +173,22 @@ public class PlayerShoot : MonoBehaviour
             Quaternion targetrotation = Quaternion.LookRotation(relativepos);       //Get the needed rotation of the rocket to reach that point
             playerCall.Call_ShootRocket(playerFireOutputTransform.position, targetrotation, playerStats.playerTeam, playerIdentity);
         }
+    }
+
+    private void ShootSniper()
+    {
+        LayerMask layerMask = ~LayerMask.GetMask("BLU", "RED", "SPE");
+        RaycastHit hit;
+        Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+        if (Physics.Raycast(ray, out hit, layerMask) && hit.GetType() == typeof(Player))
+        {
+            //IF hit.Layer == ennemy_layer
+            //APPLY DMGS
+            //Display Hitmarker
+        }
+        isAbleToShootSecondary = false;
+        secondary = "None";
+
     }
 
 }
