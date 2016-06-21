@@ -19,7 +19,7 @@ EditorBuildSettings:
     path: Assets/0_Scenes/bball_tuto.unity
   - enabled: 1
     path: Assets/0_Scenes/bball_duel.unity
-  - enabled: 0
+  - enabled: 1
     path: Assets/0_Scenes/bball_bases.unity
   - enabled: 1
     path: Assets/0_Scenes/bball_disco.unity
@@ -27,3 +27,5 @@ EditorBuildSettings:
     path: Assets/0_Scenes/bball_standard.unity
   - enabled: 1
     path: Assets/0_Scenes/bball_gap.unity
+  - enabled: 1
+    path: Assets/0_Scenes/bball_disco2.unity
