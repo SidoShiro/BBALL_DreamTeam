@@ -25,7 +25,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 478656}
-  - 95: {fileID: 9509622}
   m_Layer: 0
   m_Name: PlayerModel
   m_TagString: Untagged
@@ -985,6 +984,7 @@ GameObject:
   - 114: {fileID: 11404980}
   - 114: {fileID: 11472174}
   - 114: {fileID: 11408642}
+  - 95: {fileID: 9560514}
   m_Layer: 0
   m_Name: PlayerRigidBody
   m_TagString: Player
@@ -2156,19 +2156,19 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 137516}
   m_Enabled: 0
---- !u!95 &9509622
+--- !u!95 &9560514
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 102880}
+  m_GameObject: {fileID: 183104}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 63ba384b2754253429c203b186115b09, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6b08af09777453a458714d119cf0b35f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
