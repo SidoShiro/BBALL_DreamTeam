@@ -56,7 +56,7 @@ public class PlayerEnabler : NetworkBehaviour
     [SerializeField]
     private PlayerShoot playerShoot;        //This script will be disabled if on SPE team
     [SerializeField]
-    private Renderer playerModelRenderer;   //Used to set material according to team
+    private Renderer[] playerModelRendererList;   //Used to set material according to team
     [SerializeField]
     private GameObject playerCollider;      //Used to place collider on team layer
 
@@ -110,19 +110,28 @@ public class PlayerEnabler : NetworkBehaviour
             case Team.BLU:
                 playerCollider.gameObject.layer = 11;
                 playerModel.gameObject.layer = 11;
-                playerModelRenderer.material = BLUMaterial;
+                foreach (Renderer playerModelRenderer in playerModelRendererList)
+                {
+                    playerModelRenderer.material = BLUMaterial;
+                }
                 break;
 
             case Team.RED:
                 playerCollider.gameObject.layer = 12;
                 playerModel.gameObject.layer = 12;
-                playerModelRenderer.material = REDMaterial;
+                foreach (Renderer playerModelRenderer in playerModelRendererList)
+                {
+                    playerModelRenderer.material = REDMaterial;
+                }
                 break;
 
             case Team.SPE:
                 playerCollider.gameObject.layer = 10;
                 playerModel.gameObject.layer = 10;
-                playerModelRenderer.material = SPEMaterial;
+                foreach (Renderer playerModelRenderer in playerModelRendererList)
+                {
+                    playerModelRenderer.material = SPEMaterial;
+                }
                 break;
 
             default:
@@ -143,7 +152,10 @@ public class PlayerEnabler : NetworkBehaviour
 
             ballModelRenderer.enabled = false;
             ballTrailRenderer.enabled = false;
-            playerModelRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;   //Place PlayerModel on "NORENDER" layer to disable rendering for this client
+            foreach (Renderer playerModelRenderer in playerModelRendererList)
+            {
+                playerModelRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;   //Place PlayerModel on "NORENDER" layer to disable rendering for this client
+            }
             playerCamera.enabled = true;        //Enables the camera component of this player
             playerAudio.enabled = true;         //Enables the audio component of this player
             playerUI.SetActive(true);           //Enables player UI (Crosshair, HUD, Menu, etc...)
@@ -194,7 +206,11 @@ public class PlayerEnabler : NetworkBehaviour
                 mono.enabled = false;
             }
 
-            playerModelRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;   //Place PlayerModel on default layer to enable rendering for this client
+            foreach (Renderer playerModelRenderer in playerModelRendererList)
+            {
+                playerModelRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;   //Place PlayerModel on default layer to enable rendering for this client
+            }
+
             playerCamera.enabled = false;       //Disable the camera component of this player
             playerAudio.enabled = false;        //Disable the audio component of this player
             playerUI.SetActive(false);          //Disable player UI (Crosshair, HUD, Menu, etc...)
