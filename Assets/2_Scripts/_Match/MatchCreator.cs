@@ -68,8 +68,8 @@ public class MatchCreator : MonoBehaviour
         else
         {
             Debug.LogError("OnMatchCreate > Failure, please verify internet connection");
-            //SwitchSelectedMap();
-            //networkOverlord.StartHost(); //Host a game with current map in networkManager
+            SwitchSelectedMap();
+            networkOverlord.StartHost(); //Host a game with current map in networkManager
         }
     }
 
