@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 28c68126745ee57408e99f125c33dfb7
+guid: b1254ddd94514f74486986786b54ab1f
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
@@ -161,7 +161,7 @@ ModelImporter:
     400152: Spine
     400154: TongueBack
     400156: TongueTip
-    7400000: RapidStrafe_90HipsRightFaceFwd
+    7400000: Idle_Neutral_2
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -174,7 +174,9 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nDefault bone length found in this file is different
+      form the one found in the source avatar:\n\t'LeftLeg' : position error = 7.696520
+      mm\n\t'LeftFoot' : position error = 15.233778 mm\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     animationCompression: 1
@@ -185,17 +187,17 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: RapidStrafe_90HipsRightFaceFwd
-      takeName: _59_a_U1_M_P_RapidStrafe_90HipsRightFaceFwd__Fb_p90_No_0_PJ_2
-      firstFrame: 56
-      lastFrame: 509
+      name: Idle_Neutral_2
+      takeName: _87_a_U1_M_P_idle_Neutral__Fb_p0_No_1
+      firstFrame: 120
+      lastFrame: 1100
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -211,7 +213,7 @@ ModelImporter:
       transformMask: []
       maskType: 0
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 120
     isReadable: 1
   meshes:
     lODScreenPercentages: []
