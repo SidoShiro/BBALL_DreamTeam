@@ -985,6 +985,7 @@ GameObject:
   - 114: {fileID: 11472174}
   - 114: {fileID: 11408642}
   - 95: {fileID: 9560514}
+  - 114: {fileID: 11468392}
   m_Layer: 0
   m_Name: PlayerRigidBody
   m_TagString: Player
@@ -2165,7 +2166,7 @@ Animator:
   m_GameObject: {fileID: 183104}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 63ba384b2754253429c203b186115b09, type: 3}
-  m_Controller: {fileID: 9100000, guid: 4a2ba3e5cd903e9428faa07e14c6f3c3, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1b7c3e526a7e67b4eaa3000b6c274b19, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3876,6 +3877,25 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!114 &11468392
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1590678366, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 9560514}
+  m_ParameterSendBits: 0
+  param0: 
+  param1: 
+  param2: 
+  param3: 
+  param4: 
+  param5: 
 --- !u!114 &11468912
 MonoBehaviour:
   m_ObjectHideFlags: 1
