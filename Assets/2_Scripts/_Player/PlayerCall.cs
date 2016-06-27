@@ -123,7 +123,7 @@ public class PlayerCall : MonoBehaviour
         //Deprecated
         if (GameObject.Find("ScoreGM") != null)
         {
-            Debug.Log("Usage of deprecated function");
+            //Debug.Log("Usage of deprecated function");
             ScoreGM scoreGM = GameObject.Find("ScoreGM").GetComponent<ScoreGM>();
             int scoreBlu = scoreGM.score_blue;
             int scoreRed = scoreGM.score_red;

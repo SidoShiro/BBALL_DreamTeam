@@ -197,7 +197,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2c9adc65efa98fa48a6301a0fe071f32, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2011,7 +2011,7 @@ MonoBehaviour:
     m_Options:
     - m_Text: bball_duel
       m_Image: {fileID: 0}
-    - m_Text: bball_disco
+    - m_Text: bball_disco2
       m_Image: {fileID: 0}
     - m_Text: bball_standard
       m_Image: {fileID: 0}

@@ -428,8 +428,12 @@ PlayerSettings:
   boolPropertyNames:
   - XboxOne::enus
   XboxOne::enus: 1
-  stringPropertyNames: []
-  cloudProjectId: 
-  projectName: 
-  organizationId: 
+  stringPropertyNames:
+  - Build_ServiceEnabled::Build_ServiceEnabled
+  - UNet_ServiceEnabled::UNet_ServiceEnabled
+  Build_ServiceEnabled::Build_ServiceEnabled: False
+  UNet_ServiceEnabled::UNet_ServiceEnabled: True
+  cloudProjectId: ab3349d8-611b-4cb8-a81c-970966de0429
+  projectName: BBALL_DreamTeam - WIP
+  organizationId: slamjack
   cloudEnabled: 0
