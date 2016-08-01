@@ -951,7 +951,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &182756
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -1247,7 +1247,7 @@ Transform:
   - {fileID: 447412}
   - {fileID: 469130}
   m_Father: {fileID: 496084}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!4 &424518
 Transform:
   m_ObjectHideFlags: 1
@@ -1271,7 +1271,7 @@ Transform:
   m_GameObject: {fileID: 115748}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.65, y: 0.65, z: 0.65}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 420452}
@@ -1392,14 +1392,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 182756}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -6.123234e-17, y: -1, z: 6.123234e-17, w: -6.123234e-17}
+  m_LocalPosition: {x: -0.000015232901, y: 0.020008577, z: -0}
+  m_LocalScale: {x: 0.067632325, y: 0.067632355, z: 0.067632355}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
   m_Children:
   - {fileID: 426282}
-  m_Father: {fileID: 496084}
-  m_RootOrder: 2
+  m_Father: {fileID: 485920}
+  m_RootOrder: 4
 --- !u!4 &450512
 Transform:
   m_ObjectHideFlags: 1
@@ -1508,7 +1508,7 @@ Transform:
   m_Children:
   - {fileID: 440774}
   m_Father: {fileID: 496084}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!4 &479926
 Transform:
   m_ObjectHideFlags: 1
@@ -1564,6 +1564,7 @@ Transform:
   - {fileID: 424518}
   - {fileID: 404894}
   - {fileID: 402128}
+  - {fileID: 450128}
   m_Father: {fileID: 440774}
   m_RootOrder: 0
 --- !u!4 &491054
@@ -1592,7 +1593,6 @@ Transform:
   m_Children:
   - {fileID: 413960}
   - {fileID: 416484}
-  - {fileID: 450128}
   - {fileID: 423768}
   - {fileID: 22443726}
   - {fileID: 478656}
@@ -2202,8 +2202,8 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Time: 2
-  m_StartWidth: 0.3
-  m_EndWidth: 0.2
+  m_StartWidth: 0.65
+  m_EndWidth: 0.5
   m_Colors:
     m_Color[0]:
       serializedVersion: 2
@@ -3618,8 +3618,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83175c9f8f79474449928e42a1879aa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerRigidbody: {fileID: 5415386}
   playerAnimator: {fileID: 9560514}
+  playerNetworkAnimator: {fileID: 11468392}
 --- !u!114 &11459252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3903,7 +3903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Animator: {fileID: 9560514}
-  m_ParameterSendBits: 0
+  m_ParameterSendBits: 15
   param0: 
   param1: 
   param2: 
@@ -4672,7 +4672,7 @@ RectTransform:
   - {fileID: 22482822}
   - {fileID: 22486972}
   m_Father: {fileID: 496084}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
